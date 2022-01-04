@@ -1,0 +1,29 @@
+.base-table {
+  .table th {
+    border: none;
+  }
+
+  .action-btn {
+    margin-right: 0.5rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .nav-link {
+    color: #9A9AAF;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
+
+.pagination {
+  .page-link {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

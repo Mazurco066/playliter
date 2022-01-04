@@ -1,0 +1,50 @@
+/* Splashscreen background */
+.splash {
+  position: fixed;
+  background: #FF5F6D;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #FFC371, #FF5F6D);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #FFC371, #FF5F6D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  width: 100vw;
+  height: 100vh;
+  top: 50%;
+  left: 50%;
+  margin: -50vh 0 0 -50vw;
+  transform: translate3d(0px, 0px, 0px);
+  -webkit-transform: translate3d(0px, 0px, 0px);
+  z-index: 99999;
+}
+
+/* Splashscreen logo */
+.splash .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  transform: translate3d(-75%, 0px, 0px);
+  -webkit-transform: translate3d(-75%, 0px, 0px);
+}
+
+/* Splashscreen start logo */
+.splash.start .logo {
+  transform: translate3d(0px, 0px, 0px);
+  -webkit-transform: translate3d(0px, 0px, 0px);
+  transition: all 0.7s ease;
+}
+
+/* Splashscreen hide */
+.splash.hide {
+  transition: all 0.9s ease;
+}
+
+/* Splashscreen hide logo */
+.splash.hide .logo {
+  transform: translate3d(75%, 0px, 0px);
+  -webkit-transform: translate3d(75%, 0px, 0px);
+  transition: all 0.9s ease;
+}
+
+/* Ending effect */
+.splash.close {
+  opacity: 0;
+  transition: all 0.5s ease;
+}

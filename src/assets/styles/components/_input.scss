@@ -1,0 +1,120 @@
+.base-input {
+  margin-bottom: 1rem;
+
+  &.no-margin {
+    margin-bottom: 0;
+  }
+
+  .form-group {
+    margin-bottom: 0;
+  }
+
+  .input-wrapper {
+    border-radius: 0.25rem;
+    max-height: 36px;
+    overflow: hidden;
+
+    input {
+      height: 36px;
+      background-color: #F2F3F7;
+      color: var(--color-gray);
+      border: none;
+      outline: none;
+      font-size: 1rem;
+  
+      &:focus {
+        background-color: #F2F3F7;
+        box-shadow: none;
+      }
+  
+      transition: all 0.3s ease;
+    }
+  
+    .input-group-prepend, .input-group-append {
+      .input-group-text {
+        background-color: #F2F3F7;
+        color: var(--color-gray);
+        border: none;
+      }
+    }
+  
+    &.focused {
+      border: 1px solid var(--color-primary);
+  
+      .input-group-prepend, .input-group-append {
+        .input-group-text {
+          color: var(--color-primary);
+        }
+      }
+    }
+
+    transition: all 0.3s ease;
+  }
+
+  label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-gray);
+
+    &.focused {
+      color: var(--color-primary);
+    }
+  }
+}
+
+.form-toggle {
+  display: inline-block;
+  position: relative;
+
+  input[type=checkbox]{
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    display: none;
+  }
+    
+  label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 50px;
+    height: 26px;
+    background: grey;
+    display: block;
+    border-radius: 50px;
+    position: relative;
+    margin-bottom: 0;
+  }
+    
+  label:after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 20px;
+    transition: 0.3s;
+  }
+    
+  input:checked + label {
+    background: var(--color-primary);
+  }
+    
+  input:checked + label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+  }
+    
+  label:active:after {
+    width: 50px;
+  }
+    
+  // centering
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+}

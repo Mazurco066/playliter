@@ -1,0 +1,50 @@
+{
+  "name": "@rakta/playliter",
+  "version": "1.0.0",
+  "private": true,
+  "author": {
+    "name": "Gabriel Mazurco",
+    "email": "mazurco066@gmail.com"
+  },
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@meforma/vue-toaster": "^1.2.2",
+    "@vuelidate/core": "^2.0.0-alpha.26",
+    "@vuelidate/validators": "^2.0.0-alpha.22",
+    "apollo-boost": "^0.4.9",
+    "axios": "^0.22.0",
+    "bootstrap": "4.6.0",
+    "bootstrap-vue": "2.15.0",
+    "chart.js": "2.9.4",
+    "core-js": "^3.6.5",
+    "crypto": "^1.0.1",
+    "graphql": "^16.2.0",
+    "jquery": "^3.6.0",
+    "moment": "^2.29.1",
+    "register-service-worker": "^1.7.1",
+    "stylus": "^0.55.0",
+    "stylus-loader": "3",
+    "vue": "^3.0.0",
+    "vue-apollo": "^3.1.0",
+    "vue-currency-input": "^2.1.2",
+    "vue-router": "^4.0.0-0",
+    "vue-sweetalert2": "^5.0.2",
+    "vue-the-mask": "^0.11.1",
+    "vue3-carousel": "^0.1.32",
+    "vuex": "^4.0.0-0",
+    "vuex-persistedstate": "^4.1.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-pwa": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "sass": "^1.42.1",
+    "sass-loader": "10.1.1"
+  }
+}

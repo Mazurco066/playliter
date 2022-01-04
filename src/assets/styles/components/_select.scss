@@ -1,0 +1,17 @@
+.base-input {
+  select {
+    height: 36px;
+    background-color: #F2F3F7;
+    color: var(--color-gray);
+    border: none;
+    outline: none;
+    font-size: 1rem;
+  
+    &:focus {
+      background-color: #F2F3F7;
+      box-shadow: none;
+    }
+  
+    transition: all 0.3s ease;
+  }
+}

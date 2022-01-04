@@ -1,0 +1,119 @@
+.main-content {
+  .welcome-img {
+    max-width: 164px;
+    object-fit: cover;
+  }
+}
+
+#home {
+  // Carousel styles
+  .estab-cards {
+    .estab-card {
+      width: 100%;
+      max-width: 336px;
+      height: 220px;
+      margin: 0 8px;
+      border-radius: 8px;
+      padding: 1rem;
+      color: #ffffff;
+
+      .info {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 1.5rem;
+
+        .logo {
+          flex: 0 0 auto;
+          width: 36px;
+          height: 36px;
+          overflow: hidden;
+          margin-right: 8px;
+          border-radius: 8px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+
+        .name {
+          flex: 0 0 auto;
+          text-transform: uppercase;
+          margin-bottom: 0;
+        }
+      }
+
+      .balance {
+        text-align: left;
+      }
+    }
+    .carousel__prev, .carousel__next,
+    .carousel__pagination-button--active {
+      background-color: var(--color-primary)!important;
+    }
+    .carousel__pagination-button {
+      background-color: #ffffff;
+    }
+  }
+
+  // Status styles
+  .status {
+    h4 {
+      small {
+        font-size: 14px;
+      }
+    }
+  }
+
+  // Table
+  table {
+    td {
+      vertical-align: middle;
+    }
+    
+    td.dash-price {
+      font-size: 1.275rem;
+      font-weight: bold;
+    }
+
+    .presentation {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      .profile-photo {
+        width: 32px;
+        height: 32px;
+        border-radius: 64px;
+        overflow: hidden;
+        margin-right: 0.5rem;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      
+      .info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+    }
+  }
+  .recent {
+    table {
+      tr {
+        &:first-child {
+          td {
+            border-top: none;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+/* Main font */
+@font-face {
+  font-family: Manrope;
+  src: url("~@/assets/fonts/Manrope-Regular.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: Manrope;
+  font-weight: bold;
+  src: url("~@/assets/fonts/Manrope-Bold.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Manrope ExtraBold";
+  src: url("~@/assets/fonts/Manrope-ExtraBold.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Manrope ExtraLight";
+  src: url("~@/assets/fonts/Manrope-ExtraLight.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Manrope Medium";
+  src: url("~@/assets/fonts/Manrope-Medium.ttf") format("opentype");
+}
+
+/* Alternative font for titles */
+@font-face {
+  font-family: Klasik;
+  src: url("~@/assets/fonts/Klasik-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Klasik;
+  font-weight: bold;
+  src: url("~@/assets/fonts/Klasik-Rough.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Klasik ExtraBold";
+  src: url("~@/assets/fonts/Klasik-Shadow.otf") format("opentype");
+}
+
+/* Main font classes */
+.manrope, body {
+  font-family: "Manrope";
+}
+
+.manrope-bold {
+  font-family: "Manrope";
+  font-weight: bold;
+}
+
+.manrope-eb, h1, h2, h3, h4, h5, h6{
+  font-family: "Manrope ExtraBold";
+}
+
+.manrope-medium {
+  font-family: "Manrope Medium";
+}
+
+.manrope-eli {
+  font-family: "Manrope ExtraLight";
+}
+
+/* Title font classes */
+.klasik {
+  font-family: "Klasik";
+}
+
+.klasik-bold {
+  font-family: "Klasik";
+  font-weight: bold;
+}
+
+.klasik-eb {
+  font-family: "Klasik ExtraBold";
+}

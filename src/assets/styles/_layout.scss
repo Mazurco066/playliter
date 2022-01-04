@@ -1,0 +1,53 @@
+.d-header {
+  background-image: url('/img/dash-gradient.svg');
+  background-color: var(--color-bg);
+  height: 96px;
+
+  @media (max-width: 556px) {
+    height: initial;
+  }
+}
+
+.d-custom-header {
+  background-image: url('/img/dash-gradient.svg');
+  background-color: var(--color-bg);
+}
+
+.d-body, #main-body {
+  background-color: var(--color-background);
+}
+
+.collapse-filter {
+  color: var(--color-primary);
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.auth-link a {
+  color: var(--color-text);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.auth-action {
+  color: var(--color-text);
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.rakta-watermark {
+  position: fixed;
+  left: 32px;
+  bottom: 32px;
+  z-index: 9999;
+  max-width: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  user-select: none;
+  display: none;
+}

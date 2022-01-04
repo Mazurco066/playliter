@@ -1,0 +1,120 @@
+/* Modulos SCSS */
+@import "variables";
+@import "bootstrap";
+@import "fonts";
+@import "animations";
+@import "layout";
+@import "transactions";
+
+/* Components and pages */
+@import "components/index";
+@import "pages/index";
+
+/* General styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input, input:after, input:before, textarea {
+  -webkit-user-select: initial;
+  -moz-user-select: initial;
+  -ms-user-select: initial;
+  user-select: initial;
+  outline: none;
+}
+
+html, body, #app {
+  height: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  color: var(--color-text);
+
+  main {
+    grid-area: content;
+  }
+}
+
+a {
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+img, image {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+/* General interactions */
+.btn-primary:disabled, .btn-secondary:disabled {
+  cursor: not-allowed;
+}
+
+/* Text Selection */
+::-moz-selection {
+  color: white;
+  background: var(--color-primary);
+}
+
+::selection {
+  color: white;
+  background: var(--color-primary);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Layout config */
+#auth-layout {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 100%;
+  grid-template-areas: "content";
+  height: 100%;
+  background: #FF5F6D;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #FFC371, #FF5F6D);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #FFC371, #FF5F6D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  main {
+    max-height: 100%;
+    overflow-y: auto;
+  }
+}
+
+#dashboard-layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+  grid-template-areas:
+    "navigation"
+    "content"
+    "footer";
+  height: 100%;
+}
+
+/* Container adaptado */
+.main-content {
+  .container {
+    @media (min-width: 2559px) {
+      max-width: 2200px;
+    }
+  }
+}
+
+/* Estilo para tirar background da modal */
+.modal.show {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.dropdown {
+  list-style-type: none;
+}
+
+.dropdown .dropdown-toggle {
+  cursor: pointer;
+}
+
+// Dark theme
+@import "dark";

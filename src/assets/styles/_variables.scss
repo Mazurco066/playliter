@@ -1,0 +1,54 @@
+$body-bg: #f5f5f5;
+$body-color: #000000;
+
+$theme-colors: (
+  "primary": #FF5F6D,
+  "secondary": #FFC371,
+);
+
+:root {
+  --color-primary: #FF5F6D;
+  --color-secondary: #FFC371;
+  --color-text: #2E2E3A;
+  --color-text-dark: #FFFFFF;
+  --color-primary-dark: #B72F54;
+  --color-primary-light: #FFA89F;
+  --color-gray: #9A9AAF;
+  --color-error: #DB4437 ;
+  --color-bg: #F2F3F7;
+  --color-bg-dark: #252423;
+  --color-background: #FFFFFF;
+  --color-background-dark: #201f1e;
+}
+
+.bg-none {
+  background: transparent!important;
+}
+
+.bg-gray {
+  background-color: var(--color-gray);
+}
+
+.bg-primary-dark {
+  background-color: var(--color-primary-dark);
+}
+
+.bg-primary-light {
+  background-color: var(--color-primary-light);
+}
+
+.text-primary-dark {
+  color: var(--color-primary-dark);
+}
+
+.text-primary-light {
+  color: var(--color-primary-light);
+}
+
+.text-primary-error {
+  color: var(--color-error);
+}
+
+.text-primary-facebook { 
+  color: var(--color-gray);
+}

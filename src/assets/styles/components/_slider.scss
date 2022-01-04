@@ -1,0 +1,49 @@
+.base-slider {
+  margin-bottom: 1rem;
+
+  &.no-margin {
+    margin-bottom: 0;
+  }
+
+  .form-group {
+    margin-bottom: 0;
+  }
+
+  label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-gray);
+
+    &.focused {
+      color: var(--color-primary);
+    }
+  }
+
+  .input-wrapper {
+    border-radius: 0.25rem;
+    max-height: 36px;
+    overflow: hidden;
+
+    input {
+      border: none;
+      outline: none;
+      transition: all 0.3s ease;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  
+    &.focused {
+      border: none;
+  
+      .input-group-prepend, .input-group-append {
+        .input-group-text {
+          color: var(--color-primary);
+        }
+      }
+    }
+
+    transition: all 0.3s ease;
+  }
+}
