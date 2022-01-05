@@ -19,7 +19,7 @@ export default {
     Vue.use(components)
     Vue.use(directives)
     Vue.use(Toaster, {
-      position: 'bottom',
+      position: 'top',
       duration: 3000
     })
     // Classes

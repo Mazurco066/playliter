@@ -6,7 +6,9 @@ import AuthLayout from '../layout/AuthLayout.vue'
 import DashboardLayout from '../layout/DashboardLayout.vue'
 
 // Pages
+import Bands from '../views/Bands.vue'
 import Home from '../views/Home.vue'
+import Profile from '../views/Profile.vue'
 import SignIn from '../views/SignIn.vue'
 
 // Configured Routes
@@ -31,6 +33,16 @@ const routes = [
         path: '/home',
         name: 'home',
         component: Home
+      },
+      {
+        path: '/profile',
+        name: 'profile',
+        component: Profile
+      },
+      {
+        path: '/bands',
+        name: 'bands',
+        component: Bands
       }
     ]
   }

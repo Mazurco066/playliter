@@ -1,5 +1,6 @@
 <template>
-  <div id="dashboard-layout" class="wrapper" :class="theme">
+  <div id="dashboard-layout" class="wrapper">
+    <app-bar />
     <main id="main-body" class="main-content">
       <router-view v-slot="{ Component }">
         <transition name="zoom" mode="out-in">
@@ -7,11 +8,16 @@
         </transition>
       </router-view>
     </main>
+    <bottom-navigation />
   </div>
 </template>
 
 <script>
+import AppBar from '../components/template/AppBar.vue'
+import BottomNavigation from '../components/template/BottomNavigation.vue'
+
 export default {
-  name: 'dashboard-layout'
+  name: 'dashboard-layout',
+  components: { AppBar, BottomNavigation }
 }
 </script>

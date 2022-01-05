@@ -1,10 +1,10 @@
 // Dependencies
+import { getAuthenticatedClient } from '../../api'
+import { ME } from '../../api/queries'
+import { asyncHandler } from '../../utils'
 
 // Object initial state
-const initialState = () => ({
-  me: {},
-  loading: false
-})
+const initialState = () => ({ me: {}, loading: false })
 
 // State object
 const state = initialState()
@@ -21,7 +21,25 @@ const getters = {
 
 // Actions
 const actions = {
-
+  async loadMe({ commit }) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.query({
+        query: ME,
+        variables: {}
+      })
+    )
+    const error = resp instanceof Error
+    if (!error) commit('setMe', resp.data.me)
+    else commit('setMe', {})
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : resp.data.me,
+      message: error ? resp.message : null
+    }
+  }
 }
 
 // Mutations

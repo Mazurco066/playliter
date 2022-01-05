@@ -1,5 +1,6 @@
 // Dependencies
 import ApolloClient, { InMemoryCache } from 'apollo-boost'
+import store from '../store'
 
 // GraphQL Host location
 const endpoint = process.env.VUE_APP_API_BASE_URL
@@ -10,36 +11,14 @@ export const graphqlClient = new ApolloClient({
   cache: new InMemoryCache()
 })
 
-// import axios from 'axios'
-// import store from '../store'
-// import router from '../router'
-
-// const httpClient = axios.create({
-//   baseURL: process.env.VUE_APP_API_BASE_URL
-// })
-
-// httpClient.interceptors.request.use(async config => {
-//   const token = store.getters['authentication/getAuthorization']
-//   config.headers = {
-//     ...config.headers,
-//     'Authorization': token ? `Bearer ${token}` : ''
-//   }
-//   return config
-// })
-
-// httpClient.interceptors.response.use(
-//   response => {
-//     return response
-//   }, 
-//   error => {
-//     const response = error.response
-//     const token = store.getters['authentication/getAuthorization']
-//     if (token && response && response.status === 401) {
-//       store.dispatch('RESET')
-//       router.push('/')
-//     }
-//     throw error 
-//   }
-// )
-
-// export default httpClient
+export function getAuthenticatedClient() {
+  const token = store ? store.getters['authentication/getAuthorization'] : null
+  const client = new ApolloClient({
+    uri: endpoint,
+    cache: new InMemoryCache(),
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
+  return client
+}

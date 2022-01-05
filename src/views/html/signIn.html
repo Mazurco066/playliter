@@ -10,7 +10,7 @@
         <h4 class="mb-3 text-uppercase text-white">Autenticação</h4>
       </div>
     </div>
-    <form>
+    <form @submit.prevent="authenticate">
       <div class="row">
         <div class="col-12">
           <base-input

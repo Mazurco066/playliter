@@ -1,3 +1,3 @@
-import { graphqlClient } from './_graphqlClient'
+import { getAuthenticatedClient, graphqlClient } from './_graphqlClient'
 
-export { graphqlClient }
+export { getAuthenticatedClient, graphqlClient }

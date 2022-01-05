@@ -33,6 +33,11 @@ const actions = {
       })
     )
     const error = resp instanceof Error
+    if (!error) {
+      commit('setAuthorization', resp.data.authenticate.token)
+    } else {
+      commit('setAuthorization', null)
+    }
     commit('setLoading', false)
     return {
       error: error,
