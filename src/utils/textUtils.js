@@ -26,3 +26,8 @@ export const formatISODate = (value) => {
 export const formatISODateTime = (value) => {
   return `${value.split('T')[0].split('-').reverse().join('/')} ${value.split('T')[1]}`
 }
+
+export const truncate = (value, length) => {
+  if (value.length > length) return value.substring(0, length) + '...'
+  return value
+}

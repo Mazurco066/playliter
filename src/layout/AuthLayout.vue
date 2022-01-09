@@ -57,12 +57,12 @@ export default {
   },
   watch: {
     showSplash (value) {
-      if (!value && this.fetchedAccount && this.me) {
+      if (!value && this.fetchedAccount && Object.keys(this.me).length > 0) {
         this.$router.push({ name: 'home' })
       }
     },
     fetchedAccount (value) {
-      if (value && !this.showSplash && this.me) {
+      if (value && !this.showSplash && Object.keys(this.me).length > 0) {
         this.$router.push({ name: 'home' })
       }
     }

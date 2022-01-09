@@ -1,0 +1,113 @@
+<div id="band">
+  <div class="container">
+    <div v-if="Object.keys(band).length > 0" class="row pt-3">
+      <div class="col-12">
+        <div class="info">
+          <h3 class="title">{{ band.title }}</h3>
+          <hr />
+          <p class="mb-1">{{ band.description }}</p>
+          <hr />
+          <span>
+            Criada em 
+            <strong>
+              {{ $text.formatISODate(new Date(parseInt(band.createdAt)).toISOString()) }}
+            </strong>
+          </span>
+        </div>
+      </div>
+      <div class="col-12 pt-3">
+        <div class="info">
+          <h3 class="title">Repertório</h3>
+          <hr />
+          <ul class="songs">
+            <li v-for="(s, i) in songs" :key="i" class="song" @click="navigateTo('song', s.band.id, s.id)">
+              <div class="icon mr-3">
+                <div class="song-img">
+                  <img :src="`/img/arts/01.png`" />
+                </div>
+              </div>
+              <div class="song-info">
+                <p class="mb-0">
+                  <strong>{{ s.title }}</strong>
+                </p>
+                <span>{{ s.writter }}</span>
+              </div>
+            </li>
+          </ul>
+          <hr />
+          <base-button @click="navigateTo('directory', band.id)" htmlType="button" type="primary">
+            Ver repertório completo
+          </base-button>
+        </div>
+      </div>
+      <div class="col-12 pt-3">
+        <div class="info">
+          <h3 class="title">Apresentações</h3>
+          <hr />
+          <hr />
+          <base-button type="primary">
+            Ver apresentações
+          </base-button>
+        </div>
+      </div>
+      <div class="col-12 pt-3 mb-3">
+        <div class="info">
+          <h3 class="title">Membros</h3>
+          <hr />
+          <ul class="members">
+            <li v-for="(m, i) in band.members" :key="i" class="member">
+              <div class="member-info">
+                <p class="mb-0">
+                  <strong>{{ m.name }}</strong>
+                </p>
+                <span> {{ 
+                  band.owner.id === m.id 
+                    ? 'Fundador' 
+                    : band.admins.find(a => a.id === m.id) 
+                      ? 'Administrador'
+                      : 'Membro' 
+                }}</span>
+              </div>
+              <div class="actions">
+                <base-dropdown class="dropdown" position="right">
+                  <template v-slot:title>
+                    <a
+                      class="btn btn-sm btn-icon-only"
+                      role="button"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                  </template>
+                  <a
+                    href="#"
+                    class="dropdown-item"
+                    v-if="(band.admins.find(a => a.id === me.id) && m.id !== band.owner.id && m.id !== me.id) || (band.owner.id === me.id && m.id !== me.id)"
+                  >
+                    <i class="fas fa-trash mr-1"></i> Remover
+                  </a>
+                  <a
+                    href="#"
+                    class="dropdown-item"
+                    v-if="(band.owner.id === me.id && m.id !== me.id)"
+                  >
+                    <i class="fas fa-trash mr-1"></i> Remover permissões
+                  </a>
+                  <a
+                    href="#"
+                    class="dropdown-item"
+                    v-if="(band.admins.find(a => a.id === me.id) && m.id !== band.owner.id && m.id !== me.id && !band.admins.find(a => a.id === m.id)) || (band.owner.id === me.id && m.id !== me.id && !band.admins.find(a => a.id === m.id))"
+                  >
+                    <i class="fas fa-trash mr-1"></i> Tornar admin
+                  </a>
+                </base-dropdown>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

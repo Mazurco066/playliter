@@ -1,0 +1,156 @@
+#bands {
+
+  .list {
+    margin-bottom: 1rem;
+    list-style: none;
+
+    .item {
+      width: 100%;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      background-color: rgba(255, 255 ,255, 0.2);
+
+      &:hover {
+        background: var(--color-primary);
+
+        .info .title, .sub, .actions {
+          color: #ffffff;
+        }
+      }
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .icon {
+        flex: 0 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .band-img {
+          max-width: 50px;
+        }
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        .title {
+          font-weight: bold;
+          color: var(--color-text);
+          margin-bottom: 0;
+          text-transform: uppercase;
+        }
+      }
+
+      .actions {
+        flex: 0 0 auto;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+#band {
+  .title {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+  }
+
+  .info {
+    padding: 1rem 1.5rem;
+    background-color: rgba(255, 255 ,255, 0.2);
+    border-radius: 8px;
+  }
+
+  .songs {
+    list-style: none;
+
+    .song {
+      margin-bottom: 1rem;
+
+      &:hover {
+        background: var(--color-primary);
+
+        .info .title, .sub, .actions {
+          color: #ffffff;
+        }
+      }
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .icon {
+        flex: 0 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .song-img {
+          max-width: 50px;
+        }
+      }
+
+      .song-info {
+        flex-grow: 1;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+  }
+
+  .members {
+    list-style: none;
+
+    .member {
+      width: 100%;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .icon {
+        flex: 0 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+  
+        .member-img {
+          max-width: 50px;
+        }
+      }
+  
+      .member-info {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+  
+        .title {
+          font-weight: bold;
+          color: var(--color-text);
+          margin-bottom: 0;
+          text-transform: uppercase;
+        }
+      }
+  
+      .actions {
+        flex: 0 0 auto;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

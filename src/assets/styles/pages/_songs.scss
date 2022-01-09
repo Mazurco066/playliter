@@ -1,0 +1,16 @@
+#song {
+  height: 100%;
+
+  .title {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .info {
+    padding: 1rem 1.5rem;
+    background-color: rgba(255, 255 ,255, 0.2);
+    border-radius: 8px;
+    min-height: 100%;
+  }
+}

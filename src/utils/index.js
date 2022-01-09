@@ -1,5 +1,6 @@
 import asyncHandler from './asyncHandler'
 import bottomLinks from './bottomNavigation'
+import getUniques, { getUniquesInside } from './getUniques'
 
 import { randomString } from './randomString'
 
@@ -14,6 +15,8 @@ export {
   arrayUtils,
   bottomLinks,
   elementUtils,
+  getUniques,
+  getUniquesInside,
   randomString,
   tableUtils,
   textUtils,

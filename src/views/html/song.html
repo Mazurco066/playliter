@@ -1,0 +1,21 @@
+<div id="song" class="full">
+  <div class="container full">
+    <div class="row">
+      <div class="col-12 mb-3">
+        <div class="info">
+          <p class="title mb-0">
+            {{ song.title }}
+          </p>
+          <span>{{ song.writter }}</span>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="info">
+          <pre id="lyrics" class="tranposer" :data-key="song.tone">
+            {{ song.body }}
+          </pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

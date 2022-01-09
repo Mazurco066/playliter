@@ -1,3 +1,55 @@
 <div id="bands">
-  <p>Bands</p>
+  <div class="container">
+    <div class="row pt-3">
+      <div class="col-12">
+        <h3>Minhas bandas</h3>
+      </div>
+      <div class="col-12">
+        <ul class="list" v-if="!bandLoading">
+          <li class="item" v-for="(b, i) in bands" :key="i" @click="navigateTo('band', b.id)">
+            <div class="icon mr-3">
+              <div class="band-img">
+                <img :src="`/img/arts/${randomIcon()}`" />
+              </div>
+            </div>
+            <div class="info">
+              <p class="title">{{ $text.truncate(b.title, 23) }}</p>
+              <span class="sub">
+                {{ 
+                  b.owner.id === me.id 
+                    ? 'Fundador' 
+                    : b.admins.find(a => a.id === me.id) 
+                      ? 'Administrador'
+                      : 'Membro' 
+                }}
+              </span>
+            </div>
+            <div class="actions">
+              <base-dropdown class="dropdown" position="right">
+                <template v-slot:title>
+                  <a
+                    class="btn btn-sm btn-icon-only"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <i class="fas fa-ellipsis-v"></i>
+                  </a>
+                </template>
+                <a href="#" class="dropdown-item">
+                  <i class="fas fa-edit mr-1"></i> Editar
+                </a>
+              </base-dropdown>
+            </div>
+          </li>
+        </ul>
+        <div v-else>
+          <box class="shine"></box>
+          <box class="shine"></box>
+          <box class="shine"></box>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
