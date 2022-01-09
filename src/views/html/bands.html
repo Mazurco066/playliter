@@ -5,49 +5,64 @@
         <h3>Minhas bandas</h3>
       </div>
       <div class="col-12">
-        <ul class="list" v-if="!bandLoading">
-          <li class="item" v-for="(b, i) in bands" :key="i" @click="navigateTo('band', b.id)">
-            <div class="icon mr-3">
-              <div class="band-img">
-                <img :src="`/img/arts/${randomIcon()}`" />
+        <!-- Bands list -->
+        <div v-if="!bandLoading">
+          <ul class="list">
+            <li class="item" v-for="(b, i) in bands" :key="i" @click="navigateTo('band', b.id)">
+              <div class="icon mr-3">
+                <div class="band-img">
+                  <img :src="`/img/arts/${randomIcon()}`" />
+                </div>
               </div>
-            </div>
-            <div class="info">
-              <p class="title">{{ $text.truncate(b.title, 23) }}</p>
-              <span class="sub">
-                {{ 
-                  b.owner.id === me.id 
-                    ? 'Fundador' 
-                    : b.admins.find(a => a.id === me.id) 
-                      ? 'Administrador'
-                      : 'Membro' 
-                }}
-              </span>
-            </div>
-            <div class="actions">
-              <base-dropdown class="dropdown" position="right">
-                <template v-slot:title>
-                  <a
-                    class="btn btn-sm btn-icon-only"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <i class="fas fa-ellipsis-v"></i>
+              <div class="info">
+                <p class="title">{{ $text.truncate(b.title, 23) }}</p>
+                <span class="sub">
+                  {{ 
+                    b.owner.id === me.id 
+                      ? 'Fundador' 
+                      : b.admins.find(a => a.id === me.id) 
+                        ? 'Administrador'
+                        : 'Membro' 
+                  }}
+                </span>
+              </div>
+              <div class="actions">
+                <base-dropdown class="dropdown" position="right">
+                  <template v-slot:title>
+                    <a
+                      class="btn btn-sm btn-icon-only"
+                      role="button"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                  </template>
+                  <a href="#" class="dropdown-item">
+                    <i class="fas fa-edit mr-1"></i> Editar
                   </a>
-                </template>
-                <a href="#" class="dropdown-item">
-                  <i class="fas fa-edit mr-1"></i> Editar
-                </a>
-              </base-dropdown>
-            </div>
-          </li>
-        </ul>
+                </base-dropdown>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- Loading Shimmer -->
         <div v-else>
-          <box class="shine"></box>
-          <box class="shine"></box>
-          <box class="shine"></box>
+          <ul class="list">
+            <li class="item">
+              <div class="icon mr-3">
+                <photo class="shine"></photo>
+              </div>
+              <div class="info">
+                <p class="title">
+                  <lines class="shine"></lines>
+                </p>
+                <lines class="shine"></lines>
+              </div>
+              <div class="actions"></div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

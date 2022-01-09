@@ -1,8 +1,8 @@
 <div id="band">
   <div class="container">
-    <div v-if="Object.keys(band).length > 0" class="row pt-3">
+    <div class="row pt-3">
       <div class="col-12">
-        <div class="info">
+        <div v-if="isDisplayReady" class="info">
           <h3 class="title">{{ band.title }}</h3>
           <hr />
           <p class="mb-1">{{ band.description }}</p>
@@ -14,30 +14,65 @@
             </strong>
           </span>
         </div>
+        <div v-else class="info">
+          <lines class="shine"></lines>
+          <hr />
+          <lines class="shine"></lines>
+          <hr />
+          <lines class="shine"></lines>
+        </div>
       </div>
       <div class="col-12 pt-3">
         <div class="info">
           <h3 class="title">Repertório</h3>
           <hr />
-          <ul class="songs">
-            <li v-for="(s, i) in songs" :key="i" class="song" @click="navigateTo('song', s.band.id, s.id)">
-              <div class="icon mr-3">
-                <div class="song-img">
-                  <img :src="`/img/arts/01.png`" />
+          <div v-if="isDisplayReady">
+            <ul class="songs" v-if="songs.length > 0">
+              <li v-for="(s, i) in songs" :key="i" class="song" @click="navigateTo('song', s.band.id, s.id)">
+                <div class="icon mr-3">
+                  <div class="song-img">
+                    <img :src="`/img/arts/01.png`" />
+                  </div>
                 </div>
-              </div>
-              <div class="song-info">
-                <p class="mb-0">
-                  <strong>{{ s.title }}</strong>
-                </p>
-                <span>{{ s.writter }}</span>
-              </div>
-            </li>
-          </ul>
+                <div class="song-info">
+                  <p class="mb-0">
+                    <strong>{{ s.title }}</strong>
+                  </p>
+                  <span>{{ s.writter }}</span>
+                </div>
+              </li>
+            </ul>
+            <p v-else class="mb-0">
+              Não há músicas registradas nessa banda!
+            </p>
+          </div>
+          <div v-else>
+            <ul class="songs">
+              <li class="song">
+                <div class="icon mr-3">
+                  <div class="song-img">
+                    <photo class="shine"></photo>
+                  </div>
+                </div>
+                <div class="song-info">
+                  <p class="mb-0">
+                    <lines class="shine"></lines>
+                  </p>
+                  <lines class="shine"></lines>
+                </div>
+              </li>
+            </ul>
+          </div>
           <hr />
-          <base-button @click="navigateTo('directory', band.id)" htmlType="button" type="primary">
+          <base-button
+            v-if="isDisplayReady"
+            @click="navigateTo('directory', band.id)"
+            htmlType="button"
+            type="primary"
+          >
             Ver repertório completo
           </base-button>
+          <lines v-else class="shine"></lines>
         </div>
       </div>
       <div class="col-12 pt-3">
@@ -45,16 +80,20 @@
           <h3 class="title">Apresentações</h3>
           <hr />
           <hr />
-          <base-button type="primary">
+          <base-button
+            v-if="isDisplayReady"
+            type="primary"
+          >
             Ver apresentações
           </base-button>
+          <lines v-else class="shine"></lines>
         </div>
       </div>
       <div class="col-12 pt-3 mb-3">
         <div class="info">
           <h3 class="title">Membros</h3>
           <hr />
-          <ul class="members">
+          <ul v-if="isDisplayReady" class="members">
             <li v-for="(m, i) in band.members" :key="i" class="member">
               <div class="member-info">
                 <p class="mb-0">
@@ -103,6 +142,19 @@
                     <i class="fas fa-trash mr-1"></i> Tornar admin
                   </a>
                 </base-dropdown>
+              </div>
+            </li>
+          </ul>
+          <ul v-else class="members">
+            <li class="member">
+              <div class="member-info mr-2">
+                <p class="mb-0">
+                  <lines class="shine"></lines>
+                </p>
+                <lines class="shine"></lines>
+              </div>
+              <div class="actions">
+                <photo class="shine"></photo>
               </div>
             </li>
           </ul>

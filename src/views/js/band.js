@@ -12,7 +12,10 @@ export default {
     ...mapGetters({
       bandLoading: 'band/getLoadingStatus',
       me: 'account/getMe'
-    })
+    }),
+    isDisplayReady () {
+      return !this.bandLoading && Object.keys(this.band).length > 0
+    }
   },
   methods: {
     ...mapActions({
