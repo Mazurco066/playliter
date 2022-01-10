@@ -1,2 +1,7 @@
+export * from './addShow'
 export * from './authenticate'
+export * from './linkSong'
+export * from './removeShow'
 export * from './removeSong'
+export * from './unlinkSong'
+export * from './updateShow'
