@@ -3,17 +3,55 @@
     <div class="row">
       <div class="col-12 mb-3">
         <div class="info">
-          <p class="title mb-0">
+          <p v-if="!songLoading" class="title mb-0">
             {{ song.title }}
           </p>
-          <span>{{ song.writter }}</span>
+          <lines v-else class="shine"></lines>
+          <span v-if="!songLoading">{{ song.writter }}</span>
+          <lines v-else class="shine"></lines>
+          <hr />
+          <div class="actions">
+            <div class="action">
+              <i class="fas fa-list text-info"></i>
+              <p class="mb-0">
+                <small>+ Lista</small>
+              </p>
+            </div>
+            <div class="action">
+              <i class="fas fa-edit text-warning"></i>
+              <p class="mb-0">
+                <small>Editar</small>
+              </p>
+            </div>
+            <div
+              @click="songLoading ? () => {} : deleteSong()"
+              class="action"
+            >
+              <i class="fas fa-trash text-danger"></i>
+              <p class="mb-0">
+                <small>Remover</small>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-12">
+      <div class="col-12 mb-3">
         <div class="info">
-          <pre id="lyrics" class="tranposer" :data-key="song.tone">
+          <pre
+            id="lyrics"
+            class="tranposer"
+            :data-key="song.tone"
+            v-if="!songLoading"
+          >
             {{ song.body }}
           </pre>
+          <div v-else>
+            <lines class="shine"></lines>
+            <lines class="shine"></lines>
+            <lines class="shine"></lines>
+            <lines class="shine"></lines>
+            <lines class="shine"></lines>
+          </div>
         </div>
       </div>
     </div>

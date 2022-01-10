@@ -1,6 +1,7 @@
 // Dependencies
 import { getAuthenticatedClient } from '../../api'
 import { asyncHandler } from '../../utils'
+import { REMOVE_SONG } from '../../api/mutations'
 import { SONG, SONGS } from '../../api/queries'
 
 // Object initial state
@@ -49,6 +50,23 @@ const actions = {
     return {
       error: error,
       data: error ? [] : resp.data.songs,
+      message: error ? resp.message : null
+    }
+  },
+  async removeBandSong({ commit }, id) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.mutate({
+        mutation: REMOVE_SONG,
+        variables: { id }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : resp.data.removeSong,
       message: error ? resp.message : null
     }
   }

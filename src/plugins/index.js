@@ -4,6 +4,7 @@ import directives from './directives'
 
 // Libraries
 import Toaster from '@meforma/vue-toaster'
+import VueSweetAlert from 'vue-sweetalert2'
 
 // Utils
 import { elementUtils, validations, tableUtils, textUtils } from '../utils'
@@ -18,6 +19,7 @@ export default {
     // Plugins
     Vue.use(components)
     Vue.use(directives)
+    Vue.use(VueSweetAlert)
     Vue.use(Toaster, {
       position: 'top',
       duration: 3000

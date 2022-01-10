@@ -7,7 +7,7 @@
       <div class="col-12">
         <!-- Bands list -->
         <div v-if="!bandLoading">
-          <ul class="list">
+          <ul class="list" v-if="bands.length > 0">
             <li class="item" v-for="(b, i) in bands" :key="i" @click="navigateTo('band', b.id)">
               <div class="icon mr-3">
                 <div class="band-img">
@@ -46,6 +46,9 @@
               </div>
             </li>
           </ul>
+          <p v-else class="mb-0">
+            Você não participa de nenhuma banda no momento!
+          </p>
         </div>
         <!-- Loading Shimmer -->
         <div v-else>

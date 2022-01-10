@@ -10,7 +10,7 @@
  */
  span.c { 
   font-weight: bold; 
-  color: #2159D6;
+  color: var(--color-primary);
 }
 
 .transpose-keys {
@@ -34,7 +34,7 @@
 }
 
 .transpose-keys a.selected { 
-  background: #2159D6; 
+  background: var(--color-primary); 
   color: #FFF;
 }
 
