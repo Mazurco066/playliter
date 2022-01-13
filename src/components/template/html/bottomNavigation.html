@@ -1,14 +1,23 @@
-<nav class="nav nav--icons">
-  <ul>
-    <li v-for="(link, i) in links" :key="i">
-      <a
-        href="javascript:void(0)"
-        :class="{ 'is-active': $route.name === link.route }"
-        @click="navigateTo(link.route)"
-      >
-        <i :class="link.icon"></i>
-        <span>{{ link.label }}</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+<div id="bottomNav" class="bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav class="nav nav--icons">
+          <ul>
+            <li v-for="(link, i) in links" :key="i">
+              <a
+                href="javascript:void(0)"
+                :class="{ 'is-active': $route.name === link.route }"
+                @click="navigateTo(link.route)"
+              >
+                <i :class="link.icon"></i>
+                <span>{{ link.label }}</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+

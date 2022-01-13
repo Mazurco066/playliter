@@ -20,10 +20,7 @@ export default {
     Vue.use(components)
     Vue.use(directives)
     Vue.use(VueSweetAlert)
-    Vue.use(Toaster, {
-      position: 'top',
-      duration: 3000
-    })
+    Vue.use(Toaster, { position: 'bottom', duration: 3000 })
     // Classes
     Vue.config.globalProperties.$element = elementUtils
     Vue.config.globalProperties.$table = tableUtils

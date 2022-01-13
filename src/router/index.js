@@ -11,9 +11,9 @@ import Bands from '../views/Bands.vue'
 import Directory from '../views/Directory.vue'
 import Home from '../views/Home.vue'
 import Profile from '../views/Profile.vue'
+import Show from '../views/Show.vue'
 import SignIn from '../views/SignIn.vue'
 import Song from '../views/Song.vue'
-import Songs from '../views/Songs.vue'
 
 // Configured Routes
 const routes = [{
@@ -45,10 +45,6 @@ const routes = [{
     name: 'band',
     component: Band
   }, {
-    path: '/songs/:band',
-    name: 'songs',
-    component: Songs
-  }, {
     path: '/directory/:band',
     name: 'directory',
     component: Directory
@@ -56,6 +52,10 @@ const routes = [{
     path: '/song/:band/:id',
     name: 'song',
     component: Song
+  }, {
+    path: '/show/:band/:id',
+    name: 'show',
+    component: Show
   }]
 }]
 

@@ -79,12 +79,49 @@
         <div class="info">
           <h3 class="title">Apresentações</h3>
           <hr />
+          <div v-if="isDisplayReady">
+            <ul class="shows" v-if="shows.length > 0">
+              <li v-for="(s, i) in shows" :key="i" class="show" @click="navigateTo('show', s.band.id, s.id)">
+                <div class="icon mr-3">
+                  <div class="show-img">
+                    <img :src="`/img/arts/02.png`" />
+                  </div>
+                </div>
+                <div class="show-info">
+                  <p class="mb-0">
+                    <strong>{{ s.title }}</strong>
+                  </p>
+                  <span>{{ s.description }}</span>
+                </div>
+              </li>
+            </ul>
+            <p v-else class="mb-0">
+              Não há apresentações registradas nessa banda!
+            </p>
+          </div>
+          <div v-else>
+            <ul class="shows">
+              <li class="show">
+                <div class="icon mr-3">
+                  <div class="show-img">
+                    <photo class="shine"></photo>
+                  </div>
+                </div>
+                <div class="show-info">
+                  <p class="mb-0">
+                    <lines class="shine"></lines>
+                  </p>
+                  <lines class="shine"></lines>
+                </div>
+              </li>
+            </ul>
+          </div>
           <hr />
           <base-button
             v-if="isDisplayReady"
             type="primary"
           >
-            Ver apresentações
+            Ver todas apresentações
           </base-button>
           <lines v-else class="shine"></lines>
         </div>

@@ -1,0 +1,100 @@
+<div id="show">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div v-if="!showLoading" class="info">
+          <h3 class="title">{{ show.title }}</h3>
+          <hr />
+          <p class="mb-1">{{ show.description }}</p>
+          <hr />
+          <span v-if="show.createdAt">
+            Criada em 
+            <strong>
+              {{ $text.formatISODate(new Date(parseInt(show.createdAt)).toISOString()) }}
+            </strong>
+          </span>
+        </div>
+        <div v-else class="info">
+          <lines class="shine"></lines>
+          <hr />
+          <lines class="shine"></lines>
+          <hr />
+          <lines class="shine"></lines>
+        </div>
+      </div>
+      <div class="col-12 pt-3 mb-3">
+        <div class="info">
+          <h3 class="title">Músicas selecionadas</h3>
+          <hr />
+          <div v-if="!showLoading && show.songs">
+            <ul class="songs" v-if="show.songs.length > 0">
+              <li v-for="(s, i) in show.songs" :key="i" class="song">
+                <div class="icon mr-3" @click="navigateTo('song', show.band.id, s.id)">
+                  <div class="song-img">
+                    <img :src="`/img/arts/01.png`" />
+                  </div>
+                </div>
+                <div class="song-info" @click="navigateTo('song', show.band.id, s.id)">
+                  <p class="mb-0">
+                    <strong>{{ s.title }}</strong>
+                  </p>
+                  <span>{{ s.writter }}</span>
+                </div>
+                <div class="actions">
+                  <base-dropdown class="dropdown" position="right">
+                    <template v-slot:title>
+                      <a
+                        class="btn btn-sm btn-icon-only"
+                        role="button"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        <i class="fas fa-ellipsis-v"></i>
+                      </a>
+                    </template>
+                    <a
+                      href="#"
+                      class="dropdown-item"
+                      @click="removeSongFromShow(s)"
+                    >
+                      <i class="fas fa-trash mr-1"></i> Remover da Apresentação
+                    </a>
+                  </base-dropdown>
+                </div>
+              </li>
+            </ul>
+            <p v-else class="mb-0">
+              Não há músicas registradas nessa apresentação!
+            </p>
+          </div>
+          <div v-else>
+            <ul class="songs">
+              <li class="song">
+                <div class="icon mr-3">
+                  <div class="song-img">
+                    <photo class="shine"></photo>
+                  </div>
+                </div>
+                <div class="song-info">
+                  <p class="mb-0">
+                    <lines class="shine"></lines>
+                  </p>
+                  <lines class="shine"></lines>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <hr />
+          <base-button
+            v-if="!showLoading"
+            htmlType="button"
+            type="primary"
+          >
+            Modo de visualização (PDF)
+          </base-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

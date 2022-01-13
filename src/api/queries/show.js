@@ -23,6 +23,7 @@ export const SHOW = gql`
         title
         tone
         body
+        writter
         createdAt
         updatedAt
       }
