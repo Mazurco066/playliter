@@ -1,6 +1,6 @@
 // Dependencies
 import { getAuthenticatedClient } from '../../api'
-import { ME } from '../../api/queries'
+import { ME, ACCOUNT_BY_USERNAME } from '../../api/queries'
 import { asyncHandler } from '../../utils'
 
 // Object initial state
@@ -21,6 +21,23 @@ const getters = {
 
 // Actions
 const actions = {
+  async loadAccountByUsername({ commit }, username) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.query({
+        query: ACCOUNT_BY_USERNAME,
+        variables: { username }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : resp.data.accountByEmail,
+      message: error ? resp.message : null
+    }
+  },
   async loadMe({ commit }) {
     const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
