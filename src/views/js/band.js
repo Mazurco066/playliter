@@ -37,7 +37,9 @@ export default {
       loadBand: 'band/loadBand',
       listBandSongs: 'song/listBandSongs',
       listBandShows: 'show/listBandShows',
-      removeBandMember: 'band/removeBandMember'
+      removeBandMember: 'band/removeBandMember',
+      demoteBandMember: 'band/demoteBandMember',
+      promoteBandMember: 'band/promoteBandMember'
     }),
     navigateTo (route, band, id = null) {
       this.$router.push({
@@ -97,7 +99,7 @@ export default {
     async removeMember (member) {
       this.$swal({
         title: 'Essa ação é permanente!',
-        text: 'Deseja remover esse membro da banda?',
+        html: `Deseja remover o membro <strong>${member.name}</strong> da banda?`,
         showDenyButton: true,
         confirmButtonColor: '#1C8781',
         confirmButtonText: 'Remover',
@@ -109,6 +111,46 @@ export default {
             this.$toast.error(`Ocorreu um erro ao remover o membro da banda! Por favor contate um administrador do sistema.`)
           } else {
             this.$toast.success('Membro removido com sucesso!')
+            await this.loadPageData()
+          }
+        }
+      }) 
+    },
+    async promoteMember (member) {
+      this.$swal({
+        title: 'Tem certeza?',
+        html: `Deseja promover o membro <strong>${member.name}</strong> para "Admin"?`,
+        showDenyButton: true,
+        confirmButtonColor: '#1C8781',
+        confirmButtonText: 'Promover',
+        denyButtonText: `Cancelar`
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const response = await this.promoteBandMember({ member: member.id, band: this.band.id })
+          if (response.error) {
+            this.$toast.error(`Ocorreu um erro ao promover o membro da banda! Por favor contate um administrador do sistema.`)
+          } else {
+            this.$toast.success('Membro promovido com sucesso!')
+            await this.loadPageData()
+          }
+        }
+      }) 
+    },
+    async demoteMember (member) {
+      this.$swal({
+        title: 'Tem certeza?',
+        html: `Deseja rebaixar <strong>${member.name}</strong> para "Membro"?`,
+        showDenyButton: true,
+        confirmButtonColor: '#1C8781',
+        confirmButtonText: 'Rebaixar',
+        denyButtonText: `Cancelar`
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const response = await this.demoteBandMember({ member: member.id, band: this.band.id })
+          if (response.error) {
+            this.$toast.error(`Ocorreu um erro ao rebaixar o membro da banda! Por favor contate um administrador do sistema.`)
+          } else {
+            this.$toast.success('Membro rebaixado com sucesso!')
             await this.loadPageData()
           }
         }

@@ -1,8 +1,13 @@
 // Dependencies
 import { getAuthenticatedClient } from '../../api'
 import { asyncHandler } from '../../utils'
-import { ADD_BAND_MEMBER, REMOVE_BAND_MEMBER } from '../../api/mutations'
 import { BAND, BANDS } from '../../api/queries'
+import {
+  ADD_BAND_MEMBER,
+  DEMOTE_BAND_MEMBER,
+  PROMOTE_BAND_MEMBER,
+  REMOVE_BAND_MEMBER
+} from '../../api/mutations'
 
 // Object initial state
 const initialState = () => ({ loading: false })
@@ -33,6 +38,40 @@ const actions = {
     return {
       error: error,
       data: error ? {} : resp.data.addBandMember,
+      message: error ? resp.message : null
+    }
+  },
+  async demoteBandMember({ commit }, { band, member }) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.mutate({
+        mutation: DEMOTE_BAND_MEMBER,
+        variables: { band, member }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : resp.data.demoteBandMember,
+      message: error ? resp.message : null
+    }
+  },
+  async promoteBandMember({ commit }, { band, member }) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.mutate({
+        mutation: PROMOTE_BAND_MEMBER,
+        variables: { band, member }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : resp.data.promoteBandMember,
       message: error ? resp.message : null
     }
   },

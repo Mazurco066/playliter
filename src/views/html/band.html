@@ -165,7 +165,7 @@
                       : 'Membro' 
                 }}</span>
               </div>
-              <div class="actions">
+              <div class="actions" v-if="band.owner.id !== m.id">
                 <base-dropdown class="dropdown" position="right">
                   <template v-slot:title>
                     <a
@@ -188,17 +188,19 @@
                   </a>
                   <a
                     href="#"
+                    @click="demoteMember(m)"
                     class="dropdown-item"
-                    v-if="(band.owner.id === me.id && m.id !== me.id)"
+                    v-if="((band.owner.id === me.id || band.admins.find(a => a.id === me.id)) && m.id !== me.id && band.admins.find(a => a.id === m.id))"
                   >
-                    <i class="fas fa-trash mr-1"></i> Remover permissões
+                    <i class="fas fa-angle-double-down mr-1"></i> Remover permissões
                   </a>
                   <a
                     href="#"
+                    @click="promoteMember(m)"
                     class="dropdown-item"
                     v-if="(band.admins.find(a => a.id === me.id) && m.id !== band.owner.id && m.id !== me.id && !band.admins.find(a => a.id === m.id)) || (band.owner.id === me.id && m.id !== me.id && !band.admins.find(a => a.id === m.id))"
                   >
-                    <i class="fas fa-trash mr-1"></i> Tornar admin
+                    <i class="fas fa-angle-double-up mr-1"></i> Tornar admin
                   </a>
                 </base-dropdown>
               </div>
