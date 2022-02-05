@@ -1,7 +1,7 @@
 // Dependencies
 import { getAuthenticatedClient } from '../../api'
 import { asyncHandler } from '../../utils'
-import { LINK_SONG, UNLINK_SONG } from '../../api/mutations'
+import { LINK_SONG, UNLINK_SONG, ADD_SHOW, UPDATE_SHOW, REMOVE_SHOW } from '../../api/mutations'
 import { SHOW, SHOWS } from '../../api/queries'
 
 // Object initial state
@@ -19,6 +19,40 @@ const getters = {
 
 // Actions
 const actions = {
+  async saveShow({ commit }, { payload, id = null, band = null }) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.mutate({
+        mutation: id ? UPDATE_SHOW : ADD_SHOW,
+        variables: id ? { ...payload, id } : { ...payload, band }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : id ? resp.data.updateShow : resp.data.addShow,
+      message: error ? resp.message : null
+    }
+  },
+  async removeShow({ commit }, id) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.mutate({
+        mutation: REMOVE_SHOW,
+        variables: { id }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : resp.data.removeShow,
+      message: error ? resp.message : null
+    }
+  },
   async linkSong({ commit }, { show, song }) {
     const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)

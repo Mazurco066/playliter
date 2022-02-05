@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row pt-3">
       <div class="col-12">
-        <div v-if="!showLoading" class="info">
+        <div v-if="!showLoading" class="info about">
           <h3 class="title">{{ show.title }}</h3>
           <hr />
           <p class="mb-1">{{ show.description }}</p>
@@ -13,6 +13,21 @@
               {{ $text.formatISODate(new Date(parseInt(show.createdAt)).toISOString()) }}
             </strong>
           </span>
+          <hr />
+          <div class="actions">
+            <div class="action" @click="editShow()">
+              <i class="fas fa-edit text-warning"></i>
+              <p class="mb-0">
+                <small>Editar</small>
+              </p>
+            </div>
+            <div class="action" @click="removeShow()">
+              <i class="fas fa-trash text-danger"></i>
+              <p class="mb-0">
+                <small>Remover</small>
+              </p>
+            </div>
+          </div>
         </div>
         <div v-else class="info">
           <lines class="shine"></lines>
@@ -85,9 +100,9 @@
               </li>
             </ul>
           </div>
-          <hr />
+          <hr v-if="(show && show.songs && show.songs.length > 0)" />
           <base-button
-            v-if="!showLoading"
+            v-if="!showLoading && (show && show.songs && show.songs.length > 0)"
             htmlType="button"
             type="primary"
             @click="viewAsPlaylist()"

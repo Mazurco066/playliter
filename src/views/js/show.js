@@ -15,7 +15,8 @@ export default {
   methods: {
     ...mapActions({
       listBandShow: 'show/listBandShow',
-      unlinkSong: 'show/unlinkSong'
+      unlinkSong: 'show/unlinkSong',
+      deleteShow: 'show/removeShow'
     }),
     viewAsPlaylist () {
       const { band, id } = this.$route.params
@@ -28,6 +29,34 @@ export default {
       this.$router.push({
         name: route,
         params: { band, id }
+      })
+    },
+    editShow () {
+      const { band, id } = this.$route.params
+      this.$router.push({
+        name: 'editShow',
+        params: { band, id }
+      })
+    },
+    async removeShow () {
+      this.$swal({
+        title: 'Essa ação é permanente!',
+        text: 'Deseja excluir essa apresentação?',
+        showDenyButton: true,
+        confirmButtonColor: '#1C8781',
+        confirmButtonText: 'Excluir',
+        denyButtonText: `Cancelar`
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const response = await this.deleteShow(this.show.id)
+          if (response.error) {
+            this.$toast.error(`Ocorreu um erro ao excluir a apresentação! Por favor contate um administrador do sistema.`)
+          } else {
+            this.$toast.success('Apresentação removida com sucesso!')
+            const { band } = this.$route.params
+            this.$router.push({ name: 'band', params: { id: band } })
+          }
+        }
       })
     },
     async reloadData () {

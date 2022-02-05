@@ -98,7 +98,12 @@
       </div>
       <div class="col-12 pt-3">
         <div class="info">
-          <h3 class="title">Apresentações</h3>
+          <div class="info-title">
+            <h3 class="title">Apresentações</h3>
+            <button class="btn-card" @click="saveShow(band.id)">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
           <hr />
           <div v-if="isDisplayReady">
             <ul class="shows" v-if="shows.length > 0">

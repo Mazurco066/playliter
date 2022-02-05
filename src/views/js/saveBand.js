@@ -57,14 +57,16 @@ export default {
   },
   async mounted () {
     const { id } = this.$route.params
-    const band = await this.loadBand(id)
-    this.form = {
-      title: band.data.title,
-      description: band.data.description
-    }
-    if (!Object.keys(band.data).length > 0) {
-      this.$toast.warning(`Banda de id ${id} não encontrada!`)
-      this.$router.push({ name: 'bands' })
+    if (id) {
+      const band = await this.loadBand(id)
+      this.form = {
+        title: band.data.title,
+        description: band.data.description
+      }
+      if (!Object.keys(band.data).length > 0) {
+        this.$toast.warning(`Banda de id ${id} não encontrada!`)
+        this.$router.push({ name: 'bands' })
+      }
     }
   },
   validations () {

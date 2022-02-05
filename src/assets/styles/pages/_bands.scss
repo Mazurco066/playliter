@@ -101,6 +101,32 @@
     background-color: rgba(255, 255 ,255, 0.2);
     border: 1px solid var(--color-text);
     border-radius: 8px;
+
+    .info-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .title {
+        flex-grow: 1;
+        margin-bottom: 0;
+      }
+
+      .btn-card {
+        flex: 0 0 auto;
+      }
+    }
+  }
+
+  .btn-card {
+    outline: none;
+    border: none;
+    color: var(--color-primary);
+    background-color: transparent;
+
+    &:hover {
+      color: #ffffff;
+    }
   }
 
   .songs {

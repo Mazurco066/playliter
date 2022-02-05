@@ -48,6 +48,12 @@ export default {
         params: { band, id }
       })
     },
+    saveShow (band) {
+      this.$router.push({
+        name: 'saveShow',
+        params: { band }
+      })
+    },
     closeInviteModal () {
       this.isInviteModalOpen = false
     },
