@@ -1,0 +1,50 @@
+<div id="saveBand">
+  <div class="container pt-3">
+    <div class="row">
+      <div class="col-12">
+        <h3 class="klasik"> {{ saveMode ? 'Criar nova banda' : 'Editar banda' }}</h3>
+      </div>
+    </div>
+    <form class="info" @submit.prevent="createBand">
+      <div class="row">
+        <div class="col-12">
+          <p class="text-justify">Primeiramente informe um <strong>nome</strong> para sua banda:</p>
+        </div>
+        <div class="col-12">
+          <base-input
+            type="title"
+            placeholder="Nome para a banda"
+            addonLeftIcon="fas fa-address-card"
+            v-model="v$.form.title.$model"
+            :valid="!v$.form.title.$error"
+            :error="v$.form.title.$errors.length ? $translations.translateMessage(v$.form.title.$errors[0].$message) : ''"
+            :disabled="bandLoading"
+          />
+        </div>
+        <div class="col-12" :class="{ 'd-none': v$.form.title.$error }">
+          <p class="text-justify">Agora forneça uma breve <strong>descrição</strong> sobre a mesma:</p>
+        </div>
+        <div class="col-12" :class="{ 'd-none': v$.form.title.$error }">
+          <base-input
+            type="description"
+            placeholder="Breve descrição..."
+            addonLeftIcon="fas fa-align-justify"
+            v-model="v$.form.description.$model"
+            :valid="!v$.form.description.$error"
+            :error="v$.form.description.$errors.length ? $translations.translateMessage(v$.form.description.$errors[0].$message) : ''"
+            :disabled="bandLoading"
+          />
+        </div>
+        <div class="col-12" >
+          <base-button
+            nativeType="submit"
+            type="primary"
+            :disabled="v$.$error === true || bandLoading"
+          >
+            Salvar banda
+          </base-button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

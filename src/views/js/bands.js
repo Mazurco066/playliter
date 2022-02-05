@@ -21,7 +21,7 @@ export default {
       const rng = Math.floor(Math.random() * 4 + 1)
       return `0${rng}.png`
     },
-    navigateTo (route, id) {
+    navigateTo (route, id = null) {
       this.$router.push({
         name: route,
         params: { id }

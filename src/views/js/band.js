@@ -39,7 +39,8 @@ export default {
       listBandShows: 'show/listBandShows',
       removeBandMember: 'band/removeBandMember',
       demoteBandMember: 'band/demoteBandMember',
-      promoteBandMember: 'band/promoteBandMember'
+      promoteBandMember: 'band/promoteBandMember',
+      removeBand: 'band/removeBand'
     }),
     navigateTo (route, band, id = null) {
       this.$router.push({
@@ -155,6 +156,26 @@ export default {
           }
         }
       }) 
+    },
+    async disposeBand () {
+      this.$swal({
+        title: 'Essa ação é permanente!',
+        text: 'Deseja excluir essa banda para todos seus integrantes??',
+        showDenyButton: true,
+        confirmButtonColor: '#1C8781',
+        confirmButtonText: 'Excluir',
+        denyButtonText: `Cancelar`
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const response = await this.removeBand(this.band.id)
+          if (response.error) {
+            this.$toast.error(`Ocorreu um erro ao excluir a banda! Por favor contate um administrador do sistema.`)
+          } else {
+            this.$toast.success('Banda removida com sucesso!')
+            this.$router.push({ name: 'bands' })
+          }
+        }
+      })
     }
   },
   async mounted () {

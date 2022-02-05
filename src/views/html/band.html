@@ -21,13 +21,13 @@
                 <small>Convidar</small>
               </p>
             </div>
-            <div class="action">
+            <div @click="navigateTo('editBand', null, band.id)" class="action">
               <i class="fas fa-edit text-warning"></i>
               <p class="mb-0">
                 <small>Editar</small>
               </p>
             </div>
-            <div v-if="band.owner.id === me.id" class="action">
+            <div v-if="band.owner.id === me.id" @click="disposeBand()" class="action">
               <i class="fas fa-trash text-danger"></i>
               <p class="mb-0">
                 <small>Remover</small>

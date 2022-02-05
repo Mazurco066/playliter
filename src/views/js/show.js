@@ -17,6 +17,13 @@ export default {
       listBandShow: 'show/listBandShow',
       unlinkSong: 'show/unlinkSong'
     }),
+    viewAsPlaylist () {
+      const { band, id } = this.$route.params
+      this.$router.push({
+        name: 'playlist',
+        params: { band, id }
+      })
+    },
     navigateTo (route, band, id = null) {
       this.$router.push({
         name: route,

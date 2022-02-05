@@ -1,0 +1,45 @@
+#playlist {
+  height: 100%;
+
+  .title {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .info {
+    padding: 1rem 1.5rem;
+    background-color: rgba(255, 255 ,255, 0.2);
+    border: 1px solid var(--color-text);
+    border-radius: 8px;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .action {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      i {
+        margin-bottom: 4px;
+      }
+
+      p small {
+        font-weight: bold;
+      }
+
+      &:hover {
+        cursor: pointer;
+        
+        i {
+          color: #ffffff!important;
+        }
+      }
+    }
+  }
+}

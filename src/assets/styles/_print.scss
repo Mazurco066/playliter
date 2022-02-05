@@ -1,0 +1,60 @@
+@media print  {
+  #header, #bottomNav, .transpose-keys {
+    display: none!important;
+  }
+  
+  #dashboard-layout {
+    background: #ffffff!important;
+  }
+  
+  .info {
+    border: none!important;
+    background-color: #ffffff!important;
+  }
+
+  pre {
+    outline: none!important;
+    border: none!important;
+  }
+
+  .pagebreak { 
+    page-break-after: always;
+  }
+
+  #dashboard-layout {
+    display: block!important;
+    overflow-y: scroll!important;
+    height: 100%!important;
+    overflow: visible!important;
+  }
+
+  #dashboard-layout main {
+    overflow: initial!important;
+    overflow-y: scroll!important;
+    height: 100%!important;
+    overflow: visible!important;
+  }
+
+  #app {
+    overflow-x: hidden!important;
+    overflow-y: scroll!important;
+    height: 100%!important;
+    overflow: visible!important;
+  }
+
+  body {
+    overflow: visible!important;
+  }
+}
+
+.no-print {
+  @media print {
+    display: none!important;
+  }
+}
+
+.report-print {
+  @media print {
+    display: block!important;
+  }
+}
