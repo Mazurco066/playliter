@@ -1,6 +1,7 @@
 // Dependencies
 import { getAuthenticatedClient } from '../../api'
 import { ME, ACCOUNT_BY_USERNAME } from '../../api/queries'
+import { UPDATE_PROFILE } from '../../api/mutations'
 import { asyncHandler } from '../../utils'
 
 // Object initial state
@@ -54,6 +55,23 @@ const actions = {
     return {
       error: error,
       data: error ? {} : resp.data.me,
+      message: error ? resp.message : null
+    }
+  },
+  async updateProfile({ commit }, { id, payload }) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.mutate({
+        mutation: UPDATE_PROFILE,
+        variables: { ...payload, id }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : resp.data.updateAccount,
       message: error ? resp.message : null
     }
   }

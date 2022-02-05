@@ -12,7 +12,7 @@
         </div>
         <div class="col-12">
           <base-input
-            type="title"
+            type="text"
             placeholder="Nome para a banda"
             addonLeftIcon="fas fa-address-card"
             v-model="v$.form.title.$model"
@@ -26,7 +26,7 @@
         </div>
         <div class="col-12" :class="{ 'd-none': v$.form.title.$error }">
           <base-input
-            type="description"
+            type="text"
             placeholder="Breve descrição..."
             addonLeftIcon="fas fa-align-justify"
             v-model="v$.form.description.$model"
