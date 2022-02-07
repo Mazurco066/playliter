@@ -74,6 +74,13 @@ export default {
           }
         }
       })
+    },
+    editSong () {
+      const { id, band } = this.$route.params
+      this.$router.push({
+        name: 'editSong',
+        params: { id, band }
+      })
     }
   },
   async mounted () {

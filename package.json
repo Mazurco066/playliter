@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@meforma/vue-toaster": "^1.2.2",
+    "@tiptap/starter-kit": "^2.0.0-beta.181",
+    "@tiptap/vue-3": "^2.0.0-beta.90",
     "@vuelidate/core": "^2.0.0-alpha.26",
     "@vuelidate/validators": "^2.0.0-alpha.22",
     "apollo-boost": "^0.4.9",
@@ -34,6 +36,7 @@
     "vue-sweetalert2": "^5.0.2",
     "vue-the-mask": "^0.11.1",
     "vue3-carousel": "^0.1.32",
+    "vue3-editor": "^0.1.0-alpha.3",
     "vuex": "^4.0.0-0",
     "vuex-persistedstate": "^4.1.0"
   },

@@ -47,3 +47,15 @@
   user-select: none;
   display: none;
 }
+
+.ProseMirror {
+  background-color: #F2F3F7;
+  white-space: pre-wrap!important;
+  outline: none;
+  padding: 1rem;
+  border-radius: 8px;
+
+  &:focus {
+    border: 3px solid #000000;
+  }
+}

@@ -1,8 +1,8 @@
 // Dependencies
 import { getAuthenticatedClient } from '../../api'
 import { asyncHandler } from '../../utils'
-import { REMOVE_SONG } from '../../api/mutations'
-import { SONG, SONGS } from '../../api/queries'
+import { REMOVE_SONG, ADD_SONG, UPDATE_SONG, ADD_CATEGORY, UPDATE_CATEGORY } from '../../api/mutations'
+import { SONG, SONGS, CATEGORIES } from '../../api/queries'
 
 // Object initial state
 const initialState = () => ({ loading: false })
@@ -19,6 +19,40 @@ const getters = {
 
 // Actions
 const actions = {
+  async saveCategory({ commit }, { id = null, payload }) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.mutate({
+        mutation: id ? UPDATE_CATEGORY : ADD_CATEGORY,
+        variables: id ? { ...payload, id } : { ...payload }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : id ? resp.data.updateCategory : resp.data.addCategory,
+      message: error ? resp.message : null
+    }
+  },
+  async saveSong({ commit }, { id = null, payload }) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.mutate({
+        mutation: id ? UPDATE_SONG : ADD_SONG,
+        variables: id ? { ...payload, id } : { ...payload }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : id ? resp.data.updateSong : resp.data.addSong,
+      message: error ? resp.message : null
+    }
+  },
   async loadBandSong({ commit }, { band, id }) {
     const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
@@ -67,6 +101,23 @@ const actions = {
     return {
       error: error,
       data: error ? {} : resp.data.removeSong,
+      message: error ? resp.message : null
+    }
+  },
+  async listBandCategories({ commit }, { band }) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.query({
+        query: CATEGORIES,
+        variables: { id: band }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? [] : resp.data.categories,
       message: error ? resp.message : null
     }
   }

@@ -3,11 +3,11 @@ import { gql } from 'apollo-boost'
 
 // Query
 export const CATEGORIES = gql`
-  query($id: String!, $limit: Number!, $offset: Number!) {
+  query($id: String!) {
     categories(ListCategoriesInput: {
-      limit: $offset,
-      offset: $limit,
       bandId: $id
+      limit: 0
+      offset: 0
     }) {
       id
       title
@@ -15,6 +15,7 @@ export const CATEGORIES = gql`
       band {
         id
         title
+        description
         createdAt
         updatedAt
       }

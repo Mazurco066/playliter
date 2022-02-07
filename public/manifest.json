@@ -1,6 +1,6 @@
 {
-  "short_name": "Cashy",
-  "name": "Cashy",
+  "short_name": "Playliter",
+  "name": "Playliter",
   "icons": [
     {
       "src": "/img/icons/manifest-icon-192.maskable.png",
@@ -14,8 +14,8 @@
     }
   ],
   "start_url": "/?utm_source=a2hs",
-  "background_color": "#d0021b",
+  "background_color": "#FF5F6D",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#d0021b"
+  "theme_color": "#FF5F6D"
 }

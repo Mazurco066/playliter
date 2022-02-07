@@ -54,6 +54,12 @@ export default {
         params: { band }
       })
     },
+    saveSong (band) {
+      this.$router.push({
+        name: 'saveSong',
+        params: { band }
+      })
+    },
     closeInviteModal () {
       this.isInviteModalOpen = false
     },
