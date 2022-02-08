@@ -59,15 +59,19 @@
   <!-- Print list -->
   <div v-if="!showLoading" class="songs d-none report-print">
     <!-- TODO: Generate a playliter presentation on the first page -->
-    <p class="title mb-0">{{ show.title }}</p>
-    <span>{{ show.description }}</span>
-    <div class="pagebreak"></div>
-    
+    <div id="pdf-preview">
+      <div class="info">
+        <h3 class="title">{{ show.title }}</h3>
+        <p class="description">{{ show.description }}</p>
+        <span class="text-muted">Documento gerado pelo app <strong>Playliter</strong> no dia {{ $text.formatISODate(new Date().toISOString()) }}</span>
+      </div>
+      <div class="pagebreak"></div>
+    </div>
 
     <!-- Songs -->
-    <div class="song" v-for="(song, i) in show.songs" :key="i">
+    <div class="song bg-white" v-for="(song, i) in show.songs" :key="i">
       <pre
-        class="tranposer"
+        class="tranposer bg-white"
         :data-key="song.tone"
         v-if="!showLoading"
       >
