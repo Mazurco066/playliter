@@ -2,7 +2,11 @@
   <div id="auth-layout" class="wrapper">
     <!-- Main content -->
     <main>
-      <router-view />
+      <router-view v-slot="{ Component }">
+        <transition name="zoom" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </main>
     <!-- Splashscreen -->
     <div

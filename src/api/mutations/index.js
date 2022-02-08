@@ -1,3 +1,4 @@
+export * from './addAccount'
 export * from './addBand'
 export * from './addCategory'
 export * from './addMember'

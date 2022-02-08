@@ -59,21 +59,25 @@
   <!-- Print list -->
   <div v-if="!showLoading" class="songs d-none report-print">
     <!-- TODO: Generate a playliter presentation on the first page -->
-    <!-- <div class="pagebreak"></div> -->
+    <p class="title mb-0">{{ show.title }}</p>
+    <span>{{ show.description }}</span>
+    <div class="pagebreak"></div>
+    
 
     <!-- Songs -->
     <div class="song" v-for="(song, i) in show.songs" :key="i">
-      <p class="title mb-0">{{ song.title }}</p>
-      <span>{{ song.writter }}</span>
-      <br>
-      <span>
-        <small>
-          Tom: <strong>{{song.tone}}</strong>
-        </small>
-      </span>
-      <br>
-      <pre class="tranposer pdf-song" :data-key="song.tone" v-if="!showLoading">
-        {{ song.body }}
+      <pre
+        class="tranposer"
+        :data-key="song.tone"
+        v-if="!showLoading"
+      >
+<!-- The lack of identation is desired unfortunatly -->
+<p>
+<span class="title">{{ song.title }}</span>
+{{ song.writter }}
+Tom: {{song.tone}}
+{{ song.body }}
+</p>
       </pre>
       <div class="pagebreak"></div>
     </div>

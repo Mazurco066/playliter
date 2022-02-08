@@ -10,13 +10,13 @@
         <!-- Bands list -->
         <div v-if="!bandLoading">
           <ul class="list" v-if="bands.length > 0">
-            <li class="item" v-for="(b, i) in bands" :key="i" @click="navigateTo('band', b.id)">
-              <div class="icon mr-3">
+            <li class="item" v-for="(b, i) in bands" :key="i">
+              <div class="icon mr-3" @click="navigateTo('band', b.id)">
                 <div class="band-img">
                   <img :src="`/img/arts/${randomIcon()}`" />
                 </div>
               </div>
-              <div class="info">
+              <div class="info" @click="navigateTo('band', b.id)">
                 <p class="title">{{ $text.truncate(b.title, 23) }}</p>
                 <span class="sub">
                   {{ 
@@ -41,8 +41,11 @@
                       <i class="fas fa-ellipsis-v"></i>
                     </a>
                   </template>
-                  <a href="#" class="dropdown-item">
+                  <a href="#" class="dropdown-item" @click.prevent="editBand(b)">
                     <i class="fas fa-edit mr-1"></i> Editar
+                  </a>
+                  <a href="#" class="dropdown-item" @click.prevent="deleteBand(b)">
+                    <i class="fas fa-trash mr-1"></i> Excluir
                   </a>
                 </base-dropdown>
               </div>
