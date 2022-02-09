@@ -14,19 +14,19 @@
           <hr v-if="!showLoading" />
           <div v-if="!showLoading" class="actions">
             <div class="action" @click="switchSong(-1)">
-              <i class="fas fa-angle-double-left text-info"></i>
+              <font-awesome-icon icon="angle-double-left" class="text-info" />
               <p class="mb-0">
                 <small>Anterior</small>
               </p>
             </div>
             <div class="action" @click="downloadReport()">
-              <i class="fas fa-print text-white"></i>
+              <font-awesome-icon icon="print" class="text-white" />
               <p class="mb-0">
                 <small>Exportar PDF</small>
               </p>
             </div>
             <div class="action" @click="switchSong(1)">
-              <i class="fas fa-angle-double-right text-info"></i>
+              <font-awesome-icon icon="angle-double-right" class="text-info" />
               <p class="mb-0">
                 <small>Próxima</small>
               </p>
@@ -58,7 +58,8 @@
 
   <!-- Print list -->
   <div v-if="!showLoading" class="songs d-none report-print">
-    <!-- TODO: Generate a playliter presentation on the first page -->
+
+    <!-- PDF Preview -->
     <div id="pdf-preview">
       <div class="info">
         <h3 class="title">{{ show.title }}</h3>

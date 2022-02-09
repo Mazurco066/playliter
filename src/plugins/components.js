@@ -15,6 +15,15 @@ import BaseSwitch from '../components/base/Switch.vue'
 import BaseTable from '../components/base/Table.vue'
 import BaseToggle from '../components/base/Toggle.vue'
 
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+library.add(fas)
+library.add(fab)
+library.add(far)
+
 // Components
 export default {
   install (Vue) {
@@ -33,5 +42,6 @@ export default {
     Vue.component(BaseSwitch.name, BaseSwitch)
     Vue.component(BaseTable.name, BaseTable)
     Vue.component(BaseToggle.name, BaseToggle)
+    Vue.component('font-awesome-icon', FontAwesomeIcon)
   }
 }

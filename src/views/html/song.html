@@ -13,13 +13,13 @@
           <hr />
           <div class="actions">
             <div class="action" @click="openListModal()">
-              <i class="fas fa-list text-info"></i>
+              <font-awesome-icon icon="list" class="text-info" />
               <p class="mb-0">
                 <small>+ Lista</small>
               </p>
             </div>
             <div class="action" @click="editSong()">
-              <i class="fas fa-edit text-warning"></i>
+              <font-awesome-icon icon="edit" class="text-warning" />
               <p class="mb-0">
                 <small>Editar</small>
               </p>
@@ -28,7 +28,7 @@
               @click="songLoading ? () => {} : deleteSong()"
               class="action"
             >
-              <i class="fas fa-trash text-danger"></i>
+              <font-awesome-icon icon="trash" class="text-danger" />
               <p class="mb-0">
                 <small>Remover</small>
               </p>

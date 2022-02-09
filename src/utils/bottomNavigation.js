@@ -2,17 +2,17 @@ const links = [
   {
     label: 'Bandas',
     route: 'bands',
-    icon: 'fas fa-play fa-2x'
+    icon: 'play'
   }, 
   {
     label: 'Home',
     route: 'home',
-    icon: 'fas fa-compact-disc fa-2x'
+    icon: 'compact-disc'
   },
   {
     label: 'Perfil',
     route: 'profile',
-    icon: 'fas fa-user fa-2x'
+    icon: 'user'
   }
 ]
 

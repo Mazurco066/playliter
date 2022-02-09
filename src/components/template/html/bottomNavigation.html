@@ -10,7 +10,7 @@
                 :class="{ 'is-active': $route.name === link.route }"
                 @click="navigateTo(link.route)"
               >
-                <i :class="link.icon"></i>
+                <font-awesome-icon :icon="link.icon" size="2x" />
                 <span>{{ link.label }}</span>
               </a>
             </li>

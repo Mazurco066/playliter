@@ -101,7 +101,8 @@ export default {
         tone: song.data.tone,
         category: song.data.category.id
       }
-      this.song = song.data.body
+      // Replace \n with html elements
+      this.song = song.data.body.replace(/\n/g, '<br>')
       if (!Object.keys(song.data).length > 0) {
         this.$toast.warning(`Música de id ${id} não encontrada!`)
         this.$router.push({ name: 'band', params: { id: band } })

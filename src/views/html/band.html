@@ -16,19 +16,19 @@
           <hr />
           <div class="actions">
             <div @click="openInviteModal()" class="action">
-              <i class="fas fa-user-plus text-info"></i>
+              <font-awesome-icon icon="user-plus" class="text-info" />
               <p class="mb-0">
                 <small>Convidar</small>
               </p>
             </div>
             <div @click="navigateTo('editBand', null, band.id)" class="action">
-              <i class="fas fa-edit text-warning"></i>
+              <font-awesome-icon icon="edit" class="text-warning" />
               <p class="mb-0">
                 <small>Editar</small>
               </p>
             </div>
             <div v-if="band.owner.id === me.id" @click="disposeBand()" class="action">
-              <i class="fas fa-trash text-danger"></i>
+              <font-awesome-icon icon="trash" class="text-danger" />
               <p class="mb-0">
                 <small>Remover</small>
               </p>
@@ -48,7 +48,7 @@
           <div class="info-title">
             <h3 class="title">Repertório</h3>
             <button class="btn-card" @click="saveSong(band.id)">
-              <i class="fas fa-plus"></i>
+              <font-awesome-icon icon="plus" />
             </button>
           </div>
           <hr />
@@ -106,7 +106,7 @@
           <div class="info-title">
             <h3 class="title">Apresentações</h3>
             <button class="btn-card" @click="saveShow(band.id)">
-              <i class="fas fa-plus"></i>
+              <font-awesome-icon icon="plus" />
             </button>
           </div>
           <hr />
@@ -185,7 +185,7 @@
                       aria-haspopup="true"
                       aria-expanded="false"
                     >
-                      <i class="fas fa-ellipsis-v"></i>
+                      <font-awesome-icon icon="ellipsis-v" />
                     </a>
                   </template>
                   <a
@@ -194,7 +194,7 @@
                     class="dropdown-item"
                     v-if="(band.admins.find(a => a.id === me.id) && m.id !== band.owner.id && m.id !== me.id) || (band.owner.id === me.id && m.id !== me.id)"
                   >
-                    <i class="fas fa-trash mr-1"></i> Remover
+                    <font-awesome-icon icon="trash" class="mr-1" /> Remover
                   </a>
                   <a
                     href="#"
@@ -202,7 +202,7 @@
                     class="dropdown-item"
                     v-if="((band.owner.id === me.id || band.admins.find(a => a.id === me.id)) && m.id !== me.id && band.admins.find(a => a.id === m.id))"
                   >
-                    <i class="fas fa-angle-double-down mr-1"></i> Remover permissões
+                    <font-awesome-icon icon="angle-double-down" class="mr-1" /> Remover permissões
                   </a>
                   <a
                     href="#"
@@ -210,7 +210,7 @@
                     class="dropdown-item"
                     v-if="(band.admins.find(a => a.id === me.id) && m.id !== band.owner.id && m.id !== me.id && !band.admins.find(a => a.id === m.id)) || (band.owner.id === me.id && m.id !== me.id && !band.admins.find(a => a.id === m.id))"
                   >
-                    <i class="fas fa-angle-double-up mr-1"></i> Tornar admin
+                    <font-awesome-icon icon="angle-double-up" class="mr-1" /> Tornar admin
                   </a>
                 </base-dropdown>
               </div>

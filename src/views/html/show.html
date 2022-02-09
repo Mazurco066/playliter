@@ -16,13 +16,13 @@
           <hr />
           <div class="actions">
             <div class="action" @click="editShow()">
-              <i class="fas fa-edit text-warning"></i>
+              <font-awesome-icon icon="edit" class="text-warning" />
               <p class="mb-0">
                 <small>Editar</small>
               </p>
             </div>
             <div class="action" @click="removeShow()">
-              <i class="fas fa-trash text-danger"></i>
+              <font-awesome-icon icon="trash" class="text-danger" />
               <p class="mb-0">
                 <small>Remover</small>
               </p>
@@ -65,7 +65,7 @@
                         aria-haspopup="true"
                         aria-expanded="false"
                       >
-                        <i class="fas fa-ellipsis-v"></i>
+                        <font-awesome-icon icon="ellipsis-v" />
                       </a>
                     </template>
                     <a
@@ -73,7 +73,7 @@
                       class="dropdown-item"
                       @click="removeSongFromShow(s)"
                     >
-                      <i class="fas fa-trash mr-1"></i> Remover da Apresentação
+                      <font-awesome-icon icon="trash" class="mr-1" /> Remover da Apresentação
                     </a>
                   </base-dropdown>
                 </div>
