@@ -16,7 +16,7 @@
           <base-input
             type="text"
             placeholder="Entre com seu usuário"
-            addonLeftIcon="fas fa-user"
+            addonLeftIcon="user"
             v-model="v$.form.username.$model"
             :valid="!v$.form.username.$error"
             :error="v$.form.username.$errors.length ? $translations.translateMessage(v$.form.username.$errors[0].$message) : ''"
@@ -27,7 +27,7 @@
           <base-input
             type="password"
             placeholder="Agora digite sua senha"
-            addonLeftIcon="fas fa-key"
+            addonLeftIcon="key"
             v-model="v$.form.password.$model"
             :valid="!v$.form.password.$error"
             :error="v$.form.password.$errors.length ? $translations.translateMessage(v$.form.password.$errors[0].$message) : ''"

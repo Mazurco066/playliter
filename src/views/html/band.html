@@ -262,7 +262,7 @@
               type="text"
               label="Nome de usuário"
               placeholder="Entre com a tag do usuário"
-              addonLeftIcon="fas fa-user"
+              addonLeftIcon="user"
               v-model="v$.inviteForm.username.$model"
               :valid="!v$.inviteForm.username.$error"
               :error="v$.inviteForm.username.$errors.length ? $translations.translateMessage(v$.inviteForm.username.$errors[0].$message) : ''"

@@ -14,7 +14,7 @@
           <base-input
             type="text"
             placeholder="Nome para a banda"
-            addonLeftIcon="fas fa-address-card"
+            addonLeftIcon="address-card"
             v-model="v$.form.title.$model"
             :valid="!v$.form.title.$error"
             :error="v$.form.title.$errors.length ? $translations.translateMessage(v$.form.title.$errors[0].$message) : ''"
@@ -28,7 +28,7 @@
           <base-input
             type="text"
             placeholder="Breve descrição..."
-            addonLeftIcon="fas fa-align-justify"
+            addonLeftIcon="align-justify"
             v-model="v$.form.description.$model"
             :valid="!v$.form.description.$error"
             :error="v$.form.description.$errors.length ? $translations.translateMessage(v$.form.description.$errors[0].$message) : ''"
