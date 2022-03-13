@@ -54,7 +54,6 @@ export default {
     const { band } = this.$route.params
     const r = await this.listBandSongs({ band })
     this.repertory = songHelpers.compute(r.data)
-    console.log('[debug]', songHelpers.compute(r.data))
     if (r.error) {
       this.$toast.error(`Ocorreu um erro ao obter o repertório da banda!`)
     }
