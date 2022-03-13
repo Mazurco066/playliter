@@ -29,7 +29,8 @@ export default {
   methods: {
     ...mapActions({
       saveCategory: 'song/saveCategory',
-      listBandCategories: 'song/listBandCategories'
+      listBandCategories: 'song/listBandCategories',
+      deleteCategory: 'song/removeCategory'
     }),
     closeCategoryModal () {
       this.isCategoryModalOpen = false
@@ -90,7 +91,15 @@ export default {
         denyButtonText: `Cancelar`
       }).then(async (result) => {
         if (result.isConfirmed) {
-          console.log('[remove]', id)
+          const response = await this.deleteCategory(id)
+          if (response.error) {
+            this.$toast.error(response.message.replace('GraphQL error:', '') || 'Ocorreu um erro ao remover a categoria! Por favor contate um administrador do sistema.')
+          } else {
+            this.$toast.success('Categoria removida com sucesso!')
+            this.closeCategoryModal()
+            this.resetForm()
+            await this.loadCategories()
+          }
         }
       })
     }
