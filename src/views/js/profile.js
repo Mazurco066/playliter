@@ -43,10 +43,9 @@ export default {
           await this.loadMe()
           if (!Object.keys(this.me).length) {
             this.$toast.error('Não foi possível obter a conta autenticada. Por favor tente novamente mais tarde!')
-            console.log('Logoff here')
+            this.logout()
           }
         }
-
       } else {
         this.$toast.warning('Seu formuário contem erros de validação! Por favor revise-os.')
       }

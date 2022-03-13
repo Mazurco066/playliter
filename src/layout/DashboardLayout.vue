@@ -27,14 +27,16 @@ export default {
   },
   methods: {
     ...mapActions({
-      loadMe: 'account/loadMe'
+      loadMe: 'account/loadMe',
+      resetStore: 'RESET'
     })
   },
   async mounted () {
     await this.loadMe()
     if (!Object.keys(this.me).length) {
-      this.$toast.error('Não foi possível obter a conta autenticada. Por favor tente novamente mais tarde!')
-      console.log('Logoff here')
+      // Reset store and logoff
+      this.resetStore()
+      this.$router.push({ name: 'signin' })
     }
   }
 }
