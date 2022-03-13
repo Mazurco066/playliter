@@ -40,10 +40,14 @@ export default {
           this.$toast.error(r.message.replace('GraphQL error:', '') || `Ocorreu um erro ao atualizar seu perfil! Tente novamente mais tarde`)
         } else {
           this.$toast.success('Perfil atualizado com sucesso')
-          await this.loadMe()
-          if (!Object.keys(this.me).length) {
-            this.$toast.error('Não foi possível obter a conta autenticada. Por favor tente novamente mais tarde!')
-            this.logout()
+          const pr = await this.loadMe()
+          if (pr.error) {
+            if (pr.message.includes('Unauthorized')) {
+              // Reset store and logoff
+              this.logout()
+            } else {
+              this.$toast.error('Não foi possível obter a conta autenticada. Por favor tente novamente mais tarde!')
+            }
           }
         }
       } else {

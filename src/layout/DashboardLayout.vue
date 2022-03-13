@@ -32,11 +32,15 @@ export default {
     })
   },
   async mounted () {
-    await this.loadMe()
-    if (!Object.keys(this.me).length) {
-      // Reset store and logoff
-      this.resetStore()
-      this.$router.push({ name: 'signin' })
+    const r = await this.loadMe()
+    if (r.error) {
+      if (r.message.includes('Unauthorized')) {
+        // Reset store and logoff
+        this.resetStore()
+        this.$router.push({ name: 'signin' })
+      } else {
+        this.$toast.error('Não foi possível obter a conta autenticada. Por favor tente novamente mais tarde!')
+      }
     }
   }
 }
