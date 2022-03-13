@@ -93,9 +93,20 @@ img, image {
     "content"
     "navigation";
   height: 100%;
-  background: #0f2027;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #0f2027, #203a43, #2c5364);
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  
+  // Default gradient
+  // background: #0f2027;  /* fallback for old browsers */
+  // background: -webkit-linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  // background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+
+  // Background texture
+  background-size: 18px 18px;
+  background-color: #0f2027;
+  background-image: -webkit-linear-gradient(45deg, rgba(0, 0, 0, .2) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, .2) 50%, rgba(0, 0, 0, .2) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(45deg, rgba(0, 0, 0, .2) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, .2) 50%, rgba(0, 0, 0, .2) 75%, transparent 75%, transparent);
+  background-image: -ms-linear-gradient(45deg, rgba(0, 0, 0, .2) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, .2) 50%, rgba(0, 0, 0, .2) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(0, 0, 0, .2) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, .2) 50%, rgba(0, 0, 0, .2) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(0, 0, 0, .2) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, .2) 50%, rgba(0, 0, 0, .2) 75%, transparent 75%, transparent);
 
   main {
     max-height: 100%;
