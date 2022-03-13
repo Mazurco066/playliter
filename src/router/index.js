@@ -8,6 +8,7 @@ import DashboardLayout from '../layout/DashboardLayout.vue'
 // Pages
 import Band from '../views/Band.vue'
 import Bands from '../views/Bands.vue'
+import Categories from '../views/Categories.vue'
 import Directory from '../views/Directory.vue'
 import Home from '../views/Home.vue'
 import Profile from '../views/Profile.vue'
@@ -55,6 +56,10 @@ const routes = [{
     path: '/band/:id',
     name: 'band',
     component: Band
+  }, {
+    path: '/categories/:band',
+    name: 'categories',
+    component: Categories
   }, {
     path: '/directory/:band',
     name: 'directory',
