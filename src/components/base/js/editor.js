@@ -36,6 +36,7 @@ export default {
       },
       onUpdate: () => {
         // this.$emit('update:modelValue', this.editor.getHTML())
+        console.log('[on update]', this.editor.getText())
         this.$emit('update:modelValue', this.editor.getText())
       },
     })

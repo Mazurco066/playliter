@@ -47,6 +47,13 @@ export default {
       const { id } = this.$route.params
       return !id 
     },
+    showTipTap () {
+      if (!this.saveMode) {
+        return this.song ? true : false
+      } else {
+        return true
+      }
+    },
     mappedCategories () {
       return this.categories.map(({ title, id }) => ({
         label: title,
@@ -102,7 +109,7 @@ export default {
         category: song.data.category.id
       }
       // Replace \n with html elements
-      this.song = song.data.body.replace(/\n/g, '<br>')
+      this.song = song.data.body.replace(/\n/g, '<br>')      
       if (!Object.keys(song.data).length > 0) {
         this.$toast.warning(`Música de id ${id} não encontrada!`)
         this.$router.push({ name: 'band', params: { id: band } })

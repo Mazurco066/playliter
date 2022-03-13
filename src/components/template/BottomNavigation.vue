@@ -1,2 +1,26 @@
+<template>
+  <div id="bottomNav" class="bottom-elevation">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="nav nav--icons">
+            <ul>
+              <li v-for="(link, i) in links" :key="i">
+                <a
+                  href="javascript:void(0)"
+                  :class="{ 'is-active': $route.name === link.route }"
+                  @click="navigateTo(link.route)"
+                >
+                  <font-awesome-icon :icon="link.icon" size="2x" />
+                  <span>{{ link.label }}</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script src="./js/bottomNavigation.js"></script>
-<template lang="html" src="./html/bottomNavigation.html"></template>

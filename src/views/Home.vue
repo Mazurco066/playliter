@@ -1,2 +1,14 @@
+<template>
+  <div id="home"> 
+    <div class="container pt-3">
+      <div class="row">
+        <div class="col-12">
+          <h4>Home do app</h4>
+          <p>Imagine um conteúdo bem loko aqui!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script src="./js/home.js"></script>
-<template lang="html" src="./html/home.html"></template>

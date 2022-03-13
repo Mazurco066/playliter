@@ -1,5 +1,5 @@
 #bottomNav {
-  background-color: #f5f5f5;
+  background-color: var(--color-layout);
 }
 
 .bottom-elevation {
@@ -13,7 +13,7 @@
   padding-left: 1rem;
   padding-top: 1rem;
   grid-area: navigation;
-  background-color: #f5f5f5;
+  background-color: var(--color-layout);
   width: 100%;
 
   ul {
@@ -33,7 +33,7 @@
         font-size: 11px;
         letter-spacing: 1px;
         text-decoration: none;
-        color: black;
+        color: var(--color-text);
         line-height: 1;
         vertical-align: middle;
 
