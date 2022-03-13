@@ -12,6 +12,7 @@ export const SHOWS = gql`
       id
       title
       description
+      date
       songs {
         id
         title

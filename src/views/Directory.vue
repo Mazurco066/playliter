@@ -20,13 +20,21 @@
         <div class="col-12">
           <div class="info-card">
             <h3 class="title">Repertório completo</h3>
-            <p v-if="!songLoading" class="mb-0">Contendo <strong>{{ repertory.numberOfItems }}</strong> músicas.</p>
+            <div v-if="!songLoading">
+              <p class="mb-3">Contendo <strong>{{ repertory.numberOfItems }}</strong> músicas.</p>
+              <base-input
+                name="search"
+                placeholder="Pesquisar música..."
+                v-model="search"
+                noMargin
+              />
+            </div>
             <lines v-else class="shine"></lines>
           </div>
           <div class="info">
             <!-- Categories list -->
             <ul v-if="!songLoading" class="categories">
-              <li v-for="(s, i) in repertory.songs" :key="i" class="category">
+              <li v-for="(s, i) in filteredRepertorySongs" :key="i" class="category">
                 <div class="content">
                   <p class="text-uppercase mb-0">
                     <strong>{{ s.category.title }}</strong>

@@ -3,9 +3,9 @@ import { mapActions, mapGetters } from 'vuex'
 
 // Component
 export default {
-  name: 'Home',
+  name: 'Shows',
   data: () => ({
-    pending: []
+    shows: []
   }),
   computed: {
     ...mapGetters({
@@ -14,7 +14,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      listPendingShows: 'show/listPendingShows'
+      listBandShows: 'show/listBandShows'
     }),
     viewShow (show = {}) {
       this.$router.push({
@@ -27,11 +27,12 @@ export default {
     }
   },
   async mounted () {
-    const r = await this.listPendingShows()
+    const { band } = this.$route.params
+    const r = await this.listBandShows({ band })
     if (r.error) {
-      this.$toast.error(`Ocorreu um erro ao obter as apresentações futuras! Por favor contate um administrador do sistema.`)
+      this.$toast.error(`Ocorreu um erro ao obter as apresentações da banda! Por favor contate um administrador do sistema.`)
     } else {
-      this.pending = r.data
+      this.shows = r.data
     }
   }
 }

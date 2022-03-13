@@ -36,6 +36,18 @@
               :disabled="showLoading"
             />
           </div>
+          <div class="col-12">
+            <base-input
+              type="date"
+              label="Data"
+              placeholder="DD/MM/YYYY"
+              addonLeftIcon="calendar"
+              v-model="v$.form.date.$model"
+              :valid="!v$.form.date.$error"
+              :error="v$.form.date.$errors.length ? $translations.translateMessage(v$.form.date.$errors[0].$message) : ''"
+              :disabled="showLoading"
+            />
+          </div>
           <div class="col-12" >
             <base-button
               nativeType="submit"

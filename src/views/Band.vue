@@ -152,6 +152,7 @@
             <base-button
               v-if="isDisplayReady"
               type="primary"
+              @click="navigateTo('shows', band.id)"
             >
               Ver todas apresentações
             </base-button>

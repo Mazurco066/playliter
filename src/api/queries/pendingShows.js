@@ -2,12 +2,9 @@
 import { gql } from 'apollo-boost'
 
 // Query
-export const SHOW = gql`
-  query($band: String!, $id: String!) {
-    show(LoadShowByIdInput: {
-      id: $id
-      bandId: $band
-    }) {
+export const PENDING_SHOW = gql`
+  query {
+    pendingShows {
       id
       title
       description
@@ -22,9 +19,9 @@ export const SHOW = gql`
       songs {
         id
         title
+        writter
         tone
         body
-        writter
         createdAt
         updatedAt
       }

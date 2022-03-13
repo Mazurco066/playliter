@@ -1,19 +1,19 @@
 <template>
-  <div id="home"> 
+  <div id="shows"> 
     <div class="container pt-3">
       <div class="row">
         <div class="col-12">
           <!-- Pending shows -->
           <div class="info">
             <h3 class="title">
-              Proximas apresentações
+              Apresentações (Banda)
             </h3>
             <hr />
             <div v-if="!showLoading">
-              <ul v-if="pending.length > 0" class="list">
+              <ul v-if="shows.length > 0" class="list">
                 <li
                   class="item"
-                  v-for="(s, i) in pending"
+                  v-for="(s, i) in shows"
                   :key="i"
                   @click="viewShow(s)"
                 >
@@ -27,7 +27,7 @@
                       <strong class="text-primary text-uppercase">{{ s.title }}</strong>
                     </p>
                     <p class="mb-0">
-                      <strong>{{ s.band.title }}</strong>
+                      <strong>{{ s.description }}</strong>
                     </p>
                     <span>
                       Data: {{ $text.formatISODate(s.date) }} 
@@ -36,7 +36,7 @@
                 </li>
               </ul>
               <p v-else class="mb-0">
-                Não há apresentações futuras registradas nas bandas que você participa!
+                Não há apresentações registradas nessa banda atualmente!
               </p>
             </div>
             <!-- Shimmer list -->
@@ -57,24 +57,10 @@
               </ul>
             </div>
           </div>
-
-          <!-- About app -->
-          <div class="info">
-            <h3 class="title">
-              Sobre o App
-            </h3>
-            <hr />
-            <p>
-              App desenvolvido com o intuito de ajudar as bandas gerencias seu repertório entre seus membros.  
-            </p>
-            <p class="mb-0">
-              Versão: 1.1.0
-            </p>
-          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script src="./js/home.js"></script>
+<script src="./js/shows.js"></script>

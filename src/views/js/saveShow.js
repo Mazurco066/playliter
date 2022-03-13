@@ -12,7 +12,8 @@ export default {
   data: () => ({
     form: {
       title: null,
-      description: null
+      description: null,
+      date: null
     }
   }),
   computed: {
@@ -57,7 +58,8 @@ export default {
       const show = await this.loadShow({ id, band })
       this.form = {
         title: show.data.title,
-        description: show.data.description
+        description: show.data.description,
+        date: show.data.date.split('T')[0]
       }
       if (!Object.keys(show.data).length > 0) {
         this.$toast.warning(`Apresentação de id ${id} não encontrada!`)
@@ -77,6 +79,9 @@ export default {
           required,
           minLength: minLength(3),
           maxLength: maxLength(255)
+        },
+        date: {
+          required
         }
       }
     }
