@@ -39,14 +39,11 @@
         </div>
         <div class="col-12 mt-3 mb-3">
           <div class="info">
-            <pre
-              id="lyrics"
-              class="tranposer"
-              :data-key="song.tone"
+            <div
               v-if="!songLoading"
-            >
-              {{ song.body }}
-            </pre>
+              v-html="parsedSong"
+              class="transposer"
+            />
             <div v-else>
               <lines class="shine"></lines>
               <lines class="shine"></lines>

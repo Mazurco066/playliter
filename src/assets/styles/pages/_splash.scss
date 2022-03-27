@@ -22,6 +22,11 @@
   height: 100%;
   transform: translate3d(-75%, 0px, 0px);
   -webkit-transform: translate3d(-75%, 0px, 0px);
+
+  img {
+    max-width: 250px;
+    object-fit: cover;
+  }
 }
 
 /* Splashscreen start logo */

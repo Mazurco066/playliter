@@ -12,9 +12,37 @@
     background-color: #ffffff!important;
   }
 
-  pre {
-    outline: none!important;
-    border: none!important;
+  .pdf-song {
+    padding: 1rem;
+
+    .transposer {
+      padding: 1rem;
+
+      .chordSheetViewer .chord:not(:last-child) {
+        padding-right: 10px;
+      }
+      
+      .chordSheetViewer .paragraph {
+        margin-bottom: 1em;
+      }
+      
+      .chordSheetViewer .row {
+        display: flex;
+      }
+      
+      .chordSheetViewer .chord:after {
+        content: '\200b';
+      }
+      
+      .chordSheetViewer .lyrics:after {
+        content: '\200b';
+      }
+    }
+
+    .paragraph, .title, .tone, .writter {
+      color: #000000!important;
+      font-family: "Manrope", Arial, Helvetica, sans-serif!important;
+    }
   }
 
   .pagebreak { 

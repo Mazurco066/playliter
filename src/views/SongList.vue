@@ -37,14 +37,11 @@
         </div>
         <div class="col-12 mt-3 mb-3">
           <div class="info">
-            <pre
-              id="lyrics"
-              class="tranposer"
-              :data-key="displaySong.tone"
+            <div
               v-if="!showLoading"
-            >
-              {{ displaySong.body }}
-            </pre>
+              v-html="displaySongHtml"
+              class="transposer"
+            />
             <div v-else>
               <lines class="shine"></lines>
               <lines class="shine"></lines>
@@ -57,10 +54,8 @@
       </div>
     </div>
 
-    <!-- Print list -->
+    <!--- Song print section -->
     <div v-if="!showLoading" class="songs d-none report-print">
-
-      <!-- PDF Preview -->
       <div id="pdf-preview">
         <div class="info">
           <h3 class="title">{{ show.title }}</h3>
@@ -69,25 +64,15 @@
         </div>
         <div class="pagebreak"></div>
       </div>
-
-      <!-- Songs -->
-      <div class="song bg-white" v-for="(song, i) in show.songs" :key="i">
-        <pre
-          class="tranposer bg-white"
-          :data-key="song.tone"
-          v-if="!showLoading"
-        >
-<!-- The lack of identation is desired unfortunatly -->
-<p>
-<span class="title">{{ song.title }}</span>
-{{ song.writter }}
-Tom: {{song.tone}}
-{{ song.body }}
-</p>
-        </pre>
+      <div class="song bg-white pdf-song" v-for="({ song, html }, i) in parsedSongs" :key="i">
+        <div class="song-header">
+          <h1 class="title mb-1">{{ song.title }}</h1>
+          <p class="writter mb-0">{{ song.writter }}</p>
+          <p class="tone">Tom: {{song.tone}}</p>
+        </div>
+        <div class="transposer" v-html="html" />
         <div class="pagebreak"></div>
       </div>
-      
     </div>
 
   </div>

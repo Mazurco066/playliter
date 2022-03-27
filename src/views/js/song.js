@@ -1,6 +1,6 @@
 // Dependencies
 import { mapActions, mapGetters } from 'vuex'
-import chordTransposer from '../../utils/chordTransposer'
+import { ChordSheetParser, HtmlDivFormatter } from 'chordsheetjs'
 
 // Component
 export default {
@@ -8,7 +8,8 @@ export default {
   data: () => ({
     song: {},
     shows: [],
-    isListModalOpen: false
+    isListModalOpen: false,
+    parsedSong: ''
   }),
   computed: {
     ...mapGetters({
@@ -88,7 +89,19 @@ export default {
     // First load song
     const r = await this.loadSong({ band, id })
     this.song = r.data
-    setTimeout(() => chordTransposer('pre').transpose(), 100)
+
+    try {
+      const song = r.data.body
+      const parser = new ChordSheetParser()
+      const parsedSong = parser.parse(song)
+      const formatter = new HtmlDivFormatter()
+      const displayHtmlSong = formatter.format(parsedSong)
+      this.parsedSong = displayHtmlSong
+    } catch (e) {
+      console.log('[parser error]', e)
+      this.$toast.error('Ocorreu um erro ao parsear a música!')
+    }
+    
     if (!Object.keys(r.data).length > 0) {
       this.$toast.warning(`Música de id ${id} não encontrada!`)
     }
