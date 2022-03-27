@@ -18,24 +18,23 @@
     .transposer {
       padding: 1rem;
 
-      .chordSheetViewer .chord:not(:last-child) {
-        padding-right: 10px;
-      }
-      
-      .chordSheetViewer .paragraph {
-        margin-bottom: 1em;
-      }
-      
-      .chordSheetViewer .row {
+      .row {
         display: flex;
+        flex-wrap: wrap;
+      }
+
+      .paragraph {
+        font-size: 1.15rem;
+      }
+
+      .chord {
+        overflow: hidden;
+        height: 1.40rem;
       }
       
-      .chordSheetViewer .chord:after {
-        content: '\200b';
-      }
-      
-      .chordSheetViewer .lyrics:after {
-        content: '\200b';
+      .lyrics {
+        overflow: hidden;
+        height: 1.40rem;
       }
     }
 
