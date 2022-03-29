@@ -1,7 +1,7 @@
 // Dependencies
 import { getAuthenticatedClient } from '../../api'
 import { asyncHandler } from '../../utils'
-import { LINK_SONG, UNLINK_SONG, ADD_SHOW, UPDATE_SHOW, REMOVE_SHOW } from '../../api/mutations'
+import { LINK_SONG, UNLINK_SONG, ADD_SHOW, UPDATE_SHOW, REMOVE_SHOW, REORDER_SONGS } from '../../api/mutations'
 import { PENDING_SHOW, SHOW, SHOWS } from '../../api/queries'
 
 // Object initial state
@@ -33,6 +33,23 @@ const actions = {
     return {
       error: error,
       data: error ? {} : id ? resp.data.updateShow : resp.data.addShow,
+      message: error ? resp.message : null
+    }
+  },
+  async reorderSongs({ commit }, {  id = null, songs = [] }) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.mutate({
+        mutation: REORDER_SONGS,
+        variables: { id, songs: songs.map(({ id }) => id) }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : resp.data.reorderShow,
       message: error ? resp.message : null
     }
   },

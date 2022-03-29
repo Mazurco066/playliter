@@ -18,7 +18,7 @@
       margin-bottom: 1rem;
       border-radius: 8px;
 
-      &:hover {
+      &:not(.reorder):hover {
         background: var(--color-primary);
 
         .info .title, .sub, .actions {
@@ -47,6 +47,15 @@
 
       .actions {
         flex: 0 0 auto;
+
+        .order {
+          color: var(--color-primary);
+
+          &:hover {
+            cursor: pointer;
+            color: #ffffff;
+          }
+        }
       }
 
       &:last-child {

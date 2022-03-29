@@ -5,7 +5,9 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'Show',
   data: () => ({
-    show: {}
+    show: {},
+    backupShow: {},
+    reorderMode: false
   }),
   computed: {
     ...mapGetters({
@@ -16,8 +18,26 @@ export default {
     ...mapActions({
       listBandShow: 'show/listBandShow',
       unlinkSong: 'show/unlinkSong',
-      deleteShow: 'show/removeShow'
+      deleteShow: 'show/removeShow',
+      reorderSongs: 'show/reorderSongs'
     }),
+    toggleReorder () {
+      if (!this.reorderMode) {
+        this.backupShow = JSON.parse(JSON.stringify(this.show))
+      } else {
+        this.show = JSON.parse(JSON.stringify(this.backupShow))
+        this.backupShow = {}
+      } 
+      this.reorderMode = !this.reorderMode
+    },
+    switchSong (current, target) {
+      const songs = this.show.songs
+      const currentSong = songs[current]
+      const targetSong = songs[target]
+      songs[target] = currentSong
+      songs[current] = targetSong
+      this.show = { ...this.show, songs }
+    },
     viewAsPlaylist () {
       const { band, id } = this.$route.params
       this.$router.push({
@@ -36,6 +56,27 @@ export default {
       this.$router.push({
         name: 'editShow',
         params: { band, id }
+      })
+    },
+    async reorder () {
+      const { id, songs } = this.show
+      this.$swal({
+        title: 'Tem certeza!',
+        text: 'Deseja reordenar essa apresentação?',
+        showDenyButton: true,
+        confirmButtonColor: '#1C8781',
+        confirmButtonText: 'Reordenar',
+        denyButtonText: `Cancelar`
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const r = await this.reorderSongs({ id, songs })
+          if (r.error) {
+            this.$toast.error(`Ocorreu um erro ao reordenar as músicas! Tente novamente mais tarde`)
+          } else {
+            this.$toast.success('Apresentação reordenada com sucesso!')
+            await this.loadShow()
+          }
+        }
       })
     },
     async removeShow () {
@@ -93,13 +134,18 @@ export default {
         }
       })
     },
+    async loadShow() {
+      const { band, id } = this.$route.params
+      const show = await this.listBandShow({ band, id })
+      this.show = show.data
+      this.backupShow = {}
+      this.reorderMode = false
+      if (!Object.keys(show.data).length > 0) {
+        this.$toast.warning(`Apresentação de id ${id} não encontrada!`)
+      }
+    }
   },
   async mounted () {
-    const { band, id } = this.$route.params
-    const show = await this.listBandShow({ band, id })
-    this.show = show.data
-    if (!Object.keys(show.data).length > 0) {
-      this.$toast.warning(`Apresentação de id ${id} não encontrada!`)
-    }
+    await this.loadShow()
   }
 }

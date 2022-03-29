@@ -10,9 +10,18 @@
             <base-button
               nativeType="button"
               type="primary"
+              class="mb-3"
               @click="navigateToCategories()"
             >
               Gerenciar categorias
+            </base-button>
+
+            <base-button
+              nativeType="button"
+              type="secondary"
+              @click="saveSong()"
+            >
+              Nova música
             </base-button>
           </div>
         </div>

@@ -48,6 +48,13 @@ export default {
         name: 'categories',
         params: { band }
       })
+    },
+    saveSong () {
+      const { band } = this.$route.params
+      this.$router.push({
+        name: 'saveSong',
+        params: { band }
+      })
     }
   },
   async mounted () {
