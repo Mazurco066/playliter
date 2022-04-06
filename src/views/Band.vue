@@ -1,35 +1,41 @@
 <template>
   <div id="band">
+    
+    <!-- Band content -->
     <div class="container">
-      <div class="row pt-3">
+      <div class="row pt-3 band-header">
         <div class="col-12">
-          <div v-if="isDisplayReady" class="info about">
-            <h3 class="title">{{ band.title }}</h3>
+          <div v-if="isDisplayReady" class="about">
+            <h3 class="title mt-3">{{ band.title }}</h3>
             <hr />
-            <p class="mb-1">{{ band.description }}</p>
-            <hr />
+            <p class="mb-3">{{ band.description }}</p>
             <span>
               Criada em 
               <strong>
                 {{ $text.formatISODate(new Date(parseInt(band.createdAt)).toISOString()) }}
               </strong>
             </span>
-            <hr />
-            <div class="actions">
+            <div class="band-actions">
               <div @click="openInviteModal()" class="action">
-                <font-awesome-icon icon="user-plus" class="text-info" />
+                <div class="icon-bg">
+                  <font-awesome-icon icon="user-plus" />
+                </div>
                 <p class="mb-0">
                   <small>Convidar</small>
                 </p>
               </div>
-              <div @click="navigateTo('editBand', null, band.id)" class="action">
-                <font-awesome-icon icon="edit" class="text-warning" />
+              <div @click="navigateTo('editBand', band.id)" class="action">
+                <div class="icon-bg">
+                  <font-awesome-icon icon="edit"  />
+                </div>
                 <p class="mb-0">
                   <small>Editar</small>
                 </p>
               </div>
               <div v-if="band.owner.id === me.id" @click="disposeBand()" class="action">
-                <font-awesome-icon icon="trash" class="text-danger" />
+                <div class="icon-bg">
+                  <font-awesome-icon icon="trash" />
+                </div>
                 <p class="mb-0">
                   <small>Remover</small>
                 </p>
@@ -44,138 +50,81 @@
             <lines class="shine"></lines>
           </div>
         </div>
-        <div class="col-12 pt-3">
-          <div class="info">
-            <div class="info-title">
-              <h3 class="title">Repertório</h3>
-              <button class="btn-card" @click="saveSong(band.id)">
-                <font-awesome-icon icon="plus" />
-              </button>
-            </div>
-            <hr />
-            <div v-if="isDisplayReady">
-              <ul class="songs" v-if="songs.length > 0">
-                <li v-for="(s, i) in songs" :key="i" class="song" @click="navigateTo('song', s.band.id, s.id)">
-                  <div class="icon mr-3">
-                    <div class="song-img">
-                      <img :src="`/img/arts/01.png`" />
-                    </div>
-                  </div>
-                  <div class="song-info">
-                    <p class="mb-0">
-                      <strong>{{ s.title }}</strong>
-                    </p>
-                    <span>{{ s.writter }}</span>
-                  </div>
-                </li>
-              </ul>
-              <p v-else class="mb-0">
-                Não há músicas registradas nessa banda!
-              </p>
-            </div>
-            <div v-else>
-              <ul class="songs">
-                <li class="song">
-                  <div class="icon mr-3">
-                    <div class="song-img">
-                      <photo class="shine"></photo>
-                    </div>
-                  </div>
-                  <div class="song-info">
-                    <p class="mb-0">
-                      <lines class="shine"></lines>
-                    </p>
-                    <lines class="shine"></lines>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <hr />
-            <base-button
-              v-if="isDisplayReady"
-              @click="navigateTo('directory', band.id)"
-              htmlType="button"
-              type="primary"
-            >
-              Ver repertório completo
-            </base-button>
-            <lines v-else class="shine"></lines>
-          </div>
+      </div>
+      <div class="row band-activities">
+        <div class="col-12">
+          <h3 class="title mb-3">
+            Ferramentas
+          </h3>
         </div>
-        <div class="col-12 pt-3">
-          <div class="info">
-            <div class="info-title">
-              <h3 class="title">Apresentações</h3>
-              <button class="btn-card" @click="saveShow(band.id)">
-                <font-awesome-icon icon="plus" />
-              </button>
-            </div>
-            <hr />
-            <div v-if="isDisplayReady">
-              <ul class="shows" v-if="shows.length > 0">
-                <li v-for="(s, i) in shows" :key="i" class="show" @click="navigateTo('show', s.band.id, s.id)">
-                  <div class="icon mr-3">
-                    <div class="show-img">
-                      <img :src="`/img/arts/02.png`" />
-                    </div>
-                  </div>
-                  <div class="show-info">
-                    <p class="mb-0">
-                      <strong>{{ s.title }}</strong>
-                    </p>
-                    <span>{{ s.description }}</span>
-                  </div>
-                </li>
-              </ul>
-              <p v-else class="mb-0">
-                Não há apresentações registradas nessa banda!
-              </p>
-            </div>
-            <div v-else>
-              <ul class="shows">
-                <li class="show">
-                  <div class="icon mr-3">
-                    <div class="show-img">
-                      <photo class="shine"></photo>
-                    </div>
-                  </div>
-                  <div class="show-info">
-                    <p class="mb-0">
-                      <lines class="shine"></lines>
-                    </p>
-                    <lines class="shine"></lines>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <hr />
-            <base-button
-              v-if="isDisplayReady"
-              type="primary"
-              @click="navigateTo('shows', band.id)"
+        <div class="col-12">
+          <ul v-if="isDisplayReady" class="activities">
+            <li
+              class="item"
+              v-for="(item, i) in menu"
+              :key="i"
+              @click="navigateTo(item.redirect)"
             >
-              Ver todas apresentações
-            </base-button>
-            <lines v-else class="shine"></lines>
-          </div>
+              <div class="icon">
+                <font-awesome-icon
+                  :icon="item.icon"
+                  size="3x"
+                />
+              </div>
+              <p class="mb-0 text-center">
+                {{ item.text }}
+              </p>
+            </li>
+          </ul>
+          <ul v-else class="activities">
+            <li class="item">
+              <div class="icon">
+                <photo class="shine" />
+              </div>
+              <lines class="shine" />
+            </li>
+            <li class="item">
+              <div class="icon">
+                <photo class="shine" />
+              </div>
+              <lines class="shine" />
+            </li>
+            <li class="item">
+              <div class="icon">
+                <photo class="shine" />
+              </div>
+              <lines class="shine" />
+            </li>
+          </ul>
         </div>
-        <div class="col-12 pt-3 mb-3">
-          <div class="info">
-            <h3 class="title">Membros</h3>
-            <hr />
-            <ul v-if="isDisplayReady" class="members">
-              <li v-for="(m, i) in band.members" :key="i" class="member">
-                <div class="member-info">
-                  <p class="mb-0">
-                    <strong>{{ m.name }}</strong>
-                  </p>
-                  <span> {{ 
+      </div>
+      <div class="row band-members">
+        <div class="col-12">
+          <h3 class="title mb-3">
+            Integrantes
+          </h3>
+        </div>
+        <div class="col-12">
+          <ul v-if="isDisplayReady" class="members">
+            <li v-for="(m, i) in band.members" :key="i" class="item">
+              <div class="icon">
+                <div class="picture">
+                  <img src="/img/j_black.jpg" alt="">
+                </div>
+              </div>
+              <div class="info">
+                <p class="mb-0">
+                  <strong>{{ m.name }}</strong>
+                </p>
+                <span>
+                  {{ 
                     band.owner.id === m.id 
                       ? 'Fundador' 
                       : band.admins.find(a => a.id === m.id) 
                         ? 'Administrador'
                         : 'Membro' 
-                  }}</span>
+                  }}
+                </span>
                 </div>
                 <div class="actions" v-if="band.owner.id !== m.id">
                   <base-dropdown class="dropdown" position="right">
@@ -219,8 +168,8 @@
               </li>
             </ul>
             <ul v-else class="members">
-              <li class="member">
-                <div class="member-info mr-2">
+              <li class="item">
+                <div class="info mr-3">
                   <p class="mb-0">
                     <lines class="shine"></lines>
                   </p>
@@ -231,10 +180,10 @@
                 </div>
               </li>
             </ul>
-          </div>
         </div>
       </div>
     </div>
+
     <!-- Modals -->
     <base-modal @close="closeInviteModal" :show="isInviteModalOpen">
       <slot name="header">
@@ -285,6 +234,7 @@
         </form>
       </div>
     </base-modal>
+
   </div>
 </template>
 

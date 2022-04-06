@@ -11,7 +11,7 @@
               <div class="info">
                 <p class="mb-0">Bem vindo ao <strong>Playliter</strong>!</p>
                 <span>
-                  <strong class="text-primary">
+                  <strong>
                     {{ $text.truncate(me.name || '', 18) }}
                   </strong>
                 </span>

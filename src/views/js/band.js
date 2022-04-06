@@ -16,7 +16,24 @@ export default {
     isInviteModalOpen: false,
     inviteForm: {
       username: ''
-    }
+    },
+    menu: [
+      {
+        text: 'Categorias',
+        icon: 'compact-disc',
+        redirect: 'categories'
+      },
+      {
+        text: 'Repertório',
+        icon: 'music',
+        redirect: 'directory'
+      },
+      {
+        text: 'Apresentações',
+        icon: 'microphone-lines',
+        redirect: 'shows'
+      }
+    ]
   }),
   computed: {
     ...mapGetters({
@@ -42,10 +59,10 @@ export default {
       promoteBandMember: 'band/promoteBandMember',
       removeBand: 'band/removeBand'
     }),
-    navigateTo (route, band, id = null) {
+    navigateTo (route, id = null) {
       this.$router.push({
         name: route,
-        params: { band, id }
+        params: { band: this.band.id, id }
       })
     },
     saveShow (band) {
