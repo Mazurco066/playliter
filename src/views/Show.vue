@@ -1,56 +1,61 @@
 <template>
   <div id="show">
     <div class="container">
-      <div class="row pt-3">
+      <div class="row pt-3 primary-section">
         <div class="col-12">
           <div v-if="!showLoading" class="info about">
-            <h3 class="title">{{ show.title }}</h3>
+            <h3 class="title mt-3">{{ show.title }}</h3>
             <hr />
-            <p class="mb-1">{{ show.description }}</p>
-            <hr />
+            <p class="mb-3">{{ show.description }}</p>
             <span v-if="show.createdAt">
               Criada em 
               <strong>
                 {{ $text.formatISODate(new Date(parseInt(show.createdAt)).toISOString()) }}
               </strong>
             </span>
-            <hr />
-            <div class="actions">
+            <div class="show-actions">
               <div class="action" @click="editShow()">
-                <font-awesome-icon icon="edit" class="text-warning" />
+                <div class="icon-bg">
+                  <font-awesome-icon icon="edit" />
+                </div>
                 <p class="mb-0">
                   <small>Editar</small>
                 </p>
               </div>
               <div class="action" @click="toggleReorder()">
-                <font-awesome-icon
-                  :icon="reorderMode ? 'times' : 'arrows-alt-v'"
-                  :class="reorderMode ? 'text-danger' : 'text-info'"
-                />
+                <div class="icon-bg">
+                  <font-awesome-icon :icon="reorderMode ? 'times' : 'arrows-alt-v'" />
+                </div>
                 <p class="mb-0">
                   <small>{{ reorderMode ? 'Cancelar' : 'Reordenar' }}</small>
                 </p>
               </div>
               <div class="action" @click="removeShow()">
-                <font-awesome-icon icon="trash" class="text-danger" />
+                <div class="icon-bg">
+                  <font-awesome-icon icon="trash" />
+                </div>
                 <p class="mb-0">
                   <small>Remover</small>
                 </p>
               </div>
             </div>
           </div>
-          <div v-else class="info">
+          <div v-else class="info pb-3">
             <lines class="shine"></lines>
             <hr />
             <lines class="shine"></lines>
-            <hr />
             <lines class="shine"></lines>
           </div>
         </div>
+      </div>
+      <div class="row secondary-section pt-3">
+        <div class="col-12">
+          <h3 class="title mb-3">Músicas selecionadas</h3>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-12 pt-3 mb-3">
-          <div class="info">
-            <h3 class="title">Músicas selecionadas</h3>
-            <hr />
+          <div>
             <!-- Current song display -->
             <div v-if="!reorderMode">
               <div v-if="!showLoading && show.songs">

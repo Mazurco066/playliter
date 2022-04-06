@@ -17,7 +17,10 @@
                 </span>
               </div>
               <div class="logo">
-                <img src="/img/logo_only.png" alt="Playliter logo">
+                <img
+                  src="/img/logo.svg"
+                  alt="Playliter logo"
+                />
               </div>
             </div>
           </div>

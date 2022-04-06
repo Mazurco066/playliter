@@ -1,14 +1,20 @@
 <template>
   <div id="shows"> 
-    <div class="container pt-3">
+    <div class="container ">
+      <div class="row pt-3 primary-section mb-3">
+        <div class="col-12">
+          <h3 class="title mt-3">
+            Apresentações
+          </h3>
+          <p class="mt-3">
+            Apresentações registradas para a banda performar.
+          </p>
+        </div>
+      </div>
       <div class="row">
         <div class="col-12">
           <!-- Pending shows -->
-          <div class="info">
-            <h3 class="title">
-              Apresentações (Banda)
-            </h3>
-            <hr />
+          <div>
             <div v-if="!showLoading">
               <ul v-if="shows.length > 0" class="list">
                 <li

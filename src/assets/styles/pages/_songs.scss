@@ -7,14 +7,9 @@
     font-weight: bold;
   }
 
-  .info {
-    padding: 1rem 1.5rem;
-    background-color: rgba(0, 0 ,0, 0.2);
-    border: 1px solid var(--color-text);
+  .song-actions {
+    padding: 1rem 1rem;
     border-radius: 8px;
-  }
-
-  .actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,7 +20,16 @@
       justify-content: center;
       align-items: center;
 
-      i {
+      .icon-bg {
+        background-color: #f2f2f2;
+        padding: 1rem;
+        width: 48px;
+        height: 48px;
+        border-radius: 96px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #292d32;
         margin-bottom: 4px;
       }
 
@@ -36,11 +40,15 @@
       &:hover {
         cursor: pointer;
         
-        i {
-          color: #ffffff!important;
+        .icon-bg {
+          color: var(--color-primary-dark)!important;
         }
       }
     }
+  }
+
+  .info {
+    padding: 1rem 1.5rem;
   }
 
   .shows {
