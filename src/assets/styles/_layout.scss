@@ -1,3 +1,13 @@
+.primary-section {
+  background-color: var(--color-primary);
+  color: var(--color-text-dark);
+}
+
+.secondary-section {
+  background-color: var(--color-primary-light);
+  color: var(--color-text-dark);
+}
+
 .auth-link a {
   color: var(--color-text);
 

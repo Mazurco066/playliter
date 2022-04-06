@@ -1,19 +1,20 @@
 #bands {
-
   .list {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     list-style: none;
 
     .item {
       width: 100%;
       margin-bottom: 1rem;
+      padding: 1rem 0.5rem;
       border-radius: 8px;
-      padding: 1rem 1.5rem;
-      background-color: rgba(0, 0 ,0, 0.2);
-      border: 1px solid var(--color-text);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
 
       &:hover {
-        background: var(--color-primary);
+        background: var(--color-primary-dark);
 
         .info .title, .sub, .actions {
           color: #ffffff;
@@ -51,10 +52,14 @@
       .actions {
         flex: 0 0 auto;
       }
+    }
+  }
 
-      &:last-child {
-        margin-bottom: 0;
-      }
+  .no-bands {
+    .icon {
+      max-width: 360px;
+      width: 100%;
+      margin: 1rem auto;
     }
   }
 }
@@ -63,12 +68,6 @@
   .title {
     font-size: 1.25rem;
     text-transform: uppercase;
-  }
-
-  .band-header {
-    background-color: var(--color-primary);
-    color: var(--color-text-dark);
-    padding: 1rem;
   }
 
   .band-actions {
@@ -113,10 +112,6 @@
   }
 
   .band-activities {
-    background-color: var(--color-primary-light);
-    color: var(--color-text-dark);
-    padding: 1rem 1rem;
-
     .activities {
       list-style: none;
       display: flex;
@@ -158,7 +153,6 @@
           margin-right: 0;
         }
       }
-
     }
   }
 
@@ -171,6 +165,7 @@
 
     .members {
       list-style: none;
+      margin-bottom: 1rem;
 
       .item {
         display: flex;

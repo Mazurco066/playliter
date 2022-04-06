@@ -3,7 +3,7 @@
     
     <!-- Band content -->
     <div class="container">
-      <div class="row pt-3 band-header">
+      <div class="row pt-3 band-header primary-section p-3">
         <div class="col-12">
           <div v-if="isDisplayReady" class="about">
             <h3 class="title mt-3">{{ band.title }}</h3>
@@ -51,7 +51,7 @@
           </div>
         </div>
       </div>
-      <div class="row band-activities">
+      <div class="row band-activities secondary-section p-3">
         <div class="col-12">
           <h3 class="title mb-3">
             Ferramentas
