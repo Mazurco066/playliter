@@ -75,7 +75,7 @@
       <div class="row">
         <div class="col-12">
           <p class="text-center">
-            Versão: <strong>1.1.0</strong>
+            Versão: <strong>2.0.0</strong>
           </p>
         </div>
       </div>
