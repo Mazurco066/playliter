@@ -7,6 +7,14 @@
       object-fit: cover;
     }
   }
+
+  .form-control-label {
+    color: var(--color-text-dark);
+  }
+
+  p, span, a {
+    color: var(--color-text-dark);
+  }
 }
 
 #sign-up {
@@ -17,5 +25,13 @@
       max-width: 100%;
       object-fit: cover;
     }
+  }
+
+  .form-control-label {
+    color: var(--color-text-dark);
+  }
+
+  p, span, a {
+    color: var(--color-text-dark);
   }
 }
