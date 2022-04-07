@@ -3,20 +3,25 @@
   
     <!-- Page main content -->
     <div class="container">
-      <div class="row pt-3">
+      <div class="row pt-3 primary-section ">
         <div class="col-12">
           <h3 class="klasik">Meu perfil</h3>
+          <p class="mb-3">
+            Visualize ou edite informações de seu perfil dentro do App.
+          </p>
         </div>
       </div>
-      <form class="info" @submit.prevent="saveProfile">
-        <div class="row">
-          <div class="col-12">
+      <form @submit.prevent="saveProfile">
+        <div class="row secondary-section mb-3">
+          <div class="col-12 pt-3">
             <div class="avatar">
               <div class="icon">
                 <img src="/img/arts/face-recognition.png" alt="Sample user">
               </div>
             </div>
           </div>
+        </div>
+        <div class="row mb-3">
           <div class="col-12">
             <base-input
               type="text"

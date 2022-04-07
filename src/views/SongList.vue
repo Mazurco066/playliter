@@ -3,40 +3,52 @@
 
     <!-- Song switcher -->
     <div class="container no-print">
-      <div class="row pt-3">
+      <div class="row pt-3 primary-section">
         <div class="col-12">
-          <div class="info">
-            <p v-if="!showLoading" class="title mb-0">
-              {{ displaySong.title }}
-            </p>
-            <lines v-else class="shine"></lines>
-            <span v-if="!showLoading">{{ displaySong.writter }}</span>
-            <lines v-else class="shine"></lines>
-            <hr v-if="!showLoading" />
-            <div v-if="!showLoading" class="actions">
-              <div class="action" @click="switchSong(-1)">
-                <font-awesome-icon icon="angle-double-left" class="text-info" />
-                <p class="mb-0">
-                  <small>Anterior</small>
-                </p>
+          <!-- Title -->
+          <p v-if="!showLoading" class="title mb-0">
+            {{ displaySong.title }}
+          </p>
+          <lines v-else class="shine"></lines>
+          <!-- Writter -->
+          <p v-if="!showLoading" class="mb-3">
+            {{ displaySong.writter }}
+          </p>
+          <lines v-else class="shine"></lines>
+          <hr class="mb-1" />
+        </div>
+        <div class="col-12">
+          <div v-if="!showLoading" class="playlist-actions">
+            <div class="action" @click="switchSong(-1)">
+              <div class="icon-bg">
+                <font-awesome-icon icon="angle-double-left" />
               </div>
-              <div class="action" @click="downloadReport()">
-                <font-awesome-icon icon="print" class="text-white" />
-                <p class="mb-0">
-                  <small>Exportar PDF</small>
-                </p>
+              <p class="mb-0">
+                <small>Anterior</small>
+              </p>
+            </div>
+            <div class="action" @click="downloadReport()">
+              <div class="icon-bg">
+                <font-awesome-icon icon="print" />
               </div>
-              <div class="action" @click="switchSong(1)">
-                <font-awesome-icon icon="angle-double-right" class="text-info" />
-                <p class="mb-0">
-                  <small>Próxima</small>
-                </p>
+              <p class="mb-0">
+                <small>Exportar PDF</small>
+              </p>
+            </div>
+            <div class="action" @click="switchSong(1)">
+              <div class="icon-bg">
+                <font-awesome-icon icon="angle-double-right" />
               </div>
+              <p class="mb-0">
+                <small>Próxima</small>
+              </p>
             </div>
           </div>
         </div>
-        <div class="col-12 mt-3 mb-3">
-          <div class="info">
+      </div>
+      <div class="row">
+        <div class="col-12 mb-3">
+          <div class="song-view">
             <div
               v-if="!showLoading"
               v-html="displaySongHtml"

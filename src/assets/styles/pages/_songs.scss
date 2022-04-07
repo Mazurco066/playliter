@@ -7,14 +7,9 @@
     font-weight: bold;
   }
 
-  .info {
-    padding: 1rem 1.5rem;
-    background-color: rgba(0, 0 ,0, 0.2);
-    border: 1px solid var(--color-text);
+  .song-actions {
+    padding: 1rem 1rem;
     border-radius: 8px;
-  }
-
-  .actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,7 +20,16 @@
       justify-content: center;
       align-items: center;
 
-      i {
+      .icon-bg {
+        background-color: #f2f2f2;
+        padding: 1rem;
+        width: 48px;
+        height: 48px;
+        border-radius: 96px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #292d32;
         margin-bottom: 4px;
       }
 
@@ -36,11 +40,15 @@
       &:hover {
         cursor: pointer;
         
-        i {
-          color: #ffffff!important;
+        .icon-bg {
+          color: var(--color-primary-dark)!important;
         }
       }
     }
+  }
+
+  .info {
+    padding: 1rem 1.5rem;
   }
 
   .shows {
@@ -79,19 +87,11 @@
     min-height: 100%;
   }
 
-  .info-card {
-    padding: 1rem 1.5rem;
-    background-color: rgba(0, 0 ,0, 0.2);
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    border: 1px solid var(--color-text);
-  }
-
   .categories {
     list-style: none;
 
     .content {
-      padding: 1rem 1.5rem;
+      padding: 1rem 0rem;
 
       p {
         margin-bottom: 0;
@@ -99,12 +99,15 @@
     }
 
     .category {
-      border: 1px solid var(--color-text);
       margin-bottom: 1rem;
       border-radius: 8px;
 
       .content {
         position: relative;
+        padding: 1.25rem 0.5rem 1rem 0.5rem;
+        color: var(--color-text-dark);
+        background-color: var(--color-primary-light);
+        border-radius: 8px;
       }
 
       .description {
@@ -130,14 +133,17 @@
 
   .songs {
     list-style: none;
-    background-color: rgba(0, 0 ,0, 0.2);
+    padding: 0.5rem;
+    background-color: #f5f5f5;
 
    .song {
 
       .content {
+        background-color: #f5f5f5;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        color: var(--color-text);
 
         .icon {
           flex: 0 0 auto;
@@ -156,30 +162,33 @@
       }
 
       &:hover {
-        background: var(--color-primary);
-
-        .song-info .title, .sub, .actions {
-          color: #ffffff;
-        }
+        opacity: 0.5;
+        border-radius: 8px;
+        cursor: pointer;
       }
     }
 
   }
+
+  .no-directory {
+    .icon {
+      max-width: 360px;
+      width: 100%;
+      margin: 1rem auto;
+    }
+  }
 }
 
 #saveSong {
-  .info {
-    padding: 1rem 1.5rem;
-    background-color: rgba(0, 0 ,0, 0.2);
-    border: 1px solid var(--color-text);
-    border-radius: 8px;
-    margin-bottom: 1rem;
+  .title {
+    font-size: 1.25rem;
+    text-transform: uppercase;
   }
 
   .custom-label {
     font-size: 0.875rem;
     font-weight: 500;
-    color: var(--color-text);
+    color: var(--color-text-dark);
     margin-bottom: 0.5rem;
   }
 

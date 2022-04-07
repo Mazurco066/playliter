@@ -7,11 +7,48 @@
     font-weight: bold;
   }
 
-  .info {
-    padding: 1rem 1.5rem;
-    background-color: rgba(0, 0 ,0, 0.2);
-    border: 1px solid var(--color-text);
+  .playlist-actions {
+    padding: 1rem 1rem;
     border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .action {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .icon-bg {
+        background-color: #f2f2f2;
+        padding: 1rem;
+        width: 48px;
+        height: 48px;
+        border-radius: 96px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #292d32;
+        margin-bottom: 4px;
+      }
+
+      p small {
+        font-weight: bold;
+      }
+
+      &:hover {
+        cursor: pointer;
+        
+        .icon-bg {
+          color: var(--color-primary-dark)!important;
+        }
+      }
+    }
+  }
+
+  .song-view {
+    padding: 1rem 1.5rem;
   }
 
   .actions {

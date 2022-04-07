@@ -33,7 +33,7 @@
         font-size: 11px;
         letter-spacing: 1px;
         text-decoration: none;
-        color: var(--color-text);
+        color: var(--color-primary);
         line-height: 1;
         vertical-align: middle;
 
@@ -57,7 +57,7 @@
 
         &.is-active {
           color: white;
-          background-color: var(--color-primary);  
+          background-color: var(--color-primary-dark);  
                  
           span {
             opacity: 1;

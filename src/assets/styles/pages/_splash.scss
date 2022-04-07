@@ -1,9 +1,9 @@
 /* Splashscreen background */
 .splash {
   position: fixed;
-  background: #0f2027;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #0f2027, #203a43, #2c5364);
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  background: var(--color-secondary);  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, var(--color-primary-dark), var(--color-primary-light));
+  background: linear-gradient(to bottom, var(--color-primary-dark), var(--color-primary-light));
   width: 100vw;
   height: 100vh;
   top: 50%;
