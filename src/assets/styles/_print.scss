@@ -13,28 +13,36 @@
   }
 
   .pdf-song {
-    padding: 1rem;
 
     .transposer {
-      padding: 1rem;
 
-      .row {
-        display: flex;
-        flex-wrap: wrap;
-      }
-
-      .paragraph {
-        font-size: 1.15rem;
+      pre {
+        outline: none;
+        border: none;
       }
 
       .chord {
-        overflow: hidden;
-        height: 1.40rem;
+        color: var(--color-primary);
+		    font-weight: bold;
       }
-      
-      .lyrics {
-        overflow: hidden;
-        height: 1.40rem;
+
+      .title {
+        margin: 0;
+        line-height: 1rem;
+      }
+
+      .tone {
+        margin: 0;
+        line-height: 1rem;
+      }
+
+      .writter {
+        margin: 0;
+        line-height: 1rem;
+      }
+
+      .song-body {
+        font-size: 20px;
       }
     }
 
