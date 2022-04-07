@@ -16,6 +16,13 @@ export default {
     ...mapActions({
       listBandShows: 'show/listBandShows'
     }),
+    saveShow () {
+      const { band } = this.$route.params
+      this.$router.push({
+        name: 'saveShow',
+        params: { band }
+      })
+    },
     viewShow (show = {}) {
       this.$router.push({
         name: 'show',

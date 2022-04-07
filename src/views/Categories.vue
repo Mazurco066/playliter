@@ -3,23 +3,30 @@
 
      <!-- Main container --->
     <div class="container">
-      <div class="row pt-3">
+      <div class="row pt-3 primary-section">
         <div class="col-12">
-          <div class="info-card">
-            <base-button
-              nativeType="button"
-              type="primary"
-              @click="openCategoryModal()"
-            >
-              Adicionar Categoria
-            </base-button>
-          </div>
+          <h3 class="title mt-3">Categorias</h3>
+          <p class="mt-3">
+            Categorias registradas para a banda selecionada.
+          </p>
         </div>
+      </div>
+      <div class="row secondary-section mb-3">
         <div class="col-12">
-          <div class="info-card">
-            <h3 class="title">Categorias</h3>
-            <hr />
-            <ul v-if="isDisplayReady" class="categories">
+          <base-button
+            nativeType="button"
+            type="primary"
+            class="mt-3 mb-3"
+            @click="openCategoryModal()"
+          >
+            Adicionar Categoria
+          </base-button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div v-if="isDisplayReady">
+            <ul v-if="categories.length > 0" class="categories">
               <li
                 v-for="(c, i) in categories"
                 :key="i"
@@ -28,7 +35,7 @@
               >
                 <div class="category-info">
                   <p class="mb-0">
-                    <strong>{{ c.title }}</strong>
+                      <strong>{{ c.title }}</strong>
                   </p>
                   <span>
                     {{ c.description }}
@@ -39,7 +46,19 @@
                 </div>
               </li>
             </ul>
-            <ul v-else class="categories">
+            <div v-else class="no-categories">
+              <div class="icon">
+                <img src="/img/arts/not_found.svg" alt="No content">
+              </div>
+              <p class="mb-3 text-center">
+                <strong>
+                  Essa banda não possuí categorias cadastradas!
+                </strong>
+              </p>
+            </div>
+          </div>
+          <div v-else>
+            <ul class="categories">
               <li class="category">
                 <div class="category-info">
                   <p class="mb-0">

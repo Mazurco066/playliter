@@ -62,7 +62,7 @@
               <div class="icon">
                 <img src="/img/arts/not_found.svg" alt="No content">
               </div>
-              <p class="mb-0 text-center">
+              <p class="mb-3 text-center">
                 <strong>
                   Você não participa de nenhuma banda no momento!
                 </strong>

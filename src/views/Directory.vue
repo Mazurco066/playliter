@@ -3,46 +3,46 @@
   
     <!-- Main container --->
     <div class="container">
-      <div class="row pt-3">
-        <!-- Adicionar categoria -->
+      <div class="row pt-3 primary-section">
         <div class="col-12">
-          <div class="info-card">
-            <base-button
-              nativeType="button"
-              type="primary"
-              class="mb-3"
-              @click="navigateToCategories()"
-            >
-              Gerenciar categorias
-            </base-button>
-
-            <base-button
-              nativeType="button"
-              type="secondary"
-              @click="saveSong()"
-            >
-              Nova música
-            </base-button>
-          </div>
-        </div>
-        <!-- Lista do repertório -->
-        <div class="col-12">
-          <div class="info-card">
-            <h3 class="title">Repertório completo</h3>
-            <div v-if="!songLoading">
+          <h3 class="title">Repertório completo</h3>
+          <div v-if="!songLoading">
               <p class="mb-3">Contendo <strong>{{ repertory.numberOfItems }}</strong> músicas.</p>
               <base-input
                 name="search"
                 placeholder="Pesquisar música..."
                 v-model="search"
-                noMargin
               />
             </div>
             <lines v-else class="shine"></lines>
-          </div>
-          <div class="info">
+        </div>
+      </div>
+      <div class="row secondary-section mb-3">
+        <div class="col-12">
+          <base-button
+            nativeType="button"
+            type="primary"
+            class="mt-3 mb-2"
+            @click="navigateToCategories()"
+          >
+            Gerenciar categorias
+          </base-button>
+          <base-button
+            nativeType="button"
+            type="secondary"
+            class="mb-3"
+            @click="saveSong()"
+          >
+            Nova música
+          </base-button>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Lista do repertório -->
+        <div class="col-12">
+          <div v-if="!songLoading">
             <!-- Categories list -->
-            <ul v-if="!songLoading" class="categories">
+            <ul v-if="filteredRepertorySongs.length > 0" class="categories">
               <li v-for="(s, i) in filteredRepertorySongs" :key="i" class="category">
                 <div class="content">
                   <p class="text-uppercase mb-0">
@@ -79,8 +79,21 @@
                 </ul>
               </li>
             </ul>
+            <!-- No data -->
+            <div v-else class="no-directory">
+              <div class="icon">
+                <img src="/img/arts/not_found.svg" alt="No content">
+              </div>
+              <p class="mb-3 text-center">
+                <strong>
+                  Nenhuma música foi encontrada com o filtro utilizado!
+                </strong>
+              </p>
+            </div>
+          </div>
+          <div v-else>
             <!-- Loading shimmer -->
-            <ul v-else class="categories">
+            <ul class="categories">
               <li class="category">
                 <div class="content">
                   <p class="text-uppercase mb-0">
@@ -111,7 +124,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
