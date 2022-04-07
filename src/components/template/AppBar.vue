@@ -11,13 +11,16 @@
               <div class="info">
                 <p class="mb-0">Bem vindo ao <strong>Playliter</strong>!</p>
                 <span>
-                  <strong class="text-primary">
+                  <strong>
                     {{ $text.truncate(me.name || '', 18) }}
                   </strong>
                 </span>
               </div>
               <div class="logo">
-                <img src="/img/logo_only.png" alt="Playliter logo">
+                <img
+                  src="/img/logo.svg"
+                  alt="Playliter logo"
+                />
               </div>
             </div>
           </div>

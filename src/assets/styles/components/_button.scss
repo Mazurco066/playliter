@@ -7,11 +7,19 @@
   width: initial!important;
 }
 
+.btn-alt {
+  background-color: #b7c1bc!important;
+
+  &:hover {
+    opacity: 0.65;
+  }
+}
+
 .floating-btn {
   height: 50px;
   width: 50px;
   border-radius: 25px;
-  background-color: var(--color-primary);
+  background-color: var(--color-primary-dark);
   border: none;
   outline: none;
   color: #ffffff;

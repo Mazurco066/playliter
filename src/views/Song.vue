@@ -2,42 +2,50 @@
   <div id="song" class="full">
     <!-- Song container-->
     <div class="container full">
-      <div class="row pt-3">
+      <div class="row pt-3 primary-section">
         <div class="col-12">
-          <div class="info">
-            <p v-if="!songLoading" class="title mb-0">
-              {{ song.title }}
-            </p>
-            <lines v-else class="shine"></lines>
-            <span v-if="!songLoading">{{ song.writter }}</span>
-            <lines v-else class="shine"></lines>
-            <hr />
-            <div class="actions">
-              <div class="action" @click="openListModal()">
-                <font-awesome-icon icon="list" class="text-info" />
-                <p class="mb-0">
-                  <small>+ Lista</small>
-                </p>
+          <p v-if="!songLoading" class="title mb-0">
+            {{ song.title }}
+          </p>
+          <lines v-else class="shine"></lines>
+          <p v-if="!songLoading">{{ song.writter }}</p>
+          <lines v-else class="shine"></lines>
+          <hr class="mb-1" />
+        </div>
+        <div class="col-12">
+          <div v-if="!songLoading" class="song-actions">
+            <div class="action" @click="openListModal()">
+              <div class="icon-bg">
+                <font-awesome-icon icon="list" />
               </div>
-              <div class="action" @click="editSong()">
-                <font-awesome-icon icon="edit" class="text-warning" />
-                <p class="mb-0">
-                  <small>Editar</small>
-                </p>
+              <p class="mb-0">
+                <small>+ Lista</small>
+              </p>
+            </div>
+            <div class="action" @click="editSong()">
+              <div class="icon-bg">
+                <font-awesome-icon icon="edit" />
               </div>
-              <div
-                @click="songLoading ? () => {} : deleteSong()"
-                class="action"
-              >
-                <font-awesome-icon icon="trash" class="text-danger" />
-                <p class="mb-0">
-                  <small>Remover</small>
-                </p>
+              <p class="mb-0">
+                <small>Editar</small>
+              </p>
+            </div>
+            <div
+              @click="songLoading ? () => {} : deleteSong()"
+              class="action"
+            >
+              <div class="icon-bg">
+                <font-awesome-icon icon="trash" />
               </div>
+              <p class="mb-0">
+                <small>Remover</small>
+              </p>
             </div>
           </div>
         </div>
-        <div class="col-12 mt-3 mb-3">
+      </div>
+      <div class="row">
+        <div class="col-12 mb-3">
           <div class="info">
             <div
               v-if="!songLoading"

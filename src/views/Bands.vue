@@ -3,10 +3,15 @@
   
     <!-- Page main content -->
     <div class="container">
-      <div class="row pt-3">
+      <div class="row pt-3 primary-section mb-3">
         <div class="col-12">
           <h3 class="klasik">Minhas bandas</h3>
+          <p class="mb-3">
+            Lista das bandas nas quais você participa como um integrante.
+          </p>
         </div>
+      </div>
+      <div class="row">
         <div class="col-12">
           <!-- Bands list -->
           <div v-if="!bandLoading">
@@ -52,9 +57,17 @@
                 </div>
               </li>
             </ul>
-            <p v-else class="mb-0">
-              Você não participa de nenhuma banda no momento!
-            </p>
+            <!-- TODO: Add svg art here -->
+            <div v-else class="no-bands">
+              <div class="icon">
+                <img src="/img/arts/not_found.svg" alt="No content">
+              </div>
+              <p class="mb-3 text-center">
+                <strong>
+                  Você não participa de nenhuma banda no momento!
+                </strong>
+              </p>
+            </div>
           </div>
           <!-- Loading Shimmer -->
           <div v-else>

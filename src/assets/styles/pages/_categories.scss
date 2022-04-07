@@ -5,14 +5,6 @@
     text-transform: uppercase;
     font-weight: bold;
   }
-  
-  .info-card {
-    padding: 1rem 1.5rem;
-    background-color: rgba(0, 0 ,0, 0.2);
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    border: 1px solid var(--color-text);
-  }
 
   .categories {
     list-style: none;
@@ -22,6 +14,8 @@
       border-radius: 8px;
 
       &:hover {
+        cursor: pointer;
+
         .category-info, .actions {
           color: var(--color-primary);
         }
@@ -46,4 +40,11 @@
 
   }
 
+  .no-categories {
+    .icon {
+      max-width: 360px;
+      width: 100%;
+      margin: 1rem auto;
+    }
+  }
 }

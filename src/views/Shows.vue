@@ -1,14 +1,32 @@
 <template>
   <div id="shows"> 
-    <div class="container pt-3">
+    <div class="container ">
+      <div class="row pt-3 primary-section">
+        <div class="col-12">
+          <h3 class="title mt-3">
+            Apresentações
+          </h3>
+          <p class="mt-3">
+            Apresentações registradas para a banda performar.
+          </p>
+        </div>
+      </div>
+      <div class="row mb-3 secondary-section">
+        <div class="col-12">
+          <base-button
+            nativeType="button"
+            type="primary"
+            class="mt-3 mb-3"
+            @click="saveShow()"
+          >
+            Adicionar Apresentação
+          </base-button>
+        </div>
+      </div>
       <div class="row">
         <div class="col-12">
           <!-- Pending shows -->
-          <div class="info">
-            <h3 class="title">
-              Apresentações (Banda)
-            </h3>
-            <hr />
+          <div>
             <div v-if="!showLoading">
               <ul v-if="shows.length > 0" class="list">
                 <li
@@ -35,9 +53,16 @@
                   </div>
                 </li>
               </ul>
-              <p v-else class="mb-0">
-                Não há apresentações registradas nessa banda atualmente!
-              </p>
+              <div v-else class="no-shows">
+                <div class="icon">
+                  <img src="/img/arts/not_found.svg" alt="No content">
+                </div>
+                <p class="mb-3 text-center">
+                  <strong>
+                    Essa banda não possuí apresentações cadastradas!
+                  </strong>
+                </p>
+              </div>
             </div>
             <!-- Shimmer list -->
             <div v-else>

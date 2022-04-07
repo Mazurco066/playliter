@@ -1,13 +1,18 @@
 <template>
   <div id="saveSong">
-    <div class="container pt-3">
-      <div class="row">
+    <div class="container">
+      <div class="row pt-3 primary-section">
         <div class="col-12">
-          <h3 class="klasik">Salvar Musica</h3>
+          <h3 class="title mt-3">
+            Salvar música
+          </h3>
+          <p class="mb-3">
+            Salvar os dados referentes a uma música.
+          </p>
         </div>
       </div>
       <form class="info" @submit.prevent="createSong">
-        <div class="row">
+        <div class="row secondary-section pt-3 mb-3">
           <div class="col-12">
             <base-input
               type="text"
@@ -66,11 +71,14 @@
               v-model="song"
             />
           </div>
+        </div>
+        <div class="row">
           <div class="col-12">
             <base-button
               nativeType="submit"
               type="primary"
               :disabled="v$.$error === true || songLoading"
+              class="mb-3"
             >
               Salvar música
             </base-button>

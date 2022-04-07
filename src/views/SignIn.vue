@@ -46,7 +46,7 @@
             <base-button
               class="mb-3"
               nativeType="submit"
-              type="primary"
+              type="alt"
               :disabled="v$.$error === true || authLoading"
             >
               Acessar

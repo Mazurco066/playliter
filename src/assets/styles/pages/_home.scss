@@ -12,6 +12,26 @@
     text-transform: uppercase;
   }
 
+  .app-info {
+
+    display: flex;
+
+    .display-logo {
+      flex: 0 0 auto;
+      max-width: 96px;
+      padding-bottom: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 1rem;
+    }
+
+    .display-info {
+      flex-grow: 1;
+    }
+
+  }
+
   .info {
     padding: 1rem 1.5rem;
     background-color: rgba(0, 0 ,0, 0.2);
@@ -32,6 +52,7 @@
 
       &:hover {
         opacity: 0.5;
+        cursor: pointer;
       }
 
       .icon {
@@ -41,7 +62,11 @@
         align-items: center;
 
         .show-img {
-          max-width: 50px;
+          max-width: 64px;
+          border-radius: 8px;
+          padding: 0.5rem;
+          overflow: hidden;
+          background-color: #f2f2f2;
         }
       }
 
@@ -49,8 +74,17 @@
         flex-grow: 1;
       }
 
+      .show-title {
+        font-weight: bold;
+        color: var(--color-text);
+      }
+
       &:last-child {
         margin-bottom: 0;
+      }
+
+      &:nth-child(n+5) {
+        display: none;
       }
     }
 
