@@ -1,6 +1,6 @@
 // Dependencies
 import { mapActions, mapGetters } from 'vuex'
-import { ChordSheetParser, HtmlDivFormatter } from 'chordsheetjs'
+import { chordTransposer } from '../../utils/'
 
 // Component
 export default {
@@ -92,11 +92,8 @@ export default {
 
     try {
       const song = r.data.body
-      const parser = new ChordSheetParser()
-      const parsedSong = parser.parse(song)
-      const formatter = new HtmlDivFormatter()
-      const displayHtmlSong = formatter.format(parsedSong)
-      this.parsedSong = displayHtmlSong
+      const displayHtmlSong = chordTransposer.plaintextToPreHtml(song)
+      this.parsedSong = `<pre>${displayHtmlSong}</pre>`
     } catch (e) {
       console.log('[parser error]', e)
       this.$toast.error('Ocorreu um erro ao parsear a música!')

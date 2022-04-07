@@ -9,11 +9,13 @@ import * as elementUtils from './elementUtils'
 import * as tableUtils from './tableUtils'
 import * as textUtils from './textUtils'
 import * as validations from './translateMessages'
+import * as chordTransposer from './chordTransposer'
 
 export {
   asyncHandler,
   arrayUtils,
   bottomLinks,
+  chordTransposer,
   elementUtils,
   getUniques,
   getUniquesInside,

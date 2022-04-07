@@ -76,12 +76,7 @@
         </div>
         <div class="pagebreak"></div>
       </div>
-      <div class="song bg-white pdf-song" v-for="({ song, html }, i) in parsedSongs" :key="i">
-        <div class="song-header">
-          <h1 class="title mb-1">{{ song.title }}</h1>
-          <p class="writter mb-0">{{ song.writter }}</p>
-          <p class="tone">Tom: {{song.tone}}</p>
-        </div>
+      <div class="song bg-white pdf-song" v-for="({ html }, i) in parsedSongs" :key="i">
         <div class="transposer" v-html="html" />
         <div class="pagebreak"></div>
       </div>

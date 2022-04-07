@@ -1,37 +1,10 @@
 .transposer {
-	.chord {
-		color: var(--color-primary);
-		font-weight: bold;
-	}
-	
-	.chord:not(:last-child) {
-		padding-right: 10px;
-	}
-	
-	.paragraph {
-		margin-bottom: 1em;
-	}
-	
-	.row {
-		display: flex;
-		flex-wrap: wrap;
-	}
+	pre {
+		.chord {
+			color: var(--color-primary);
+			font-weight: bold;
+		}
 
-	.chord {
-		overflow: hidden;
-		height: 1.5rem;
-	}
-	
-	.lyrics {
-		overflow: hidden;
-		height: 1.5rem;
-	}
-	
-	.chord:after {
-		content: '\200b';
-	}
-	
-	.lyrics:after {
-		content: '\200b';
+		font-size: 1.15rem;
 	}
 }

@@ -1,6 +1,6 @@
 // Dependencies
 import { mapActions, mapGetters } from 'vuex'
-import { ChordSheetParser, HtmlDivFormatter } from 'chordsheetjs'
+import { chordTransposer } from '../../utils/'
 
 // Component
 export default {
@@ -23,11 +23,8 @@ export default {
       if (song) {
         try {
           const songBody = song.body
-          const parser = new ChordSheetParser()
-          const parsedSong = parser.parse(songBody)
-          const formatter = new HtmlDivFormatter()
-          const displayHtmlSong = formatter.format(parsedSong)
-          return displayHtmlSong
+          const displayHtmlSong = chordTransposer.plaintextToPreHtml(songBody)
+          return `<pre>${displayHtmlSong}</pre>`
         } catch (e) {
           console.log('[parser error]', e)
           this.$toast.error('Ocorreu um erro ao parsear a música!')
@@ -45,16 +42,16 @@ export default {
       const songs = [ ...this.show.songs ]
       this.parsedSongs = songs.map(s => {
         const songBody = s.body
-        const parser = new ChordSheetParser()
-        const formatter = new HtmlDivFormatter()
-        try {
-          const parsedSong = parser.parse(songBody)
-          const displayHtmlSong = formatter.format(parsedSong)
-          return { song: s, html: displayHtmlSong } 
-        } catch (e) {
-          console.log('[parser error]', e)
-          this.$toast.error('Ocorreu um erro ao parsear a música!')
-          return { song: s, html: '<div></div>' }
+        const displayHtmlSong = chordTransposer.plaintextToPreHtml(songBody)
+        return {
+          song: s,
+          // The lack of identation is wanted for the pre tag
+          html: `<pre>
+<b class="title">${ s.title }</b>
+<b class="writter">${s.writter}</b>
+<b class="tone">Tom: ${s.tone}</b>
+<p class="song-body">${displayHtmlSong}</p>
+          </pre>`
         }
       })
     },
