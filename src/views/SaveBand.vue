@@ -7,7 +7,7 @@
             {{ saveMode ? 'Criar nova banda' : 'Editar banda' }}
           </h3>
           <p class="mb-3">
-            {{ saveMode ? 'Salvar nova banda.' : 'Alterar os dados de uma banda cadastradas.' }}
+            {{ saveMode ? 'Salvar nova banda.' : 'Alterar os dados de uma banda cadastrada.' }}
           </p>
         </div>
       </div>

@@ -1,15 +1,20 @@
 <template>
   <div id="saveShow">
-    <div class="container pt-3">
-      <div class="row">
+    <div class="container">
+      <div class="row pt-3 primary-section">
         <div class="col-12">
-          <h3 class="klasik"> {{ saveMode ? 'Criar nova apresentacao' : 'Editar apresentacao' }}</h3>
+          <h3 class="title mt-3">
+            {{ saveMode ? 'Criar nova apresentacao' : 'Editar apresentacao' }}
+          </h3>
+          <p class="mb-3">
+            {{ saveMode ? 'Salvar nova apresentação.' : 'Alterar os dados de uma apresentação cadastrada.' }}
+          </p>
         </div>
       </div>
       <form class="info" @submit.prevent="createShow">
-        <div class="row">
+        <div class="row secondary-section pt-3 pb-3 mb-3">
           <div class="col-12">
-            <p class="text-justify">Primeiramente informe um <strong>nome</strong> para sua apresentação:</p>
+            <p class="text-left">1. Primeiramente informe um <strong>título</strong> para sua apresentação:</p>
           </div>
           <div class="col-12">
             <base-input
@@ -22,10 +27,10 @@
               :disabled="showLoading"
             />
           </div>
-          <div class="col-12" :class="{ 'd-none': v$.form.title.$error }">
-            <p class="text-justify">Agora forneça uma breve <strong>descrição</strong> sobre a mesma:</p>
+          <div class="col-12" :class="{ 'd-none': v$.form.title.$error || !form.title }">
+            <p class="text-left">2. Agora forneça uma breve <strong>descrição</strong> sobre a mesma:</p>
           </div>
-          <div class="col-12" :class="{ 'd-none': v$.form.title.$error }">
+          <div class="col-12" :class="{ 'd-none': v$.form.title.$error || !form.title }">
             <base-input
               type="text"
               placeholder="Breve descrição..."
@@ -48,11 +53,14 @@
               :disabled="showLoading"
             />
           </div>
+        </div>
+        <div class="row">
           <div class="col-12" >
             <base-button
               nativeType="submit"
               type="primary"
               :disabled="v$.$error === true || showLoading"
+              class="mb-3"
             >
               Salvar apresentação
             </base-button>

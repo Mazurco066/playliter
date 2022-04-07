@@ -6,6 +6,10 @@
 .secondary-section {
   background-color: var(--color-primary-light);
   color: var(--color-text-dark);
+
+  .form-control-label {
+    color: var(--color-text-dark);
+  }
 }
 
 .auth-link a {
