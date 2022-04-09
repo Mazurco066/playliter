@@ -88,6 +88,7 @@ export default {
           `Ocorreu um erro ao importar a música! Por favor contate um administrador do sistema.`
         )
       } else {
+        this.form.importUrl = ''
         const songAsText = external.data.loot
         this.song = songAsText.replace(/\n/g, '<br>')  
       }
