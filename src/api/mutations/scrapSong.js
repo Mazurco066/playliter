@@ -7,7 +7,10 @@ export const SCRAP_SONG = gql`
     scrapSong(ScrapSongInput:{ 
       url: $url 
     }) { 
-      loot 
+      loot
+      tone
+      title
+      writter 
     }
   }
 `
