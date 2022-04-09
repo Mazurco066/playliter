@@ -95,7 +95,6 @@ export default {
       const displayHtmlSong = chordTransposer.plaintextToPreHtml(song)
       this.parsedSong = `<pre>${displayHtmlSong}</pre>`
     } catch (e) {
-      console.log('[parser error]', e)
       this.$toast.error('Ocorreu um erro ao parsear a música!')
     }
     

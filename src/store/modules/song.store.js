@@ -1,7 +1,7 @@
 // Dependencies
 import { getAuthenticatedClient } from '../../api'
 import { asyncHandler } from '../../utils'
-import { REMOVE_SONG, ADD_SONG, UPDATE_SONG, ADD_CATEGORY, UPDATE_CATEGORY, REMOVE_CATEGORY } from '../../api/mutations'
+import { REMOVE_SONG, ADD_SONG, UPDATE_SONG, ADD_CATEGORY, UPDATE_CATEGORY, REMOVE_CATEGORY, SCRAP_SONG } from '../../api/mutations'
 import { SONG, SONGS, CATEGORIES } from '../../api/queries'
 
 // Object initial state
@@ -135,6 +135,23 @@ const actions = {
     return {
       error: error,
       data: error ? [] : resp.data.categories,
+      message: error ? resp.message : null
+    }
+  },
+  async scrapSong({ commit }, url) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.mutate({
+        mutation: SCRAP_SONG,
+        variables: { url }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : resp.data.scrapSong,
       message: error ? resp.message : null
     }
   }

@@ -61,6 +61,28 @@
               :error="v$.form.category.$errors.length ? $translations.translateMessage(v$.form.category.$errors[0].$message) : ''"
             />
           </div>
+          <div class="col-10">
+            <base-input
+              type="text"
+              label="Importar música"
+              placeholder="Importar música"
+              addonLeftIcon="file-import"
+              v-model="v$.form.importUrl.$model"
+              :valid="!v$.form.importUrl.$error"
+              :error="v$.form.importUrl.$errors.length ? $translations.translateMessage(v$.form.importUrl.$errors[0].$message) : ''"
+              :disabled="songLoading"
+            />
+          </div>
+          <div class="col-2 pt-2 pl-0">
+            <button
+              type="button"
+              class="import-btn"
+              @click="importExternalSong()"
+              :disabled="songLoading"
+            >
+              <font-awesome-icon icon="check" />
+            </button>
+          </div>
           <div class="col-12 mb-3">
             <p class="custom-label">
               Corpo da música (Digite a letra com as cifras)
