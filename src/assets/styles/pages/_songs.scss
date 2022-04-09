@@ -195,4 +195,27 @@
   #songEditor {
     color: var(--color-gray);
   }
+
+  .import-btn {
+    outline: none;
+    border: none;
+    background-color: var(--color-primary);
+    color: var(--color-text-dark);
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 1.35rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:disabled {
+      opacity: 0.75;
+      cursor: not-allowed;
+    }
+  }
 }

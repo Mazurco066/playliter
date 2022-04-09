@@ -15,7 +15,8 @@ export default {
       title: '',
       writter: '',
       tone: '',
-      category: ''
+      category: '',
+      importUrl: ''
     },
     // Select data list
     categories: [],
@@ -65,8 +66,32 @@ export default {
     ...mapActions({
       listBandCategories: 'song/listBandCategories',
       saveSong: 'song/saveSong',
-      loadBandSong: 'song/loadBandSong'
+      loadBandSong: 'song/loadBandSong',
+      scrapSong: 'song/scrapSong'
     }),
+    async importExternalSong () {
+      const importUrl = this.form.importUrl
+      if (!importUrl) return this.$toast.warning('Nenhuma url de importação foi inserida.')
+      if (!importUrl.includes('https://')) return this.$toast.warning('Insira uma URL válida.')
+      const swal = this.$swal({
+        icon: 'info',
+        title: 'Aguarde',
+        text: 'Estamos importando a cifra da música informada...',
+        showConfirmButton: false,
+        allowOutsideClick: false
+      })
+      const external = await this.scrapSong(importUrl)
+      swal.close()
+      if (external.error) {
+        this.$toast.error(
+          response.message.replace('GraphQL error:', '') ||
+          `Ocorreu um erro ao importar a música! Por favor contate um administrador do sistema.`
+        )
+      } else {
+        const songAsText = external.data.loot
+        this.song = songAsText.replace(/\n/g, '<br>')  
+      }
+    },
     async createSong () {
       this.v$.form.$touch()
       if (!this.v$.error && !this.v$.$invalid) {
@@ -106,7 +131,8 @@ export default {
         title: song.data.title,
         writter: song.data.writter,
         tone: song.data.tone,
-        category: song.data.category.id
+        category: song.data.category.id,
+        importUrl: ''
       }
       // Replace \n with html elements
       this.song = song.data.body.replace(/\n/g, '<br>')      
@@ -137,6 +163,9 @@ export default {
         },
         tone: {
           required
+        },
+        importUrl: {
+          minLength: minLength(2)
         },
         category: {
           required
