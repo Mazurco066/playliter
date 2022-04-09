@@ -84,7 +84,7 @@ export default {
       swal.close()
       if (external.error) {
         this.$toast.error(
-          response.message.replace('GraphQL error:', '') ||
+          external.message.replace('GraphQL error:', '') ||
           `Ocorreu um erro ao importar a música! Por favor contate um administrador do sistema.`
         )
       } else {
