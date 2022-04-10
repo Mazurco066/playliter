@@ -5,7 +5,7 @@ Production publish URL: [Playliter](https://playliter.vercel.app/).
 
 ## Screenshots
 
-| List screen                          | Pokémon details                         |
+| Home screen                          | Band details                            |
 | ------------------------------------ | --------------------------------------- |
 | ![home](./screenshots/home.png)      | ![band](./screenshots/band.png)         |
 
