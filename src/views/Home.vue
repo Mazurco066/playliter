@@ -72,6 +72,31 @@
           </div>
         </div>
       </div>
+      <div v-if="hasPendingInvites" class="row">
+        <div class="col-12">
+          <h3 class="title mb-0">Convites pendentes</h3>
+          <hr />
+          <ul class="invites">
+            <li
+              v-for="(inv, i) in invites"
+              :key="i"
+              class="invite"
+              @click="respondPendingInvite(inv)"
+            >
+              <div class="icon">
+                <div class="board">
+                  <font-awesome-icon icon="envelope" />
+                </div>
+              </div>
+              <div class="info">
+                <p class="mb-0">{{ inv.band.title }}</p>
+                <span>Convidado em: {{ $text.formatISODate(inv.createdAt) }}</span>
+              </div>
+            </li>
+          </ul>
+          <hr />
+        </div>
+      </div>
       <div class="row">
         <div class="col-12">
           <p class="text-center">

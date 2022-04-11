@@ -96,9 +96,16 @@
                     </div>
                   </li>
                 </ul>
-                <p v-else class="mb-0">
-                  Não há músicas registradas nessa apresentação!
-                </p>
+                <div v-else class="no-songs">
+                  <div class="icon">
+                    <img src="/img/arts/not_found.svg" alt="No content">
+                  </div>
+                  <p class="mb-3 text-center">
+                    <strong>
+                      Não há músicas registradas nessa apresentação!
+                    </strong>
+                  </p>
+                </div>
               </div>
               <div v-else>
                 <ul class="songs">
@@ -152,9 +159,16 @@
                     </div>
                   </li>
                 </ul>
-                <p v-else class="mb-0">
-                  Não há músicas registradas nessa apresentação!
-                </p>
+                <div v-else class="no-songs">
+                  <div class="icon">
+                    <img src="/img/arts/not_found.svg" alt="No content">
+                  </div>
+                  <p class="mb-3 text-center">
+                    <strong>
+                      Não há músicas registradas nessa apresentação!
+                    </strong>
+                  </p>
+                </div>
               </div>
               <div v-else>
                 <ul class="songs">

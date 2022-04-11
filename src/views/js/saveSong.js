@@ -94,7 +94,6 @@ export default {
         const obtainedTone = this.tones.find(t => t.value === external.data.tone)
           ? external.data.tone
           : external.data.tone.substring(0, 1)
-        console.log('[deb]', obtainedTone)
         this.form.tone = obtainedTone
         const songAsText = external.data.loot
         this.song = songAsText.replace(/\n/g, '<br>')  

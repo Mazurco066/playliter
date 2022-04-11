@@ -1,7 +1,7 @@
 // Dependencies
 import { getAuthenticatedClient } from '../../api'
 import { asyncHandler } from '../../utils'
-import { BAND, BANDS } from '../../api/queries'
+import { BAND, BANDS, PENDING_INVITES } from '../../api/queries'
 import {
   ADD_BAND,
   ADD_BAND_MEMBER,
@@ -9,6 +9,7 @@ import {
   PROMOTE_BAND_MEMBER,
   REMOVE_BAND_MEMBER,
   REMOVE_BAND,
+  RESPOND_INVITE,
   UPDATE_BAND
 } from '../../api/mutations'
 
@@ -162,7 +163,41 @@ const actions = {
       data: error ? {} : resp.data.removeBand,
       message: error ? resp.message : null
     }
-  }
+  },
+  async listPendingInvites({ commit }) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.query({
+        query: PENDING_INVITES,
+        variables: { }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? [] : resp.data.pendingInvites,
+      message: error ? resp.message : null
+    }
+  },
+  async respondInvite({ commit }, { inviteId, response }) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.mutate({
+        mutation: RESPOND_INVITE,
+        variables: { inviteId, response }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : resp.data.respondInvite,
+      message: error ? resp.message : null
+    }
+  },
 }
 
 // Mutations
