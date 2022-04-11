@@ -15,6 +15,10 @@
   p, span, a {
     color: var(--color-text-dark);
   }
+
+  .input-group-text {
+    color: var(--color-gray);
+  }
 }
 
 #sign-up {
@@ -33,5 +37,9 @@
 
   p, span, a {
     color: var(--color-text-dark);
+  }
+
+  .input-group-text {
+    color: var(--color-gray);
   }
 }
