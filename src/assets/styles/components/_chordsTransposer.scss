@@ -8,3 +8,27 @@
 		font-size: 1.15rem;
 	}
 }
+
+.ProseMirror {
+  background-color: #F2F3F7;
+  white-space: pre-wrap!important;
+  outline: none;
+  padding: 1rem;
+  border-radius: 8px;
+
+  /* Editor fix */
+  font-family: Roboto;
+  font-size: 0.875rem;
+  line-height: 1rem;
+
+  &:focus {
+    border: 3px solid #000000;
+  }
+}
+
+.transposer {
+  font-family: Roboto;
+  font-size: 0.875rem;
+  line-height: 1.35rem;
+}
+

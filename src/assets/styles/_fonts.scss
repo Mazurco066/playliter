@@ -42,6 +42,24 @@
   src: url("~@/assets/fonts/Klasik-Shadow.otf") format("opentype");
 }
 
+/* Roboto font */
+@font-face {
+  font-family: Roboto;
+  src: url("~@/assets/fonts/RobotoMono-Regular.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: Roboto;
+  font-weight: bold;
+  src: url("~@/assets/fonts/RobotoMono-Bold.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Roboto Light";
+  font-weight: bold;
+  src: url("~@/assets/fonts/RobotoMono-Light.ttf") format("opentype");
+}
+
 /* Main font classes */
 .manrope, body {
   font-family: "Manrope";
