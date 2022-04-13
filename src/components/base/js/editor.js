@@ -20,6 +20,7 @@ export default {
   watch: {
     modelValue(value) {
       // const isSame = this.editor.getHTML() === value
+      console.log(value)
       const isSame = this.editor.getText() === value
       if (isSame) return
       this.editor.commands.setContent(value, false)
