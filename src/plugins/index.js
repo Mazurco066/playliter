@@ -11,7 +11,6 @@ import { elementUtils, validations, tableUtils, textUtils } from '../utils'
 
 // Libraries styles
 import 'sweetalert2/dist/sweetalert2.min.css'
-import 'vue3-carousel/dist/carousel.css'
 
 // Plugins
 export default {

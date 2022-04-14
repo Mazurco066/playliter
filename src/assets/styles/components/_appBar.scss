@@ -21,6 +21,9 @@
 
       .back {
         flex: 0 0 auto;
+        &:hover {
+          cursor: pointer;
+        }
       }
 
       .info {
