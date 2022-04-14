@@ -14,6 +14,7 @@
       }
 
       &:hover {
+        cursor: pointer;
         background: var(--color-primary-dark);
 
         .info .title, .sub, .actions {
@@ -143,6 +144,7 @@
         }
 
         &:hover {
+          cursor: pointer;
           .icon {
             background-color: #f2f2f2;
             color: var(--color-primary-dark);

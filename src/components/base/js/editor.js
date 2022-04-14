@@ -1,6 +1,12 @@
 // Dependencies
 import { Editor, EditorContent } from '@tiptap/vue-3'
+
+// Tiptap extensions
 import StarterKit from '@tiptap/starter-kit'
+// import Document from '@tiptap/extension-document'
+// import Paragraph from '@tiptap/extension-paragraph'
+// import Text from '@tiptap/extension-text'
+// import Bold from '@tiptap/extension-bold'
 
 // Component
 export default {
@@ -19,24 +25,22 @@ export default {
   },
   watch: {
     modelValue(value) {
-      // const isSame = this.editor.getHTML() === value
-      console.log(value)
-      const isSame = this.editor.getText() === value
-      if (isSame) return
+      if (this.editor.getText() === value) return
       this.editor.commands.setContent(value, false)
     },
   }, 
   // Mount tiptap editor 
   mounted() {
     this.editor = new Editor({
-      content: 'I’m running Tiptap with Vue.js. 🎉',
-      extensions: [ StarterKit ],
+      content: 'Transcreva sua canção aqui 🎉',
       content: this.modelValue,
+      extensions: [
+        StarterKit
+      ],
       parseOptions: {
         preserveWhitespace: 'full'
       },
       onUpdate: () => {
-        // this.$emit('update:modelValue', this.editor.getHTML())
         this.$emit('update:modelValue', this.editor.getText())
       },
     })

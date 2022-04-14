@@ -10,7 +10,9 @@
 }
 
 .ProseMirror {
+  box-sizing: border-box;
   background-color: #F2F3F7;
+  border: 1px solid #F2F3F7;
   white-space: pre-wrap!important;
   outline: none;
   padding: 1rem;
@@ -22,7 +24,7 @@
   line-height: 1rem;
 
   &:focus {
-    border: 3px solid #000000;
+    border: 1px solid var(--color-primary-dark);
   }
 }
 
