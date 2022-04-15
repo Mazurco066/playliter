@@ -1,6 +1,7 @@
 // Dependencies
 import BaseButton from '../components/base/Button.vue'
 import BaseCheckBox from '../components/base/Checkbox.vue'
+import BaseChordDiagram from '../components/base/ChordDiagram.vue'
 import BaseDropdown from '../components/base/Dropdown.vue'
 import BaseEditor from '../components/base/Editor.vue'
 import BaseInput from '../components/base/Input.vue'
@@ -29,6 +30,7 @@ export default {
   install (Vue) {
     Vue.component(BaseInput.name, BaseInput)
     Vue.component(BaseCheckBox.name, BaseCheckBox)
+    Vue.component(BaseChordDiagram.name, BaseChordDiagram)
     Vue.component(BaseDropdown.name, BaseDropdown)
     Vue.component(BaseEditor.name, BaseEditor)
     Vue.component(BaseButton.name, BaseButton)

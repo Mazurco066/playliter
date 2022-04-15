@@ -1,6 +1,7 @@
 // Dependencies
+import { ChordSheetParser } from 'chordsheetjs'
 import { mapActions, mapGetters } from 'vuex'
-import { chordTransposer } from '../../utils/'
+import { chordTransposer, getUniquesTyped } from '../../utils/'
 
 // Component
 export default {
@@ -9,7 +10,8 @@ export default {
     song: {},
     shows: [],
     isListModalOpen: false,
-    parsedSong: ''
+    parsedSong: '',
+    chords: []
   }),
   computed: {
     ...mapGetters({
@@ -94,7 +96,20 @@ export default {
       const song = r.data.body
       const displayHtmlSong = chordTransposer.plaintextToPreHtml(song)
       this.parsedSong = `<pre>${displayHtmlSong}</pre>`
-    } catch (e) {
+
+      // Chordsheet js song parser
+      const parser = new ChordSheetParser()
+      const chordsheetjsSong = parser.parse(song)
+
+      // Retrieve song chords
+      const allChordsGrouped = chordsheetjsSong.lines.map(
+        line => line.items.reduce((ac, cv) => ac.concat(cv.chords.replace(/\s/g, '')) , [])
+      )
+      const allChords = [].concat(...allChordsGrouped).filter(a => a)
+      const uniqueChords = getUniquesTyped(allChords)
+      this.chords = uniqueChords
+
+    } catch (_) {
       this.$toast.error('Ocorreu um erro ao parsear a música!')
     }
     

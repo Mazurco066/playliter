@@ -10,6 +10,12 @@ const getUniquesInside = (array, element1, element2) =>
     .map(item => item[element1][element2])
     .filter((value, index, self) => self.indexOf(value) === index)
 
+// Get uniques from a typed array
+const getUniquesTyped = (array) =>
+  array
+    .map(item => item)
+    .filter((value, index, self) => self.indexOf(value) === index)
+
 // Exporting named
-export { getUniquesInside }
+export { getUniquesInside, getUniquesTyped }
 export default getUniques
