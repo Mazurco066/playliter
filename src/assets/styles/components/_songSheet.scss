@@ -25,6 +25,11 @@
     max-width: 100%;
     overflow-x: auto;
 
+    .lyrics, .chord {
+      max-height: 26px;
+      overflow: hidden;
+    }
+
     .horizontal-columns {
       column-count: auto;
       column-width: var(--column-width);

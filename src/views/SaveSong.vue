@@ -94,6 +94,7 @@
             /> -->
             <!-- eslint-disable vue/no-v-model-argument -->
             <v-ace-editor
+              lang="chordpro"
               v-model:value="song"
               theme="clouds"
               style="height: 300px"

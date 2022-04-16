@@ -4,9 +4,16 @@ import { mapActions, mapGetters } from 'vuex'
 import { required, minLength, maxLength } from '@vuelidate/validators'
 import { VAceEditor } from 'vue3-ace-editor'
 
+// Ace plugins
+import ChordCompleter from '../../components/base/ace/chordCompleter'
+
 // Ace themes
 import 'ace-builds/src-noconflict/theme-clouds'
 import 'ace-builds/src-noconflict/ext-language_tools'
+
+// Ace snippets
+import '../../components/base/ace/modeChordpro'
+import '../../components/base/ace/snipets/chordpro'
 
 // Component
 export default {
@@ -127,7 +134,7 @@ export default {
           this.$toast.error(`Ocorreu um erro ao salvar sua música! Tente novamente mais tarde`)
         } else {
           this.$toast.success('Música salva com sucesso!')
-          this.$router.push({ name: 'band', params: { id: band } })
+          this.$router.push({ name: 'directory', params: { band } })
         }
         
       } else {
@@ -137,42 +144,34 @@ export default {
     // Ace editor methods
     setupEditor (editor) {
       editor.setOptions({
-        enableBasicAutocompletion: false,
-        enableSnippets: false,
-        enableLiveAutocompletion: false
+        enableBasicAutocompletion: true,
+        enableSnippets: true,
+        enableLiveAutocompletion: true
       })
       editor.renderer.setScrollMargin(20, 20)
 
-      // const { snippetCompleter } = ace.require('ace/ext/language_tools')
+      const { snippetCompleter } = ace.require('ace/ext/language_tools')
 
-      // editor.completers = [
-      //   new ChordCompleter(),
-      //   new MetadataCompleter(),
-      //   snippetCompleter
-      // ]
+      editor.completers = [
+        new ChordCompleter(),
+        snippetCompleter
+      ]
 
       // Start autocomplete on [ or { characters
-      // editor.commands.addCommand({
-      //   name: 'chordproStartAutocomplete',
-      //   bindKey: '[|{',
-      //   exec () {
-      //     editor.commands.byName.startAutocomplete.exec(editor)
-      //     return false
-      //   }
-      // })
+      editor.commands.addCommand({
+        name: 'chordproStartAutocomplete',
+        bindKey: '[|{',
+        exec () {
+          editor.commands.byName.startAutocomplete.exec(editor)
+          return false
+        }
+      })
 
       // Expose ace editor for tests
       window.editor = editor
     },
     paste (e) {
-      // const format = detectFormat(e.text)
-
-      // // No need to convert if it's already in chordpro
-      // if (!format || format instanceof ChordSheetJS.ChordProParser) return
-
-      // // Convert to ChordPro
-      // // Modifying text property will change text pasted into Ace editor
-      // e.text = new ChordSheetJS.ChordProFormatter().format(format.parse(e.text))
+      e.text = e.text.replaceAll('<br>', '\n')
     }
   },
   async mounted () {
