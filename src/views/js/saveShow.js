@@ -44,7 +44,7 @@ export default {
           this.$toast.error(`Ocorreu um erro ao salvar sua apresentação! Tente novamente mais tarde`)
         } else {
           this.$toast.success('Apresentação salva com sucesso!')
-          this.$router.push({ name: 'band', params: { id: band } })
+          this.$router.push({ name: 'shows', params: { band } })
         }
 
       } else {
