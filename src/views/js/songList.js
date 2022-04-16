@@ -50,7 +50,7 @@ export default {
 <b class="title">${ s.title }</b>
 <b class="writter">${s.writter}</b>
 <b class="tone">Tom: ${s.tone}</b>
-<p class="song-body">${displayHtmlSong}</p>
+<p class="song-body">\n${displayHtmlSong}</p>
           </pre>`
         }
       })
