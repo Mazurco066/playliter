@@ -2,10 +2,16 @@
 import useVuelidate from '@vuelidate/core'
 import { mapActions, mapGetters } from 'vuex'
 import { required, minLength, maxLength } from '@vuelidate/validators'
+import { VAceEditor } from 'vue3-ace-editor'
+
+// Ace themes
+import 'ace-builds/src-noconflict/theme-clouds'
+import 'ace-builds/src-noconflict/ext-language_tools'
 
 // Component
 export default {
   name: 'SaveSong',
+  components: { VAceEditor },
   setup () {
     return { v$: useVuelidate() }
   },
@@ -95,8 +101,7 @@ export default {
           ? external.data.tone
           : external.data.tone.substring(0, 1)
         this.form.tone = obtainedTone
-        const songAsText = external.data.loot
-        this.song = songAsText.replace(/\n/g, '<br>')  
+        this.song  = external.data.loot
       }
     },
     async createSong () {
@@ -112,7 +117,7 @@ export default {
         const { id, band } = this.$route.params
         const payload = {
           ...this.form,
-          body: this.song && this.song.startsWith('\n') ? this.song : `\n${this.song}`,
+          body: this.song,
           band
         }
 
@@ -128,6 +133,46 @@ export default {
       } else {
         this.$toast.warning('Seu formuário contem erros de validação! Por favor revise-os.')
       }
+    },
+    // Ace editor methods
+    setupEditor (editor) {
+      editor.setOptions({
+        enableBasicAutocompletion: false,
+        enableSnippets: false,
+        enableLiveAutocompletion: false
+      })
+      editor.renderer.setScrollMargin(20, 20)
+
+      // const { snippetCompleter } = ace.require('ace/ext/language_tools')
+
+      // editor.completers = [
+      //   new ChordCompleter(),
+      //   new MetadataCompleter(),
+      //   snippetCompleter
+      // ]
+
+      // Start autocomplete on [ or { characters
+      // editor.commands.addCommand({
+      //   name: 'chordproStartAutocomplete',
+      //   bindKey: '[|{',
+      //   exec () {
+      //     editor.commands.byName.startAutocomplete.exec(editor)
+      //     return false
+      //   }
+      // })
+
+      // Expose ace editor for tests
+      window.editor = editor
+    },
+    paste (e) {
+      // const format = detectFormat(e.text)
+
+      // // No need to convert if it's already in chordpro
+      // if (!format || format instanceof ChordSheetJS.ChordProParser) return
+
+      // // Convert to ChordPro
+      // // Modifying text property will change text pasted into Ace editor
+      // e.text = new ChordSheetJS.ChordProFormatter().format(format.parse(e.text))
     }
   },
   async mounted () {
@@ -142,7 +187,7 @@ export default {
         importUrl: ''
       }
       // Replace \n with html elements
-      this.song = song.data.body.replace(/\n/g, '<br>')      
+      this.song = song.data.body.replaceAll('<br>', '\n')  
       if (!Object.keys(song.data).length > 0) {
         this.$toast.warning(`Música de id ${id} não encontrada!`)
         this.$router.push({ name: 'band', params: { id: band } })

@@ -46,24 +46,10 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12 mb-3">
-          <div class="song-view">
-            <div
-              v-if="!showLoading"
-              v-html="displaySongHtml"
-              class="transposer"
-            />
-            <div v-else>
-              <lines class="shine"></lines>
-              <lines class="shine"></lines>
-              <lines class="shine"></lines>
-              <lines class="shine"></lines>
-              <lines class="shine"></lines>
-            </div>
-          </div>
-        </div>
-      </div>
+      <base-songsheet
+        :loading="showLoading"
+        :song="displaySong"
+      />
     </div>
 
     <!--- Song print section -->

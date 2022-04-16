@@ -12,6 +12,7 @@ import BaseProgress from '../components/base/Progress.vue'
 import BaseRadio from '../components/base/Radio.vue'
 import BaseSelect from '../components/base/Select.vue'
 import BaseSlider from '../components/base/Slider.vue'
+import BaseSongSheet from '../components/base/SongSheet'
 import BaseSwitch from '../components/base/Switch.vue'
 import BaseTable from '../components/base/Table.vue'
 import BaseToggle from '../components/base/Toggle.vue'
@@ -41,6 +42,7 @@ export default {
     Vue.component(BaseRadio.name, BaseRadio)
     Vue.component(BaseSelect.name, BaseSelect)
     Vue.component(BaseSlider.name, BaseSlider)
+    Vue.component(BaseSongSheet.name, BaseSongSheet)
     Vue.component(BaseSwitch.name, BaseSwitch)
     Vue.component(BaseTable.name, BaseTable)
     Vue.component(BaseToggle.name, BaseToggle)
