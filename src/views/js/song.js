@@ -1,7 +1,5 @@
 // Dependencies
-import { ChordSheetParser } from 'chordsheetjs'
 import { mapActions, mapGetters } from 'vuex'
-import { chordTransposer, getUniquesTyped } from '../../utils/'
 
 // Component
 export default {
@@ -9,9 +7,7 @@ export default {
   data: () => ({
     song: {},
     shows: [],
-    isListModalOpen: false,
-    parsedSong: '',
-    chords: []
+    isListModalOpen: false
   }),
   computed: {
     ...mapGetters({
@@ -91,31 +87,10 @@ export default {
     // First load song
     const r = await this.loadSong({ band, id })
     this.song = r.data
-
-    try {
-      const song = r.data.body
-      const displayHtmlSong = chordTransposer.plaintextToPreHtml(song)
-      this.parsedSong = `<pre>${displayHtmlSong}</pre>`
-
-      // Chordsheet js song parser
-      const parser = new ChordSheetParser()
-      const chordsheetjsSong = parser.parse(song)
-
-      // Retrieve song chords
-      const allChordsGrouped = chordsheetjsSong.lines.map(
-        line => line.items.reduce((ac, cv) => ac.concat(cv.chords.replace(/\s/g, '')) , [])
-      )
-      const allChords = [].concat(...allChordsGrouped).filter(a => a)
-      const uniqueChords = getUniquesTyped(allChords)
-      this.chords = uniqueChords
-
-    } catch (_) {
-      this.$toast.error('Ocorreu um erro ao parsear a música!')
-    }
-    
     if (!Object.keys(r.data).length > 0) {
       this.$toast.warning(`Música de id ${id} não encontrada!`)
     }
+    
     // Then the shows
     const shows = await this.listBandShows({ band })
     this.shows = shows.data

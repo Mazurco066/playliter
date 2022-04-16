@@ -1,0 +1,108 @@
+.shongsheet {
+
+  .chordsbook {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-y: auto;
+    overflow-x: auto;
+  
+    .chord {
+      text-align: center;
+    }
+  }
+  
+  .chord-diagram {
+    width: 50px;
+    height: 65px;
+  }
+
+  .song-section {
+    padding: 1rem;
+    overflow: hidden;
+    max-width: 100%;
+    overflow-x: auto;
+
+    .horizontal-columns {
+      column-count: auto;
+      column-width: var(--column-width);
+      column-fill: auto;
+    }
+    .horizontal-columns .column-span-all { column-span: all; }
+    
+    .single-column .row { flex-wrap: wrap; }
+    
+    .content-width {
+      overflow: auto !important;
+      max-width: max-content !important;
+      min-width: max-content !important;
+      width: max-content !important;
+      display: inline-block !important;
+      flex-wrap: nowrap !important;
+    }
+    
+    .chord-sheet {
+      counter-reset: verse;
+    }
+    
+    .paragraph {
+      break-inside: avoid;
+    }
+    
+    .paragraph + .paragraph {
+      margin-top: 1rem;
+    }
+    
+    .row {
+      display: flex;
+      flex-wrap: nowrap;
+      position: relative;
+      break-inside: avoid;
+    }
+    
+    .column {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .comment, .chorus:before, .verse::before {
+      font-weight: bold;
+      font-style: italic;
+      break-after: avoid;
+    }
+    
+    .chord, .lyrics {
+      white-space: pre;
+    }
+    
+    .chord-sheet *:not(.tab) .chord {
+      color: var(--color-primary-dark);
+      font-weight: bold;
+    }
+    
+    .chorus {
+      border-left: 4px solid #999;
+      padding-left: 1em;
+    }
+    
+    .chorus::before {
+      content: "Chorus:";
+    }
+    
+    .verse::before {
+      counter-increment: verse;
+      content: "Verse " counter(verse) ":";
+    }
+    
+    .chord:after, .lyrics:after {
+      content: '\200b';
+    }
+    
+    .chord-diagram {
+      width: 50px;
+      height: 65px;
+    }
+  }
+}

@@ -87,10 +87,20 @@
             <p class="custom-label">
               Corpo da música (Digite a letra com as cifras)
             </p>
-            <base-editor
+            <!-- <base-editor
               id="songEditor"
               v-if="showTipTap"
               v-model="song"
+            /> -->
+            <!-- eslint-disable vue/no-v-model-argument -->
+            <v-ace-editor
+              v-model:value="song"
+              theme="clouds"
+              style="height: 300px"
+              :print-margin="false"
+              :options="{fontSize: '0.9rem'}"
+              @init="setupEditor"
+              @paste="paste"
             />
           </div>
         </div>
