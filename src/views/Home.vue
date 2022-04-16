@@ -100,7 +100,7 @@
       <div class="row">
         <div class="col-12">
           <p class="text-center">
-            Versão: <strong>2.2.6</strong>
+            Versão: <strong>2.2.7</strong>
           </p>
         </div>
       </div>
