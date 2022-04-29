@@ -33,3 +33,13 @@
   font-size: 0.875rem;
   line-height: 1.35rem;
 }
+
+.floating-chord {
+  z-index: 10;
+  background-color: #ffffff;
+
+  p {
+    font-weight: bold;
+    color: var(--color-primary);
+  }
+}

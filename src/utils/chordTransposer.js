@@ -17,15 +17,15 @@ export const plaintextToPreHtml = (lyrics = '') => {
 }
 
 /**
- * 
- * @param {string} lyrics - raws ong
+ * Converts a plaintext song to html format
+ * @param {string} lyrics - raw song
  * @returns {string} formatted html
  */
 export const plaintextToChordSheetHtml = (lyrics = '') => {
   try {
 
     // Chordsheetjs utils
-    const normalizedSong = lyrics.replaceAll('<br>', '\n')
+    const normalizedSong = lyrics.replaceAll('<br>', '\n').replace(/\r\n/gm, '\n')
     const parser = new ChordSheetParser()
     const formatter = new HtmlDivFormatter()
 
@@ -40,7 +40,28 @@ export const plaintextToChordSheetHtml = (lyrics = '') => {
 }
 
 /**
- * 
+ * Converts a plaintext song into a Song object
+ * @param {string} lyrics - raw song
+ * @returns {Song} parsed song
+ */
+export const plainTextToSongObject = (lyrics = '') => {
+  try {
+
+    // Chordsheetjs utils
+    const normalizedSong = lyrics.replaceAll('<br>', '\n').replace(/\r\n/gm, '\n')
+    const parser = new ChordSheetParser()
+
+    // Format song into html format
+    return parser.parse(normalizedSong)
+
+  } catch (err) {
+    console.log('[parse error]', err)
+    return lyrics
+  }
+}
+
+/**
+ * Converts a plaintext song to chords array
  * @param {string} lyrics - raw song
  * @returns {Array} containing unique chords
  */
