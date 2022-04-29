@@ -48,7 +48,28 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <div v-html="parsedSong" class="song-section" />
+        <div class="song-section">
+          <div ref="output" class="chord-sheet">
+            <div
+              v-for="({ type, lines }, i) in chordsheet.paragraphs"
+              :key="type + i"
+              :class="type + ' paragraph'"
+            >
+              <template v-for="(line, idx) in lines">
+                <div :key="idx" v-if="line.hasRenderableItems()" class="row">
+                  <template v-for="(item, idx2) in line.items">
+                    <component
+                      v-if="item.isRenderable()"
+                      :is="componentFor(item)"
+                      :item="item"
+                      :key="'inner' + idx2"
+                    />
+                  </template>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
