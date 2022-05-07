@@ -29,6 +29,11 @@ export default {
         redirect: 'directory'
       },
       {
+        text: 'Repertório Público',
+        icon: 'earth-americas',
+        redirect: 'publicSongs'
+      },
+      {
         text: 'Apresentações',
         icon: 'microphone-lines',
         redirect: 'shows'

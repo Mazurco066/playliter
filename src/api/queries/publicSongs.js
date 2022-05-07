@@ -2,28 +2,18 @@
 import { gql } from 'apollo-boost'
 
 // Query
-export const SONGS = gql`
-  query($id: String!, $limit: Float!, $offset: Float!) {
-    songs(ListSongsInput:{
-      bandId: $id,
-      limit: $limit,
-      offset: $offset
+export const PUBLIC_SONGS = gql`
+  query($filter: String!, $limit: Float!, $offset: Float!) {
+    publicSongs(ListPublicSongsInput: {
+      filter: $filter,
+      offset: $offset,
+      limit: $limit
     }) {
       id
       title
       writter
       tone
       body
-      isPublic
-      category {
-        id
-        title
-        description
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
       band {
         id
         title
@@ -31,6 +21,16 @@ export const SONGS = gql`
         createdAt
         updatedAt
       }
+      category {
+        id
+        title
+        description
+        createdAt
+        updatedAt
+      }
+      isPublic
+      createdAt
+      updatedAt
     }
   }
 `

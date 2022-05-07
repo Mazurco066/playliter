@@ -22,7 +22,11 @@
                 <small>+ Lista</small>
               </p>
             </div>
-            <div class="action" @click="editSong()">
+            <div
+              class="action"
+              :class="{ 'disabled': !isEditable }"
+              @click="isEditable ? editSong() : () => {}"
+            >
               <div class="icon-bg">
                 <font-awesome-icon icon="edit" />
               </div>
@@ -31,8 +35,9 @@
               </p>
             </div>
             <div
-              @click="songLoading ? () => {} : deleteSong()"
               class="action"
+              :class="{ 'disabled': !isRemovable }"
+              @click="isRemovable ? deleteSong() : () => {}"
             >
               <div class="icon-bg">
                 <font-awesome-icon icon="trash" />

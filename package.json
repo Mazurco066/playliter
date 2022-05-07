@@ -7,7 +7,7 @@
     "email": "mazurco066@gmail.com"
   },
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --host localhost",
     "build": "vue-cli-service build"
   },
   "dependencies": {

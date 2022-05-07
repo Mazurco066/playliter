@@ -125,11 +125,15 @@ export default {
         const payload = {
           ...this.form,
           body: this.song,
-          band
+          band: band,
+          // TODO: Add field to form
+          isPublic: true
         }
 
         // Create / Update song
         const r = await this.saveSong({ id, payload })
+
+        // Validate errors
         if (r.error) {
           this.$toast.error(`Ocorreu um erro ao salvar sua música! Tente novamente mais tarde`)
         } else {
@@ -150,12 +154,9 @@ export default {
       })
       editor.renderer.setScrollMargin(20, 20)
 
+      // Add snipets and completers
       const { snippetCompleter } = ace.require('ace/ext/language_tools')
-
-      editor.completers = [
-        new ChordCompleter(),
-        snippetCompleter
-      ]
+      editor.completers = [ new ChordCompleter(), snippetCompleter ]
 
       // Start autocomplete on [ or { characters
       editor.commands.addCommand({
