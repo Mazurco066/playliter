@@ -76,10 +76,27 @@
       ]
     },
     "publicSongs": {
-
+      "title": "Public songbook",
+      "subtitle": "Here you can find public songs shared by bands.",
+      "searchField": "Search songs...",
+      "noSongs": "There is no songs using the current filter!"
     },
     "saveBand": {
-
+      "createTitle": "Create new Band",
+      "updateTitle": "Save Band",
+      "createSubtitle": "Creates a new Band.",
+      "updateSubtitle": "Update a Band's data.",
+      "nameField": "Band name",
+      "nameLabel": "1. First things first, give a badass name for your band:",
+      "descriptionField": "Band description",
+      "descriptionLabel": "2. Now type a matching description about it:",
+      "submit": "Save Band",
+      "messages": [
+        "Band successfully saved!",
+        "An error ocourred while saving the band! Please try again later.",
+        "There are errors in your form data. Plese review the filled fields!",
+        "Band not found!"
+      ]
     },
     "saveShow": {
 
@@ -109,7 +126,6 @@
   "pt": {
     "appname": "Playliter",
     "description": "App desenvolvido no intuíto de facilitar o gerenciamento do repertório de uma banda.",
-    
     "band": {
       "createdAt": "Criada em",
       "inviteAction": "Convidar",
@@ -184,10 +200,27 @@
       ]
     },
     "publicSongs": {
-
+      "title": "Repertório público",
+      "subtitle": "Aqui você encontra as músicas disponibilizadas publicamente pelas bandas.",
+      "searchField": "Pesquisar músicas...",
+      "noSongs": "Não há músicas cadastradas correspondentes ao filtro atual."
     },
     "saveBand": {
-
+      "createTitle": "Criar nova banda",
+      "updateTitle": "Editar banda",
+      "createSubtitle": "Criar nova banda.",
+      "updateSubtitle": "Alterar os dados de uma banda cadastrada.",
+      "nameField": "Nome para a banda...",
+      "nameLabel": "1. Primeiramente informe um nome para sua banda:",
+      "descriptionField": "Breve descrição...",
+      "descriptionLabel": "2. Agora forneça uma breve descrição sobre a mesma:",
+      "submit": "Salvar Banda",
+      "messages": [
+        "Banda salva com sucesso!",
+        "Ocorreu um erro ao salvar sua banda! Tente novamente mais tarde.",
+        "Seu formuário contem erros de validação! Por favor revise-os.",
+        "Banda não encontrada!"
+      ]
     },
     "saveShow": {
 
