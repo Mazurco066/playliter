@@ -6,21 +6,53 @@ export default {
   name: 'Song',
   data: () => ({
     song: {},
+    band: {},
     shows: [],
     isListModalOpen: false
   }),
   computed: {
     ...mapGetters({
+      me: 'account/getMe',
+      bandLoading: 'band/getLoadingStatus',
       songLoading: 'song/getLoadingStatus',
       showLoading: 'show/getLoadingStatus'
-    })
+    }),
+    isLoading () {
+      return this.bandLoading || this.songLoading
+    },
+    isEditable () {
+      if (this.isLoading) {
+        return false
+      } else if (Object.keys(this.band).length > 0) {
+        const { id } = this.me
+        const isBandAdmin = this.band.admins.find(m => m.id === id) !== undefined
+        const isBandMember = this.band.members.find(m => m.id === id) !== undefined
+        const isBandOwner = this.band.owner.id === id
+        return (isBandAdmin || isBandMember || isBandOwner)
+      } else {
+        return false
+      } 
+    },
+    isRemovable () {
+      if (this.isLoading) {
+        return false
+      } else if (Object.keys(this.band).length > 0) {
+        const { id } = this.me
+        const isBandAdmin = this.band.admins.find(m => m.id === id) !== undefined
+        const isBandOwner = this.band.owner.id === id
+        return (isBandAdmin || isBandOwner)
+      } else {
+        return false
+      } 
+    }
   },
   methods: {
     ...mapActions({
       loadSong: 'song/loadBandSong',
       removeBandSong: 'song/removeBandSong',
-      listBandShows: 'show/listBandShows',
-      linkSong: 'show/linkSong'
+      listAccountShows: 'show/listAccountShows',
+      linkSong: 'show/linkSong',
+      loadBand: 'band/loadBand'
     }),
     closeListModal () {
       this.isListModalOpen = false
@@ -91,8 +123,12 @@ export default {
       this.$toast.warning(`Música de id ${id} não encontrada!`)
     }
     
-    // Then the shows
-    const shows = await this.listBandShows({ band })
+    // Then list shows and band
+    const [ shows, currentBand ] = await Promise.all([
+      this.listAccountShows(),
+      this.loadBand(band)
+    ])
     this.shows = shows.data
+    this.band = currentBand.data
   }
 }

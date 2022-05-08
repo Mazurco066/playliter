@@ -1,0 +1,51 @@
+#public-songs {
+  .title {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .songs {
+    list-style: none;
+    padding: 0.5rem;
+    background-color: #f5f5f5;
+
+   .song {
+      margin-bottom: 1rem;
+
+      .content {
+        background-color: #f5f5f5;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--color-text);
+
+        .icon {
+          flex: 0 0 auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .song-img {
+            max-width: 50px;
+          }
+        }
+
+        .song-info {
+          flex-grow: 1;
+        }
+      }
+
+      &:hover {
+        opacity: 0.7;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+  }
+}

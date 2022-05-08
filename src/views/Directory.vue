@@ -65,7 +65,7 @@
                     <div class="content">
                       <div class="icon mr-3">
                         <div class="song-img">
-                          <img :src="`/img/arts/01.png`" />
+                          <img :src="`/img/arts/record.png`" />
                         </div>
                       </div>
                       <div class="song-info">

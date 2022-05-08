@@ -13,6 +13,7 @@ export const SONG = gql`
       writter
       tone
       body
+      isPublic
       category {
         id
         title

@@ -2,7 +2,7 @@
 import { getAuthenticatedClient } from '../../api'
 import { asyncHandler } from '../../utils'
 import { REMOVE_SONG, ADD_SONG, UPDATE_SONG, ADD_CATEGORY, UPDATE_CATEGORY, REMOVE_CATEGORY, SCRAP_SONG } from '../../api/mutations'
-import { SONG, SONGS, CATEGORIES } from '../../api/queries'
+import { SONG, SONGS, CATEGORIES, PUBLIC_SONGS } from '../../api/queries'
 
 // Object initial state
 const initialState = () => ({ loading: false })
@@ -84,6 +84,23 @@ const actions = {
     return {
       error: error,
       data: error ? [] : resp.data.songs,
+      message: error ? resp.message : null
+    }
+  },
+  async listPublicSongs({ commit }, { limit = 0, offset = 0, filter = '' }) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.query({
+        query: PUBLIC_SONGS,
+        variables: { limit, offset, filter }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? [] : resp.data.publicSongs,
       message: error ? resp.message : null
     }
   },
