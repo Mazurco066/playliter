@@ -43,7 +43,14 @@
       "noCategories": "This band hasn't created categories!"
     },
     "directory": {
-
+      "title": "Repertório completo",
+      "subtitle01": "Containing",
+      "subtitle02": "songs.",
+      "searchField": "Search songs...",
+      "categoryAction": "Manage categories",
+      "songAction": "New song",
+      "songLabel": "Song(s)",
+      "noSongs": "There is no songs using the current filter!"
     },
     "home": {
       "nextPresentations": "Incoming presentations",
@@ -144,7 +151,14 @@
       "noCategories": "Essa banda não possuí categorias cadastradas!"
     },
     "directory": {
-
+      "title": "Repertório completo",
+      "subtitle01": "Contendo",
+      "subtitle02": "músicas.",
+      "searchField": "Pesquisar música...",
+      "categoryAction": "Gerenciar categorias",
+      "songAction": "Nova música",
+      "songLabel": "Música(s)",
+      "noSongs": "Nenhuma música foi encontrada com o filtro utilizado!"
     },
     "home": {
       "nextPresentations": "Próximas apresentações",
