@@ -50,7 +50,7 @@ export default {
     ...mapActions({
       loadSong: 'song/loadBandSong',
       removeBandSong: 'song/removeBandSong',
-      listBandShows: 'show/listBandShows',
+      listAccountShows: 'show/listAccountShows',
       linkSong: 'show/linkSong',
       loadBand: 'band/loadBand'
     }),
@@ -125,7 +125,7 @@ export default {
     
     // Then list shows and band
     const [ shows, currentBand ] = await Promise.all([
-      this.listBandShows({ band }),
+      this.listAccountShows(),
       this.loadBand(band)
     ])
     this.shows = shows.data

@@ -1,4 +1,5 @@
 export * from './accountByUsername'
+export * from './accountShows'
 export * from './band'
 export * from './bands'
 export * from './categories'
