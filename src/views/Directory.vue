@@ -14,7 +14,7 @@
                 v-model="search"
               />
             </div>
-            <lines v-else class="shine"></lines>
+            <div v-else class="shine"></div>
         </div>
       </div>
       <div class="row secondary-section mb-3">
@@ -97,23 +97,23 @@
               <li class="category">
                 <div class="content">
                   <p class="text-uppercase mb-0">
-                    <lines class="shine"></lines>
+                    <span class="shine shimmer-lines"></span>
                   </p>
                   <span class="description">
-                    <lines class="shine"></lines>
+                    <div class="shine shimmer-lines"></div>
                   </span>
                 </div>
                 <ul class="songs">
                   <li class="song">
                     <div class="content">
                       <div class="icon mr-3">
-                        <photo class="shine"></photo>
+                        <div class="shine shimmer-photo"></div>
                       </div>
                       <div class="song-info">
                         <p class="mb-0">
-                          <lines class="shine"></lines>
+                          <span class="shine shimmer-lines"></span>
                         </p>
-                        <lines class="shine"></lines>
+                        <div class="shine shimmer-lines"></div>
                       </div>
                     </div>
                   </li>

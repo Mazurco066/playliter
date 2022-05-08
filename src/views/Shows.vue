@@ -69,13 +69,13 @@
               <ul class="list">
                 <li class="item">
                   <div class="icon mr-3">
-                    <photo class="shine"></photo>
+                    <div class="shine shimmer-photo"></div>
                   </div>
                   <div class="show-info">
                     <p class="title">
-                      <lines class="shine"></lines>
+                      <span class="shine shimmer-lines"></span>
                     </p>
-                    <lines class="shine"></lines>
+                    <div class="shine shimmer-lines"></div>
                   </div>
                   <div class="actions"></div>
                 </li>

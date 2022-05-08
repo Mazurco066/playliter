@@ -3,7 +3,18 @@
     "appname": "Playliter",
     "description": "This app was developed to help bands manage presentation playlists.",
     "band": {
-
+      "createdAt": "Created at",
+      "inviteAction": "Invite",
+      "updateAction": "Update",
+      "removeAction": "Remove",
+      "promoteAction": "Promote to Admin",
+      "demoteAction": "Demote to member",
+      "toolSection": "Tools",
+      "categoriesMenu": "Categories",
+      "songbookMenu": "Songbook",
+      "publicMenu": "Public Songbook",
+      "presentationMenu": "Shows",
+      "memberSection": "Members"
     },
     "bands": {
       "title": "My Bands",
@@ -89,7 +100,18 @@
     "description": "App desenvolvido no intuíto de facilitar o gerenciamento do repertório de uma banda.",
     
     "band": {
-
+      "createdAt": "Criada em",
+      "inviteAction": "Convidar",
+      "updateAction": "Editar",
+      "removeAction": "Remover",
+      "promoteAction": "Tornar Admin",
+      "demoteAction": "Remover permissões",
+      "toolSection": "Ferramentas",
+      "categoriesMenu": "Categorias",
+      "songbookMenu": "Repertório",
+      "publicMenu": "Repertório Público",
+      "presentationMenu": "Apresentações",
+      "memberSection": "Integrantes"
     },
     "bands": {
       "title": "Minhas bandas",

@@ -13,8 +13,8 @@
             />
           </div>
           <div v-else>
-            <lines class="shine"></lines>
-            <lines class="shine mb-3"></lines>
+            <div class="shine shimmer-lines"></div>
+            <div class="shine mb-3"></div>
           </div>
         </div>
       </div>

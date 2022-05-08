@@ -41,10 +41,10 @@
             </div>
           </div>
           <div v-else class="info pb-3">
-            <lines class="shine"></lines>
+            <div class="shine shimmer-lines"></div>
             <hr />
-            <lines class="shine"></lines>
-            <lines class="shine"></lines>
+            <div class="shine shimmer-lines"></div>
+            <div class="shine shimmer-lines"></div>
           </div>
         </div>
       </div>
@@ -115,14 +115,14 @@
                   <li class="song">
                     <div class="icon mr-3">
                       <div class="song-img">
-                        <photo class="shine"></photo>
+                        <div class="shine shimmer-photo"></div>
                       </div>
                     </div>
                     <div class="song-info">
                       <p class="mb-0">
-                        <lines class="shine"></lines>
+                        <span class="shine shimmer-lines"></span>
                       </p>
-                      <lines class="shine"></lines>
+                      <div class="shine shimmer-lines"></div>
                     </div>
                   </li>
                 </ul>
@@ -178,14 +178,14 @@
                   <li class="song">
                     <div class="icon mr-3">
                       <div class="song-img">
-                        <photo class="shine"></photo>
+                        <div class="shine shimmer-photo"></div>
                       </div>
                     </div>
                     <div class="song-info">
                       <p class="mb-0">
-                        <lines class="shine"></lines>
+                        <span class="shine shimmer-lines"></span>
                       </p>
-                      <lines class="shine"></lines>
+                      <div class="shine shimmer-lines"></div>
                     </div>
                   </li>
                 </ul>

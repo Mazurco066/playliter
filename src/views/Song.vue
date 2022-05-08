@@ -7,9 +7,9 @@
           <p v-if="!songLoading" class="title mb-0">
             {{ song.title }}
           </p>
-          <lines v-else class="shine"></lines>
+          <div v-else class="shine"></div>
           <p v-if="!songLoading">{{ song.writter }}</p>
-          <lines v-else class="shine"></lines>
+          <div v-else class="shine"></div>
           <hr class="mb-1" />
         </div>
         <div class="col-12">
@@ -99,7 +99,7 @@
             <div v-else>
               <ul class="shows">
                 <li class="show">
-                  <lines class="shine"></lines>
+                  <div class="shine shimmer-lines"></div>
                 </li>
               </ul>
             </div>

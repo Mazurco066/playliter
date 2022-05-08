@@ -43,11 +43,11 @@
             </div>
           </div>
           <div v-else class="info">
-            <lines class="shine"></lines>
+            <div class="shine shimmer-lines"></div>
             <hr />
-            <lines class="shine"></lines>
+            <div class="shine shimmer-lines"></div>
             <hr />
-            <lines class="shine"></lines>
+            <div class="shine shimmer-lines"></div>
           </div>
         </div>
       </div>
@@ -79,21 +79,21 @@
           <ul v-else class="activities">
             <li class="item">
               <div class="icon">
-                <photo class="shine" />
+                <div class="shine shimmer-photo" />
               </div>
-              <lines class="shine" />
+              <div class="shine shimmer-lines" />
             </li>
             <li class="item">
               <div class="icon">
-                <photo class="shine" />
+                <div class="shine shimmer-photo" />
               </div>
-              <lines class="shine" />
+              <div class="shine shimmer-lines" />
             </li>
             <li class="item">
               <div class="icon">
-                <photo class="shine" />
+                <div class="shine shimmer-photo" />
               </div>
-              <lines class="shine" />
+              <div class="shine shimmer-lines" />
             </li>
           </ul>
         </div>
@@ -171,12 +171,12 @@
               <li class="item">
                 <div class="info mr-3">
                   <p class="mb-0">
-                    <lines class="shine"></lines>
+                    <span class="shine shimmer-lines"></span>
                   </p>
-                  <lines class="shine"></lines>
+                  <div class="shine shimmer-lines"></div>
                 </div>
                 <div class="actions">
-                  <photo class="shine"></photo>
+                  <div class="shine shimmer-photo"></div>
                 </div>
               </li>
             </ul>

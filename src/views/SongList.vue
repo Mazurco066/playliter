@@ -9,12 +9,12 @@
           <p v-if="!showLoading" class="title mb-0">
             {{ displaySong.title }}
           </p>
-          <lines v-else class="shine"></lines>
+          <div v-else class="shine"></div>
           <!-- Writter -->
           <p v-if="!showLoading" class="mb-3">
             {{ displaySong.writter }}
           </p>
-          <lines v-else class="shine"></lines>
+          <div v-else class="shine"></div>
           <hr class="mb-1" />
         </div>
         <div class="col-12">

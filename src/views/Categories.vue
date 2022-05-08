@@ -60,10 +60,10 @@
               <li class="category">
                 <div class="category-info">
                   <p class="mb-0">
-                    <lines class="shine"></lines>
+                    <span class="shine shimmer-lines"></span>
                   </p>
                   <span>
-                    <lines class="shine"></lines>
+                    <div class="shine shimmer-lines"></div>
                   </span>
                 </div>
               </li>

@@ -183,19 +183,19 @@
   -webkit-animation-timing-function: linear;
 }
 
-box {
+.shimmer-box {
   height: 104px;
   width: 100%;
 	margin-bottom: 0.5rem;
 }
 
-lines {
+.shimmer-lines {
   height: 10px;
   margin-top: 10px;
   width: 100%; 
 }
 
-photo {
+.shimmer-photo {
   display: block!important;
   width: 32px; 
   height: 32px;
