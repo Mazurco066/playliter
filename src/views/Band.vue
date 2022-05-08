@@ -10,7 +10,7 @@
             <hr />
             <p class="mb-3">{{ band.description }}</p>
             <span>
-              Criada em 
+              {{ $t('band.createdAt') }} 
               <strong>
                 {{ $text.formatISODate(new Date(parseInt(band.createdAt)).toISOString()) }}
               </strong>
@@ -21,7 +21,7 @@
                   <font-awesome-icon icon="user-plus" />
                 </div>
                 <p class="mb-0">
-                  <small>Convidar</small>
+                  <small>{{ $t('band.inviteAction') }}</small>
                 </p>
               </div>
               <div @click="navigateTo('editBand', band.id)" class="action">
@@ -29,7 +29,7 @@
                   <font-awesome-icon icon="edit"  />
                 </div>
                 <p class="mb-0">
-                  <small>Editar</small>
+                  <small>{{ $t('band.updateAction') }}</small>
                 </p>
               </div>
               <div v-if="band.owner.id === me.id" @click="disposeBand()" class="action">
@@ -37,7 +37,7 @@
                   <font-awesome-icon icon="trash" />
                 </div>
                 <p class="mb-0">
-                  <small>Remover</small>
+                  <small>{{ $t('band.removeAction') }}</small>
                 </p>
               </div>
             </div>
@@ -54,7 +54,7 @@
       <div class="row band-activities secondary-section p-3">
         <div class="col-12">
           <h3 class="title mb-3">
-            Ferramentas
+            {{ $t('band.toolSection') }}
           </h3>
         </div>
         <div class="col-12">
@@ -101,7 +101,7 @@
       <div class="row band-members">
         <div class="col-12">
           <h3 class="title mb-3">
-            Integrantes
+            {{ $t('band.memberSection') }}
           </h3>
         </div>
         <div class="col-12">
@@ -119,10 +119,10 @@
                 <span>
                   {{ 
                     band.owner.id === m.id 
-                      ? 'Fundador' 
+                      ? $t('bands.founder')  
                       : band.admins.find(a => a.id === m.id) 
-                        ? 'Administrador'
-                        : 'Membro' 
+                        ? $t('bands.admin') 
+                        : $t('bands.member') 
                   }}
                 </span>
                 </div>
@@ -145,7 +145,7 @@
                       class="dropdown-item"
                       v-if="(band.admins.find(a => a.id === me.id) && m.id !== band.owner.id && m.id !== me.id) || (band.owner.id === me.id && m.id !== me.id)"
                     >
-                      <font-awesome-icon icon="trash" class="mr-1" /> Remover
+                      <font-awesome-icon icon="trash" class="mr-1" /> {{ $t('band.removeAction') }}
                     </a>
                     <a
                       href="#"
@@ -153,7 +153,7 @@
                       class="dropdown-item"
                       v-if="((band.owner.id === me.id || band.admins.find(a => a.id === me.id)) && m.id !== me.id && band.admins.find(a => a.id === m.id))"
                     >
-                      <font-awesome-icon icon="angle-double-down" class="mr-1" /> Remover permissões
+                      <font-awesome-icon icon="angle-double-down" class="mr-1" /> {{ $t('band.demoteAction') }}
                     </a>
                     <a
                       href="#"
@@ -161,7 +161,7 @@
                       class="dropdown-item"
                       v-if="(band.admins.find(a => a.id === me.id) && m.id !== band.owner.id && m.id !== me.id && !band.admins.find(a => a.id === m.id)) || (band.owner.id === me.id && m.id !== me.id && !band.admins.find(a => a.id === m.id))"
                     >
-                      <font-awesome-icon icon="angle-double-up" class="mr-1" /> Tornar admin
+                      <font-awesome-icon icon="angle-double-up" class="mr-1" /> {{ $t('band.promoteAction') }}
                     </a>
                   </base-dropdown>
                 </div>
@@ -199,8 +199,8 @@
         <div class="container">
           <div class="row">
             <div class="col-12">
-              <h4>Banda</h4>
-              <p>Adicionar novo membro</p>
+              <h4>{{ $t('band.modalTitle') }}</h4>
+              <p>{{ $t('band.modalDescription') }}</p>
             </div>
           </div>
         </div>
@@ -211,8 +211,8 @@
             <div class="col-12">
               <base-input
                 type="text"
-                label="Nome de usuário"
-                placeholder="Entre com a tag do usuário"
+                :label="$t('band.userField')"
+                :placeholder="$t('band.userField')"
                 addonLeftIcon="user"
                 v-model="v$.inviteForm.username.$model"
                 :valid="!v$.inviteForm.username.$error"
@@ -227,14 +227,13 @@
                 type="primary"
                 :disabled="v$.$error === true || bandLoading || accountLoading"
               >
-                Adicionar Membro
+                {{ $t('band.addAction') }}
               </base-button>
             </div>
           </div>
         </form>
       </div>
     </base-modal>
-
   </div>
 </template>
 

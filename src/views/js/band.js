@@ -16,29 +16,7 @@ export default {
     isInviteModalOpen: false,
     inviteForm: {
       username: ''
-    },
-    menu: [
-      {
-        text: 'Categorias',
-        icon: 'compact-disc',
-        redirect: 'categories'
-      },
-      {
-        text: 'Repertório',
-        icon: 'music',
-        redirect: 'directory'
-      },
-      {
-        text: 'Repertório Público',
-        icon: 'earth-americas',
-        redirect: 'publicSongs'
-      },
-      {
-        text: 'Apresentações',
-        icon: 'microphone-lines',
-        redirect: 'shows'
-      }
-    ]
+    }
   }),
   computed: {
     ...mapGetters({
@@ -50,6 +28,30 @@ export default {
     }),
     isDisplayReady () {
       return !this.bandLoading && Object.keys(this.band).length > 0
+    },
+    menu () {
+      return [
+        {
+          text: this.$t('band.categoriesMenu'),
+          icon: 'compact-disc',
+          redirect: 'categories'
+        },
+        {
+          text: this.$t('band.songbookMenu'),
+          icon: 'music',
+          redirect: 'directory'
+        },
+        {
+          text: this.$t('band.publicMenu'),
+          icon: 'earth-americas',
+          redirect: 'publicSongs'
+        },
+        {
+          text: this.$t('band.presentationMenu'),
+          icon: 'microphone-lines',
+          redirect: 'shows'
+        }
+      ]
     }
   },
   methods: {
