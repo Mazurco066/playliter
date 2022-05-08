@@ -2,6 +2,25 @@
   "en": {
     "appname": "Playliter",
     "description": "This app was developed to help bands manage presentation playlists.",
+    "band": {
+
+    },
+    "bands": {
+      "title": "My Bands",
+      "subtitle": "List of bands that you are assigned.",
+      "founder": "Founder",
+      "admin": "Admin",
+      "member": "Member",
+      "noBands": "You aren't a member from any bands!",
+      "editAction": "Update",
+      "removeAction": "Remove"
+    },
+    "categories": {
+
+    },
+    "directory": {
+
+    },
     "home": {
       "nextPresentations": "Incoming presentations",
       "date": "Date",
@@ -24,11 +43,61 @@
       "messages": [
         "Profile successfully updated!"
       ]
+    },
+    "publicSongs": {
+
+    },
+    "saveBand": {
+
+    },
+    "saveShow": {
+
+    },
+    "saveSong": {
+
+    },
+    "show": {
+
+    },
+    "shows": {
+
+    },
+    "signin": {
+
+    },
+    "signup": {
+
+    },
+    "song": {
+
+    },
+    "songList": {
+
     }
   },
   "pt": {
     "appname": "Playliter",
     "description": "App desenvolvido no intuíto de facilitar o gerenciamento do repertório de uma banda.",
+    
+    "band": {
+
+    },
+    "bands": {
+      "title": "Minhas bandas",
+      "subtitle": "Lista das bandas nas quais você participa como um integrante.",
+      "founder": "Fundador",
+      "admin": "Administrador",
+      "member": "Membro",
+      "noBands": "Você não participa de nenhuma banda no momento!",
+      "editAction": "Editar",
+      "removeAction": "Excluir"
+    },
+    "categories": {
+
+    },
+    "directory": {
+
+    },
     "home": {
       "nextPresentations": "Próximas apresentações",
       "date": "Data",
@@ -51,6 +120,36 @@
       "messages": [
         "Perfil atualizado com sucesso!"
       ]
+    },
+    "publicSongs": {
+
+    },
+    "saveBand": {
+
+    },
+    "saveShow": {
+
+    },
+    "saveSong": {
+
+    },
+    "show": {
+
+    },
+    "shows": {
+
+    },
+    "signin": {
+
+    },
+    "signup": {
+
+    },
+    "song": {
+
+    },
+    "songList": {
+
     }
   }
 }
