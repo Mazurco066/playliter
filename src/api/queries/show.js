@@ -24,6 +24,7 @@ export const SHOW = gql`
         title
         tone
         body
+        isPublic
         writter
         createdAt
         updatedAt

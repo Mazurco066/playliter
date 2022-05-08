@@ -61,9 +61,12 @@
               <div v-if="!showLoading && show.songs">
                 <ul class="songs" v-if="show.songs.length > 0">
                   <li v-for="(s, i) in show.songs" :key="i" class="song">
+                    <div v-if="s.isPublic" class="public-icon">
+                      <span>Pública</span>
+                    </div>
                     <div class="icon mr-3" @click="navigateTo('song', show.band.id, s.id)">
                       <div class="song-img">
-                        <img :src="`/img/arts/01.png`" />
+                        <img :src="`/img/arts/record.png`" />
                       </div>
                     </div>
                     <div class="song-info" @click="navigateTo('song', show.band.id, s.id)">
