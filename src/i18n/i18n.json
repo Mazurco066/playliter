@@ -1,0 +1,26 @@
+{
+  "en": {
+    "appname": "Playliter",
+    "description": "This app was developed to help bands manage presentation playlists.",
+    "home": {
+      "nextPresentations": "Incoming presentations",
+      "date": "Date",
+      "version": "Version",
+      "noPresentations": "There is no incoming presentations from bands you joined!",
+      "pendingInvites": "Band invitations",
+      "invitedAt": "Invited at"
+    }
+  },
+  "pt": {
+    "appname": "Playliter",
+    "description": "App desenvolvido no intuíto de facilitar o gerenciamento do repertório de uma banda.",
+    "home": {
+      "nextPresentations": "Próximas apresentações",
+      "date": "Data",
+      "version": "Versão",
+      "noPresentations": "Não há apresentações futuras registradas nas bandas que você participa!",
+      "pendingInvites": "Convites pendentes",
+      "invitedAt": "Convidado em"
+    }
+  }
+}
