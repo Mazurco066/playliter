@@ -9,6 +9,21 @@
       "noPresentations": "There is no incoming presentations from bands you joined!",
       "pendingInvites": "Band invitations",
       "invitedAt": "Invited at"
+    },
+    "profile": {
+      "title": "My Profile",
+      "subtitle": "Update your profile data if needed.",
+      "nameField": "Name",
+      "userField": "Username",
+      "accessField": "Access Type",
+      "createdAt": "Member since",
+      "submit": "Save profile",
+      "logoff": "Logoff",
+      "musician": "Musician",
+      "admin": "Admin",
+      "messages": [
+        "Profile successfully updated!"
+      ]
     }
   },
   "pt": {
@@ -21,6 +36,21 @@
       "noPresentations": "Não há apresentações futuras registradas nas bandas que você participa!",
       "pendingInvites": "Convites pendentes",
       "invitedAt": "Convidado em"
+    },
+    "profile": {
+      "title": "Meu perfil",
+      "subtitle": "Visualize ou edite informações de seu perfil dentro do app",
+      "nameField": "Nome completo",
+      "userField": "Usuário",
+      "accessField": "Nível da conta",
+      "createdAt": "Conta criada em",
+      "submit": "Atualizar perfil",
+      "logoff": "Sair",
+      "musician": "Músico",
+      "admin": "Admin",
+      "messages": [
+        "Perfil atualizado com sucesso!"
+      ]
     }
   }
 }
