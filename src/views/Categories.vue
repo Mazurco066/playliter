@@ -5,10 +5,8 @@
     <div class="container">
       <div class="row pt-3 primary-section">
         <div class="col-12">
-          <h3 class="title mt-3">Categorias</h3>
-          <p class="mt-3">
-            Categorias registradas para a banda selecionada.
-          </p>
+          <h3 class="title mt-3">{{ $t('categories.title') }}</h3>
+          <p class="mt-3">{{ $t('categories.subtitle') }}</p>
         </div>
       </div>
       <div class="row secondary-section mb-3">
@@ -19,7 +17,7 @@
             class="mt-3 mb-3"
             @click="openCategoryModal()"
           >
-            Adicionar Categoria
+            {{ $t('categories.addAction') }}
           </base-button>
         </div>
       </div>
@@ -52,7 +50,7 @@
               </div>
               <p class="mb-3 text-center">
                 <strong>
-                  Essa banda não possuí categorias cadastradas!
+                  {{ $t('categories.noCategories') }}
                 </strong>
               </p>
             </div>
@@ -90,8 +88,8 @@
         <div class="container">
           <div class="row">
             <div class="col-12">
-              <h4>Categorias</h4>
-              <p>Salvar categoria</p>
+              <h4>{{ $t('categories.formTitle') }}</h4>
+              <p>{{ $t('categories.formDescription') }}</p>
             </div>
           </div>
         </div>
@@ -102,8 +100,8 @@
             <div class="col-12">
               <base-input
                 type="text"
-                label="Título da categoria"
-                placeholder="Título da categoria"
+                :label="$t('categories.titleField')"
+                :placeholder="$t('categories.titleField')"
                 addonLeftIcon="tag"
                 v-model="v$.form.title.$model"
                 :valid="!v$.form.title.$error"
@@ -114,8 +112,8 @@
             <div class="col-12">
               <base-input
                 type="text"
-                label="Descrição da categoria"
-                placeholder="Descrição da categoria"
+                :label="$t('categories.descriptionField')"
+                :placeholder="$t('categories.descriptionField')"
                 addonLeftIcon="hashtag"
                 v-model="v$.form.description.$model"
                 :valid="!v$.form.description.$error"
@@ -130,7 +128,7 @@
                 :disabled="v$.$error === true || songLoading"
                 class="mb-3"
               >
-                Salvar categoria
+                {{ $t('categories.submit') }}
               </base-button>
               <base-button
                 nativeType="button"
@@ -138,7 +136,7 @@
                 :disabled="songLoading"
                 @click="removeCategory(catId)"
               >
-                Remover Categoria
+                {{ $t('categories.remove') }}
               </base-button>
             </div>
           </div>

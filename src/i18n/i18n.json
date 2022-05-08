@@ -16,7 +16,16 @@
       "removeAction": "Remove"
     },
     "categories": {
-
+      "title": "Categories",
+      "subtitle": "Saved categories for selected band.",
+      "addAction": "Add Category",
+      "submit": "Save Category",
+      "remove": "Remove Category",
+      "formTitle": "Categories",
+      "formDescription": "Save category",
+      "titleField": "Category title",
+      "descriptionField": "Category description",
+      "noCategories": "This band hasn't created categories!"
     },
     "directory": {
 
@@ -93,7 +102,16 @@
       "removeAction": "Excluir"
     },
     "categories": {
-
+      "title": "Categorias",
+      "subtitle": "Categorias registradas para a banda selecionada.",
+      "addAction": "Adicionar Categoria",
+      "submit": "Salvar Categoria",
+      "remove": "Remover Categoria",
+      "formTitle": "Categorias",
+      "formDescription": "Salvar categoria",
+      "titleField": "Título da categoria",
+      "descriptionField": "Descrição da categoria",
+      "noCategories": "Essa banda não possuí categorias cadastradas!"
     },
     "directory": {
 
