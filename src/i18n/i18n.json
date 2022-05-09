@@ -161,7 +161,25 @@
       ]
     },
     "signup": {
-
+      "title": "Sign up",
+      "nameField": "Your name",
+      "nameLabel": "Name",
+      "userField": "Username",
+      "userLabel": "Username",
+      "passwordField": "Password",
+      "passwordLabel": "Password",
+      "confirmField": "Confirm password",
+      "confirmLabel": "Confirm your password",
+      "submit": "Create an Account",
+      "pageLabel": "Have an account?",
+      "pageLink": "Sign in!",
+      "messages": [
+        "Account successfully created!",
+        "Account successfully created. Welcome!",
+        "The password and confirmation must match!",
+        "An error ocourred while creating your account! Pleas try again later.",
+        "There are errors in your form data. Plese review the filled fields!"
+      ]
     },
     "song": {
 
@@ -332,7 +350,25 @@
       ]
     },
     "signup": {
-
+      "title": "Criar nova conta",
+      "nameField": "Digite seu nome",
+      "nameLabel": "Nome Completo",
+      "userField": "Escolha um nome de usuário",
+      "userLabel": "Nome do usuário",
+      "passwordField": "Agora digite seu senha",
+      "passwordLabel": "Senha",
+      "confirmField": "Agora confirme sua senha",
+      "confirmLabel": "Confirmar senha",
+      "submit": "Criar conta",
+      "pageLabel": "Já possúi conta?",
+      "pageLink": "Autenticar!",
+      "messages": [
+        "Conta criada com sucesso!",
+        "Conta criada com sucesso. Seja bem vindo(a)!",
+        "As senhas devem ser iguais!",
+        "Ocorreu um erro ao criar sua conta! Tente novamente mais tarde.",
+        "Seu formulário contem erros de validação! Por favor revise-os."
+      ]
     },
     "song": {
 

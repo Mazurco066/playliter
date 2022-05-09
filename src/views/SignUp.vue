@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="col-12 text-center">
-          <h4 class="mb-3 text-uppercase text-white">Criar nova conta</h4>
+          <h4 class="mb-3 text-uppercase text-white">{{ $t('signup.title') }}</h4>
         </div>
       </div>
       <form @submit.prevent="register">
@@ -16,8 +16,8 @@
           <div class="col-12">
             <base-input
               type="text"
-              label="Nome Completo"
-              placeholder="Digite seu nome"
+              :label="$t('signup.nameLabel')"
+              :placeholder="$t('signup.nameField')"
               addonLeftIcon="user"
               v-model="v$.form.name.$model"
               :valid="!v$.form.name.$error"
@@ -28,8 +28,8 @@
           <div class="col-12">
             <base-input
               type="text"
-              label="Nome do usuário"
-              placeholder="Escolhe um nome de usuário"
+              :label="$t('signup.userLabel')"
+              :placeholder="$t('signup.userField')"
               addonLeftIcon="user"
               v-model="v$.form.username.$model"
               :valid="!v$.form.username.$error"
@@ -40,8 +40,8 @@
           <div class="col-12">
             <base-input
               type="password"
-              label="Senha"
-              placeholder="Agora digite seu senha"
+              :label="$t('signup.passwordLabel')"
+              :placeholder="$t('signup.passwordField')"
               addonLeftIcon="key"
               v-model="v$.form.password.$model"
               :valid="!v$.form.password.$error"
@@ -52,8 +52,8 @@
           <div class="col-12">
             <base-input
               type="password"
-              label="Confirmar senha"
-              placeholder="Agora confirme sua senha"
+              :label="$t('signup.confirmLabel')"
+              :placeholder="$t('signup.confirmField')"
               addonLeftIcon="key"
               v-model="v$.form.confirmPassword.$model"
               :valid="!v$.form.confirmPassword.$error"
@@ -68,14 +68,14 @@
               type="alt"
               :disabled="v$.$error === true || authLoading || accountLoading"
             >
-              Criar conta
+              {{ $t('signup.submit') }}
             </base-button>
           </div>
           <div class="col-12">
             <div class="d-flex justify-content-center align-items-center mb-3">
-              <span>Já possúi conta?</span>&nbsp;
+              <span>{{ $t('signup.pageLabel') }}</span>&nbsp;
               <router-link to="signin" class="auth-action">
-                Autenticar!
+                {{ $t('signup.pageLink') }}
               </router-link>
             </div>
           </div>

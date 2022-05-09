@@ -34,13 +34,13 @@ export default {
         // Validate both passwords
         const payload = { ...this.form }
         if (payload.password !== payload.confirmPassword) {
-          return this.$toast.warning(`As senhas devem ser iguais!`)
+          return this.$toast.warning(this.$t('signup.messages[2]'))
         }
 
         // 1. Retrieve payload and create an account
         const accountResponse = await this.saveAccount({ payload })
         if (accountResponse.error) {
-          this.$toast.error(`Ocorreu um erro ao criar sua conta! Tente novamente mais tarde`)
+          this.$toast.error(this.$t('signup.messages[3]'))
         } else {
 
           // 2. Authenticate user
@@ -49,16 +49,16 @@ export default {
             password: payload.password
           })
           if (authResponse.error) {
-            this.$toast.success('Conta criada com sucesso!')
+            this.$toast.success(this.$t('signup.messages[0]'))
             this.$router.push({ name: 'signin' })
           } else {
-            this.$toast.success('Conta criada com sucesso. Seja bem vindo(a)!')
+            this.$toast.success(this.$t('signup.messages[1]'))
             this.$router.push({ name: 'home' })
           }
         }
 
       } else {
-        this.$toast.warning('Seu formuário contem erros de validação! Por favor revise-os.')
+        this.$toast.warning(this.$t('signup.messages[4]'))
       }
     }
   },
