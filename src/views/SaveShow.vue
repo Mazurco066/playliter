@@ -4,22 +4,22 @@
       <div class="row pt-3 primary-section">
         <div class="col-12">
           <h3 class="title mt-3">
-            {{ saveMode ? 'Criar nova apresentacao' : 'Editar apresentacao' }}
+            {{ saveMode ? $t('saveShow.createTitle') : $t('saveShow.updateTitle') }}
           </h3>
           <p class="mb-3">
-            {{ saveMode ? 'Salvar nova apresentação.' : 'Alterar os dados de uma apresentação cadastrada.' }}
+            {{ saveMode ? $t('saveShow.createSubtitle') : $t('saveShow.updateSubtitle') }}
           </p>
         </div>
       </div>
       <form class="info" @submit.prevent="createShow">
         <div class="row secondary-section pt-3 pb-3 mb-3">
           <div class="col-12">
-            <p class="text-left">1. Primeiramente informe um <strong>título</strong> para sua apresentação:</p>
+            <p class="text-left">{{ $t('saveShow.nameLabel') }}</p>
           </div>
           <div class="col-12">
             <base-input
               type="text"
-              placeholder="Nome para a apresentação"
+              :placeholder="$t('saveShow.nameField')"
               addonLeftIcon="address-card"
               v-model="v$.form.title.$model"
               :valid="!v$.form.title.$error"
@@ -28,12 +28,12 @@
             />
           </div>
           <div class="col-12" :class="{ 'd-none': v$.form.title.$error || !form.title }">
-            <p class="text-left">2. Agora forneça uma breve <strong>descrição</strong> sobre a mesma:</p>
+            <p class="text-left">{{ $t('saveShow.descriptionLabel') }}</p>
           </div>
           <div class="col-12" :class="{ 'd-none': v$.form.title.$error || !form.title }">
             <base-input
               type="text"
-              placeholder="Breve descrição..."
+              :placeholder="$t('saveShow.descriptionField')"
               addonLeftIcon="align-justify"
               v-model="v$.form.description.$model"
               :valid="!v$.form.description.$error"
@@ -44,7 +44,7 @@
           <div class="col-12">
             <base-input
               type="date"
-              label="Data"
+              :label="$t('saveShow.dateLabel')"
               placeholder="DD/MM/YYYY"
               addonLeftIcon="calendar"
               v-model="v$.form.date.$model"
@@ -62,7 +62,7 @@
               :disabled="v$.$error === true || showLoading"
               class="mb-3"
             >
-              Salvar apresentação
+              {{ $t('saveShow.submit') }}
             </base-button>
           </div>
         </div>

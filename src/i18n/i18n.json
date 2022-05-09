@@ -99,7 +99,22 @@
       ]
     },
     "saveShow": {
-
+      "createTitle": "Create new Show",
+      "updateTitle": "Save Show",
+      "createSubtitle": "Creates a new Show.",
+      "updateSubtitle": "Update a Show's data.",
+      "nameField": "Show title",
+      "nameLabel": "1. First of all, name your show:",
+      "descriptionField": "Show description",
+      "descriptionLabel": "2. Now type a matching description about it:",
+      "dateLabel": "Date",
+      "submit": "Save Show",
+      "messages": [
+        "Show successfully saved!",
+        "An error ocourred while saving the show! Please try again later.",
+        "There are errors in your form data. Plese review the filled fields!",
+        "Show not found!"
+      ]
     },
     "saveSong": {
 
@@ -214,16 +229,31 @@
       "nameLabel": "1. Primeiramente informe um nome para sua banda:",
       "descriptionField": "Breve descrição...",
       "descriptionLabel": "2. Agora forneça uma breve descrição sobre a mesma:",
+      "dateLabel": "Data",
       "submit": "Salvar Banda",
       "messages": [
         "Banda salva com sucesso!",
         "Ocorreu um erro ao salvar sua banda! Tente novamente mais tarde.",
-        "Seu formuário contem erros de validação! Por favor revise-os.",
+        "Seu formulário contem erros de validação! Por favor revise-os.",
         "Banda não encontrada!"
       ]
     },
     "saveShow": {
-
+      "createTitle": "Criar nova apresentacao",
+      "updateTitle": "Editar apresentacao",
+      "createSubtitle": "Criar nova apresentação.",
+      "updateSubtitle": "Alterar os dados de uma apresentação cadastrada.",
+      "nameField": "Nome para a apresentação",
+      "nameLabel": "1. Primeiramente informe um título para sua apresentação:",
+      "descriptionField": "Breve descrição...",
+      "descriptionLabel": "2. Agora forneça uma breve <strong>descrição</strong> sobre a mesma:",
+      "submit": "Salvar apresentação",
+      "messages": [
+        "Apresentação salva com sucesso!",
+        "Ocorreu um erro ao salvar sua apresentação! Tente novamente mais tarde.",
+        "Seu formulário contem erros de validação! Por favor revise-os.",
+        "Apresentação não encontrada!"
+      ]
     },
     "saveSong": {
 
