@@ -32,16 +32,16 @@ export default {
         // Authenticate by E-mail
         const r = await this.authenticateByUsername(payload)
         if (r.error) {
-          this.$toast.error(`Usuário ou senha incorreto(s)`)
+          this.$toast.error(this.$t('signin.messages[1]'))
         } else {
 
           // User feedback
-          this.$toast.success(`Seja bem vindo`)
+          this.$toast.success(this.$t('signin.messages[0]'))
           this.$router.push({ name: 'home' })
           
         }
       } else {
-        this.$toast.warning('Seu formuário contem erros de validação! Por favor revise-os.')
+        this.$toast.warning(this.$t('signin.messages[2]'))
       }
     }
   },

@@ -147,7 +147,18 @@
 
     },
     "signin": {
-
+      "title": "Authentication",
+      "userField": "Type your username",
+      "passwordField": "Now your password",
+      "forgotPasword": "Forgot my password",
+      "submit": "Login",
+      "pageLabel": "Doesn't have an account?",
+      "pageLink": "Sign up!",
+      "messages": [
+        "Welcome!",
+        "Incorrect user or password",
+        "There are errors in your form data. Plese review the filled fields!"
+      ]
     },
     "signup": {
 
@@ -307,7 +318,18 @@
 
     },
     "signin": {
-
+      "title": "Autenticação",
+      "userField": "Entre com seu usuário",
+      "passwordField": "Agora digite sua senha",
+      "forgotPasword": "Esqueci minha senha",
+      "submit": "Acessar",
+      "pageLabel": "Não possúi conta?",
+      "pageLink": "Criar uma agora!",
+      "messages": [
+        "Seja bem vindo!",
+        "Usuário ou senha incorreto(s)",
+        "Seu formulário contem erros de validação! Por favor revise-os."
+      ]
     },
     "signup": {
 
