@@ -117,7 +117,28 @@
       ]
     },
     "saveSong": {
-
+      "title": "Save Song",
+      "subtitle": "Salvar a song's data.",
+      "titleField": "Song title",
+      "authorField": "Song Writter",
+      "toneField": "Base tone",
+      "categoryField": "Category",
+      "importField": "Import song",
+      "bodyLabel": "Song body (Type the lyrics including the chords)",
+      "submit": "Save song",
+      "messages": [
+        "Music successfully saved",
+        "An error ocourred while saving the song! Please try again later.",
+        "There are errors in your form data. Plese review the filled fields!",
+        "Song not found!",
+        "Save at least 1 category before saving songs!",
+        "We are importing the song for you",
+        "An error ocourred while importing the song. Please notify the system administrator!",
+        "Wait a bit",
+        "Ples fill the song body field!",
+        "No URL found!",
+        "Type a valid URL!"
+      ]
     },
     "show": {
 
@@ -256,7 +277,28 @@
       ]
     },
     "saveSong": {
-
+      "title": "Salvar música",
+      "subtitle": "Salvar os dados referentes a uma música.",
+      "titleField": "Título da música",
+      "authorField": "Autor da música",
+      "toneField": "Tom inicial da música",
+      "categoryField": "Categoria da música",
+      "importField": "Importar música",
+      "bodyLabel": "Corpo da música (Digite a letra com as cifras)",
+      "submit": "Salvar música",
+      "messages": [
+        "Música salva com sucesso!",
+        "Ocorreu um erro ao salvar sua música! Tente novamente mais tarde.",
+        "Seu formulário contem erros de validação! Por favor revise-os.",
+        "Música não encontrada!",
+        "Cadastre no mínimo uma categoria antes de salvar uma música!",
+        "Estamos importando a cifra da música informada..",
+        "Ocorreu um erro ao importar a música! Por favor contate um administrador do sistema.",
+        "Aguarde",
+        "Por favor preencha o corpo da música para prosseguir! Por favor revise-os.",
+        "Nenhuma url de importação foi inserida.",
+        "Insira uma URL válida."
+      ]
     },
     "show": {
 

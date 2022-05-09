@@ -4,10 +4,10 @@
       <div class="row pt-3 primary-section">
         <div class="col-12">
           <h3 class="title mt-3">
-            Salvar música
+            {{ $t('saveSong.title') }}
           </h3>
           <p class="mb-3">
-            Salvar os dados referentes a uma música.
+            {{ $t('saveSong.subtitle') }}
           </p>
         </div>
       </div>
@@ -16,8 +16,8 @@
           <div class="col-12">
             <base-input
               type="text"
-              label="Título de música"
-              placeholder="Título de música"
+              :label="$t('saveSong.titleField')"
+              :placeholder="$t('saveSong.titleField')"
               addonLeftIcon="music"
               v-model="v$.form.title.$model"
               :valid="!v$.form.title.$error"
@@ -28,8 +28,8 @@
           <div class="col-12">
             <base-input
               type="text"
-              label="Autor de música"
-              placeholder="Autor de música"
+              :label="$t('saveSong.authorField')"
+              :placeholder="$t('saveSong.authorField')"
               addonLeftIcon="microphone-alt"
               v-model="v$.form.writter.$model"
               :valid="!v$.form.writter.$error"
@@ -40,8 +40,8 @@
           <div class="col-12">
             <base-select
               addon-left-icon="volume-up"
-              label="Tom inicial da música"
-              defaultOption="Tom inicial da música"
+              :label="$t('saveSong.toneField')"
+              :placeholder="$t('saveSong.toneField')"
               :options="tones"
               :disabled="songLoading"
               v-model="v$.form.tone.$model"
@@ -52,8 +52,8 @@
           <div class="col-12">
             <base-select
               addon-left-icon="compact-disc"
-              label="Categoria da música"
-              defaultOption="Categoria da música"
+              :label="$t('saveSong.categoryField')"
+              :defaultOption="$t('saveSong.categoryField')"
               :options="mappedCategories"
               :disabled="songLoading"
               v-model="v$.form.category.$model"
@@ -64,8 +64,8 @@
           <div class="col-10">
             <base-input
               type="text"
-              label="Importar música"
-              placeholder="Importar música"
+              :label="$t('saveSong.importField')"
+              :placeholder="$t('saveSong.importField')"
               addonLeftIcon="file-import"
               v-model="v$.form.importUrl.$model"
               :valid="!v$.form.importUrl.$error"
@@ -85,13 +85,8 @@
           </div>
           <div class="col-12 mb-3">
             <p class="custom-label">
-              Corpo da música (Digite a letra com as cifras)
+              {{ $t('saveSong.bodyLabel') }}
             </p>
-            <!-- <base-editor
-              id="songEditor"
-              v-if="showTipTap"
-              v-model="song"
-            /> -->
             <!-- eslint-disable vue/no-v-model-argument -->
             <v-ace-editor
               lang="chordpro"
@@ -113,7 +108,7 @@
               :disabled="v$.$error === true || songLoading"
               class="mb-3"
             >
-              Salvar música
+              {{ $t('saveSong.submit') }}
             </base-button>
           </div>
         </div>
