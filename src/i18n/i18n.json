@@ -182,7 +182,26 @@
       ]
     },
     "song": {
-
+      "listAction": "+ List",
+      "editAction": "Update",
+      "addAction": "Add",
+      "cancelAction": "Cancel",
+      "removeAction": "Remove",
+      "modalTitle": "Shows",
+      "modalSubtitle": "Add song to show",
+      "noPresentations": "No shows has been found!",
+      "chords": "Chords",
+      "messages": [
+        "Music not found!",
+        "This actions is permanent!",
+        "Do you wish to remove this song?",
+        "An error ocourred while removing the song! Please notice this to an administrator.",
+        "Music was successfully removed!",
+        "Confirmation!",
+        "do you wish to proceed adding this song to the show",
+        "An error ocourred while adding the song to a show! Please notice this to an administrator.",
+        "Músic add to show"
+      ]
     },
     "songList": {
 
@@ -371,7 +390,26 @@
       ]
     },
     "song": {
-
+      "listAction": "+ Lista",
+      "editAction": "Editar",
+      "addAction": "Adicionar",
+      "cancelAction": "Cancelar",
+      "removeAction": "Remover",
+      "modalTitle": "Apresentações",
+      "modalSubtitle": "Adicionar música a uma apresentação",
+      "noPresentations": "Nenhuma apresentação cadastrada!",
+      "chords": "Formação dos acordes",
+      "messages": [
+        "Música não encontrada!",
+        "Essa ação é permanente!",
+        "Deseja remover essa música?",
+        "Ocorreu um erro ao remover a música! Por favor contate um administrador do sistema.",
+        "Música removida com sucesso!",
+        "Confirmação!",
+        "Deseja adicionar essa música a apresentação",
+        "Ocorreu um erro ao adicionar a música na apresentação! Por favor contate um administrador do sistema.",
+        "Música adicionada a apresentação"
+      ]
     },
     "songList": {
 

@@ -42,7 +42,7 @@
       </div>
       <div class="col-12">
         <p class="text-center text-uppercase">
-          Formação dos acordes
+          {{ $t('song.chords') }}
         </p>
       </div>
     </div>
