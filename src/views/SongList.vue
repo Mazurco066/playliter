@@ -24,7 +24,7 @@
                 <font-awesome-icon icon="angle-double-left" />
               </div>
               <p class="mb-0">
-                <small>Anterior</small>
+                <small>{{ $t('songList.previous') }}</small>
               </p>
             </div>
             <div class="action" @click="downloadReport()">
@@ -32,7 +32,7 @@
                 <font-awesome-icon icon="print" />
               </div>
               <p class="mb-0">
-                <small>Exportar PDF</small>
+                <small>{{ $t('songList.print') }}</small>
               </p>
             </div>
             <div class="action" @click="switchSong(1)">
@@ -40,7 +40,7 @@
                 <font-awesome-icon icon="angle-double-right" />
               </div>
               <p class="mb-0">
-                <small>Próxima</small>
+                <small>{{ $t('songList.next') }}</small>
               </p>
             </div>
           </div>
@@ -58,7 +58,7 @@
         <div class="info">
           <h3 class="title">{{ show.title }}</h3>
           <p class="description">{{ show.description }}</p>
-          <span class="text-muted">Documento gerado pelo app <strong>Playliter</strong> no dia {{ $text.formatISODate(new Date().toISOString()) }}</span>
+          <span class="text-muted">{{ $t('songList.credits') }} {{ $text.formatISODate(new Date().toISOString()) }}</span>
         </div>
         <div class="pagebreak"></div>
       </div>

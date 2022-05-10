@@ -1,6 +1,6 @@
 // Dependencies
 import { mapActions, mapGetters } from 'vuex'
-import { chordTransposer } from '../../utils/'
+import { chordTransposer } from '../../utils'
 
 // Component
 export default {
@@ -27,7 +27,7 @@ export default {
           return `<pre>${displayHtmlSong}</pre>`
         } catch (e) {
           console.log('[parser error]', e)
-          this.$toast.error('Ocorreu um erro ao parsear a música!')
+          this.$toast.error(this.$t('songList.messages[1]'))
           return ''
         }
       }
@@ -71,7 +71,7 @@ export default {
     const { band, id } = this.$route.params
     const show = await this.listBandShow({ band, id })
     if (!Object.keys(show.data).length > 0) {
-      this.$toast.warning(`Apresentação de id ${id} não encontrada!`)
+      this.$toast.warning(this.$t('songList.messages[0]'))
     } else {
       this.show = show.data
       this.parsePdf()
