@@ -185,6 +185,9 @@
       "importField": "Import song",
       "bodyLabel": "Song body (Type the lyrics including the chords)",
       "submit": "Save song",
+      "privateLabel": "Private",
+      "publicLabel": "Public",
+      "visibilityLabel": "Song visibility",
       "messages": [
         "Music successfully saved",
         "An error ocourred while saving the song! Please try again later.",
@@ -493,6 +496,9 @@
       "importField": "Importar música",
       "bodyLabel": "Corpo da música (Digite a letra com as cifras)",
       "submit": "Salvar música",
+      "privateLabel": "Privada",
+      "publicLabel": "Pública",
+      "visibilityLabel": "Visibilidade da música",
       "messages": [
         "Música salva com sucesso!",
         "Ocorreu um erro ao salvar sua música! Tente novamente mais tarde.",

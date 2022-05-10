@@ -61,6 +61,21 @@
               :error="v$.form.category.$errors.length ? $translations.translateMessage(v$.form.category.$errors[0].$message) : ''"
             />
           </div>
+          <div class="col-12">
+            <base-select
+              addon-left-icon="eye"
+              :label="$t('saveSong.visibilityLabel')"
+              :options="[
+                { label: $t('saveSong.publicLabel'), value: 'public' },
+                { label: $t('saveSong.privateLabel'), value: 'private'}
+              ]"
+              :disabled="songLoading"
+              v-model="v$.form.visibility.$model"
+              :valid="!v$.form.visibility.$error"
+              :error="v$.form.visibility.$errors.length ? $translations.translateMessage(v$.form.visibility.$errors[0].$message) : ''"
+         
+            />
+          </div>
           <div class="col-10">
             <base-input
               type="text"
