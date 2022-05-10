@@ -60,42 +60,42 @@ export default {
         const payload = { ...this.form, band }
         const r = await this.saveCategory({ payload, id: this.catId })
         if (r.error) {
-          this.$toast.error(`Ocorreu um erro ao salvar sua categoria! Tente novamente mais tarde`)
+          this.$toast.error(this.$t('categories.messages[0]'))
         } else {
-          this.$toast.success('Categoria salva com sucesso!')
+          this.$toast.success(this.$t('categories.messages[1]'))
           this.closeCategoryModal()
           this.resetForm()
           await this.loadCategories()
         }
 
       } else {
-        this.$toast.warning('Seu formuário contem erros de validação! Por favor revise-os.')
+        this.$toast.warning(this.$t('categories.messages[2]'))
       }
     },
     async loadCategories () {
       const { band } = this.$route.params
       const r = await this.listBandCategories({ band })
       if (r.error) {
-        this.$toast.error(`Ocorreu um erro ao obter as categorias musicais da banda!`)
+        this.$toast.error(this.$t('categories.messages[3]'))
       } else {
         this.categories = r.data
       }
     },
     async removeCategory (id = '') {
       this.$swal({
-        title: 'Essa ação é permanente!',
-        text: 'Deseja remover essa categoria?',
+        title: this.$t('categories.messages[4]'),
+        text: this.$t('categories.messages[5]'),
         showDenyButton: true,
         confirmButtonColor: '#1C8781',
-        confirmButtonText: 'Remover',
-        denyButtonText: `Cancelar`
+        confirmButtonText: this.$t('categories.removeAction'),
+        denyButtonText: this.$t('categories.cancelAction')
       }).then(async (result) => {
         if (result.isConfirmed) {
           const response = await this.deleteCategory(id)
           if (response.error) {
-            this.$toast.error(response.message.replace('GraphQL error:', '') || 'Ocorreu um erro ao remover a categoria! Por favor contate um administrador do sistema.')
+            this.$toast.error(response.message.replace('GraphQL error:', '') || this.$t('categories.messages[6]'))
           } else {
-            this.$toast.success('Categoria removida com sucesso!')
+            this.$toast.success(this.$t('categories.messages[7]'))
             this.closeCategoryModal()
             this.resetForm()
             await this.loadCategories()

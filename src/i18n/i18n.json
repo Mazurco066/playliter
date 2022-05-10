@@ -18,7 +18,28 @@
       "memberSection": "Members",
       "modalTitle": "Band",
       "modalDescription": "Add new member",
-      "userField": "Username"
+      "userField": "Username",
+      "messages": [
+        "Band not found",
+        "This user is already in band!",
+        "An error ocourred while adding a new member. Please try again later!",
+        "A new member was invited to join the band!",
+        "There are errors in your form data. Plese review the filled fields!",
+        "This action is permanent!",
+        "Delete this member from band?",
+        "An error ocourred while removing the member from band! Please try again later!",
+        "Member successfully removed!",
+        "Are you sure?",
+        "Promote this member to 'Admin'?",
+        "An error ocourred while promoting the member! Please try again later!",
+        "Member successfully promoted!",
+        "Demote this member to 'Member'?",
+        "An error ocourred while demoting the member! Please try again later!",
+        "Member successfully demoted!",
+        "Delete this band for all its members?",
+        "An error ocourred while deleting the band! Please try again later!",
+        "Band successfully removed!"
+      ]
     },
     "bands": {
       "title": "My Bands",
@@ -28,7 +49,16 @@
       "member": "Member",
       "noBands": "You aren't a member from any bands!",
       "editAction": "Update",
-      "removeAction": "Remove"
+      "removeAction": "Remove",
+      "cancelAction": "Cancel",
+      "messages": [
+        "You need admin privilegies to edit this band!.",
+        "You must be the band's founder to delete this band!.",
+        "This action is permanent!",
+        "Delete this band for all members?",
+        "An error ocourred while removing the band! Please try again later.",
+        "Band successfully removed!"
+      ]
     },
     "categories": {
       "title": "Categories",
@@ -40,7 +70,19 @@
       "formDescription": "Save category",
       "titleField": "Category title",
       "descriptionField": "Category description",
-      "noCategories": "This band hasn't created categories!"
+      "noCategories": "This band hasn't created categories!",
+      "removeAction": "Remove",
+      "cancelAction": "Cancel",
+      "messages": [
+        "An error ocourred while saving the category! Please try again later.",
+        "Category successfully saved!",
+        "There are errors in your form data. Plese review the filled fields!",
+        "An error ocourred while retrieving the categories!",
+        "This action is permanent!",
+        "Delete this category?",
+        "An error ocourred while deleting the category! Please try again later.",
+        "Category successfully deleted!"
+      ]
     },
     "directory": {
       "title": "Repertório completo",
@@ -50,7 +92,10 @@
       "categoryAction": "Manage categories",
       "songAction": "New song",
       "songLabel": "Song(s)",
-      "noSongs": "There is no songs using the current filter!"
+      "noSongs": "There is no songs using the current filter!",
+      "messages": [
+        "An error ocourred while loading the songs!"
+      ]
     },
     "home": {
       "nextPresentations": "Incoming presentations",
@@ -58,7 +103,10 @@
       "version": "Version",
       "noPresentations": "There is no incoming presentations from bands you joined!",
       "pendingInvites": "Band invitations",
-      "invitedAt": "Invited at"
+      "invitedAt": "Invited at",
+      "messages": [
+        "An error ocourred while loading the pending shows! Please try again later."
+      ]
     },
     "profile": {
       "title": "My Profile",
@@ -72,14 +120,20 @@
       "musician": "Musician",
       "admin": "Admin",
       "messages": [
-        "Profile successfully updated!"
+        "An error ocourred while updating your profile! Please try again later.",
+        "Profile successfully updated!",
+        "Ther is no authenticated account. Please login!",
+        "There are errors in your form data. Plese review the filled fields!"
       ]
     },
     "publicSongs": {
       "title": "Public songbook",
       "subtitle": "Here you can find public songs shared by bands.",
       "searchField": "Search songs...",
-      "noSongs": "There is no songs using the current filter!"
+      "noSongs": "There is no songs using the current filter!",
+      "messages": [
+        "An error ocourred while loading the songs. Please try again later!"
+      ]
     },
     "saveBand": {
       "createTitle": "Create new Band",
@@ -266,7 +320,28 @@
       "memberSection": "Integrantes",
       "modalTitle": "Banda",
       "modalDescription": "Adicionar novo membro",
-      "userField": "Nome de usuário"
+      "userField": "Nome de usuário",
+      "messages": [
+        "Banda não encontrada",
+        "O usuário já se encontra nessa banda!",
+        "Ocorreu um erro ao adicionar um membro a banda. Por favor contate um administrador!",
+        "Um novo membro foi convidado a banda!",
+        "Seu formulário contem erros de validação! Por favor revise-os.",
+        "Essa ação é permanente!",
+        "Deseja remover esse membro da banda?",
+        "Ocorreu um erro ao remover o membro da banda! Por favor contate um administrador do sistema.",
+        "Membro removido com sucesso!",
+        "Tem certeza?",
+        "Deseja promover esse membro  para 'Admin'?",
+        "Ocorreu um erro ao promover o membro da banda! Por favor contate um administrador do sistema.",
+        "Membro promovido com sucesso!",
+        "Deseja rebaixar esse membro para 'Membro'?",
+        "Ocorreu um erro ao rebaixar o membro da banda! Por favor contate um administrador do sistema.",
+        "Membro rebaixado com sucesso!",
+        "Deseja excluir essa banda para todos seus integrantes?",
+        "Ocorreu um erro ao excluir a banda! Por favor contate um administrador do sistema.",
+        "Banda removida com sucesso!"
+      ]
     },
     "bands": {
       "title": "Minhas bandas",
@@ -276,7 +351,16 @@
       "member": "Membro",
       "noBands": "Você não participa de nenhuma banda no momento!",
       "editAction": "Editar",
-      "removeAction": "Excluir"
+      "removeAction": "Excluir",
+      "cancelAction": "Cancelar",
+      "messages": [
+        "Você precisa de permissões de administrador para editar uma banda!.",
+        "Você precisa ser o fundador da banda para poder excluir a mesma!.",
+        "Essa ação é permanente!",
+        "Deseja excluir essa banda para todos seus integrantes?",
+        "Ocorreu um erro ao excluir a banda! Por favor contate um administrador do sistema.",
+        "Banda removida com sucesso!"
+      ]
     },
     "categories": {
       "title": "Categorias",
@@ -288,7 +372,19 @@
       "formDescription": "Salvar categoria",
       "titleField": "Título da categoria",
       "descriptionField": "Descrição da categoria",
-      "noCategories": "Essa banda não possuí categorias cadastradas!"
+      "noCategories": "Essa banda não possuí categorias cadastradas!",
+      "removeAction": "Remover",
+      "cancelAction": "Cancelar",
+      "messages": [
+        "Ocorreu um erro ao salvar sua categoria! Tente novamente mais tarde.",
+        "Categoria salva com sucesso!",
+        "Seu formulário contem erros de validação! Por favor revise-os.",
+        "Ocorreu um erro ao obter as categorias musicais da banda!",
+        "Essa ação é permanente!",
+        "Deseja remover essa categoria?",
+        "Ocorreu um erro ao remover a categoria! Por favor contate um administrador do sistema.",
+        "Categoria removida com sucesso!"
+      ]
     },
     "directory": {
       "title": "Repertório completo",
@@ -298,7 +394,10 @@
       "categoryAction": "Gerenciar categorias",
       "songAction": "Nova música",
       "songLabel": "Música(s)",
-      "noSongs": "Nenhuma música foi encontrada com o filtro utilizado!"
+      "noSongs": "Nenhuma música foi encontrada com o filtro utilizado!",
+      "messages": [
+        "Ocorreu um erro ao obter o repertório da banda!"
+      ]
     },
     "home": {
       "nextPresentations": "Próximas apresentações",
@@ -306,7 +405,10 @@
       "version": "Versão",
       "noPresentations": "Não há apresentações futuras registradas nas bandas que você participa!",
       "pendingInvites": "Convites pendentes",
-      "invitedAt": "Convidado em"
+      "invitedAt": "Convidado em",
+      "messages": [
+        "Ocorreu um erro ao obter as apresentações futuras! Por favor contate um administrador do sistema."
+      ]
     },
     "profile": {
       "title": "Meu perfil",
@@ -320,14 +422,20 @@
       "musician": "Músico",
       "admin": "Admin",
       "messages": [
-        "Perfil atualizado com sucesso!"
+        "Ocorreu um erro ao atualizar seu perfil! Tente novamente mais tarde",
+        "Perfil atualizado com sucesso!",
+        "Não foi possível obter a conta autenticada. Por favor tente novamente mais tarde!",
+        "Seu formulário contem erros de validação! Por favor revise-os."
       ]
     },
     "publicSongs": {
       "title": "Repertório público",
       "subtitle": "Aqui você encontra as músicas disponibilizadas publicamente pelas bandas.",
       "searchField": "Pesquisar músicas...",
-      "noSongs": "Não há músicas cadastradas correspondentes ao filtro atual."
+      "noSongs": "Não há músicas cadastradas correspondentes ao filtro atual.",
+      "messages": [
+        "Ocorreu um erro ao obter o repertório público. Por favor tente novamente mais tarde!"
+      ]
     },
     "saveBand": {
       "createTitle": "Criar nova banda",

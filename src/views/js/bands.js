@@ -33,7 +33,7 @@ export default {
       const isAdmin = admins.find(a => a.id === this.me.id)
       const isOwner = row.owner.id === this.me.id
       if (!isOwner && !isAdmin) {
-        return this.$toast.info(`Você precisa de permissões de administrador para editar uma banda!.`)
+        return this.$toast.info(this.$t('bands.messages[0]'))
       }
       this.$router.push({
         name: 'editBand',
@@ -42,22 +42,22 @@ export default {
     },
     deleteBand (row) {
       if (row.owner.id !== this.me.id) {
-        return this.$toast.info(`Você precisa ser o fundador da banda para poder excluir a mesma!.`)
+        return this.$toast.info(this.$t('bands.messages[1]'))
       }
       this.$swal({
-        title: 'Essa ação é permanente!',
-        text: 'Deseja excluir essa banda para todos seus integrantes??',
+        title: this.$t('bands.messages[2]'),
+        text: this.$t('bands.messages[3]'),
         showDenyButton: true,
         confirmButtonColor: '#1C8781',
-        confirmButtonText: 'Excluir',
-        denyButtonText: `Cancelar`
+        confirmButtonText: this.$t('bands.removeAction'),
+        denyButtonText: this.$t('bands.cancelAction')
       }).then(async (result) => {
         if (result.isConfirmed) {
           const response = await this.removeBand(row.id)
           if (response.error) {
-            this.$toast.error(`Ocorreu um erro ao excluir a banda! Por favor contate um administrador do sistema.`)
+            this.$toast.error(this.$t('bands.messages[4]'))
           } else {
-            this.$toast.success('Banda removida com sucesso!')
+            this.$toast.success(this.$t('bands.messages[5]'))
             const rf = await this.loadBands({})
             this.bands = rf.data
           }
