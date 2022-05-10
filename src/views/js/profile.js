@@ -37,21 +37,21 @@ export default {
         const payload = { ...this.form }
         const r = await this.updateProfile({ id: this.me.id, payload })
         if (r.error) {
-          this.$toast.error(r.message.replace('GraphQL error:', '') || `Ocorreu um erro ao atualizar seu perfil! Tente novamente mais tarde`)
+          this.$toast.error(r.message.replace('GraphQL error:', '') || this.$t('profile.messages[0]'))
         } else {
-          this.$toast.success('Perfil atualizado com sucesso')
+          this.$toast.success(this.$t('profile.messages[1]'))
           const pr = await this.loadMe()
           if (pr.error) {
             if (pr.message.includes('Unauthorized')) {
               // Reset store and logoff
               this.logout()
             } else {
-              this.$toast.error('Não foi possível obter a conta autenticada. Por favor tente novamente mais tarde!')
+              this.$toast.error(this.$t('profile.messages[2]'))
             }
           }
         }
       } else {
-        this.$toast.warning('Seu formuário contem erros de validação! Por favor revise-os.')
+        this.$toast.warning(this.$t('profile.messages[3]'))
       }
     }
   },

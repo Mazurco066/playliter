@@ -62,7 +62,7 @@ export default {
     const r = await this.listBandSongs({ band })
     this.repertory = songHelpers.compute(r.data)
     if (r.error) {
-      this.$toast.error(`Ocorreu um erro ao obter o repertório da banda!`)
+      this.$toast.error(this.$t('directory.messages[0]'))
     }
   }
 }

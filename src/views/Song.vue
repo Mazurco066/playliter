@@ -7,9 +7,9 @@
           <p v-if="!songLoading" class="title mb-0">
             {{ song.title }}
           </p>
-          <lines v-else class="shine"></lines>
+          <div v-else class="shine"></div>
           <p v-if="!songLoading">{{ song.writter }}</p>
-          <lines v-else class="shine"></lines>
+          <div v-else class="shine"></div>
           <hr class="mb-1" />
         </div>
         <div class="col-12">
@@ -19,26 +19,31 @@
                 <font-awesome-icon icon="list" />
               </div>
               <p class="mb-0">
-                <small>+ Lista</small>
+                <small>{{ $t('song.listAction') }}</small>
               </p>
             </div>
-            <div class="action" @click="editSong()">
+            <div
+              class="action"
+              :class="{ 'disabled': !isEditable }"
+              @click="isEditable ? editSong() : () => {}"
+            >
               <div class="icon-bg">
                 <font-awesome-icon icon="edit" />
               </div>
               <p class="mb-0">
-                <small>Editar</small>
+                <small>{{ $t('song.editAction') }}</small>
               </p>
             </div>
             <div
-              @click="songLoading ? () => {} : deleteSong()"
               class="action"
+              :class="{ 'disabled': !isRemovable }"
+              @click="isRemovable ? deleteSong() : () => {}"
             >
               <div class="icon-bg">
                 <font-awesome-icon icon="trash" />
               </div>
               <p class="mb-0">
-                <small>Remover</small>
+                <small>{{ $t('song.removeAction') }}</small>
               </p>
             </div>
           </div>
@@ -64,8 +69,8 @@
         <div class="container">
           <div class="row">
             <div class="col-12">
-              <h4>Apresentações</h4>
-              <p>Adicionar música a uma apresentação</p>
+              <h4>{{ $t('song.modalTitle') }}</h4>
+              <p>{{ $t('song.modalSubtitle') }}</p>
             </div>
           </div>
         </div>
@@ -88,13 +93,13 @@
                 </li>
               </ul>
               <p v-else class="mb-3">
-                Nenhuma apresentação cadastrada!
+                {{ $t('song.noPresentations') }}
               </p>
             </div>
             <div v-else>
               <ul class="shows">
                 <li class="show">
-                  <lines class="shine"></lines>
+                  <div class="shine shimmer-lines"></div>
                 </li>
               </ul>
             </div>

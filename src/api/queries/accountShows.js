@@ -2,30 +2,27 @@
 import { gql } from 'apollo-boost'
 
 // Query
-export const SHOW = gql`
-  query($band: String!, $id: String!) {
-    show(LoadShowByIdInput: {
-      id: $id
-      bandId: $band
-    }) {
+export const ACCOUNT_SHOWS = gql`
+  query {
+    accountShows {
       id
       title
       description
-      date
       band {
         id
         title
         description
         createdAt
-        updatedAt
+        updatedAt      
       }
+      date
       songs {
         id
         title
+        writter
         tone
         body
         isPublic
-        writter
         createdAt
         updatedAt
       }

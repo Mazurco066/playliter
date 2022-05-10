@@ -12,6 +12,7 @@ import Categories from '../views/Categories.vue'
 import Directory from '../views/Directory.vue'
 import Home from '../views/Home.vue'
 import Profile from '../views/Profile.vue'
+import PublicSongs from '../views/PublicSongs.vue'
 import Show from '../views/Show.vue'
 import Shows from '../views/Shows.vue'
 import SignIn from '../views/SignIn.vue'
@@ -65,6 +66,10 @@ const routes = [{
     path: '/directory/:band',
     name: 'directory',
     component: Directory
+  }, {
+    path: '/public-songs',
+    name: 'publicSongs',
+    component: PublicSongs
   }, {
     path: '/song/:band/:id',
     name: 'song',

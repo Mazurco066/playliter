@@ -5,10 +5,8 @@
     <div class="container">
       <div class="row pt-3 primary-section mb-3">
         <div class="col-12">
-          <h3 class="klasik">Minhas bandas</h3>
-          <p class="mb-3">
-            Lista das bandas nas quais você participa como um integrante.
-          </p>
+          <h3 class="klasik">{{ $t('bands.title') }}</h3>
+          <p class="mb-3">{{ $t('bands.subtitle') }}</p>
         </div>
       </div>
       <div class="row">
@@ -27,10 +25,10 @@
                   <span class="sub">
                     {{ 
                       b.owner.id === me.id 
-                        ? 'Fundador' 
+                        ? $t('bands.founder') 
                         : b.admins.find(a => a.id === me.id) 
-                          ? 'Administrador'
-                          : 'Membro' 
+                          ? $t('bands.admin') 
+                          : $t('bands.member') 
                     }}
                   </span>
                 </div>
@@ -48,10 +46,10 @@
                       </a>
                     </template>
                     <a href="#" class="dropdown-item" @click.prevent="editBand(b)">
-                      <font-awesome-icon icon="edit" class="mr-1" /> Editar
+                      <font-awesome-icon icon="edit" class="mr-1" /> {{ $t('bands.editAction') }}
                     </a>
                     <a href="#" class="dropdown-item" @click.prevent="deleteBand(b)">
-                      <font-awesome-icon icon="trash" class="mr-1" /> Excluir
+                      <font-awesome-icon icon="trash" class="mr-1" /> {{ $t('bands.removeAction') }}
                     </a>
                   </base-dropdown>
                 </div>
@@ -64,7 +62,7 @@
               </div>
               <p class="mb-3 text-center">
                 <strong>
-                  Você não participa de nenhuma banda no momento!
+                  {{ $t('bands.noBands') }}
                 </strong>
               </p>
             </div>
@@ -74,13 +72,13 @@
             <ul class="list">
               <li class="item">
                 <div class="icon mr-3">
-                  <photo class="shine"></photo>
+                  <div class="shine shimmer-photo"></div>
                 </div>
                 <div class="info">
                   <p class="title">
-                    <lines class="shine"></lines>
+                    <span class="shine shimmer-lines"></span>
                   </p>
-                  <lines class="shine"></lines>
+                  <div class="shine shimmer-lines"></div>
                 </div>
                 <div class="actions"></div>
               </li>

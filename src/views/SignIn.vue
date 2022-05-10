@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="col-12 text-center">
-          <h4 class="mb-3 text-uppercase text-white">Autenticação</h4>
+          <h4 class="mb-3 text-uppercase text-white">{{ $t('signin.title') }}</h4>
         </div>
       </div>
       <form @submit.prevent="authenticate">
@@ -16,7 +16,7 @@
           <div class="col-12">
             <base-input
               type="text"
-              placeholder="Entre com seu usuário"
+              :placeholder="$t('signin.userField')"
               addonLeftIcon="user"
               v-model="v$.form.username.$model"
               :valid="!v$.form.username.$error"
@@ -27,7 +27,7 @@
           <div class="col-12">
             <base-input
               type="password"
-              placeholder="Agora digite sua senha"
+              :placeholder="$t('signin.passwordField')"
               addonLeftIcon="key"
               v-model="v$.form.password.$model"
               :valid="!v$.form.password.$error"
@@ -38,7 +38,7 @@
           <div class="col-12">
             <div class="auth-link d-flex justify-content-end align-items-center mb-3">
               <router-link to="forgotPassword" class="forgot-password">
-                Esqueci minha senha
+                {{ $t('signin.forgotPasword') }}
               </router-link>
             </div>
           </div>
@@ -49,14 +49,14 @@
               type="alt"
               :disabled="v$.$error === true || authLoading"
             >
-              Acessar
+              {{ $t('signin.submit') }}
             </base-button>
           </div>
           <div class="col-12">
             <div class="d-flex justify-content-center align-items-center mb-3">
-              <span>Não possúi conta?</span>&nbsp;
+              <span>{{ $t('signin.pageLabel') }}</span>&nbsp;
               <router-link to="signup" class="auth-action">
-                Criar uma agora!
+                {{ $t('signin.pageLink') }}
               </router-link>
             </div>
           </div>

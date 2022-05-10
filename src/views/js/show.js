@@ -61,19 +61,19 @@ export default {
     async reorder () {
       const { id, songs } = this.show
       this.$swal({
-        title: 'Tem certeza!',
-        text: 'Deseja reordenar essa apresentação?',
+        title: this.$t('show.messages[0]'),
+        text: this.$t('show.messages[1]'),
         showDenyButton: true,
         confirmButtonColor: '#1C8781',
-        confirmButtonText: 'Reordenar',
-        denyButtonText: `Cancelar`
+        confirmButtonText: this.$t('show.reorderAction'),
+        denyButtonText: this.$t('show.cancelAction')
       }).then(async (result) => {
         if (result.isConfirmed) {
           const r = await this.reorderSongs({ id, songs })
           if (r.error) {
-            this.$toast.error(`Ocorreu um erro ao reordenar as músicas! Tente novamente mais tarde`)
+            this.$toast.error(this.$t('show.messages[2]'))
           } else {
-            this.$toast.success('Apresentação reordenada com sucesso!')
+            this.$toast.success(this.$t('show.messages[3]'))
             await this.loadShow()
           }
         }
@@ -81,19 +81,19 @@ export default {
     },
     async removeShow () {
       this.$swal({
-        title: 'Essa ação é permanente!',
-        text: 'Deseja excluir essa apresentação?',
+        title: this.$t('show.messages[4]'),
+        text: this.$t('show.messages[5]'),
         showDenyButton: true,
         confirmButtonColor: '#1C8781',
-        confirmButtonText: 'Excluir',
-        denyButtonText: `Cancelar`
+        confirmButtonText: this.$t('show.deleteAction'),
+        denyButtonText: this.$t('show.cancelAction')
       }).then(async (result) => {
         if (result.isConfirmed) {
           const response = await this.deleteShow(this.show.id)
           if (response.error) {
-            this.$toast.error(`Ocorreu um erro ao excluir a apresentação! Por favor contate um administrador do sistema.`)
+            this.$toast.error(this.$t('show.messages[6]'))
           } else {
-            this.$toast.success('Apresentação removida com sucesso!')
+            this.$toast.success(this.$t('show.messages[7]'))
             const { band } = this.$route.params
             this.$router.push({ name: 'band', params: { id: band } })
           }
@@ -105,29 +105,29 @@ export default {
       const show = await this.listBandShow({ band, id })
       this.show = show.data
       if (!Object.keys(show.data).length > 0) {
-        this.$toast.warning(`Apresentação de id ${id} não encontrada!`)
+        this.$toast.warning(this.$t('show.messages[8]'))
       }
     },
     async removeSongFromShow (song) {
       const songId = song.id
       const showId = this.show.id
       this.$swal({
-        title: 'Confirmação!',
-        html: `Deseja remover essa música da apresentação <strong>${this.show.title}</strong>?`,
+        title: this.$t('show.messages[9]'),
+        html: this.$t('show.messages[10]') + ` <strong>${this.show.title}</strong>?`,
         showDenyButton: true,
         confirmButtonColor: '#1C8781',
-        confirmButtonText: 'Remover',
-        denyButtonText: `Cancelar`
+        confirmButtonText: this.$t('show.removeAction'),
+        denyButtonText: this.$t('show.cancelAction')
       }).then(async (result) => {
         if (result.isConfirmed) {
           const response = await this.unlinkSong({ song: songId, show: showId })
           if (response.error) {
             this.$toast.error(
               response.message.replace('GraphQL error:', '') ||
-              `Ocorreu um erro ao remover a música da apresentação! Por favor contate um administrador do sistema.`
+              this.$t('show.messages[11]')
             )
           } else {
-            this.$toast.success(`Música removida da apresentação ${show.title}`)
+            this.$toast.success(this.$t('show.messages[12]') + ` ${show.title}`)
             // Reload show
             await this.reloadData()
           }
@@ -141,7 +141,7 @@ export default {
       this.backupShow = {}
       this.reorderMode = false
       if (!Object.keys(show.data).length > 0) {
-        this.$toast.warning(`Apresentação de id ${id} não encontrada!`)
+        this.$toast.warning(this.$t('show.messages[8]'))
       }
     }
   },

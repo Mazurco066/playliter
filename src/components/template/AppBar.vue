@@ -9,7 +9,7 @@
                 <font-awesome-icon icon="chevron-left" size="2x" />
               </div>
               <div class="info">
-                <p class="mb-0">Bem vindo ao <strong>Playliter</strong>!</p>
+                <p class="mb-0">{{ $t('welcomeMsg') }} <strong>{{ $t('appname') }}</strong>!</p>
                 <span>
                   <strong>
                     {{ $text.truncate(me.name || '', 18) }}

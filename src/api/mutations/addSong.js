@@ -9,7 +9,8 @@ export const ADD_SONG = gql`
     $tone: String!,
     $body: String!,
     $band: String!,
-    $category: String!
+    $category: String!,
+    $isPublic: Boolean!
   ) {
     addSong(AddSongInput: {
       title: $title
@@ -18,12 +19,14 @@ export const ADD_SONG = gql`
       body: $body
       band: $band
       category: $category
+      isPublic: $isPublic
     }) {
       id
       title
       writter
       tone
       body
+      isPublic
       createdAt
       updatedAt
     }

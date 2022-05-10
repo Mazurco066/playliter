@@ -1,13 +1,13 @@
 {
   "name": "@rakta/playliter",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "private": true,
   "author": {
     "name": "Gabriel Mazurco",
     "email": "mazurco066@gmail.com"
   },
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --host localhost",
     "build": "vue-cli-service build"
   },
   "dependencies": {
@@ -44,6 +44,7 @@
     "vue-sweetalert2": "^5.0.2",
     "vue-the-mask": "^0.11.1",
     "vue3-ace-editor": "^2.2.2",
+    "vue3-i18n": "^1.1.5",
     "vuex": "^4.0.0-0",
     "vuex-persistedstate": "^4.1.0"
   },

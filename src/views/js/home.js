@@ -85,7 +85,7 @@ export default {
     // Pending shows
     const r = await this.listPendingShows()
     if (r.error) {
-      this.$toast.error(`Ocorreu um erro ao obter as apresentações futuras! Por favor contate um administrador do sistema.`)
+      this.$toast.error(this.$t('home.messages[0]'))
     } else {
       this.pending = r.data
     }

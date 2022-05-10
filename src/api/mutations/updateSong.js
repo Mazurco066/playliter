@@ -9,7 +9,8 @@ export const UPDATE_SONG = gql`
     $writter: String!,
     $tone: String!,
     $body: String!,
-    $category: String!
+    $category: String!,
+    $isPublic: Boolean!
   ) {
     updateSong(UpdateSongInput: {
       id: $id
@@ -18,12 +19,14 @@ export const UPDATE_SONG = gql`
       writter: $writter
       body: $body
       category: $category
+      isPublic: $isPublic
     }) {
       id
       title
       writter
       tone
       body
+      isPublic
       createdAt
       updatedAt
     }
