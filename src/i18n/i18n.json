@@ -141,7 +141,33 @@
       ]
     },
     "show": {
-
+      "createdAt": "Criada em",
+      "editAction": "Editar",
+      "songsLabel": "Músicas selecionadas",
+      "publicLabel": "Pública",
+      "removeFromShow": "Remover da Apresentação",
+      "noSongs": "Não há músicas registradas nessa apresentação!",
+      "pdfAction": "Modo de visualização (PDF)",
+      "reorderSubmit": "Salvar Ordem",
+      "deleteAction": "Excluir",
+      "removeAction": "Remover",
+      "reorderAction": "Reordenar",
+      "cancelAction": "Cancelar",
+      "messages": [
+        "Tem certeza!",
+        "Deseja reordenar essa apresentação?",
+        "Ocorreu um erro ao reordenar as músicas! Tente novamente mais tarde.",
+        "Apresentação reordenada com sucesso!",
+        "Essa ação é permanente!",
+        "Deseja excluir essa apresentação?",
+        "Ocorreu um erro ao excluir a apresentação! Por favor contate um administrador do sistema.",
+        "Apresentação removida com sucesso!",
+        "Apresentação não encontrada!",
+        "Confirmação!",
+        "Deseja remover essa música da apresentação",
+        "Ocorreu um erro ao remover a música da apresentação! Por favor contate um administrador do sistema.",
+        "Música removida da apresentação"
+      ]
     },
     "shows": {
 
@@ -349,7 +375,33 @@
       ]
     },
     "show": {
-
+      "createdAt": "Criada em",
+      "editAction": "Editar",
+      "songsLabel": "Músicas selecionadas",
+      "publicLabel": "Pública",
+      "removeFromShow": "Remover da Apresentação",
+      "noSongs": "Não há músicas registradas nessa apresentação!",
+      "pdfAction": "Modo de visualização (PDF)",
+      "reorderSubmit": "Salvar Ordem",
+      "deleteAction": "Excluir",
+      "removeAction": "Remover",
+      "reorderAction": "Reordenar",
+      "cancelAction": "Cancelar",
+      "messages": [
+        "Tem certeza!",
+        "Deseja reordenar essa apresentação?",
+        "Ocorreu um erro ao reordenar as músicas! Tente novamente mais tarde.",
+        "Apresentação reordenada com sucesso!",
+        "Essa ação é permanente!",
+        "Deseja excluir essa apresentação?",
+        "Ocorreu um erro ao excluir a apresentação! Por favor contate um administrador do sistema.",
+        "Apresentação removida com sucesso!",
+        "Apresentação não encontrada!",
+        "Confirmação!",
+        "Deseja remover essa música da apresentação",
+        "Ocorreu um erro ao remover a música da apresentação! Por favor contate um administrador do sistema.",
+        "Música removida da apresentação"
+      ]
     },
     "shows": {
 
