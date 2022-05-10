@@ -5,10 +5,18 @@
     font-weight: bold;
   }
 
+  .search-btn {
+    margin-top: 1.875rem;
+  }
+
   .songs {
     list-style: none;
     padding: 0.5rem;
     background-color: #f5f5f5;
+
+    &.loading {
+      opacity: 0.7;
+    }
 
    .song {
       margin-bottom: 1rem;
@@ -47,5 +55,13 @@
       }
     }
 
+  }
+
+  .no-songs {
+    .icon {
+      max-width: 360px;
+      width: 100%;
+      margin: 1rem auto;
+    }
   }
 }

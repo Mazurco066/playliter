@@ -133,6 +133,9 @@
       "subtitle": "Here you can find public songs shared by bands.",
       "searchField": "Search songs...",
       "noSongs": "There is no songs using the current filter!",
+      "clearAction": "Clear Filter",
+      "searchLabel": "Filter by title or writter",
+      "noPublicSongs": "There was no public songs found using the current filter!",
       "messages": [
         "An error ocourred while loading the songs. Please try again later!"
       ]
@@ -437,6 +440,9 @@
       "subtitle": "Aqui você encontra as músicas disponibilizadas publicamente pelas bandas.",
       "searchField": "Pesquisar músicas...",
       "noSongs": "Não há músicas cadastradas correspondentes ao filtro atual.",
+      "clearAction": "Limpar filtro",
+      "searchLabel": "Filtrar por nome ou autor",
+      "noPublicSongs": "Não foram encontradas músicas públicas utilizando o filtro atual.",
       "messages": [
         "Ocorreu um erro ao obter o repertório público. Por favor tente novamente mais tarde!"
       ]

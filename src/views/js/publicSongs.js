@@ -21,6 +21,11 @@ export default {
     ...mapActions({
       listPublicSongs: 'song/listPublicSongs'
     }),
+    async filterSongs (clear = false) {
+      if (clear) this.filter = ''
+      this.offset = 0
+      await this.getInitialSongs()
+    },
     async getInitialSongs () {
       const r = await this.listPublicSongs({ limit: this.limit, offset: this.offset, filter: this.filter })
       if (!r.error) {
