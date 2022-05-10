@@ -8,10 +8,8 @@
               <img src="/img/logo.svg" alt="Playliter logo">
             </div>
             <div class="display-info">
-              <h3 class="klasik">Playliter</h3>
-              <p class="mb-3">
-                App desenvolvido no intuíto de facilitar o gerenciamento do repertório de uma banda.
-              </p>
+              <h3 class="klasik">{{ $t('appname') }}</h3>
+              <p class="mb-3">{{ $t('description') }}</p>
             </div>
           </div>
         </div>
@@ -19,7 +17,7 @@
       <div class="row pt-3 secondary-section pb-3 mb-3">
         <div class="col-12">
           <h3 class="title mb-3 mt-3">
-            Proximas apresentações
+            {{ $t('home.nextPresentations') }}
           </h3>
           <div v-if="!showLoading">
             <ul v-if="pending.length > 0" class="list">
@@ -44,13 +42,13 @@
                     <strong>{{ s.band.title }}</strong>
                   </p>
                   <span>
-                    Data: {{ $text.formatISODate(s.date) }} 
+                    {{ $t('home.date') }}: {{ $text.formatISODate(s.date) }} 
                   </span>
                 </div>
               </li>
             </ul>
             <p v-else class="mb-0">
-              Não há apresentações futuras registradas nas bandas que você participa!
+              {{ $t('home.noPresentations') }}
             </p>
           </div>
           <!-- Shimmer list -->
@@ -58,13 +56,13 @@
             <ul class="list">
               <li class="item">
                 <div class="icon mr-3">
-                  <photo class="shine"></photo>
+                  <div class="shine shimmer-photo"></div>
                 </div>
                 <div class="show-info">
                   <p class="title">
-                    <lines class="shine"></lines>
+                    <span class="shine shimmer-lines"></span>
                   </p>
-                  <lines class="shine"></lines>
+                  <div class="shine shimmer-lines"></div>
                 </div>
                 <div class="actions"></div>
               </li>
@@ -74,7 +72,7 @@
       </div>
       <div v-if="hasPendingInvites" class="row">
         <div class="col-12">
-          <h3 class="title mb-0">Convites pendentes</h3>
+          <h3 class="title mb-0">{{ $t('home.pendingInvites') }}</h3>
           <hr />
           <ul class="invites">
             <li
@@ -90,7 +88,7 @@
               </div>
               <div class="info">
                 <p class="mb-0">{{ inv.band.title }}</p>
-                <span>Convidado em: {{ $text.formatISODate(inv.createdAt) }}</span>
+                <span>{{ $t('home.invitedAt') }}: {{ $text.formatISODate(inv.createdAt) }}</span>
               </div>
             </li>
           </ul>
@@ -100,7 +98,7 @@
       <div class="row">
         <div class="col-12">
           <p class="text-center">
-            Versão: <strong>2.3.0</strong>
+            {{ $t('home.version') }}: <strong>2.3.0</strong>
           </p>
         </div>
       </div>

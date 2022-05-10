@@ -3,26 +3,26 @@
     <div class="container">
       <div class="row pt-3 primary-section">
         <div class="col-12">
-          <h3 class="title">Repertório público</h3>
+          <h3 class="title">{{ $t('publicSongs.title') }}</h3>
           <div v-if="!songLoading">
-            <p class="mb-3">Aqui você encontra as músicas disponibilizadas publicamente pelas bandas.</p>
+            <p class="mb-3">{{ $t('publicSongs.subtitle') }}</p>
             <base-input
               name="filter"
-              placeholder="Pesquisar músicas..."
+              :placeholder="$t('publicSongs.searchField')"
               v-model="filter"
             />
           </div>
           <div v-else>
-            <lines class="shine"></lines>
-            <lines class="shine mb-3"></lines>
+            <div class="shine shimmer-lines"></div>
+            <div class="shine mb-3"></div>
           </div>
         </div>
       </div>
-      <div class="row secondary-section mb-3">
+      <!-- <div class="row secondary-section mb-3">
         <div class="col-12">
           <p>imagina algo aqui</p>
         </div>
-      </div>
+      </div> -->
       <div class="row">
         <div class="col-12">
           <ul class="songs">

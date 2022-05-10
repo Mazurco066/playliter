@@ -8,7 +8,7 @@
             <hr />
             <p class="mb-3">{{ show.description }}</p>
             <span v-if="show.createdAt">
-              Criada em 
+              {{ $t('show.createdAt') }} 
               <strong>
                 {{ $text.formatISODate(new Date(parseInt(show.createdAt)).toISOString()) }}
               </strong>
@@ -19,7 +19,7 @@
                   <font-awesome-icon icon="edit" />
                 </div>
                 <p class="mb-0">
-                  <small>Editar</small>
+                  <small>{{ $t('show.editAction') }}</small>
                 </p>
               </div>
               <div class="action" @click="toggleReorder()">
@@ -27,7 +27,7 @@
                   <font-awesome-icon :icon="reorderMode ? 'times' : 'arrows-alt-v'" />
                 </div>
                 <p class="mb-0">
-                  <small>{{ reorderMode ? 'Cancelar' : 'Reordenar' }}</small>
+                  <small>{{ reorderMode ? $t('show.cancelAction') : $t('show.reorderAction') }}</small>
                 </p>
               </div>
               <div class="action" @click="removeShow()">
@@ -35,22 +35,22 @@
                   <font-awesome-icon icon="trash" />
                 </div>
                 <p class="mb-0">
-                  <small>Remover</small>
+                  <small>{{ $t('show.removeAction') }}</small>
                 </p>
               </div>
             </div>
           </div>
           <div v-else class="info pb-3">
-            <lines class="shine"></lines>
+            <div class="shine shimmer-lines"></div>
             <hr />
-            <lines class="shine"></lines>
-            <lines class="shine"></lines>
+            <div class="shine shimmer-lines"></div>
+            <div class="shine shimmer-lines"></div>
           </div>
         </div>
       </div>
       <div class="row secondary-section pt-3">
         <div class="col-12">
-          <h3 class="title mb-3">Músicas selecionadas</h3>
+          <h3 class="title mb-3">{{ $t('show.songsLabel') }}</h3>
         </div>
       </div>
       <div class="row">
@@ -62,7 +62,7 @@
                 <ul class="songs" v-if="show.songs.length > 0">
                   <li v-for="(s, i) in show.songs" :key="i" class="song">
                     <div v-if="s.isPublic" class="public-icon">
-                      <span>Pública</span>
+                      <span>{{ $t('show.publicLabel') }}</span>
                     </div>
                     <div class="icon mr-3" @click="navigateTo('song', show.band.id, s.id)">
                       <div class="song-img">
@@ -93,7 +93,7 @@
                           class="dropdown-item"
                           @click="removeSongFromShow(s)"
                         >
-                          <font-awesome-icon icon="trash" class="mr-1" /> Remover da Apresentação
+                          <font-awesome-icon icon="trash" class="mr-1" /> {{ $t('show.removeFromShow') }}
                         </a>
                       </base-dropdown>
                     </div>
@@ -105,7 +105,7 @@
                   </div>
                   <p class="mb-3 text-center">
                     <strong>
-                      Não há músicas registradas nessa apresentação!
+                      {{ $t('show.noSongs') }}
                     </strong>
                   </p>
                 </div>
@@ -115,14 +115,14 @@
                   <li class="song">
                     <div class="icon mr-3">
                       <div class="song-img">
-                        <photo class="shine"></photo>
+                        <div class="shine shimmer-photo"></div>
                       </div>
                     </div>
                     <div class="song-info">
                       <p class="mb-0">
-                        <lines class="shine"></lines>
+                        <span class="shine shimmer-lines"></span>
                       </p>
-                      <lines class="shine"></lines>
+                      <div class="shine shimmer-lines"></div>
                     </div>
                   </li>
                 </ul>
@@ -168,7 +168,7 @@
                   </div>
                   <p class="mb-3 text-center">
                     <strong>
-                      Não há músicas registradas nessa apresentação!
+                      {{ $t('show.noSongs') }}
                     </strong>
                   </p>
                 </div>
@@ -178,14 +178,14 @@
                   <li class="song">
                     <div class="icon mr-3">
                       <div class="song-img">
-                        <photo class="shine"></photo>
+                        <div class="shine shimmer-photo"></div>
                       </div>
                     </div>
                     <div class="song-info">
                       <p class="mb-0">
-                        <lines class="shine"></lines>
+                        <span class="shine shimmer-lines"></span>
                       </p>
-                      <lines class="shine"></lines>
+                      <div class="shine shimmer-lines"></div>
                     </div>
                   </li>
                 </ul>
@@ -200,7 +200,7 @@
               type="primary"
               @click="viewAsPlaylist()"
             >
-              Modo de visualização (PDF)
+              {{ $t('show.pdfAction') }}
             </base-button>
             <base-button
               v-if="(!showLoading && (show && show.songs && show.songs.length > 0)) && reorderMode"
@@ -208,7 +208,7 @@
               type="primary"
               @click="reorder()"
             >
-              Salvar Ordem
+              {{ $t('show.reorderSubmit') }}
             </base-button>
           </div>
         </div>

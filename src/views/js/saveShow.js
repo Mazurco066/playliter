@@ -41,14 +41,14 @@ export default {
         // Save band
         const r = await this.saveShow({ payload: payload, band, id })
         if (r.error) {
-          this.$toast.error(`Ocorreu um erro ao salvar sua apresentação! Tente novamente mais tarde`)
+          this.$toast.error(this.$t('saveShow.messages[1]'))
         } else {
-          this.$toast.success('Apresentação salva com sucesso!')
+          this.$toast.success(this.$t('saveShow.messages[0]'))
           this.$router.push({ name: 'shows', params: { band } })
         }
 
       } else {
-        this.$toast.warning('Seu formuário contem erros de validação! Por favor revise-os.')
+        this.$toast.warning(this.$t('saveShow.messages[2]'))
       }
     }
   },
@@ -62,7 +62,7 @@ export default {
         date: show.data.date.split('T')[0]
       }
       if (!Object.keys(show.data).length > 0) {
-        this.$toast.warning(`Apresentação de id ${id} não encontrada!`)
+        this.$toast.warning(this.$t('saveShow.messages[3]'))
         this.$router.push({ name: 'band', params: { id: band } })
       }
     }

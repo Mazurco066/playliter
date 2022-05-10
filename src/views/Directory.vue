@@ -5,16 +5,16 @@
     <div class="container">
       <div class="row pt-3 primary-section">
         <div class="col-12">
-          <h3 class="title">Repertório completo</h3>
+          <h3 class="title">{{ $t('directory.title') }}</h3>
           <div v-if="!songLoading">
-              <p class="mb-3">Contendo <strong>{{ repertory.numberOfItems }}</strong> músicas.</p>
+              <p class="mb-3">{{ $t('directory.subtitle01') }} <strong>{{ repertory.numberOfItems }}</strong> {{ $t('directory.subtitle02') }}</p>
               <base-input
                 name="search"
-                placeholder="Pesquisar música..."
+                :placeholder="$t('directory.searchField')"
                 v-model="search"
               />
             </div>
-            <lines v-else class="shine"></lines>
+            <div v-else class="shine"></div>
         </div>
       </div>
       <div class="row secondary-section mb-3">
@@ -25,7 +25,7 @@
             class="mt-3 mb-2"
             @click="navigateToCategories()"
           >
-            Gerenciar categorias
+            {{ $t('directory.categoryAction') }}
           </base-button>
           <base-button
             nativeType="button"
@@ -33,7 +33,7 @@
             class="mb-3"
             @click="saveSong()"
           >
-            Nova música
+            {{ $t('directory.songAction') }}
           </base-button>
         </div>
       </div>
@@ -52,7 +52,7 @@
                     {{ s.category.description }}
                   </span>
                   <div class="counter">
-                    {{ s.numberOfItems }} Música(s)
+                    {{ s.numberOfItems }} {{ $t('directory.songLabel') }}
                   </div>
                 </div>
                 <ul class="songs">
@@ -86,7 +86,7 @@
               </div>
               <p class="mb-3 text-center">
                 <strong>
-                  Nenhuma música foi encontrada com o filtro utilizado!
+                  {{ $t('directory.noSongs') }}
                 </strong>
               </p>
             </div>
@@ -97,23 +97,23 @@
               <li class="category">
                 <div class="content">
                   <p class="text-uppercase mb-0">
-                    <lines class="shine"></lines>
+                    <span class="shine shimmer-lines"></span>
                   </p>
                   <span class="description">
-                    <lines class="shine"></lines>
+                    <div class="shine shimmer-lines"></div>
                   </span>
                 </div>
                 <ul class="songs">
                   <li class="song">
                     <div class="content">
                       <div class="icon mr-3">
-                        <photo class="shine"></photo>
+                        <div class="shine shimmer-photo"></div>
                       </div>
                       <div class="song-info">
                         <p class="mb-0">
-                          <lines class="shine"></lines>
+                          <span class="shine shimmer-lines"></span>
                         </p>
-                        <lines class="shine"></lines>
+                        <div class="shine shimmer-lines"></div>
                       </div>
                     </div>
                   </li>

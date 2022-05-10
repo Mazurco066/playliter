@@ -44,6 +44,7 @@
     "vue-sweetalert2": "^5.0.2",
     "vue-the-mask": "^0.11.1",
     "vue3-ace-editor": "^2.2.2",
+    "vue3-i18n": "^1.1.5",
     "vuex": "^4.0.0-0",
     "vuex-persistedstate": "^4.1.0"
   },

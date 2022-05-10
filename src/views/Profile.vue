@@ -5,10 +5,8 @@
     <div class="container">
       <div class="row pt-3 primary-section ">
         <div class="col-12">
-          <h3 class="klasik">Meu perfil</h3>
-          <p class="mb-3">
-            Visualize ou edite informações de seu perfil dentro do App.
-          </p>
+          <h3 class="klasik">{{ $t('profile.title') }}</h3>
+          <p class="mb-3">{{ $t('profile.subtitle') }}</p>
         </div>
       </div>
       <form @submit.prevent="saveProfile">
@@ -25,8 +23,8 @@
           <div class="col-12">
             <base-input
               type="text"
-              label="Nome Completo"
-              placeholder="Nome do usuário"
+              :label="$t('profile.nameField')"
+              :placeholder="$t('profile.nameField')"
               addonLeftIcon="address-card"
               v-model="v$.form.name.$model"
               :valid="!v$.form.name.$error"
@@ -38,8 +36,8 @@
             <base-input
               type="text"
               addonLeftIcon="user"
-              label="Usuário"
-              placeholder="Usuário"
+              :label="$t('profile.userField')"
+              :placeholder="$t('profile.userField')"
               v-model="me.username"
               disabled
             />
@@ -48,15 +46,15 @@
             <base-input
               type="text"
               addonLeftIcon="mobile"
-              label="Nível da conta"
-              placeholder="Nível da conta"
-              :value="me.role === 'player' ? 'Músico' : 'Admin'"
+              :label="$t('profile.accessField')"
+              :placeholder="$t('profile.accessField')"
+              :value="me.role === 'player' ? $t('profile.musician') : $t('profile.admin')"
               disabled
             />
           </div>
           <div class="col-12 mb-3 text-center">
             <span>
-              Conta criada em <strong>{{ $text.formatISODate(new Date(parseInt(me.createdAt)).toISOString()) }}</strong>
+              {{ $t('profile.createdAt') }} <strong>{{ $text.formatISODate(new Date(parseInt(me.createdAt)).toISOString()) }}</strong>
             </span>
           </div>
           <div class="col-12 mb-3">
@@ -65,7 +63,7 @@
               type="success"
               :disabled="v$.$error === true || accountLoading"
             >
-              Atualizar perfil
+              {{ $t('profile.submit') }}
             </base-button>
           </div>
           <div class="col-12">
@@ -75,7 +73,7 @@
               :disabled="accountLoading"
               @click="logout()"
             >
-              Sair
+              {{ $t('profile.logoff') }}
             </base-button>
           </div>
         </div>

@@ -16,29 +16,7 @@ export default {
     isInviteModalOpen: false,
     inviteForm: {
       username: ''
-    },
-    menu: [
-      {
-        text: 'Categorias',
-        icon: 'compact-disc',
-        redirect: 'categories'
-      },
-      {
-        text: 'Repertório',
-        icon: 'music',
-        redirect: 'directory'
-      },
-      {
-        text: 'Repertório Público',
-        icon: 'earth-americas',
-        redirect: 'publicSongs'
-      },
-      {
-        text: 'Apresentações',
-        icon: 'microphone-lines',
-        redirect: 'shows'
-      }
-    ]
+    }
   }),
   computed: {
     ...mapGetters({
@@ -50,6 +28,30 @@ export default {
     }),
     isDisplayReady () {
       return !this.bandLoading && Object.keys(this.band).length > 0
+    },
+    menu () {
+      return [
+        {
+          text: this.$t('band.categoriesMenu'),
+          icon: 'compact-disc',
+          redirect: 'categories'
+        },
+        {
+          text: this.$t('band.songbookMenu'),
+          icon: 'music',
+          redirect: 'directory'
+        },
+        {
+          text: this.$t('band.publicMenu'),
+          icon: 'earth-americas',
+          redirect: 'publicSongs'
+        },
+        {
+          text: this.$t('band.presentationMenu'),
+          icon: 'microphone-lines',
+          redirect: 'shows'
+        }
+      ]
     }
   },
   methods: {
@@ -89,7 +91,7 @@ export default {
       this.songs = songs.data
       this.shows = shows.data
       if (!Object.keys(band.data).length > 0) {
-        this.$toast.warning(`Banda de id ${id} não encontrada!`)
+        this.$toast.warning(this.$t('band.messages[0]'))
       }
     },
     async inviteMember () {
@@ -103,26 +105,26 @@ export default {
           const { id } =  userResponse.data
           if (this.band.members.find(a => a.id === id)) {
             // Case member is already in band
-            this.$toast.info(`O usuário ${payload.username} já se encontra nessa banda!`)
+            this.$toast.info(this.$t('band.messages[1]'))
           } else {
             const addMemberResponse = await this.addBandMember({ member: id, band: this.band.id })
             if (addMemberResponse.error) {
-              this.$toast.error('Ocorreu um erro ao adicionar um membro a banda. Por favor contate um administrador!')
+              this.$toast.error(this.$t('band.messages[2]'))
             } else {
-              this.$toast.success('Um novo membro foi adicionado a banda!')
+              this.$toast.success(this.$t('band.messages[3]'))
               this.closeInviteModal()
               await this.loadPageData()
             }
           }
         }
       } else {
-        this.$toast.warning('Seu formuário contem erros de validação! Por favor revise-os.')
+        this.$toast.warning(this.$t('band.messages[4]'))
       }
     },
     async removeMember (member) {
       this.$swal({
-        title: 'Essa ação é permanente!',
-        html: `Deseja remover o membro <strong>${member.name}</strong> da banda?`,
+        title: this.$t('band.messages[5]'),
+        html: this.$t('band.messages[6]'),
         showDenyButton: true,
         confirmButtonColor: '#1C8781',
         confirmButtonText: 'Remover',
@@ -131,9 +133,9 @@ export default {
         if (result.isConfirmed) {
           const response = await this.removeBandMember({ member: member.id, band: this.band.id })
           if (response.error) {
-            this.$toast.error(`Ocorreu um erro ao remover o membro da banda! Por favor contate um administrador do sistema.`)
+            this.$toast.error(this.$t('band.messages[7]'))
           } else {
-            this.$toast.success('Membro removido com sucesso!')
+            this.$toast.success(this.$t('band.messages[8]'))
             await this.loadPageData()
           }
         }
@@ -141,8 +143,8 @@ export default {
     },
     async promoteMember (member) {
       this.$swal({
-        title: 'Tem certeza?',
-        html: `Deseja promover o membro <strong>${member.name}</strong> para "Admin"?`,
+        title: this.$t('band.messages[9]'),
+        html: this.$t('band.messages[10]'),
         showDenyButton: true,
         confirmButtonColor: '#1C8781',
         confirmButtonText: 'Promover',
@@ -151,9 +153,9 @@ export default {
         if (result.isConfirmed) {
           const response = await this.promoteBandMember({ member: member.id, band: this.band.id })
           if (response.error) {
-            this.$toast.error(`Ocorreu um erro ao promover o membro da banda! Por favor contate um administrador do sistema.`)
+            this.$toast.error(this.$t('band.messages[11]'))
           } else {
-            this.$toast.success('Membro promovido com sucesso!')
+            this.$toast.success(this.$t('band.messages[12]'))
             await this.loadPageData()
           }
         }
@@ -161,8 +163,8 @@ export default {
     },
     async demoteMember (member) {
       this.$swal({
-        title: 'Tem certeza?',
-        html: `Deseja rebaixar <strong>${member.name}</strong> para "Membro"?`,
+        title: this.$t('band.messages[9]'),
+        html: this.$t('band.messages[13]'),
         showDenyButton: true,
         confirmButtonColor: '#1C8781',
         confirmButtonText: 'Rebaixar',
@@ -171,9 +173,9 @@ export default {
         if (result.isConfirmed) {
           const response = await this.demoteBandMember({ member: member.id, band: this.band.id })
           if (response.error) {
-            this.$toast.error(`Ocorreu um erro ao rebaixar o membro da banda! Por favor contate um administrador do sistema.`)
+            this.$toast.error(this.$t('band.messages[14]'))
           } else {
-            this.$toast.success('Membro rebaixado com sucesso!')
+            this.$toast.success(this.$t('band.messages[15]'))
             await this.loadPageData()
           }
         }
@@ -181,8 +183,8 @@ export default {
     },
     async disposeBand () {
       this.$swal({
-        title: 'Essa ação é permanente!',
-        text: 'Deseja excluir essa banda para todos seus integrantes??',
+        title: this.$t('band.messages[5]'),
+        text: this.$t('band.messages[16]'),
         showDenyButton: true,
         confirmButtonColor: '#1C8781',
         confirmButtonText: 'Excluir',
@@ -191,9 +193,9 @@ export default {
         if (result.isConfirmed) {
           const response = await this.removeBand(this.band.id)
           if (response.error) {
-            this.$toast.error(`Ocorreu um erro ao excluir a banda! Por favor contate um administrador do sistema.`)
+            this.$toast.error(this.$t('band.messages[17]'))
           } else {
-            this.$toast.success('Banda removida com sucesso!')
+            this.$toast.success(this.$t('band.messages[18]'))
             this.$router.push({ name: 'bands' })
           }
         }

@@ -42,7 +42,7 @@
       </div>
       <div class="col-12">
         <p class="text-center text-uppercase">
-          Formação dos acordes
+          {{ $t('song.chords') }}
         </p>
       </div>
     </div>
@@ -76,11 +76,11 @@
   <div v-else class="row">
     <div class="col-12">
       <div>
-        <lines class="shine"></lines>
-        <lines class="shine"></lines>
-        <lines class="shine"></lines>
-        <lines class="shine"></lines>
-        <lines class="shine"></lines>
+        <div class="shine shimmer-lines"></div>
+        <div class="shine shimmer-lines"></div>
+        <div class="shine shimmer-lines"></div>
+        <div class="shine shimmer-lines"></div>
+        <div class="shine shimmer-lines"></div>
       </div>
     </div>
   </div>

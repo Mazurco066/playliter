@@ -37,7 +37,7 @@ export default {
     const { band } = this.$route.params
     const r = await this.listBandShows({ band })
     if (r.error) {
-      this.$toast.error(`Ocorreu um erro ao obter as apresentações da banda! Por favor contate um administrador do sistema.`)
+      this.$toast.error(this.$v('shows.messages[0]'))
     } else {
       this.shows = r.data
     }

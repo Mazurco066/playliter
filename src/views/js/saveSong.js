@@ -84,12 +84,12 @@ export default {
     }),
     async importExternalSong () {
       const importUrl = this.form.importUrl
-      if (!importUrl) return this.$toast.warning('Nenhuma url de importação foi inserida.')
-      if (!importUrl.includes('https://')) return this.$toast.warning('Insira uma URL válida.')
+      if (!importUrl) return this.$toast.warning(this.$t('saveSong.messages[9]'))
+      if (!importUrl.includes('https://')) return this.$toast.warning(this.$t('saveSong.messages[10]'))
       const swal = this.$swal({
         icon: 'info',
-        title: 'Aguarde',
-        text: 'Estamos importando a cifra da música informada...',
+        title: this.$t('saveSong.messages[7]'),
+        text: this.$t('saveSong.messages[5]'),
         showConfirmButton: false,
         allowOutsideClick: false
       })
@@ -98,7 +98,7 @@ export default {
       if (external.error) {
         this.$toast.error(
           external.message.replace('GraphQL error:', '') ||
-          `Ocorreu um erro ao importar a música! Por favor contate um administrador do sistema.`
+          this.$t('saveSong.messages[6]')
         )
       } else {
         this.form.importUrl = ''
@@ -117,7 +117,7 @@ export default {
 
         // Validate if song body was fulfilled
         if (!this.song) {
-          return this.$toast.warning('Por favor preencha o corpo da música para prosseguir! Por favor revise-os.')
+          return this.$toast.warning(this.$t('saveSong.messages[8]'))
         }
         
         // Retrieve params and generate payload
@@ -135,14 +135,14 @@ export default {
 
         // Validate errors
         if (r.error) {
-          this.$toast.error(`Ocorreu um erro ao salvar sua música! Tente novamente mais tarde`)
+          this.$toast.error(this.$t('saveSong.messages[2]'))
         } else {
-          this.$toast.success('Música salva com sucesso!')
+          this.$toast.success(this.$t('saveSong.messages[0]'))
           this.$router.push({ name: 'directory', params: { band } })
         }
         
       } else {
-        this.$toast.warning('Seu formuário contem erros de validação! Por favor revise-os.')
+        this.$toast.warning(this.$t('saveSong.messages[2]'))
       }
     },
     // Ace editor methods
@@ -189,14 +189,14 @@ export default {
       // Replace \n with html elements
       this.song = song.data.body.replaceAll('<br>', '\n')  
       if (!Object.keys(song.data).length > 0) {
-        this.$toast.warning(`Música de id ${id} não encontrada!`)
+        this.$toast.warning(this.$t('saveSong.messages[3]'))
         this.$router.push({ name: 'band', params: { id: band } })
       }
     }
     const categories = await this.listBandCategories({ band, limit: 0, offset: 0 })
     this.categories = categories.data
     if (!categories.data.length > 0) {
-      this.$toast.warning('Cadastre uma categoria antes de cadastrar uma música!')
+      this.$toast.warning(this.$t('saveSong.messages[4]'))
       this.$router.push({ name: 'band', params: { id: band } })
     }
   },

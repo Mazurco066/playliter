@@ -27,7 +27,7 @@ export default {
         this.songs = r.data
         this.offset += this.limit
       } else {
-        this.$toast.warning('Ocorreu um erro ao obter o repertório público. Por favor tente novamente mais tarde!')
+        this.$toast.warning(this.$t('publicSongs.messages[0]'))
       }
     },
     loadMore () {
@@ -41,7 +41,7 @@ export default {
             this.offset += this.limit
             if (response.data.length === 0) this.blockInfiniteScroll = true
           } else {
-            this.$toast.warning('Ocorreu um erro ao obter o repertório público. Por favor tente novamente mais tarde!')
+            this.$toast.warning(this.$t('publicSongs.messages[0]'))
           }
         }
       }

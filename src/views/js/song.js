@@ -64,22 +64,22 @@ export default {
       const songId = this.song.id
       const showId = show.id
       this.$swal({
-        title: 'Confirmação!',
-        html: `Deseja adicionar essa música a apresentação <strong>${show.title}</strong>?`,
+        title: this.$t('song.messages[5]'),
+        html: this.$t('song.messages[6]') + ` <strong>${show.title}</strong>?`,// `Deseja adicionar essa música a apresentação <strong>${show.title}</strong>?`,
         showDenyButton: true,
         confirmButtonColor: '#1C8781',
-        confirmButtonText: 'Adicionar',
-        denyButtonText: `Cancelar`
+        confirmButtonText: this.$t('song.addAction'),
+        denyButtonText: this.$t('song.cancelAction')
       }).then(async (result) => {
         if (result.isConfirmed) {
           const response = await this.linkSong({ song: songId, show: showId })
           if (response.error) {
             this.$toast.error(
               response.message.replace('GraphQL error:', '') ||
-              `Ocorreu um erro ao adicionar a música na apresentação! Por favor contate um administrador do sistema.`
+              this.$t('song.messages[7]')
             )
           } else {
-            this.$toast.success(`Música adicionada a apresentação ${show.title}`)
+            this.$toast.success(this.$t('song.messages[5]') + ` ${show.title}`)
             this.closeListModal()
           }
         }
@@ -88,19 +88,19 @@ export default {
     async deleteSong () {
       const id = this.song.id
       this.$swal({
-        title: 'Essa ação é permanente!',
-        text: 'Deseja remover essa música?',
+        title: this.$t('song.messages[1]'),
+        text: this.$t('song.messages[2]'),
         showDenyButton: true,
         confirmButtonColor: '#1C8781',
-        confirmButtonText: 'Remover',
-        denyButtonText: `Cancelar`
+        confirmButtonText: this.$t('song.removeAction'),
+        denyButtonText: this.$t('song.cancelAction')
       }).then(async (result) => {
         if (result.isConfirmed) {
           const response = await this.removeBandSong(id)
           if (response.error) {
-            this.$toast.error(`Ocorreu um erro ao remover a música! Por favor contate um administrador do sistema.`)
+            this.$toast.error(this.$t('song.messages[3]'))
           } else {
-            this.$toast.success('Música removida com sucesso!')
+            this.$toast.success(this.$t('song.messages[4]'))
             this.$router.push({ name: 'band', params: { id: this.song.band.id } })
           }
         }
@@ -120,7 +120,7 @@ export default {
     const r = await this.loadSong({ band, id })
     this.song = r.data
     if (!Object.keys(r.data).length > 0) {
-      this.$toast.warning(`Música de id ${id} não encontrada!`)
+      this.$toast.warning(this.$t('song.messages[0]'))
     }
     
     // Then list shows and band

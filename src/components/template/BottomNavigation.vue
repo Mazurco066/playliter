@@ -5,7 +5,7 @@
         <div class="col-12">
           <nav class="nav nav--icons">
             <ul>
-              <li v-for="(link, i) in links" :key="i">
+              <li v-for="(link, i) in translatedLinks" :key="i">
                 <a
                   href="javascript:void(0)"
                   :class="{ 'is-active': $route.name === link.route }"

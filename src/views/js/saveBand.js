@@ -40,9 +40,9 @@ export default {
         // Save band
         const r = await this.saveBand({ payload: payload, id })
         if (r.error) {
-          this.$toast.error(`Ocorreu um erro ao salvar sua banda! Tente novamente mais tarde`)
+          this.$toast.error(this.$t('saveBand.messages[1]'))
         } else {
-          this.$toast.success('Banda criada com sucesso!')
+          this.$toast.success(this.$t('saveBand.messages[0]'))
           if (id) {
             this.$router.push({ name: 'band', params: { id: r.data.id } })
           } else  {
@@ -51,7 +51,7 @@ export default {
         }
 
       } else {
-        this.$toast.warning('Seu formuário contem erros de validação! Por favor revise-os.')
+        this.$toast.warning(this.$t('saveBand.messages[2]'))
       }
     }
   },
@@ -64,7 +64,7 @@ export default {
         description: band.data.description
       }
       if (!Object.keys(band.data).length > 0) {
-        this.$toast.warning(`Banda de id ${id} não encontrada!`)
+        this.$toast.warning(this.$t('saveBand.messages[3]'))
         this.$router.push({ name: 'bands' })
       }
     }
