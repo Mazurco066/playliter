@@ -98,7 +98,7 @@
       <div class="row">
         <div class="col-12">
           <p class="text-center">
-            {{ $t('home.version') }}: <strong>2.3.0</strong>
+            {{ $t('home.version') }}: <strong>2.4.0</strong>
           </p>
         </div>
       </div>
