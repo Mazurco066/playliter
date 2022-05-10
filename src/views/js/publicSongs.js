@@ -21,6 +21,11 @@ export default {
     ...mapActions({
       listPublicSongs: 'song/listPublicSongs'
     }),
+    async filterSongs (clear = false) {
+      if (clear) this.filter = ''
+      this.offset = 0
+      await this.getInitialSongs()
+    },
     async getInitialSongs () {
       const r = await this.listPublicSongs({ limit: this.limit, offset: this.offset, filter: this.filter })
       if (!r.error) {
@@ -34,7 +39,7 @@ export default {
       this.scrollElement = document.getElementById('main-body')
       this.scrollElement.onscroll = async () => {
         let response, bottomOfWindow = this.scrollElement.scrollHeight - this.scrollElement.clientHeight === this.scrollElement.scrollTop
-        if (bottomOfWindow && !this.blockInfiniteScroll) {
+        if (bottomOfWindow && !this.songLoading && !this.blockInfiniteScroll) {
           response = await this.listPublicSongs({ limit: this.limit, offset: this.offset, filter: this.filter })
           if (!response.error) {
             this.songs = [ ...this.songs, ...response.data ]

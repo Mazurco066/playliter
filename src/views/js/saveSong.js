@@ -29,7 +29,8 @@ export default {
       writter: '',
       tone: '',
       category: '',
-      importUrl: ''
+      importUrl: '',
+      visibility: 'public'
     },
     // Select data list
     categories: [],
@@ -126,9 +127,9 @@ export default {
           ...this.form,
           body: this.song,
           band: band,
-          // TODO: Add field to form
-          isPublic: true
+          isPublic: this.form.visibility === 'public'
         }
+        delete payload.visibility
 
         // Create / Update song
         const r = await this.saveSong({ id, payload })
@@ -184,7 +185,8 @@ export default {
         writter: song.data.writter,
         tone: song.data.tone,
         category: song.data.category.id,
-        importUrl: ''
+        importUrl: '',
+        visibility: song.data.isPublic ? 'public' : 'private'
       }
       // Replace \n with html elements
       this.song = song.data.body.replaceAll('<br>', '\n')  
@@ -220,6 +222,9 @@ export default {
           minLength: minLength(2)
         },
         category: {
+          required
+        },
+        visibility: {
           required
         }
       }

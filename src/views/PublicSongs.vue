@@ -6,11 +6,6 @@
           <h3 class="title">{{ $t('publicSongs.title') }}</h3>
           <div v-if="!songLoading">
             <p class="mb-3">{{ $t('publicSongs.subtitle') }}</p>
-            <base-input
-              name="filter"
-              :placeholder="$t('publicSongs.searchField')"
-              v-model="filter"
-            />
           </div>
           <div v-else>
             <div class="shine shimmer-lines"></div>
@@ -18,31 +13,86 @@
           </div>
         </div>
       </div>
-      <!-- <div class="row secondary-section mb-3">
-        <div class="col-12">
-          <p>imagina algo aqui</p>
+      <div class="row secondary-section mb-3 pt-3">
+        <div class="col-10">
+          <base-input
+            :label="$t('publicSongs.searchLabel')"
+            name="filter"
+            :placeholder="$t('publicSongs.searchField')"
+            v-model="filter"
+            :disabled="songLoading"
+          />
         </div>
-      </div> -->
+        <div class="col-2 pl-0">
+          <base-button
+            class="search-btn"
+            @click="filterSongs()"
+            :disabled="songLoading"
+            type="secondary"
+          >
+            <font-awesome-icon icon="search" />
+          </base-button>
+        </div>
+        <div class="col-12">
+          <base-button
+            class="mb-3"
+            @click="filterSongs(true)"
+            :disabled="songLoading"
+            type="secondary"
+          >
+            {{ $t('publicSongs.clearAction') }}
+          </base-button>
+        </div>
+      </div>
       <div class="row">
         <div class="col-12">
-          <ul class="songs">
-            <li
-              class="song"
-              v-for="({ id, title, writter, band: { id: bandId } }, i) in songs"
-              :key="i"
-              @click="navigateTo('song', bandId, id)"
-            >
+          <div>
+            <ul v-if="songs.length > 0" :class="{'loading' : songLoading}" class="songs">
+              <li
+                class="song"
+                v-for="({ id, title, writter, band: { id: bandId } }, i) in songs"
+                :key="i"
+                @click="navigateTo('song', bandId, id)"
+              >
+                <div class="content">
+                  <div class="icon mr-3">
+                    <div class="song-img">
+                      <img :src="`/img/arts/record.png`" />
+                    </div>
+                  </div>
+                  <div class="song-info">
+                    <p class="mb-0">
+                      <strong>{{ title }}</strong>
+                    </p>
+                    <span>{{ writter }}</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div v-else class="no-songs">
+              <div class="icon">
+                <img src="/img/arts/not_found.svg" alt="No content">
+              </div>
+              <p class="mb-3 text-center">
+                <strong>
+                  {{ $t('publicSongs.noPublicSongs') }}
+                 </strong>
+              </p>
+            </div>
+          </div>
+          <ul v-if="songLoading && songs.length === 0" class="songs">
+            <li class="song">
               <div class="content">
                 <div class="icon mr-3">
                   <div class="song-img">
-                    <img :src="`/img/arts/record.png`" />
+                    <div class="shine shimmer-photo"></div>
                   </div>
                 </div>
                 <div class="song-info">
                   <p class="mb-0">
-                    <strong>{{ title }}</strong>
+                    <span class="shine shimmer-lines"></span>
                   </p>
-                  <span>{{ writter }}</span>
+                  <span class="shine shimmer-lines"></span>
                 </div>
               </div>
             </li>
