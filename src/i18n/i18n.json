@@ -2,6 +2,8 @@
   "en": {
     "appname": "Playliter",
     "description": "This app was developed to help bands manage presentation playlists.",
+    "welcomeMsg": "Welcome to",
+    "bottomNav": ["Bands", "Home", "Profile"],
     "band": {
       "createdAt": "Created at",
       "inviteAction": "Invite",
@@ -304,6 +306,8 @@
   "pt": {
     "appname": "Playliter",
     "description": "App desenvolvido no intuíto de facilitar o gerenciamento do repertório de uma banda.",
+    "welcomeMsg": "Bem vindo ao",
+    "bottomNav": ["Bandas", "Home", "Perfil"],
     "band": {
       "createdAt": "Criada em",
       "inviteAction": "Convidar",
