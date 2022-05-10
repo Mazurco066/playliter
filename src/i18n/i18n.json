@@ -141,36 +141,43 @@
       ]
     },
     "show": {
-      "createdAt": "Criada em",
-      "editAction": "Editar",
-      "songsLabel": "Músicas selecionadas",
-      "publicLabel": "Pública",
-      "removeFromShow": "Remover da Apresentação",
-      "noSongs": "Não há músicas registradas nessa apresentação!",
-      "pdfAction": "Modo de visualização (PDF)",
-      "reorderSubmit": "Salvar Ordem",
-      "deleteAction": "Excluir",
-      "removeAction": "Remover",
-      "reorderAction": "Reordenar",
-      "cancelAction": "Cancelar",
+      "createdAt": "Created at",
+      "editAction": "Update",
+      "songsLabel": "Selected songs",
+      "publicLabel": "Public",
+      "removeFromShow": "Remove form show",
+      "noSongs": "There is no songs in this show!",
+      "pdfAction": "View Mode (PDF)",
+      "reorderSubmit": "Save Order",
+      "deleteAction": "Delete",
+      "removeAction": "Remove",
+      "reorderAction": "Reorder",
+      "cancelAction": "Cancel",
       "messages": [
-        "Tem certeza!",
-        "Deseja reordenar essa apresentação?",
-        "Ocorreu um erro ao reordenar as músicas! Tente novamente mais tarde.",
-        "Apresentação reordenada com sucesso!",
-        "Essa ação é permanente!",
-        "Deseja excluir essa apresentação?",
-        "Ocorreu um erro ao excluir a apresentação! Por favor contate um administrador do sistema.",
-        "Apresentação removida com sucesso!",
-        "Apresentação não encontrada!",
-        "Confirmação!",
-        "Deseja remover essa música da apresentação",
-        "Ocorreu um erro ao remover a música da apresentação! Por favor contate um administrador do sistema.",
-        "Música removida da apresentação"
+        "Are you sure?",
+        "Reorder this show?",
+        "An error ocourred while reorder the show! Please try again later.",
+        "Show successfully reordered!",
+        "This action is permanent!",
+        "Delete this show?",
+        "An error ocourred while removing the show! Please try again later.",
+        "Show successfully removed!",
+        "Show not found!",
+        "Confirmation!",
+        "Remove this song from presentation",
+        "An error ocourred while removing the song from show! Please try again later.",
+        "The song was successfully removed from the show!"
       ]
     },
     "shows": {
-
+      "title": "Shows",
+      "subtitle": "Saved shows from this band.",
+      "noShows": "This band has no saved shows!",
+      "date": "Date",
+      "addShow": "Add show",
+      "messages": [
+        "An error ocourred while retrieving the show! Please try again later."
+      ]
     },
     "signin": {
       "title": "Authentication",
@@ -341,7 +348,8 @@
       "nameField": "Nome para a apresentação",
       "nameLabel": "1. Primeiramente informe um título para sua apresentação:",
       "descriptionField": "Breve descrição...",
-      "descriptionLabel": "2. Agora forneça uma breve <strong>descrição</strong> sobre a mesma:",
+      "descriptionLabel": "2. Agora forneça uma breve descrição sobre a mesma:",
+      "dateLabel": "Data",
       "submit": "Salvar apresentação",
       "messages": [
         "Apresentação salva com sucesso!",
@@ -404,7 +412,14 @@
       ]
     },
     "shows": {
-
+      "title": "Apresentações",
+      "subtitle": "Apresentações registradas para a banda performar.",
+      "noShows": "Essa banda não possuí apresentações cadastradas!",
+      "date": "Data",
+      "addShow": "Adicionar Apresentação",
+      "messages": [
+        "Ocorreu um erro ao obter as apresentações da banda! Por favor contate um administrador do sistema."
+      ]
     },
     "signin": {
       "title": "Autenticação",
