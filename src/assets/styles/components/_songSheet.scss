@@ -71,6 +71,10 @@
       display: flex;
       flex-direction: column;
     }
+
+    .comment {
+      color: var(--color-gray);
+    }
     
     .comment, .chorus:before, .verse::before {
       font-weight: bold;
@@ -88,8 +92,8 @@
     }
     
     .chorus {
-      border-left: 4px solid #999;
-      padding-left: 1em;
+      border-left: 4px solid var(--color-primary-light);
+      padding-left: 1.5em;
     }
     
     .chorus::before {

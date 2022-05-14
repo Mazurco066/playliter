@@ -3,6 +3,7 @@ import useVuelidate from '@vuelidate/core'
 import { mapActions, mapGetters } from 'vuex'
 import { required, minLength, maxLength } from '@vuelidate/validators'
 import { VAceEditor } from 'vue3-ace-editor'
+import { chordTransposer } from '../../utils'
 
 // Ace plugins
 import ChordCompleter from '../../components/base/ace/chordCompleter'
@@ -102,6 +103,9 @@ export default {
           this.$t('saveSong.messages[6]')
         )
       } else {
+
+        // Updating form data to imported song
+        const formattedSong = chordTransposer.plaintextToChordProFormat(external.data.loot)
         this.form.importUrl = ''
         this.form.title = external.data.title
         this.form.writter = external.data.writter
@@ -109,7 +113,8 @@ export default {
           ? external.data.tone
           : external.data.tone.substring(0, 1)
         this.form.tone = obtainedTone
-        this.song  = external.data.loot
+        this.song = formattedSong
+        
       }
     },
     async createSong () {
