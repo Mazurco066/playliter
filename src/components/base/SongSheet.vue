@@ -22,24 +22,31 @@
       <!-- Song tools -->
       <div v-if="song && song.tone" class="col-12">
         <div class="transpose-control">
-          <button class="tone-btn tone-down">
-            <font-awesome-icon icon="arrow-down" @click="toneDown()" />
-          </button>
-          <select
-            v-model="transpose"
-            class="tone text-center w-20"
-          >
-            <option
-              v-for="n in transpositions"
-              :key="n.step"
-              :value="n.step"
+          <div class="transpose-buttons">
+            <button class="tone-btn tone-down">
+              <font-awesome-icon icon="arrow-down" @click="toneDown()" />
+            </button>
+            <select
+              v-model="transpose"
+              class="tone text-center w-20"
             >
-              {{ n.name }}
-            </option>
-          </select>
-          <button class="tone-btn tone-up" @click="toneUp()">
-            <font-awesome-icon icon="arrow-up" />
-          </button>
+              <option
+                v-for="n in transpositions"
+                :key="n.step"
+                :value="n.step"
+              >
+                {{ n.name }}
+              </option>
+            </select>
+            <button class="tone-btn tone-up" @click="toneUp()">
+              <font-awesome-icon icon="arrow-up" />
+            </button>
+          </div>
+          <div class="transpose-action" v-if="transpose !== 0">
+            <button>
+              Atualizar Tom Base
+            </button>
+          </div>
         </div>
       </div>
       <!-- Song body -->
