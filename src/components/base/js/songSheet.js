@@ -44,7 +44,11 @@ export default {
       type: Boolean,
       default: false
     },
-    showToneControll: {
+    showToneControl: {
+      type: Boolean,
+      default: true
+    },
+    showChordList: {
       type: Boolean,
       default: true
     }
@@ -60,9 +64,6 @@ export default {
     toneUp () {
       if (this.transpose === 11) this.transpose = -11
       else this.transpose++
-    },
-    notifyToneChange () {
-      
     }
   },
   watch: {

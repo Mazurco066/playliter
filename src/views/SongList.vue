@@ -54,17 +54,61 @@
     </div>
 
     <!--- Song print section -->
-    <div v-if="!showLoading" class="songs d-none report-print">
+    <div v-if="!showLoading" class="songs d-none report-print"> <!-- d-none report-print -->
       <div id="pdf-preview">
         <div class="info">
           <h3 class="title">{{ show.title }}</h3>
           <p class="description">{{ show.description }}</p>
-          <span class="text-muted">{{ $t('songList.credits') }} {{ $text.formatISODate(new Date().toISOString()) }}</span>
+          <span class="text-muted">
+            {{ $t('songList.credits') }} {{ $text.formatISODate(new Date().toISOString()) }}
+          </span>
         </div>
         <div class="pagebreak"></div>
       </div>
-      <div class="song bg-white pdf-song" v-for="({ html }, i) in parsedSongs" :key="i">
-        <div class="transposer" v-html="html" />
+      <div
+        class="song bg-white pdf-song shongsheet"
+        v-for="(song, i) in parsedSongs"
+        :key="i"
+      >
+        <!-- Song metadata -->
+        <div class="col-12" v-if="song.title">
+          <h1 class="text-xl my-1">
+            {{ song.title }}
+          </h1>
+        </div>
+        <div class="col-12" v-if="song.artist">
+          <div class="my-1">
+            <span class="opacity-40">by</span> {{ song.artist }}
+          </div>
+        </div>
+        <div class="col-12" v-if="song.capo">
+          <div  class="capo my-4">
+            Capo {{ song.capo }}
+          </div>
+        </div>
+        <!-- Song body -->
+        <div class="song-section">
+          <div ref="output" class="chord-sheet">
+            <div
+              v-for="({ type, lines }, i) in song.paragraphs"
+              :key="type + i"
+              :class="type + ' paragraph'"
+            >
+              <template v-for="(line, idx) in lines">
+                <div :key="idx" v-if="line.hasRenderableItems()" class="row">
+                  <template v-for="(item, idx2) in line.items">
+                    <component
+                      v-if="item.isRenderable()"
+                      :is="componentFor(item)"
+                      :item="item"
+                      :key="'inner' + idx2"
+                    />
+                  </template>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
         <div class="pagebreak"></div>
       </div>
     </div>

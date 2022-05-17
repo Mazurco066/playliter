@@ -20,7 +20,7 @@
         </div>
       </div>
       <!-- Song tools -->
-      <div v-if="song && song.tone && showToneControll" class="col-12">
+      <div v-if="song && song.tone && showToneControl" class="col-12">
         <div class="transpose-control">
           <div class="transpose-buttons">
             <button class="tone-btn tone-down">
@@ -81,7 +81,7 @@
     </div>
 
     <!-- Song chords section -->
-    <div v-if="chords.length" class="row secondary-section pt-3">
+    <div v-if="chords.length && showChordList" class="row secondary-section pt-3">
       <div class="col-12">
         <!-- Hide tag is needed (render this once, cause the svg tag will xlink this) -->
         <svg hidden xmlns="http://www.w3.org/2000/svg">
