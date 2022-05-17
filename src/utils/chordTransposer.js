@@ -111,6 +111,19 @@ export const getUniqueChords = (lyrics = '', transpose = 0) => {
     const parser = new ChordProParser()
     const chordsheetjsSong = parser.parse(song)
 
+    // Add transposed chord to song object
+    const chords = {}
+    chordsheetjsSong.lines.forEach(line => {
+      line.items.forEach(pair => {
+        if (pair.chords) {
+          if (!chords[pair.chords]) {
+            chords[pair.chords] = Chord.parse(pair.chords) ? Chord.parse(pair.chords).transpose(transpose).toString() : ''
+          }
+          pair.chords = chords[pair.chords]
+        }
+      })
+    })
+
     // Retrieve song chords
     const allChordsGrouped = chordsheetjsSong.lines.map(
       line => line.items.reduce((ac, cv) => cv.chords ? ac.concat(cv.chords.replace(/\s/g, '')) : ac , [])
@@ -158,6 +171,35 @@ export const getTransposedSong = (lyrics = '', transpose = 0) => {
   } catch (err) {
     console.log('[getTransposedSong]', err)
     return []
+  }
+}
+
+/** 
+ * Overwrites song base tone
+ * @param {Song} song - Chordsheetjs song
+ * @returns {Song} - Overwritten song
+ */
+export const overwriteBaseTone = (song) => {
+  try {
+
+    // Chordsheetjs utils
+    const formatter = new ChordProFormatter()
+
+    // Update song object
+    song.lines.forEach(line => {
+      line.items.forEach(pair => {
+        if (pair.chords && pair.transposed) {
+          pair.chords = pair.transposed
+        }
+      })
+    })
+
+    // Return updated song
+    return formatter.format(song).toString()
+
+  } catch (err) {
+    console.log('[overwriteBasetone]', err)
+    return {}
   }
 }
 

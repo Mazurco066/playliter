@@ -47,6 +47,7 @@
         </div>
       </div>
       <base-songsheet
+        @toneUpdated="updateTone"
         :loading="showLoading"
         :song="displaySong"
       />

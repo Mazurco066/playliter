@@ -1,5 +1,6 @@
 // Dependencies
 import { mapActions, mapGetters } from 'vuex'
+import { chordTransposer } from '../../utils'
 
 // Component
 export default {
@@ -52,8 +53,38 @@ export default {
       removeBandSong: 'song/removeBandSong',
       listAccountShows: 'show/listAccountShows',
       linkSong: 'show/linkSong',
-      loadBand: 'band/loadBand'
+      loadBand: 'band/loadBand',
+      saveSong: 'song/saveSong'
     }),
+    async updateTone (transposedSong, transpositions, transpose) {
+      // Retrieve updated song data
+      const newTone = transpositions.find(t => t.step === transpose).name.root.note._note
+      const updatedSongBody = chordTransposer.overwriteBaseTone(transposedSong)
+
+      // Update song payload
+      const payload = {
+        id: this.song.id,
+        title: this.song.title,
+        writter: this.song.writter,
+        category: this.song.category.id,
+        isPublic: this.song.isPublic,
+        tone: newTone,
+        body: updatedSongBody
+      }
+
+      // Update song
+      const r = await this.saveSong({ id: this.song.id, payload })
+      if (r.error) {
+        this.$toast.error(this.$t('saveSong.messages[2]'))
+      } else {
+        this.$toast.success(this.$t('saveSong.messages[0]'))
+      }
+
+      // Reload song
+      const { id, band } = this.$route.params
+      const r2 = await this.loadSong({ band, id })
+      this.song = r2.data
+    },
     closeListModal () {
       this.isListModalOpen = false
     },
@@ -119,6 +150,8 @@ export default {
     // First load song
     const r = await this.loadSong({ band, id })
     this.song = r.data
+
+    // Alert if song was not found
     if (!Object.keys(r.data).length > 0) {
       this.$toast.warning(this.$t('song.messages[0]'))
     }

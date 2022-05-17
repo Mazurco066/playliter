@@ -28,6 +28,9 @@ export default {
       return steps
     }
   },
+  emits: [
+    'toneUpdated'
+  ],
   props: {
     song: {
       type: Object,
@@ -40,6 +43,10 @@ export default {
     showHeader: {
       type: Boolean,
       default: false
+    },
+    showToneControll: {
+      type: Boolean,
+      default: true
     }
   },
   methods: {
@@ -53,10 +60,14 @@ export default {
     toneUp () {
       if (this.transpose === 11) this.transpose = -11
       else this.transpose++
+    },
+    notifyToneChange () {
+      
     }
   },
   watch: {
     song (val) {
+      this.transpose = 0
       this.chordsheet = chordTransposer.getTransposedSong(val.body || '', this.transpose) 
       this.chords = chordTransposer.getUniqueChords(val.body || '', this.transpose)
     },

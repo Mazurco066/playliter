@@ -20,7 +20,7 @@
         </div>
       </div>
       <!-- Song tools -->
-      <div v-if="song && song.tone" class="col-12">
+      <div v-if="song && song.tone && showToneControll" class="col-12">
         <div class="transpose-control">
           <div class="transpose-buttons">
             <button class="tone-btn tone-down">
@@ -43,7 +43,11 @@
             </button>
           </div>
           <div class="transpose-action" v-if="transpose !== 0">
-            <button>
+            <button
+              type="button"
+              :disabled="loading"
+              @click="$emit('toneUpdated', chordsheet, transpositions, transpose)"
+            >
               Atualizar Tom Base
             </button>
           </div>

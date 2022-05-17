@@ -36,8 +36,56 @@ export default {
   },
   methods: {
     ...mapActions({
-      listBandShow: 'show/listBandShow'
+      listBandShow: 'show/listBandShow',
+      saveSong: 'song/saveSong',
+      loadBandSong: 'song/loadBandSong'
     }),
+    async loadShow () {
+      const { band, id } = this.$route.params
+      const show = await this.listBandShow({ band, id })
+      if (!Object.keys(show.data).length > 0) {
+        this.$toast.warning(this.$t('songList.messages[0]'))
+      } else {
+        this.show = show.data
+        this.parsePdf()
+      }
+    },
+    async updateTone (transposedSong, transpositions, transpose) {
+      // Retrieve updated song data
+      const newTone = transpositions.find(t => t.step === transpose).name.root.note._note
+      const updatedSongBody = chordTransposer.overwriteBaseTone(transposedSong)
+
+      // Retrieve song from API
+      const { band } = this.$route.params
+      const songResponse = await this.loadBandSong({ band, id: this.displaySong.id })
+
+      if (songResponse.error) {
+        this.$toast.warning(this.$t('song.messages[0]'))
+      } else {
+        // Update song payload
+        const song = songResponse.data
+        const payload = {
+          id: song.id,
+          title: song.title,
+          writter: song.writter,
+          category: song.category.id,
+          isPublic: song.isPublic,
+          tone: newTone,
+          body: updatedSongBody
+        }
+
+        // Update song
+        const r = await this.saveSong({ id: song.id, payload })
+        if (r.error) {
+          this.$toast.error(this.$t('saveSong.messages[2]'))
+        } else {
+          this.$toast.success(this.$t('saveSong.messages[0]'))
+        }
+
+        // Reload show
+        await this.loadShow()
+      }
+    },
     parsePdf () {
       const songs = [ ...this.show.songs ]
       this.parsedSongs = songs.map(s => {
@@ -68,13 +116,6 @@ export default {
     }
   },
   async mounted () {
-    const { band, id } = this.$route.params
-    const show = await this.listBandShow({ band, id })
-    if (!Object.keys(show.data).length > 0) {
-      this.$toast.warning(this.$t('songList.messages[0]'))
-    } else {
-      this.show = show.data
-      this.parsePdf()
-    }
+    await this.loadShow()
   }
 }
