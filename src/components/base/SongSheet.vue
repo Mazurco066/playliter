@@ -11,12 +11,12 @@
       </div>
       <div class="col-12" v-if="chordsheet.artist">
         <div class="my-1">
-          <span class="opacity-40">by</span> {{ chordsheet.artist }}
+          <span class="opacity-40">{{ $t('songsheet.by') }}</span> {{ chordsheet.artist }}
         </div>
       </div>
       <div class="col-12" v-if="song.capo">
         <div  class="capo my-4">
-          Capo {{ song.capo }}
+          {{ $t('songsheet.capo') }} {{ song.capo }}
         </div>
       </div>
       <!-- Song tools -->
@@ -48,7 +48,7 @@
               :disabled="loading"
               @click="$emit('toneUpdated', chordsheet, transpositions, transpose)"
             >
-              Atualizar Tom Base
+              {{ $t('songsheet.updateTone') }}
             </button>
           </div>
         </div>

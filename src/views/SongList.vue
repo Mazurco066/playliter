@@ -70,42 +70,46 @@
         v-for="(song, i) in parsedSongs"
         :key="i"
       >
-        <!-- Song metadata -->
-        <div class="col-12" v-if="song.title">
-          <h1 class="text-xl my-1">
-            {{ song.title }}
-          </h1>
-        </div>
-        <div class="col-12" v-if="song.artist">
-          <div class="my-1">
-            <span class="opacity-40">by</span> {{ song.artist }}
+        <div class="row">
+          <!-- Song metadata -->
+          <div class="col-12" v-if="song.title">
+            <h1 class="text-xl my-1">
+              {{ song.title }}
+            </h1>
           </div>
-        </div>
-        <div class="col-12" v-if="song.capo">
-          <div  class="capo my-4">
-            Capo {{ song.capo }}
+          <div class="col-12" v-if="song.artist">
+            <div class="my-1">
+              <span class="opacity-40">{{ $t('songsheet.by') }}</span> {{ song.artist }}
+            </div>
           </div>
-        </div>
-        <!-- Song body -->
-        <div class="song-section">
-          <div ref="output" class="chord-sheet">
-            <div
-              v-for="({ type, lines }, i) in song.paragraphs"
-              :key="type + i"
-              :class="type + ' paragraph'"
-            >
-              <template v-for="(line, idx) in lines">
-                <div :key="idx" v-if="line.hasRenderableItems()" class="row">
-                  <template v-for="(item, idx2) in line.items">
-                    <component
-                      v-if="item.isRenderable()"
-                      :is="componentFor(item)"
-                      :item="item"
-                      :key="'inner' + idx2"
-                    />
+          <div class="col-12" v-if="song.capo">
+            <div  class="capo my-4">
+              {{ $t('songsheet.capo') }} {{ song.capo }}
+            </div>
+          </div>
+          <!-- Song body -->
+          <div class="col-12">
+            <div class="song-section">
+              <div ref="output" class="chord-sheet">
+                <div
+                  v-for="({ type, lines }, i) in song.paragraphs"
+                  :key="type + i"
+                  :class="type + ' paragraph'"
+                >
+                  <template v-for="(line, idx) in lines">
+                    <div :key="idx" v-if="line.hasRenderableItems()" class="row">
+                      <template v-for="(item, idx2) in line.items">
+                        <component
+                          v-if="item.isRenderable()"
+                          :is="componentFor(item)"
+                          :item="item"
+                          :key="'inner' + idx2"
+                        />
+                      </template>
+                    </div>
                   </template>
                 </div>
-              </template>
+              </div>
             </div>
           </div>
         </div>

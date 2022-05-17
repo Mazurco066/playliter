@@ -307,6 +307,11 @@
         "Show not found!",
         "Ops... An error ocourred while parsing the song!"
       ]
+    },
+    "songsheet": {
+      "updateTone": "Atualizar Tom Base",
+      "by": "By",
+      "capo": "Capo"
     }
   },
   "pt": {
@@ -618,6 +623,11 @@
         "Apresentação não encontrada!",
         "Ocorreu um erro ao parsear a música!"
       ]
+    },
+    "songsheet": {
+      "updateTone": "Atualizar Tom Base",
+      "by": "Por",
+      "capo": "Capo"
     }
   }
 }
