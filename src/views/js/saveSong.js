@@ -24,7 +24,7 @@ export default {
     return { v$: useVuelidate() }
   },
   data: () => ({
-    song: '',
+    song: '{title: title}\n{artist: artist}\n{key: key}\n\n',
     form: {
       title: '',
       writter: '',
@@ -113,8 +113,7 @@ export default {
           ? external.data.tone
           : external.data.tone.substring(0, 1)
         this.form.tone = obtainedTone
-        this.song = formattedSong
-        
+        this.song = `{title: ${external.data.title}}\n{artist: ${external.data.writter}}\n{key: ${obtainedTone}}\n\n${formattedSong}`
       }
     },
     async createSong () {
@@ -125,12 +124,25 @@ export default {
         if (!this.song) {
           return this.$toast.warning(this.$t('saveSong.messages[8]'))
         }
-        
+
+        // Clone body text as a variable to update it
+        let bodyText = this.song
+
+        // Define body flags
+        const hasTitle =  bodyText.includes('{title:')
+        const hasArtist =  bodyText.includes('{artist:')
+        const hasKey =  bodyText.includes('{key:')
+
+        // Add snippets tags if not present
+        if (!hasKey) bodyText = `{key: ${this.form.tone}}\n` + bodyText
+        if (!hasArtist) bodyText = `{artist: ${this.form.writter}}\n` + bodyText
+        if (!hasTitle) bodyText = `{title: ${this.form.title}}\n` + bodyText
+
         // Retrieve params and generate payload
         const { id, band } = this.$route.params
         const payload = {
           ...this.form,
-          body: this.song,
+          body: bodyText,
           band: band,
           isPublic: this.form.visibility === 'public'
         }
@@ -184,6 +196,8 @@ export default {
   async mounted () {
     const { id, band } = this.$route.params
     if (id) {
+
+      // Retrieve song
       const song = await this.loadBandSong({ id, band })
       this.form = {
         title: song.data.title,
@@ -193,19 +207,33 @@ export default {
         importUrl: '',
         visibility: song.data.isPublic ? 'public' : 'private'
       }
+      
       // Replace \n with html elements
       this.song = song.data.body.replaceAll('<br>', '\n')  
       if (!Object.keys(song.data).length > 0) {
         this.$toast.warning(this.$t('saveSong.messages[3]'))
         this.$router.push({ name: 'band', params: { id: band } })
       }
+
+      // Load band categories
+      const categories = await this.listBandCategories({ band: song.data.band.id, limit: 0, offset: 0 })
+      this.categories = categories.data
+      if (!categories.data.length > 0) {
+        this.$toast.warning(this.$t('saveSong.messages[4]'))
+        this.$router.push({ name: 'band', params: { id: band } })
+      }
+
+    } else {
+      // Load current band categories
+      const categories = await this.listBandCategories({ band, limit: 0, offset: 0 })
+      this.categories = categories.data
+      if (!categories.data.length > 0) {
+        this.$toast.warning(this.$t('saveSong.messages[4]'))
+        this.$router.push({ name: 'band', params: { id: band } })
+      }
     }
-    const categories = await this.listBandCategories({ band, limit: 0, offset: 0 })
-    this.categories = categories.data
-    if (!categories.data.length > 0) {
-      this.$toast.warning(this.$t('saveSong.messages[4]'))
-      this.$router.push({ name: 'band', params: { id: band } })
-    }
+
+    
   },
   validations () {
     return {
