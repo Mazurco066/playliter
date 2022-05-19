@@ -16,46 +16,8 @@
     margin: 0!important;
   }
 
-  .pdf-song {
-
-    .transposer {
-
-      pre {
-        outline: none;
-        border: none;
-      }
-
-      .chord {
-        color: var(--color-primary);
-		    font-weight: bold;
-      }
-
-      .title {
-        margin: 0;
-        line-height: 1rem;
-      }
-
-      .tone {
-        margin: 0;
-        line-height: 1rem;
-      }
-
-      .writter {
-        margin: 0;
-        line-height: 1rem;
-      }
-
-      .song-body {
-        font-family: Roboto, monospace;
-        font-size: 20px;
-        line-height: 22px;
-      }
-    }
-
-    .paragraph, .title, .tone, .writter {
-      color: #000000!important;
-      font-family: "Manrope", Arial, Helvetica, sans-serif!important;
-    }
+  .song-section {
+    padding: 3rem;
   }
 
   .pagebreak { 

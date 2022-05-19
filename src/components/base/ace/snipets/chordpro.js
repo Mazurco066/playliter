@@ -23,6 +23,12 @@ ace.define('ace/snippets/chordpro', ['require', 'exports', 'module'], function (
 		'snippet {artist}',
 		'	{artist: ${1:name}}',
 
+		// key tag
+		'snippet {k}',
+		'	{key: ${1:name}}',
+		'snippet {key}',
+		'	{key: ${1:name}}',
+
 		// album tag
 		'snippet {al}',
 		'	{album: ${1:title}}',
