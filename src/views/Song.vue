@@ -50,6 +50,7 @@
         </div>
       </div>
       <base-songsheet
+        @toneUpdated="updateTone"
         :loading="songLoading"
         :song="song"
       />

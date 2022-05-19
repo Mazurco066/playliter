@@ -11,6 +11,7 @@ import * as tableUtils from './tableUtils'
 import * as textUtils from './textUtils'
 import * as validations from './translateMessages'
 import * as chordTransposer from './chordTransposer'
+import * as tuner from './tuner'
 
 export {
   asyncHandler,
@@ -25,5 +26,6 @@ export {
   randomString,
   tableUtils,
   textUtils,
+  tuner,
   validations
 }
