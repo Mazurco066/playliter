@@ -3,7 +3,7 @@ const links = [
     id: 1,
     label: 'Bandas',
     path: { name: 'bands' },
-    icon: 'play',
+    icon: 'users',
     title: 'Home', 
   }, 
   {
@@ -17,7 +17,7 @@ const links = [
     id: 3,
     label: 'Perfil',
     path: { name: 'profile' },
-    icon: 'user',
+    icon: 'user-astronaut',
     title: 'Home', 
   }
 ]

@@ -19,11 +19,6 @@ export default {
       }))
     }
   },
-  methods: {
-    navigateTo (route) {
-      this.$router.push({ name: route })
-    }
-  },
   mounted () {
     const selectedIndex = this.translatedLinks.find(t => t.path.name === this.$route.name )
     if (selectedIndex) this.selected = selectedIndex.id

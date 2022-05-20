@@ -312,6 +312,10 @@
       "updateTone": "Atualizar Tom Base",
       "by": "By",
       "capo": "Capo"
+    },
+    "layout": {
+      "logout": "Logout",
+      "profile": "Profile"
     }
   },
   "pt": {
@@ -628,6 +632,10 @@
       "updateTone": "Atualizar Tom Base",
       "by": "Por",
       "capo": "Capo"
+    },
+    "layout": {
+      "logout": "Sair",
+      "profile": "Perfil"
     }
   }
 }
