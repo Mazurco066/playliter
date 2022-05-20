@@ -2,18 +2,18 @@ $body-bg: #f5f5f5;
 $body-color: #000000;
 
 $theme-colors: (
-  "primary": #940DE7,
-  "secondary": #700B97,
+  "primary": #8257e5,
+  "secondary": #4963f7,
 );
 
 :root {
   --color-layout: #1C1C1C;
   
-  --color-primary: #940DE7;
-  --color-primary-dark: #1F0066;
-  --color-primary-light: #AD62F8;
+  --color-primary: #8257e5;
+  --color-primary-dark: #633bbc;
+  --color-primary-light: #9672E9;
   
-  --color-secondary: red; /* Will be replaced */
+  --color-secondary: #4963f7; /* Will be replaced */
 
   --color-text: #F5f5f5;
   --color-text-dark: #f5f5f5;

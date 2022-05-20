@@ -13,7 +13,7 @@
   }
 
   .app-info {
-    background-color: var(--color-primary);
+    background: linear-gradient(var(--color-primary), var(--color-secondary));
     border-radius: 8px;
     padding: 1rem;
     display: flex;

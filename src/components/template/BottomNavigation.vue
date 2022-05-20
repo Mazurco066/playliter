@@ -1,8 +1,8 @@
 <template>
   <div id="bottomNav" class="bottom-elevation">
     <CurvedBottomNavigation
-      foreground-color="#940DE7"
-      background-color="#1F0066"
+      foreground-color="#8257e5"
+      background-color="#633bbc"
       icon-color="#FFFFFF"
       :options="translatedLinks"
       v-model="selected"
