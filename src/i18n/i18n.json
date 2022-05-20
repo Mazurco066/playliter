@@ -315,7 +315,8 @@
     },
     "layout": {
       "logout": "Logout",
-      "profile": "Profile"
+      "profile": "Profile",
+      "tuner": "Tuner"
     }
   },
   "pt": {
@@ -635,7 +636,8 @@
     },
     "layout": {
       "logout": "Sair",
-      "profile": "Perfil"
+      "profile": "Perfil",
+      "tuner": "Afinador"
     }
   }
 }
