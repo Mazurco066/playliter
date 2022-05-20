@@ -11,7 +11,7 @@
                 </div>
                 <div class="user-info">
                   <p class="mb-0">{{ $t('welcomeMsg') }} <strong>{{ $t('appname') }}</strong>!</p>
-                  <span>
+                  <span class="text-primary">
                     <strong>
                       {{ $text.truncate(me.name || '', 18) }}
                     </strong>
