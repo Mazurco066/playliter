@@ -129,9 +129,9 @@ export default {
         let bodyText = this.song
 
         // Define body flags
-        const hasTitle =  bodyText.includes('{title:')
-        const hasArtist =  bodyText.includes('{artist:')
-        const hasKey =  bodyText.includes('{key:')
+        const hasTitle = bodyText.includes('{title:')
+        const hasArtist = bodyText.includes('{artist:')
+        const hasKey = bodyText.includes('{key:')
 
         // Add snippets tags if not present
         if (!hasKey) bodyText = `{key: ${this.form.tone}}\n` + bodyText
