@@ -54,9 +54,11 @@
                 </div>
               </li>
             </ul>
-            <p v-else class="mb-0">
-              {{ $t('home.noPresentations') }}
-            </p>
+            <div class="feedback" v-else>
+              <p class="mb-0">
+                {{ $t('home.noPresentations') }}
+              </p>
+            </div>
           </div>
           <div v-else>
             <ul class="list">

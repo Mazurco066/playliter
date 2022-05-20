@@ -13,7 +13,7 @@ $theme-colors: (
   --color-primary-dark: #633bbc;
   --color-primary-light: #9672E9;
   
-  --color-secondary: #4963f7; /* Will be replaced */
+  --color-secondary: #4963f7;
 
   --color-text: #F5f5f5;
   --color-text-dark: #f5f5f5;
@@ -24,6 +24,10 @@ $theme-colors: (
   --color-bg-dark: #252423;
   --color-background: #FFFFFF;
   --color-background-dark: #201f1e;
+}
+
+.btn-primary {
+  background: linear-gradient(var(--color-primary), var(--color-secondary));
 }
 
 .bg-none {

@@ -12,6 +12,12 @@
     text-transform: uppercase;
   }
 
+  .feedback {
+    background-color: #33333370;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+  }
+
   .app-info {
     background: linear-gradient(var(--color-primary), var(--color-secondary));
     border-radius: 8px;
