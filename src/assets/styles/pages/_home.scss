@@ -13,13 +13,14 @@
   }
 
   .app-info {
-
+    background-color: var(--color-primary);
+    border-radius: 8px;
+    padding: 1rem;
     display: flex;
 
     .display-logo {
       flex: 0 0 auto;
-      max-width: 96px;
-      padding-bottom: 1rem;
+      max-width: 80px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -28,6 +29,18 @@
 
     .display-info {
       flex-grow: 1;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+    }
+
+    h4 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    p {
+      font-size: 0.875rem;
     }
   }
 
@@ -35,14 +48,17 @@
     list-style: none;
 
     .item {
+      background-color: #33333370;
+      padding: 0.5rem 1rem;
       margin-bottom: 1rem;
       border-radius: 8px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      transition: all 0.7s;
 
       &:hover {
-        opacity: 0.5;
+        background-color: var(--color-primary-dark);
         cursor: pointer;
       }
 
@@ -51,13 +67,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-right: 1rem;
 
         .show-img {
           max-width: 64px;
           border-radius: 8px;
-          padding: 0.5rem;
           overflow: hidden;
-          background-color: #f2f2f2;
         }
       }
 
@@ -85,15 +100,19 @@
     list-style: none;
 
     .invite {
+      background-color: #33333370;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
       margin-bottom: 1rem;
+      transition: all 0.7s;
 
       &:hover {
+        background-color: var(--color-primary-dark);
         cursor: pointer;
-        opacity: 0.75;
       }
 
       &:last-child {
@@ -102,17 +121,15 @@
 
       .icon {
         flex: 0 0 auto;
-        margin-right: 0.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 1rem;
 
-        .board {
-          background-color: var(--color-primary);
-          color: var(--color-text-dark);
-          width: 42px;
-          height: 42px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+        .invite-img {
+          max-width: 64px;
           border-radius: 8px;
+          overflow: hidden;
         }
       }
 

@@ -2,17 +2,18 @@ $body-bg: #f5f5f5;
 $body-color: #000000;
 
 $theme-colors: (
-  "primary": #8E05C2,
+  "primary": #940DE7,
   "secondary": #700B97,
 );
 
 :root {
   --color-layout: #1C1C1C;
   
-  --color-primary: #8E05C2;
-  --color-primary-dark: #3E065F;
-  --color-primary-light: #D962EC;
-  --color-secondary: #700B97;
+  --color-primary: #940DE7;
+  --color-primary-dark: #1F0066;
+  --color-primary-light: #AD62F8;
+  
+  --color-secondary: red; /* Will be replaced */
 
   --color-text: #F5f5f5;
   --color-text-dark: #f5f5f5;

@@ -100,8 +100,9 @@
       ]
     },
     "home": {
+      "aboutUs": "About Us",
       "nextPresentations": "Incoming presentations",
-      "date": "Date",
+      "date": "At",
       "version": "Version",
       "noPresentations": "There is no incoming presentations from bands you joined!",
       "pendingInvites": "Band invitations",
@@ -420,8 +421,9 @@
       ]
     },
     "home": {
+      "aboutUs": "Sobre o App",
       "nextPresentations": "Próximas apresentações",
-      "date": "Data",
+      "date": "Em",
       "version": "Versão",
       "noPresentations": "Não há apresentações futuras registradas nas bandas que você participa!",
       "pendingInvites": "Convites pendentes",
