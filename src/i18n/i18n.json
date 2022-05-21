@@ -45,6 +45,7 @@
     },
     "bands": {
       "title": "My Bands",
+      "add": "Add Band",
       "subtitle": "List of bands that you are assigned.",
       "founder": "Founder",
       "admin": "Admin",
@@ -366,7 +367,8 @@
     },
     "bands": {
       "title": "Minhas bandas",
-      "subtitle": "Lista das bandas nas quais você participa como um integrante.",
+      "add": "Criar Banda",
+      "subtitle": "Lista das bandas nas quais você participa como integrante.",
       "founder": "Fundador",
       "admin": "Administrador",
       "member": "Membro",

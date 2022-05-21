@@ -60,7 +60,7 @@
           <div class="col-12 mb-3">
             <base-button
               nativeType="submit"
-              type="success"
+              type="primary"
               :disabled="v$.$error === true || accountLoading"
             >
               {{ $t('profile.submit') }}
