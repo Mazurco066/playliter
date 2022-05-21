@@ -59,7 +59,6 @@
                 </div>
               </li>
             </ul>
-            <!-- TODO: Add svg art here -->
             <div v-else class="no-bands">
               <div class="icon">
                 <img src="/img/arts/not_found.svg" alt="No content">
