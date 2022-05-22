@@ -84,7 +84,7 @@
       ]
     },
     "directory": {
-      "title": "Repertório completo",
+      "title": "Songbook",
       "subtitle01": "Containing",
       "subtitle02": "songs.",
       "searchField": "Search songs...",
@@ -554,7 +554,7 @@
       "subtitle": "Apresentações registradas para a banda performar.",
       "noShows": "Essa banda não possuí apresentações cadastradas!",
       "date": "Data",
-      "addShow": "Adicionar Apresentação",
+      "addShow": "Criar nova",
       "messages": [
         "Ocorreu um erro ao obter as apresentações da banda! Por favor contate um administrador do sistema."
       ]

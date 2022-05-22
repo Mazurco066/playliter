@@ -1,30 +1,22 @@
 <template>
   <div id="shows">
-    <div class="row pt-3 primary-section">
+    <div class="row">
       <div class="col-12">
-        <h3 class="title mt-3">
-          {{ $t("shows.title") }}
-        </h3>
-        <p class="mt-3">
+        <div class="show-header">
+          <h3 class="title">
+            {{ $t("shows.title") }}
+          </h3>
+          <button type="button" @click="saveShow()">
+            <font-awesome-icon class="mr-2" icon="plus" /> {{ $t('shows.addShow') }}
+          </button>
+        </div>
+        <p>
           {{ $t("shows.subtitle") }}
         </p>
       </div>
     </div>
-    <div class="row mb-3 secondary-section">
+    <div class="row pt-2">
       <div class="col-12">
-        <base-button
-          nativeType="button"
-          type="primary"
-          class="mt-3 mb-3"
-          @click="saveShow()"
-        >
-          {{ $t("shows.addShow") }}
-        </base-button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <!-- Pending shows -->
         <div>
           <div v-if="!showLoading">
             <ul v-if="shows.length > 0" class="list">
@@ -36,20 +28,18 @@
               >
                 <div class="icon mr-3">
                   <div class="show-img">
-                    <img :src="`/img/arts/02.png`" />
+                    <img :src="`/img/arts/white/concert.svg`" alt="Concert icon" />
                   </div>
                 </div>
                 <div class="show-info">
                   <p class="mb-0">
-                    <strong class="text-primary text-uppercase">{{
-                      s.title
-                    }}</strong>
+                    <strong class="text-secondary-light text-uppercase">
+                      {{ s.title }}
+                    </strong>
                   </p>
-                  <p class="mb-0">
-                    <strong>{{ s.description }}</strong>
-                  </p>
-                  <span>
-                    {{ $t("shows.date") }}: {{ $text.formatISODate(s.date) }}
+                  <p class="mb-0">{{ s.description }}</p>
+                  <span class="show-date">
+                    {{ $text.formatISODate(s.date) }}
                   </span>
                 </div>
               </li>
@@ -73,9 +63,7 @@
                   <div class="shine shimmer-photo"></div>
                 </div>
                 <div class="show-info">
-                  <p class="title">
-                    <span class="shine shimmer-lines"></span>
-                  </p>
+                  <span class="shine shimmer-lines"></span>
                   <div class="shine shimmer-lines"></div>
                 </div>
                 <div class="actions"></div>

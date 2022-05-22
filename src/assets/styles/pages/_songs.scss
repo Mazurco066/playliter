@@ -154,6 +154,7 @@
     border-radius: 8px;
 
    .song {
+      transition: all 0.7s;
 
       .content {
         display: flex;
@@ -183,10 +184,13 @@
       }
 
       &:hover {
-        .song-info span, .song-info p {
-          color: var(--color-secondary-light);
-        }
+        background-color: var(--color-primary);
         cursor: pointer;
+        border-radius: 8px;
+
+        .song-info span, .song-info p {
+          color: var(--color-text);
+        }
       }
     }
 
@@ -197,6 +201,7 @@
       max-width: 360px;
       width: 100%;
       margin: 1rem auto;
+      opacity: 0.75;
     }
   }
 }

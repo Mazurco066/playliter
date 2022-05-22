@@ -163,19 +163,46 @@
     text-transform: uppercase;
   }
 
-  .info {
-    padding: 1rem 1.5rem;
-    background-color: rgba(0, 0 ,0, 0.2);
-    border: 1px solid var(--color-text);
-    border-radius: 8px;
-    margin-bottom: 1rem;
+  .show-header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+
+    .title {
+      margin-bottom: 0;
+    }
+
+    button {
+      background: linear-gradient(var(--color-primary), var(--color-secondary));
+      border: none;
+      outline: none;
+      border-radius: 8px;
+      color: var(--color-text);
+      padding: 0.25rem 1rem;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.7s;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
   }
 
   .list {
     list-style: none;
 
     .item {
-      margin-bottom: 1rem;
+      position: relative;
+      background-color: #33333370;
+      padding: 1rem;
+      margin-bottom: 1.25rem;
       border-radius: 8px;
       display: flex;
       justify-content: space-between;
@@ -183,7 +210,16 @@
 
       &:hover {
         cursor: pointer;
-        opacity: 0.5;
+        background-color: var(--color-primary);
+
+        .show-info p strong {
+          color: var(--color-text)!important;
+        }
+
+        .show-date {
+          background-color: var(--color-text);
+          color: var(--color-secondary-light);
+        }
       }
 
       .icon {
@@ -193,12 +229,25 @@
         align-items: center;
 
         .show-img {
-          max-width: 50px;
+          max-width: 48px;
+          object-fit: cover;
         }
       }
 
       .show-info {
         flex-grow: 1;
+      }
+
+      .show-date {
+        background-color: var(--color-secondary);
+        border-radius: 8px;
+        padding: 0 0.5rem;
+        font-size: 0.875rem;
+        font-weight: bold;
+        position: absolute;
+        top: -0.5rem;
+        right: 1rem;
+        transition: all 0.7s;
       }
 
       &:last-child {
@@ -213,6 +262,7 @@
       max-width: 360px;
       width: 100%;
       margin: 1rem auto;
+      opacity: 0.75;
     }
   }
 }
