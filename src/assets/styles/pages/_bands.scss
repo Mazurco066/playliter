@@ -116,7 +116,6 @@
   .tabs-header {
     background-color: #333333;
     border-radius: 8px;
-    overflow: hidden;
     margin-bottom: 1rem;
 
     .band-wrapper {
@@ -135,6 +134,8 @@
       flex-flow: row nowrap;
       justify-content: space-between;
       align-items: center;
+      overflow: hidden;
+      border-radius: 8px;
 
       .tab {
         width: 100%;

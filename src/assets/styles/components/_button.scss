@@ -1,5 +1,13 @@
 .base-button {
   font-weight: bold;
+  width: 100%;
+
+  &.mini-btn {
+    display: inline-block;
+    width: fit-content;
+    margin-right: 0.5rem;
+    font-size: 0.75rem;
+  }
 }
 
 .btn-ghost {

@@ -75,6 +75,12 @@ export default {
           redirect: 'shows'
         }
       ]
+    },
+    translatedTabs () {
+      return this.tabs.map((tab, i) => ({
+        ...tab,
+        title: this.$t(`band.tabs[${i}]`)
+      }))
     }
   },
   methods: {

@@ -63,9 +63,9 @@
           <div class="shine shimmer-lines"></div>
           <div class="shine shimmer-lines"></div>
         </div>
-        <div class="tabs">
+        <div class="tabs" v-if="isDisplayReady">
           <div
-            v-for="({ key, title }) in tabs"
+            v-for="({ key, title }) in translatedTabs"
             :key="key"
             :class="{ 'selected': key === selectedIndex }"
             @click="setTab(key)"

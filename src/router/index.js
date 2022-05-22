@@ -8,13 +8,10 @@ import DashboardLayout from '../layout/DashboardLayout.vue'
 // Pages
 import Band from '../views/Band.vue'
 import Bands from '../views/Bands.vue'
-import Categories from '../views/Categories.vue'
-import Directory from '../views/Directory.vue'
 import Home from '../views/Home.vue'
 import Profile from '../views/Profile.vue'
 import PublicSongs from '../views/PublicSongs.vue'
 import Show from '../views/Show.vue'
-import Shows from '../views/Shows.vue'
 import SignIn from '../views/SignIn.vue'
 import SignUp from '../views/SignUp.vue'
 import Song from '../views/Song.vue'
@@ -59,14 +56,6 @@ const routes = [{
     name: 'band',
     component: Band
   }, {
-    path: '/categories/:band',
-    name: 'categories',
-    component: Categories
-  }, {
-    path: '/directory/:band',
-    name: 'directory',
-    component: Directory
-  }, {
     path: '/public-songs',
     name: 'publicSongs',
     component: PublicSongs
@@ -78,10 +67,6 @@ const routes = [{
     path: '/show/:band/:id',
     name: 'show',
     component: Show
-  }, {
-    path: '/shows/:band',
-    name: 'shows',
-    component: Shows
   }, {
     path: '/show/:band/:id/playlist',
     name: 'playlist',

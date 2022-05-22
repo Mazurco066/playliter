@@ -1,38 +1,46 @@
 <template>
   <div id="directory">
     <!-- Main container --->
-    <div class="row pt-3">
+    <div class="row">
       <div class="col-12">
-        <h3 class="title">{{ $t("directory.title") }}</h3>
         <div v-if="!songLoading">
-          <p class="mb-3">
+          <h3 class="title">{{ $t('directory.title') }}</h3>
+          <p class="mb-2">
             {{ $t("directory.subtitle01") }}
-            <strong>{{ repertory.numberOfItems }}</strong>
+            <strong class="text-secondary-light">
+              {{ repertory.numberOfItems !== undefined
+                ? repertory.numberOfItems.toString().padStart(2, '0')
+                : 0
+              }}</strong>
             {{ $t("directory.subtitle02") }}
           </p>
           <base-input
             name="search"
             :placeholder="$t('directory.searchField')"
+            addonLeftIcon="search"
             v-model="search"
+            noMargin
           />
         </div>
         <div v-else class="shine"></div>
       </div>
     </div>
-    <div class="row mb-3">
+    <div class="row mb-3 pt-2">
       <div class="col-12">
         <base-button
+          :mini="true"
+          icon="earth-americas"
           nativeType="button"
           type="primary"
-          class="mt-3 mb-2"
-          @click="navigateToCategories()"
+          @click="saveSong()"
         >
-          {{ $t("directory.categoryAction") }}
+          {{ $t("directory.publicAction") }}
         </base-button>
         <base-button
+          :mini="true"
+          icon="plus"
           nativeType="button"
-          type="secondary"
-          class="mb-3"
+          type="primary"
           @click="saveSong()"
         >
           {{ $t("directory.songAction") }}
@@ -51,7 +59,7 @@
               class="category"
             >
               <div class="content">
-                <p class="text-uppercase mb-0">
+                <p class="name text-uppercase mb-1">
                   <strong>{{ s.category.title }}</strong>
                 </p>
                 <span class="description">
@@ -60,6 +68,7 @@
                 <div class="counter">
                   {{ s.numberOfItems }} {{ $t("directory.songLabel") }}
                 </div>
+                <hr class="mt-2 mb-0"/>
               </div>
               <ul class="songs">
                 <li
@@ -71,7 +80,7 @@
                   <div class="content">
                     <div class="icon mr-3">
                       <div class="song-img">
-                        <img :src="`/img/arts/record.png`" />
+                        <img :src="`/img/arts/white/audio-wave.svg`" />
                       </div>
                     </div>
                     <div class="song-info">

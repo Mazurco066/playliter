@@ -115,24 +115,30 @@
 
       .content {
         position: relative;
-        padding: 1.25rem 0.5rem 1rem 0.5rem;
+        padding: 1rem 0.5rem 1rem 0.5rem;
         color: var(--color-text-dark);
         border-radius: 8px;
       }
 
+      .name {
+        font-size: 1.125rem;
+        padding-right: 96px;
+      }
+
       .description {
-        font-size: 0.875rem;
+        font-size: 1rem;
       }
 
       .counter {
         position: absolute;
         right: 8px;
-        top: 8px;
+        top: 0.75rem;
         border-radius: 8px;
         color: var(--color-text);
         background: var(--color-secondary);
         padding: 5px 8px;
         font-weight: bold;
+        font-size: 0.75rem;
       }
 
       &:last-child {
@@ -144,16 +150,21 @@
   .songs {
     list-style: none;
     padding: 0.5rem;
-    background-color: var(--color-layout);
+    background-color: #333333;
+    border-radius: 8px;
 
    .song {
 
       .content {
-        background-color: #333333;
         display: flex;
         justify-content: space-between;
         align-items: center;
         color: var(--color-text);
+        padding: 0.5rem;
+
+        .song-info span, .song-info p {
+          transition: all 0.7s;
+        }
 
         .icon {
           flex: 0 0 auto;
@@ -172,8 +183,9 @@
       }
 
       &:hover {
-        opacity: 0.5;
-        border-radius: 8px;
+        .song-info span, .song-info p {
+          color: var(--color-secondary-light);
+        }
         cursor: pointer;
       }
     }
