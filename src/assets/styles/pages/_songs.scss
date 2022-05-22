@@ -163,6 +163,11 @@
         color: var(--color-text);
         padding: 0.5rem;
 
+        .song-info span {
+          color: var(--color-secondary-light);
+          font-weight: 600;
+        }
+
         .song-info span, .song-info p {
           transition: all 0.7s;
         }

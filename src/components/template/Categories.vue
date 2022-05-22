@@ -1,22 +1,15 @@
 <template>
   <div id="categories">
     <!-- Main container --->
-    <div class="row pt-3 primary-section">
+    <div class="row">
       <div class="col-12">
-        <h3 class="title mt-3">{{ $t("categories.title") }}</h3>
-        <p class="mt-3">{{ $t("categories.subtitle") }}</p>
-      </div>
-    </div>
-    <div class="row secondary-section mb-3">
-      <div class="col-12">
-        <base-button
-          nativeType="button"
-          type="primary"
-          class="mt-3 mb-3"
-          @click="openCategoryModal()"
-        >
-          {{ $t("categories.addAction") }}
-        </base-button>
+        <div class="category-header">
+          <h3 class="title">{{ $t("categories.title") }}</h3>
+          <button type="button" @click="openCategoryModal()">
+            <font-awesome-icon class="mr-2" icon="plus" /> Criar nova
+          </button>
+        </div>
+        <p>{{ $t("categories.subtitle") }}</p>
       </div>
     </div>
     <div class="row">
@@ -29,8 +22,13 @@
               class="category"
               @click="openCategoryModal(c)"
             >
+              <div class="icon mr-3">
+                <div class="category-img">
+                  <img :src="`/img/arts/white/swing.svg`" alt="Category icon" />
+                </div>
+              </div>
               <div class="category-info">
-                <p class="mb-0">
+                <p class="mb-0 text-secondary-light">
                   <strong>{{ c.title }}</strong>
                 </p>
                 <span>

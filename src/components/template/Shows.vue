@@ -10,9 +10,7 @@
             <font-awesome-icon class="mr-2" icon="plus" /> {{ $t('shows.addShow') }}
           </button>
         </div>
-        <p>
-          {{ $t("shows.subtitle") }}
-        </p>
+        <p>{{ $t("shows.subtitle") }}</p>
       </div>
     </div>
     <div class="row pt-2">

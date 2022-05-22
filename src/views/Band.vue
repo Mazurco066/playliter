@@ -141,7 +141,7 @@
         </form>
       </div>
     </base-modal>
-    <!-- Invite modal -->
+    <!-- Members modal -->
     <base-modal  @close="closeMembersModal" :show="isMembersModalOpen">
       <slot name="header">
         <button
@@ -156,8 +156,8 @@
         <div class="container">
           <div class="row">
             <div class="col-12">
-              <h4>Integrantes</h4>
-              <p>Teu cu que pisca</p>
+              <h4>{{ $t('band.memberSection') }}</h4>
+              <p>{{ $t('band.memberDescription') }}</p>
             </div>
           </div>
         </div>
