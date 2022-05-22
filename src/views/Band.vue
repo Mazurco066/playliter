@@ -1,190 +1,97 @@
 <template>
   <div id="band">
-    
     <!-- Band content -->
     <div class="container">
-      <div class="row pt-3 band-header primary-section p-3">
-        <div class="col-12">
-          <div v-if="isDisplayReady" class="about">
-            <h3 class="title mt-3">{{ band.title }}</h3>
-            <hr />
-            <p class="mb-3">{{ band.description }}</p>
-            <span>
-              {{ $t('band.createdAt') }} 
-              <strong>
-                {{ $text.formatISODate(new Date(parseInt(band.createdAt)).toISOString()) }}
-              </strong>
-            </span>
-            <div class="band-actions">
-              <div @click="openInviteModal()" class="action">
-                <div class="icon-bg">
-                  <font-awesome-icon icon="user-plus" />
-                </div>
-                <p class="mb-0">
-                  <small>{{ $t('band.inviteAction') }}</small>
-                </p>
-              </div>
-              <div @click="navigateTo('editBand', band.id)" class="action">
-                <div class="icon-bg">
-                  <font-awesome-icon icon="edit"  />
-                </div>
-                <p class="mb-0">
-                  <small>{{ $t('band.updateAction') }}</small>
-                </p>
-              </div>
-              <div v-if="band.owner.id === me.id" @click="disposeBand()" class="action">
-                <div class="icon-bg">
-                  <font-awesome-icon icon="trash" />
-                </div>
-                <p class="mb-0">
-                  <small>{{ $t('band.removeAction') }}</small>
-                </p>
-              </div>
-            </div>
+      <div class="tabs-header">
+        <div v-if="isDisplayReady" class="band-wrapper">
+          <h3 class="title mb-3 pr-5">{{ band.title }}</h3>
+          <p class="mb-2">{{ band.description }}</p>
+          <span class="mb-3">
+            {{ $t('band.createdAt') }} 
+            <strong class="text-secondary-light">
+              {{ $text.formatISODate(new Date(parseInt(band.createdAt)).toISOString()) }}
+            </strong>
+          </span>
+          <div class="actions">
+            <base-dropdown class="ellipsis-vertical" position="right">
+              <template v-slot:title>
+                <a
+                  class="btn btn-sm btn-icon-only"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <font-awesome-icon icon="ellipsis-v" />
+                </a>
+              </template>
+              <a
+                href="#"
+                class="dropdown-item"
+                @click.prevent="openInviteModal()"
+              >
+                <font-awesome-icon icon="user-plus" class="text-primary mr-1" /> {{ $t('band.inviteAction') }}
+              </a>
+              <a
+                href="#"
+                class="dropdown-item"
+                @click.prevent="navigateTo('editBand', band.id)"
+              >
+                <font-awesome-icon icon="edit" class="mr-1 text-secondary" /> {{ $t('band.updateAction') }}
+              </a>
+              <a
+                v-if="band.owner.id === me.id"
+                href="#"
+                class="dropdown-item"
+                @click.prevent="disposeBand()"
+              >
+                <font-awesome-icon icon="trash" class="mr-1 text-danger" /> {{ $t('band.removeAction') }}
+              </a>
+              <hr class="mb-1" />
+              <a
+                href="#"
+                class="dropdown-item"
+                @click.prevent="openMembersModal()"
+              >
+                <font-awesome-icon icon="users" class="text-secondary mr-1" /> Membros
+              </a>
+            </base-dropdown>
           </div>
-          <div v-else class="info">
-            <div class="shine shimmer-lines"></div>
-            <hr />
-            <div class="shine shimmer-lines"></div>
-            <hr />
-            <div class="shine shimmer-lines"></div>
+        </div>
+        <div class="p-3" v-else>
+          <div class="shine shimmer-lines"></div>
+          <div class="shine shimmer-lines"></div>
+          <div class="shine shimmer-lines"></div>
+        </div>
+        <div class="tabs">
+          <div
+            v-for="({ key, title }) in tabs"
+            :key="key"
+            :class="{ 'selected': key === selectedIndex }"
+            @click="setTab(key)"
+            class="tab"
+          >
+            <span>{{ title }}</span>
           </div>
         </div>
       </div>
-      <div class="row band-activities secondary-section p-3">
-        <div class="col-12">
-          <h3 class="title mb-3">
-            {{ $t('band.toolSection') }}
-          </h3>
-        </div>
-        <div class="col-12">
-          <ul v-if="isDisplayReady" class="activities">
-            <li
-              class="item"
-              v-for="(item, i) in menu"
-              :key="i"
-              @click="navigateTo(item.redirect)"
-            >
-              <div class="icon">
-                <font-awesome-icon
-                  :icon="item.icon"
-                  size="3x"
-                />
-              </div>
-              <p class="mb-0 text-center">
-                {{ item.text }}
-              </p>
-            </li>
-          </ul>
-          <ul v-else class="activities">
-            <li class="item">
-              <div class="icon">
-                <div class="shine shimmer-photo" />
-              </div>
-              <div class="shine shimmer-lines" />
-            </li>
-            <li class="item">
-              <div class="icon">
-                <div class="shine shimmer-photo" />
-              </div>
-              <div class="shine shimmer-lines" />
-            </li>
-            <li class="item">
-              <div class="icon">
-                <div class="shine shimmer-photo" />
-              </div>
-              <div class="shine shimmer-lines" />
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="row band-members">
-        <div class="col-12">
-          <h3 class="title mb-3">
-            {{ $t('band.memberSection') }}
-          </h3>
-        </div>
-        <div class="col-12">
-          <ul v-if="isDisplayReady" class="members">
-            <li v-for="(m, i) in band.members" :key="i" class="item">
-              <div class="icon">
-                <div class="picture">
-                  <img src="/img/j_black.jpg" alt="">
-                </div>
-              </div>
-              <div class="info">
-                <p class="mb-0">
-                  <strong>{{ m.name }}</strong>
-                </p>
-                <span>
-                  {{ 
-                    band.owner.id === m.id 
-                      ? $t('bands.founder')  
-                      : band.admins.find(a => a.id === m.id) 
-                        ? $t('bands.admin') 
-                        : $t('bands.member') 
-                  }}
-                </span>
-                </div>
-                <div class="actions" v-if="band.owner.id !== m.id">
-                  <base-dropdown class="dropdown" position="right">
-                    <template v-slot:title>
-                      <a
-                        class="btn btn-sm btn-icon-only"
-                        role="button"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <font-awesome-icon icon="ellipsis-v" />
-                      </a>
-                    </template>
-                    <a
-                      href="#"
-                      @click="removeMember(m)"
-                      class="dropdown-item"
-                      v-if="(band.admins.find(a => a.id === me.id) && m.id !== band.owner.id && m.id !== me.id) || (band.owner.id === me.id && m.id !== me.id)"
-                    >
-                      <font-awesome-icon icon="trash" class="mr-1" /> {{ $t('band.removeAction') }}
-                    </a>
-                    <a
-                      href="#"
-                      @click="demoteMember(m)"
-                      class="dropdown-item"
-                      v-if="((band.owner.id === me.id || band.admins.find(a => a.id === me.id)) && m.id !== me.id && band.admins.find(a => a.id === m.id))"
-                    >
-                      <font-awesome-icon icon="angle-double-down" class="mr-1" /> {{ $t('band.demoteAction') }}
-                    </a>
-                    <a
-                      href="#"
-                      @click="promoteMember(m)"
-                      class="dropdown-item"
-                      v-if="(band.admins.find(a => a.id === me.id) && m.id !== band.owner.id && m.id !== me.id && !band.admins.find(a => a.id === m.id)) || (band.owner.id === me.id && m.id !== me.id && !band.admins.find(a => a.id === m.id))"
-                    >
-                      <font-awesome-icon icon="angle-double-up" class="mr-1" /> {{ $t('band.promoteAction') }}
-                    </a>
-                  </base-dropdown>
-                </div>
-              </li>
-            </ul>
-            <ul v-else class="members">
-              <li class="item">
-                <div class="info mr-3">
-                  <p class="mb-0">
-                    <span class="shine shimmer-lines"></span>
-                  </p>
-                  <div class="shine shimmer-lines"></div>
-                </div>
-                <div class="actions">
-                  <div class="shine shimmer-photo"></div>
-                </div>
-              </li>
-            </ul>
-        </div>
+      <!-- Renders the current tab -->
+      <div v-if="isDisplayReady" class="tabs-content">
+        <repertory
+          v-if="selectedIndex === 1"
+          :band="band.id"
+        />
+        <categories
+          v-if="selectedIndex === 2"
+          :band="band.id"
+        />
+        <shows
+          v-if="selectedIndex === 3"
+          :band="band.id"
+        />
       </div>
     </div>
-
-    <!-- Modals -->
+    <!-- Invite modal -->
     <base-modal @close="closeInviteModal" :show="isInviteModalOpen">
       <slot name="header">
         <button
@@ -232,6 +139,114 @@
             </div>
           </div>
         </form>
+      </div>
+    </base-modal>
+    <!-- Invite modal -->
+    <base-modal  @close="closeMembersModal" :show="isMembersModalOpen">
+      <slot name="header">
+        <button
+          @click="closeMembersModal()"
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h4>Integrantes</h4>
+              <p>Teu cu que pisca</p>
+            </div>
+          </div>
+        </div>
+      </slot>
+      <div class="container">
+        <div class="row band-members">
+          <div class="col-12">
+            <h3 class="title mb-3">
+              {{ $t('band.memberSection') }}
+            </h3>
+          </div>
+          <div class="col-12">
+            <ul v-if="isDisplayReady" class="members">
+              <li v-for="(m, i) in band.members" :key="i" class="item">
+                <div class="icon">
+                  <div class="picture">
+                    <img src="/img/j_black.jpg" alt="">
+                  </div>
+                </div>
+                <div class="info">
+                  <p class="mb-0">
+                    <strong>{{ m.name }}</strong>
+                  </p>
+                  <span>
+                    {{ 
+                      band.owner.id === m.id 
+                        ? $t('bands.founder')  
+                        : band.admins.find(a => a.id === m.id) 
+                          ? $t('bands.admin') 
+                          : $t('bands.member') 
+                    }}
+                  </span>
+                  </div>
+                  <div class="actions" v-if="band.owner.id !== m.id">
+                    <base-dropdown class="dropdown" position="right">
+                      <template v-slot:title>
+                        <a
+                          class="btn btn-sm btn-icon-only"
+                          role="button"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          <font-awesome-icon icon="ellipsis-v" />
+                        </a>
+                      </template>
+                      <a
+                        href="#"
+                        @click="removeMember(m)"
+                        class="dropdown-item"
+                        v-if="(band.admins.find(a => a.id === me.id) && m.id !== band.owner.id && m.id !== me.id) || (band.owner.id === me.id && m.id !== me.id)"
+                      >
+                        <font-awesome-icon icon="trash" class="mr-1" /> {{ $t('band.removeAction') }}
+                      </a>
+                      <a
+                        href="#"
+                        @click="demoteMember(m)"
+                        class="dropdown-item"
+                        v-if="((band.owner.id === me.id || band.admins.find(a => a.id === me.id)) && m.id !== me.id && band.admins.find(a => a.id === m.id))"
+                      >
+                        <font-awesome-icon icon="angle-double-down" class="mr-1" /> {{ $t('band.demoteAction') }}
+                      </a>
+                      <a
+                        href="#"
+                        @click="promoteMember(m)"
+                        class="dropdown-item"
+                        v-if="(band.admins.find(a => a.id === me.id) && m.id !== band.owner.id && m.id !== me.id && !band.admins.find(a => a.id === m.id)) || (band.owner.id === me.id && m.id !== me.id && !band.admins.find(a => a.id === m.id))"
+                      >
+                        <font-awesome-icon icon="angle-double-up" class="mr-1" /> {{ $t('band.promoteAction') }}
+                      </a>
+                    </base-dropdown>
+                  </div>
+                </li>
+              </ul>
+              <ul v-else class="members">
+                <li class="item">
+                  <div class="info mr-3">
+                    <p class="mb-0">
+                      <span class="shine shimmer-lines"></span>
+                    </p>
+                    <div class="shine shimmer-lines"></div>
+                  </div>
+                  <div class="actions">
+                    <div class="shine shimmer-photo"></div>
+                  </div>
+                </li>
+              </ul>
+          </div>
+        </div>
       </div>
     </base-modal>
   </div>

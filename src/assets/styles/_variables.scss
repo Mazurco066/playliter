@@ -27,6 +27,10 @@ $theme-colors: (
   --color-background-dark: #201f1e;
 }
 
+.text-secondary-light {
+  color: var(--color-secondary-light);
+}
+
 .btn-primary {
   background: linear-gradient(var(--color-primary), var(--color-secondary));
 }

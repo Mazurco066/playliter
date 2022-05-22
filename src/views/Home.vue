@@ -45,7 +45,7 @@
                       {{ s.title }}
                     </strong>
                   </p>
-                  <p class="mb-0 text-secondary">
+                  <p class="mb-0 text-secondary-light">
                     <strong>{{ s.band.title }}</strong>
                   </p>
                   <span>
@@ -100,7 +100,7 @@
               </div>
               <div class="info">
                 <p class="mb-0">{{ inv.band.title }}</p>
-                <span>{{ $t('home.invitedAt') }} <span class="text-secondary">{{ $text.formatISODate(inv.createdAt) }}</span></span>
+                <span>{{ $t('home.invitedAt') }} <span class="text-secondary-light">{{ $text.formatISODate(inv.createdAt) }}</span></span>
               </div>
             </li>
           </ul>
@@ -110,7 +110,7 @@
       <div class="row">
         <div class="col-12">
           <p class="text-center">
-            {{ $t('home.version') }} <strong class="text-secondary">2.5.0</strong>
+            {{ $t('home.version') }} <strong class="text-secondary-light">2.5.0</strong>
           </p>
         </div>
       </div>

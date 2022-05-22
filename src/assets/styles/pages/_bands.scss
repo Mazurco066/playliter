@@ -112,6 +112,63 @@
     font-size: 1.25rem;
     text-transform: uppercase;
   }
+  
+  .tabs-header {
+    background-color: #333333;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+
+    .band-wrapper {
+      padding: 1rem;
+      position: relative;
+
+      .actions {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.5rem;
+      }
+    }
+
+    .tabs {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+
+      .tab {
+        width: 100%;
+        padding: 0.75rem 0;
+        text-align: center;
+        position: relative;
+        transition: all 0.7s;
+
+        &:hover {
+          color: var(--color-primary);
+          cursor: pointer;
+        }
+
+        &.selected {
+          // color: var(--color-primary);
+          border-bottom: 3px solid var(--color-primary);
+        }
+
+        span {
+          font-weight: bold;
+          text-transform: uppercase;
+          font-size: 0.75rem;
+        }
+
+        &:first-child {
+          padding-left: 1rem;
+        }
+
+        &:last-child {
+          padding-right: 1rem;
+        }
+      }
+    }
+  }
 
   .band-actions {
     padding: 1rem 1rem;
