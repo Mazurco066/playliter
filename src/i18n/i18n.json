@@ -383,7 +383,7 @@
     "categories": {
       "title": "Categorias",
       "subtitle": "Categorias registradas para a banda selecionada.",
-      "addAction": "Adicionar Categoria",
+      "addAction": "Criar Nova",
       "submit": "Salvar Categoria",
       "remove": "Remover Categoria",
       "formTitle": "Categorias",

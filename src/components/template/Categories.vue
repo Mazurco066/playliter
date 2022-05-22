@@ -6,7 +6,7 @@
         <div class="category-header">
           <h3 class="title">{{ $t("categories.title") }}</h3>
           <button type="button" @click="openCategoryModal()">
-            <font-awesome-icon class="mr-2" icon="plus" /> Criar nova
+            <font-awesome-icon class="mr-2" icon="plus" /> {{ $t('categories.addAction') }}
           </button>
         </div>
         <p>{{ $t("categories.subtitle") }}</p>
