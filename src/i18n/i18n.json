@@ -111,7 +111,8 @@
     },
     "profile": {
       "title": "My Profile",
-      "subtitle": "Update your profile data if needed.",
+      "notice": "Privacy policy",
+      "subtitle": "This is your profile in Playliter App, the following info will be displayed to general public: <strong>Nome, Imagem e E-mail</strong>.",
       "nameField": "Name",
       "userField": "Username",
       "accessField": "Access Type",
@@ -431,7 +432,8 @@
     },
     "profile": {
       "title": "Meu perfil",
-      "subtitle": "Visualize ou edite informações de seu perfil dentro do app",
+      "notice": "Política de privacidade",
+      "subtitle": "Esse é o seu perfil dentro do aplicativo. Serão visíveis para terceiros somente seu <strong>nome, imagem e E-mail</strong>.",
       "nameField": "Nome completo",
       "userField": "Usuário",
       "accessField": "Nível da conta",
