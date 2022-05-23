@@ -74,13 +74,11 @@ img, image {
   grid-template-columns: 100%;
   grid-template-areas: "content";
   height: 100%;
-  background: var(--color-layout);  /* fallback for old browsers */
+  background: var(--color-layout);
   background-image: url('/img/arts/top.svg');
   background-position: top;
   background-repeat: no-repeat;
   background-size: 100%;
-  // background: -webkit-linear-gradient(to bottom, var(--color-layout), #333333);
-  // background: linear-gradient(to bottom, var(--color-layout), #333333);
 
   main {
     max-height: 100%;
