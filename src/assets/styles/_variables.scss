@@ -8,6 +8,7 @@ $theme-colors: (
 
 :root {
   --color-layout: #1C1C1C;
+  --color-background: #33333370;
   
   --color-primary: #8257e5;
   --color-primary-dark: #633bbc;
@@ -23,8 +24,6 @@ $theme-colors: (
   --color-error: #DB4437 ;
   --color-bg: #F2F3F7;
   --color-bg-dark: #252423;
-  --color-background: #FFFFFF;
-  --color-background-dark: #201f1e;
 }
 
 .text-secondary-light {

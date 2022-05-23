@@ -12,7 +12,7 @@
   }
 
   .auth-wrapper {
-    background-color: #33333370;
+    background-color: var(--color-background);
     padding: 1rem;
     border-radius: 8px;
     margin-bottom: 1rem;
@@ -61,7 +61,7 @@
   }
 
   .auth-wrapper {
-    background-color: #33333370;
+    background-color: var(--color-background);
     padding: 1rem;
     border-radius: 8px;
     margin-bottom: 1rem;

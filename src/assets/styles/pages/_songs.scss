@@ -150,7 +150,7 @@
   .songs {
     list-style: none;
     padding: 0.5rem;
-    background-color: #333333;
+    background-color: var(--color-background);
     border-radius: 8px;
 
    .song {

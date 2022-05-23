@@ -72,11 +72,11 @@ html, body, #app {
       background-color: var(--color-bg-dark);
 
       .card {
-        background-color: var(--color-background-dark);
+        background-color: var(--color-layout);
       }
     }
     #navigation, #dashboard-footer {
-      background-color: var(--color-background-dark);
+      background-color: var(--color-layout);
     }
     .modal-body {
       background-color: var(--color-bg-dark);
@@ -90,7 +90,7 @@ html, body, #app {
 
     // Mobile drawer
     #navigation .mobile-drawer {
-      background-color: var(--color-background-dark);
+      background-color: var(--color-layout);
       border-color: var( --color-bg-dark);
       color: var(--color-text-dark);
 
@@ -131,7 +131,7 @@ html, body, #app {
       .page-link {
         background-color: var(--color-bg-dark);
         color: var(--color-text-dark);
-        border-color: var(--color-background-dark);
+        border-color: var(--color-layout);
       }
 
       .page-item.active {
