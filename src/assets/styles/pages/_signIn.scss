@@ -1,18 +1,40 @@
 #sign-in {
-  .app-logo {
-    width: 250px;
+  min-height: 100%;
+  position: relative;
+  padding-top: 160px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
 
-    img {
-      max-width: 100%;
-      object-fit: cover;
+  .container {
+    max-width: 768px;
+  }
+
+  .auth-wrapper {
+    background-color: #33333370;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    position: relative;
+
+    .logo {
+      position: absolute;
+      top: -144px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+
+      width: 128px;
+      height: 128px;
     }
   }
 
-  .form-control-label {
-    color: var(--color-text-dark);
+  .title {
+    font-size: 2rem;
   }
 
-  p, span, a {
+  .form-control-label {
     color: var(--color-text-dark);
   }
 
@@ -22,20 +44,46 @@
 }
 
 #sign-up {
-  .app-logo {
-    width: 250px;
+  min-height: 100%;
+  position: relative;
+  padding-top: 160px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
 
-    img {
-      max-width: 100%;
-      object-fit: cover;
+  .base-input {
+    margin-bottom: 0.5rem;
+  }
+
+  .container {
+    max-width: 768px;
+  }
+
+  .auth-wrapper {
+    background-color: #33333370;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    position: relative;
+
+    .logo {
+      position: absolute;
+      top: -144px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+
+      width: 128px;
+      height: 128px;
     }
+  }
+ 
+  .title {
+    font-size: 2rem;
   }
 
   .form-control-label {
-    color: var(--color-text-dark);
-  }
-
-  p, span, a {
     color: var(--color-text-dark);
   }
 

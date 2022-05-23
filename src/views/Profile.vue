@@ -1,6 +1,5 @@
 <template>
   <div id="profile">
-  
     <!-- Page main content -->
     <div class="container">
       <div class="row">
@@ -84,7 +83,6 @@
         </div>
       </form>
     </div>
-
   </div>
 </template>
 
