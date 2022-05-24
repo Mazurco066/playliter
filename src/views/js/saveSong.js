@@ -156,7 +156,7 @@ export default {
           this.$toast.error(this.$t('saveSong.messages[2]'))
         } else {
           this.$toast.success(this.$t('saveSong.messages[0]'))
-          this.$router.push({ name: 'directory', params: { band } })
+          this.$router.push({ name: 'band', params: { id: band } })
         }
         
       } else {

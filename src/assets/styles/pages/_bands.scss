@@ -226,4 +226,11 @@
     font-size: 1.25rem;
     text-transform: uppercase;
   }
+
+  .info {
+    background-color: var(--color-background);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
 }
