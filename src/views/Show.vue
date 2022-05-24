@@ -1,43 +1,55 @@
 <template>
   <div id="show">
     <div class="container">
-      <div class="row pt-3 primary-section">
+      <div class="row">
         <div class="col-12">
           <div v-if="!showLoading" class="info about">
-            <h3 class="title mt-3">{{ show.title }}</h3>
-            <hr />
-            <p class="mb-3">{{ show.description }}</p>
+            <h3 class="title pr-5">{{ show.title }}</h3>
+            <p class="mb-2">{{ show.description }}</p>
             <span v-if="show.createdAt">
-              {{ $t('show.createdAt') }} 
-              <strong>
-                {{ $text.formatISODate(new Date(parseInt(show.createdAt)).toISOString()) }}
+              {{ $t('show.presentedAt') }} 
+              <strong class="text-secondary-light">
+                {{ $text.formatISODate(new Date(show.date).toISOString()) }}
               </strong>
             </span>
-            <div class="show-actions">
-              <div class="action" @click="editShow()">
-                <div class="icon-bg">
-                  <font-awesome-icon icon="edit" />
-                </div>
-                <p class="mb-0">
-                  <small>{{ $t('show.editAction') }}</small>
-                </p>
-              </div>
-              <div class="action" @click="toggleReorder()">
-                <div class="icon-bg">
-                  <font-awesome-icon :icon="reorderMode ? 'times' : 'arrows-alt-v'" />
-                </div>
-                <p class="mb-0">
-                  <small>{{ reorderMode ? $t('show.cancelAction') : $t('show.reorderAction') }}</small>
-                </p>
-              </div>
-              <div class="action" @click="removeShow()">
-                <div class="icon-bg">
-                  <font-awesome-icon icon="trash" />
-                </div>
-                <p class="mb-0">
-                  <small>{{ $t('show.removeAction') }}</small>
-                </p>
-              </div>
+            <div class="actions">
+              <base-dropdown class="ellipsis-vertical" position="right">
+                <template v-slot:title>
+                  <a
+                    class="btn btn-sm btn-icon-only"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <font-awesome-icon icon="ellipsis-v" />
+                  </a>
+                </template>
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  @click.prevent="toggleReorder()"
+                >
+                  <font-awesome-icon
+                    :icon="reorderMode ? 'times' : 'arrows-alt-v'"
+                    class="text-primary mr-1"
+                  /> {{ reorderMode ? $t('show.cancelAction') : $t('show.reorderAction') }}
+                </a>
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  @click.prevent="editShow()"
+                >
+                  <font-awesome-icon icon="edit" class="mr-1 text-secondary" /> {{ $t('show.editAction') }}
+                </a>
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  @click.prevent="removeShow()"
+                >
+                  <font-awesome-icon icon="trash" class="mr-1 text-danger" /> {{ $t('show.removeAction') }}
+                </a>
+              </base-dropdown>
             </div>
           </div>
           <div v-else class="info pb-3">
@@ -48,9 +60,21 @@
           </div>
         </div>
       </div>
-      <div class="row secondary-section pt-3">
+      <div v-if="reorderMode" class="row">
         <div class="col-12">
-          <h3 class="title mb-3">{{ $t('show.songsLabel') }}</h3>
+          <base-button
+            htmlType="button"
+            type="danger"
+            class="mb-3"
+            @click="toggleReorder()"
+          >
+            {{ $t('show.cancelAction')}}
+          </base-button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <h3 class="title">{{ $t('show.songsLabel') }}</h3>
         </div>
       </div>
       <div class="row">
@@ -66,7 +90,7 @@
                     </div>
                     <div class="icon mr-3" @click="navigateTo('song', show.band.id, s.id)">
                       <div class="song-img">
-                        <img :src="`/img/arts/record.png`" />
+                        <img :src="`/img/arts/white/audio-wave.svg`" />
                       </div>
                     </div>
                     <div class="song-info" @click="navigateTo('song', show.band.id, s.id)">

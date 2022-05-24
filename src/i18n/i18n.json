@@ -203,7 +203,7 @@
       ]
     },
     "show": {
-      "createdAt": "Created at",
+      "presentedAt": "Show date:",
       "editAction": "Update",
       "songsLabel": "Selected songs",
       "publicLabel": "Public",
@@ -527,7 +527,7 @@
       ]
     },
     "show": {
-      "createdAt": "Criada em",
+      "presentedAt": "Data:",
       "editAction": "Editar",
       "songsLabel": "Músicas selecionadas",
       "publicLabel": "Pública",
