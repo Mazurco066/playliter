@@ -3,22 +3,9 @@
 
     <!-- Song switcher -->
     <div class="container no-print">
-      <div class="row pt-3 primary-section">
+      <div class="row">
         <div class="col-12">
-          <!-- Title -->
-          <p v-if="!showLoading" class="title mb-0">
-            {{ displaySong.title }}
-          </p>
-          <div v-else class="shine"></div>
-          <!-- Writter -->
-          <p v-if="!showLoading" class="mb-3">
-            {{ displaySong.writter }}
-          </p>
-          <div v-else class="shine"></div>
-          <hr class="mb-1" />
-        </div>
-        <div class="col-12">
-          <div v-if="!showLoading" class="playlist-actions">
+          <div v-if="!showLoading" class="show-navigator">
             <div class="action" @click="switchSong(-1)">
               <div class="icon-bg">
                 <font-awesome-icon icon="angle-double-left" />
@@ -59,11 +46,11 @@
         <div class="info">
           <h3 class="title">{{ show.title }}</h3>
           <p class="description">{{ show.description }}</p>
-          <span class="text-muted">
+          <span class="text-secondary-light">
             {{ $t('songList.credits') }} {{ $text.formatISODate(new Date().toISOString()) }}
           </span>
         </div>
-        <div class="pagebreak"></div>
+        <!-- <div class="pagebreak"></div> -->
       </div>
       <div
         class="song bg-white pdf-song shongsheet"
