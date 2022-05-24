@@ -65,7 +65,7 @@ html, body, #app {
 
   // Dark theme scss
   .dark {
-    color: var(--color-text-dark);
+    color: var(--color-text);
 
     // Component backgrounds
     .d-header, .d-custom-header {
@@ -82,7 +82,7 @@ html, body, #app {
       background-color: var(--color-bg-dark);
     }
     #user-display p.name, #user-display p.role {
-      color: var(--color-text-dark)!important;
+      color: var(--color-text)!important;
     }
     .card {
       background-color: var(--color-bg-dark);
@@ -92,11 +92,11 @@ html, body, #app {
     #navigation .mobile-drawer {
       background-color: var(--color-layout);
       border-color: var( --color-bg-dark);
-      color: var(--color-text-dark);
+      color: var(--color-text);
 
       ul.mobile-links {
         .nav-link {
-          color: var(--color-text-dark);
+          color: var(--color-text);
 
           &:hover {
             color: var(--color-primary);
@@ -108,7 +108,7 @@ html, body, #app {
     // Navigation links
     #navigation .router-links .nav-link,
     #user-display .options .nav-link {
-      color: var(--color-text-dark);
+      color: var(--color-text);
 
       &:hover {
         color: var(--color-primary);
@@ -121,23 +121,23 @@ html, body, #app {
 
     // Table font color
     .table {
-      color: var(--color-text-dark);
+      color: var(--color-text);
 
       a[data-toggle="dropdown"] {
-        color: var(--color-text-dark);
+        color: var(--color-text);
       }
     }
     .pagination {
       .page-link {
         background-color: var(--color-bg-dark);
-        color: var(--color-text-dark);
+        color: var(--color-text);
         border-color: var(--color-layout);
       }
 
       .page-item.active {
         .page-link {
           background-color: var(--color-primary);
-          color: var(--color-text-dark);
+          color: var(--color-text);
         }
       }
     }

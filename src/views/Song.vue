@@ -1,59 +1,51 @@
 <template>
-  <div id="song" class="full">
+  <div id="song">
     <!-- Song container-->
-    <div class="container full">
-      <div class="row pt-3 primary-section">
-        <div class="col-12">
-          <p v-if="!songLoading" class="title mb-0">
-            {{ song.title }}
-          </p>
-          <div v-else class="shine"></div>
-          <p v-if="!songLoading">{{ song.writter }}</p>
-          <div v-else class="shine"></div>
-          <hr class="mb-1" />
-        </div>
-        <div class="col-12">
-          <div v-if="!songLoading" class="song-actions">
-            <div class="action" @click="openListModal()">
-              <div class="icon-bg">
-                <font-awesome-icon icon="list" />
-              </div>
-              <p class="mb-0">
-                <small>{{ $t('song.listAction') }}</small>
-              </p>
-            </div>
-            <div
-              class="action"
-              :class="{ 'disabled': !isEditable }"
-              @click="isEditable ? editSong() : () => {}"
-            >
-              <div class="icon-bg">
-                <font-awesome-icon icon="edit" />
-              </div>
-              <p class="mb-0">
-                <small>{{ $t('song.editAction') }}</small>
-              </p>
-            </div>
-            <div
-              class="action"
-              :class="{ 'disabled': !isRemovable }"
-              @click="isRemovable ? deleteSong() : () => {}"
-            >
-              <div class="icon-bg">
-                <font-awesome-icon icon="trash" />
-              </div>
-              <p class="mb-0">
-                <small>{{ $t('song.removeAction') }}</small>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="container">
       <base-songsheet
         @toneUpdated="updateTone"
         :loading="songLoading"
         :song="song"
-      />
+      >
+        <div class="options">
+          <base-dropdown class="dropdown" position="right">
+                <template v-slot:title>
+                  <a
+                    class="btn"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <font-awesome-icon icon="ellipsis-vertical" />
+                  </a>
+                </template>
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  @click="openListModal()"
+                >
+                  <font-awesome-icon icon="list" class="mr-1" /> {{ $t('song.listAction') }}
+                </a>
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  :class="{ 'disabled': !isEditable }"
+                  @click="isEditable ? editSong() : () => {}"
+                >
+                  <font-awesome-icon icon="edit" class="mr-1" /> {{ $t('song.editAction') }}
+                </a>
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  :class="{ 'disabled': !isRemovable }"
+                  @click="isRemovable ? deleteSong() : () => {}"
+                >
+                  <font-awesome-icon icon="trash" class="mr-1" /> {{ $t('song.removeAction') }}
+                </a>
+              </base-dropdown>
+        </div>
+      </base-songsheet>
     </div>
     <!-- Modals -->
     <base-modal @close="closeListModal" :show="isListModalOpen">

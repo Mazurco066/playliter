@@ -286,6 +286,8 @@
       "modalSubtitle": "Add song to show",
       "noPresentations": "No shows has been found!",
       "chords": "Chords",
+      "hideChords": "Hide chords on screen",
+      "showChords": "Display chords on screen",
       "messages": [
         "Music not found!",
         "This actions is permanent!",
@@ -608,6 +610,8 @@
       "modalSubtitle": "Adicionar música a uma apresentação",
       "noPresentations": "Nenhuma apresentação cadastrada!",
       "chords": "Formação dos acordes",
+      "hideChords": "Ocultar formação de acordes",
+      "showChords": "Mostrar formação de acordes",
       "messages": [
         "Música não encontrada!",
         "Essa ação é permanente!",

@@ -12,7 +12,8 @@ export default {
   data: () => ({
     chords: [],
     chordsheet: {},
-    transpose: 0
+    transpose: 0,
+    chordsCollapsed: true
   }),
   computed: {
     transpositions () {
@@ -64,6 +65,9 @@ export default {
     toneUp () {
       if (this.transpose === 11) this.transpose = -11
       else this.transpose++
+    },
+    toggleChordsCollapse () {
+      this.chordsCollapsed = !this.chordsCollapsed
     }
   },
   watch: {

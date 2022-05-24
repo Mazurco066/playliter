@@ -7,59 +7,14 @@
     font-weight: bold;
   }
 
-  .song-actions {
-    padding: 1rem 1rem;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .options {
+    position: absolute;
+    right: 0;
+    top: -0.35rem;
+    z-index: 2;
+  }
 
-    .action {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      &.disabled {
-        .icon-bg {
-          background-color: #ababab;
-        }
   
-        &:hover {
-          cursor: not-allowed;
-        }
-      }
-
-      .icon-bg {
-        background-color: #f2f2f2;
-        padding: 1rem;
-        width: 48px;
-        height: 48px;
-        border-radius: 96px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #292d32;
-        margin-bottom: 4px;
-      }
-
-      p small {
-        font-weight: bold;
-      }
-
-      &:hover {
-        cursor: pointer;
-        
-        .icon-bg {
-          color: var(--color-primary-dark)!important;
-        }
-      }
-    }
-  }
-
-  .info {
-    padding: 0;
-  }
 
   .shows {
     list-style: none;
@@ -116,7 +71,7 @@
       .content {
         position: relative;
         padding: 1rem 0.5rem 1rem 0.5rem;
-        color: var(--color-text-dark);
+        color: var(--color-text);
         border-radius: 8px;
       }
 
@@ -220,7 +175,7 @@
   .custom-label {
     font-size: 0.875rem;
     font-weight: 500;
-    color: var(--color-text-dark);
+    color: var(--color-text);
     margin-bottom: 0.5rem;
   }
 
@@ -232,7 +187,7 @@
     outline: none;
     border: none;
     background-color: var(--color-primary);
-    color: var(--color-text-dark);
+    color: var(--color-text);
     height: 36px;
     display: flex;
     justify-content: center;

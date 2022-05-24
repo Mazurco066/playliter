@@ -1,26 +1,82 @@
 <template>
   <div v-if="!loading" class="shongsheet">
 
+    <!-- Custom slot -->
+    <slot></slot>
+
+    <!-- Song chords section -->
+    <div v-if="chords.length && showChordList" class="row">
+      <div class="col-12">
+        <!-- Hide tag is needed (render this once, cause the svg tag will xlink this) -->
+        <svg hidden xmlns="http://www.w3.org/2000/svg">
+          <base-chord-diagram
+            v-for="chord in chords"
+            :key="chord + 'guitar'"
+            :name="chord"
+            instrument="guitar"
+          />
+        </svg>
+      </div>
+      <div class="col-12">
+        <p class="mb-2 toggler" @click="toggleChordsCollapse()">
+          {{ chordsCollapsed ? $t('song.showChords') : $t('song.hideChords') }}
+          <font-awesome-icon
+            :icon="chordsCollapsed ? 'angle-down' : 'angle-up'"
+            class="ml-2"
+          />
+        </p>
+      </div>
+      <div class="col-12" v-if="!chordsCollapsed">
+        <div class="chordsbook">
+          <!-- Because we are using xlink to render song -->
+          <div
+            v-for="chord in chords"
+            :key="chord + 'display'"
+            class="text-center text-sm"
+          >
+            <div class="chord">
+              <span>
+                <small>
+                  <strong>
+                    {{ chord }}
+                  </strong>
+                </small>
+              </span>
+            </div>
+            <svg
+              class="chord-diagram"
+              xmlns="http://www.w3.org/2000/svg"
+              role="image"
+              :title="chord"
+            >
+              <use :xlink:href="`#chord-${chord}`" viewBox="0 0 50 65" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <!-- Song body -->
     <div class="row">
       <!-- Song metadata -->
       <div class="col-12" v-if="chordsheet.title">
-        <h1 class="text-xl my-1">
+        <h1 class="song-title my-1">
           {{ chordsheet.title }}
         </h1>
       </div>
       <div class="col-12" v-if="chordsheet.artist">
-        <div class="my-1">
-          <span class="opacity-40">{{ $t('songsheet.by') }}</span> {{ chordsheet.artist }}
+        <div class="song-artist">
+          <span>{{ $t('songsheet.by') }}</span> {{ chordsheet.artist }}
         </div>
       </div>
       <div class="col-12" v-if="song.capo">
-        <div  class="capo my-4">
+        <div  class="song-capo">
           {{ $t('songsheet.capo') }} {{ song.capo }}
         </div>
       </div>
       <!-- Song tools -->
-      <div v-if="song && song.tone && showToneControl" class="col-12">
+      <div v-if="song && song.tone && showToneControl" class="col-12 mb-3">
         <div class="transpose-control">
           <div class="transpose-buttons">
             <button class="tone-btn tone-down">
@@ -79,55 +135,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Song chords section -->
-    <div v-if="chords.length && showChordList" class="row secondary-section pt-3">
-      <div class="col-12">
-        <!-- Hide tag is needed (render this once, cause the svg tag will xlink this) -->
-        <svg hidden xmlns="http://www.w3.org/2000/svg">
-          <base-chord-diagram
-            v-for="chord in chords"
-            :key="chord + 'guitar'"
-            :name="chord"
-            instrument="guitar"
-          />
-        </svg>
-      </div>
-      <div class="col-12">
-        <div class="chordsbook">
-          <!-- Because we are using xlink to render song -->
-          <div
-            v-for="chord in chords"
-            :key="chord + 'display'"
-            class="text-center text-sm"
-          >
-            <div class="chord">
-              <span>
-                <small>
-                  <strong>
-                    {{ chord }}
-                  </strong>
-                </small>
-              </span>
-            </div>
-            <svg
-              class="chord-diagram"
-              xmlns="http://www.w3.org/2000/svg"
-              role="image"
-              :title="chord"
-            >
-              <use :xlink:href="`#chord-${chord}`" viewBox="0 0 50 65" />
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="col-12">
-        <p class="text-center text-uppercase">
-          {{ $t('song.chords') }}
-        </p>
-      </div>
-    </div>
-
   </div>
 
   <!-- Loading shimmers -->
