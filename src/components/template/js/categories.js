@@ -3,9 +3,9 @@ import useVuelidate from '@vuelidate/core'
 import { required, minLength, maxLength } from '@vuelidate/validators'
 import { mapActions, mapGetters } from 'vuex'
 
-// Components
+// Component
 export default {
-  name: 'Categories',
+  name: 'categories',
   setup () {
     return { v$: useVuelidate() }
   },
@@ -24,6 +24,12 @@ export default {
     }),
     isDisplayReady () {
       return !this.songLoading
+    }
+  },
+  props: {
+    band: {
+      default: '',
+      type: String
     }
   },
   methods: {
@@ -55,9 +61,7 @@ export default {
     async submitCategory () {
       this.v$.form.$touch()
       if (!this.v$.error && !this.v$.$invalid) {
-
-        const { band } = this.$route.params
-        const payload = { ...this.form, band }
+        const payload = { ...this.form, band: this.band }
         const r = await this.saveCategory({ payload, id: this.catId })
         if (r.error) {
           this.$toast.error(this.$t('categories.messages[0]'))
@@ -73,8 +77,7 @@ export default {
       }
     },
     async loadCategories () {
-      const { band } = this.$route.params
-      const r = await this.listBandCategories({ band })
+      const r = await this.listBandCategories({ band: this.band })
       if (r.error) {
         this.$toast.error(this.$t('categories.messages[3]'))
       } else {

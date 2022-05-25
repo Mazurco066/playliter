@@ -1,17 +1,61 @@
 #profile {
-  .avatar {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .info {
+    background: linear-gradient(var(--color-primary), var(--color-secondary));
+    border-radius: 8px;
+    padding: 1rem;
     margin-bottom: 1rem;
+    font-size: 0.875rem;
+    text-align: justify;
+  }
 
-    .icon {
-      max-width: 164px;
-  
+  .profile-form {
+    position: relative;
+    background-color: var(--color-background);
+    border-radius: 8px;
+    padding: 1rem;
+    padding-top: 56px;
+    margin-top: 48px;
+    margin-bottom: 1rem;
+  }
+
+  .avatar {
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    top: -48px;
+    border-radius: 8px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    border: 3px solid var(--color-secondary);
+
+    .image-container {
+      position: relative;
+
       img {
-        max-width: 100%;
-        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      button {
+        position: absolute;
+        bottom: -8px;
+        right: -8px;
+        width: 32px;
+        height: 32px;
+        border: none;
+        outline: none;
+        background-color: var(--color-secondary);
+        border-radius: 8px;
+        color: var(--color-text);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.7s;
+
+        &:hover {
+          background-color: var(--color-primary);
+          cursor: pointer;
+        }
       }
     }
   }

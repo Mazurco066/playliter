@@ -1,7 +1,7 @@
 <template>
   <div id="public-songs">
     <div class="container">
-      <div class="row pt-3 primary-section">
+      <div class="row">
         <div class="col-12">
           <h3 class="title">{{ $t('publicSongs.title') }}</h3>
           <div v-if="!songLoading">
@@ -13,35 +13,36 @@
           </div>
         </div>
       </div>
-      <div class="row secondary-section mb-3 pt-3">
-        <div class="col-10">
-          <base-input
-            :label="$t('publicSongs.searchLabel')"
-            name="filter"
-            :placeholder="$t('publicSongs.searchField')"
-            v-model="filter"
-            :disabled="songLoading"
-          />
-        </div>
-        <div class="col-2 pl-0">
-          <base-button
-            class="search-btn"
-            @click="filterSongs()"
-            :disabled="songLoading"
-            type="secondary"
-          >
-            <font-awesome-icon icon="search" />
-          </base-button>
-        </div>
-        <div class="col-12">
-          <base-button
-            class="mb-3"
-            @click="filterSongs(true)"
-            :disabled="songLoading"
-            type="secondary"
-          >
-            {{ $t('publicSongs.clearAction') }}
-          </base-button>
+      <div class="filter-section">
+        <div class="row">
+          <div class="col-10">
+            <base-input
+              :label="$t('publicSongs.searchLabel')"
+              name="filter"
+              :placeholder="$t('publicSongs.searchField')"
+              v-model="filter"
+              :disabled="songLoading"
+            />
+          </div>
+          <div class="col-2 pl-0">
+            <base-button
+              class="search-btn"
+              @click="filterSongs()"
+              :disabled="songLoading"
+              type="primary"
+            >
+              <font-awesome-icon icon="search" />
+            </base-button>
+          </div>
+          <div class="col-12">
+            <base-button
+              @click="filterSongs(true)"
+              :disabled="songLoading"
+              type="secondary"
+            >
+              {{ $t('publicSongs.clearAction') }}
+            </base-button>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -57,7 +58,7 @@
                 <div class="content">
                   <div class="icon mr-3">
                     <div class="song-img">
-                      <img :src="`/img/arts/record.png`" />
+                      <img :src="`/img/arts/white/audio-wave.svg`" />
                     </div>
                   </div>
                   <div class="song-info">

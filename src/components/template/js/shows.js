@@ -4,6 +4,12 @@ import { mapActions, mapGetters } from 'vuex'
 // Component
 export default {
   name: 'Shows',
+  props: {
+    band: {
+      default: '',
+      type: String
+    }
+  },
   data: () => ({
     shows: []
   }),
@@ -17,10 +23,9 @@ export default {
       listBandShows: 'show/listBandShows'
     }),
     saveShow () {
-      const { band } = this.$route.params
       this.$router.push({
         name: 'saveShow',
-        params: { band }
+        params: { band: this.band }
       })
     },
     viewShow (show = {}) {
@@ -34,8 +39,7 @@ export default {
     }
   },
   async mounted () {
-    const { band } = this.$route.params
-    const r = await this.listBandShows({ band })
+    const r = await this.listBandShows({ band: this.band })
     if (r.error) {
       this.$toast.error(this.$v('shows.messages[0]'))
     } else {

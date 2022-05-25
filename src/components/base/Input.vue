@@ -25,6 +25,7 @@
           { 'has-success': valid === true &&  modelValue !== null },
           { 'has-danger': valid === false &&  modelValue !== null },
           { 'mb-0': noMargin === true },
+          { 'light-bg': light },
           formClasses
         ]"
     >

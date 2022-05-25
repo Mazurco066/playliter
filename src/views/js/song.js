@@ -110,7 +110,7 @@ export default {
               this.$t('song.messages[7]')
             )
           } else {
-            this.$toast.success(this.$t('song.messages[5]') + ` ${show.title}`)
+            this.$toast.success(this.$t('song.messages[8]') + ` ${show.title}`)
             this.closeListModal()
           }
         }

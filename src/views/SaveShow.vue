@@ -1,9 +1,9 @@
 <template>
   <div id="saveShow">
     <div class="container">
-      <div class="row pt-3 primary-section">
+      <div class="row">
         <div class="col-12">
-          <h3 class="title mt-3">
+          <h3 class="title">
             {{ saveMode ? $t('saveShow.createTitle') : $t('saveShow.updateTitle') }}
           </h3>
           <p class="mb-3">
@@ -12,13 +12,11 @@
         </div>
       </div>
       <form class="info" @submit.prevent="createShow">
-        <div class="row secondary-section pt-3 pb-3 mb-3">
-          <div class="col-12">
-            <p class="text-left">{{ $t('saveShow.nameLabel') }}</p>
-          </div>
+        <div class="row">
           <div class="col-12">
             <base-input
               type="text"
+              :label="$t('saveShow.nameLabel')"
               :placeholder="$t('saveShow.nameField')"
               addonLeftIcon="address-card"
               v-model="v$.form.title.$model"
@@ -27,12 +25,10 @@
               :disabled="showLoading"
             />
           </div>
-          <div class="col-12" :class="{ 'd-none': v$.form.title.$error || !form.title }">
-            <p class="text-left">{{ $t('saveShow.descriptionLabel') }}</p>
-          </div>
-          <div class="col-12" :class="{ 'd-none': v$.form.title.$error || !form.title }">
+          <div class="col-12">
             <base-input
               type="text"
+              :label="$t('saveShow.descriptionLabel')"
               :placeholder="$t('saveShow.descriptionField')"
               addonLeftIcon="align-justify"
               v-model="v$.form.description.$model"
@@ -60,7 +56,6 @@
               nativeType="submit"
               type="primary"
               :disabled="v$.$error === true || showLoading"
-              class="mb-3"
             >
               {{ $t('saveShow.submit') }}
             </base-button>

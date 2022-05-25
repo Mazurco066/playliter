@@ -5,7 +5,7 @@
         {{ name }}
       </PopoverButton>
       <PopoverPanel class="position-absolute floating-chord d-flex flex-column mb-1 p-1 pb-0 rounded text-center shadow">
-        <p class="mb-0">{{ name }}</p>
+        <p class="mb-0 text-secondary">{{ name }}</p>
         <svg class="chord-diagram" xmlns="http://www.w3.org/2000/svg" role="image" :title="name">
           <use :xlink:href="`#chord-${name}`" viewBox="0 0 50 65" />
         </svg>

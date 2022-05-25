@@ -7,6 +7,45 @@
     font-weight: bold;
   }
 
+  .show-navigator {
+    background: linear-gradient(var(--color-primary), var(--color-secondary));
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 1rem;
+
+    .action {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.7s;
+
+      .icon-bg {
+        color: var(--color-text);
+        transition: all 0.7s;
+      }
+
+      p small {
+        color: var(--color-text);
+        font-weight: bold;
+        transition: all 0.7s;
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        .icon-bg, p small {
+          color: var(--color-text-dark);
+        }
+      }
+    }
+  }
+
   .playlist-actions {
     padding: 1rem 1rem;
     border-radius: 8px;

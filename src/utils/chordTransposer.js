@@ -11,6 +11,11 @@ import { getUniquesTyped } from './getUniques'
  export const plaintextToChordProFormat = (lyrics = '') => {
   try {
 
+    // TODO: Implemant an autodetect system
+    // const format = detectFormat(e.text)
+    // if (!format || format instanceof ChordSheetJS.ChordProParser) return
+    // e.text = new ChordSheetJS.ChordProFormatter().format(format.parse(e.text))
+
     // Chordsheetjs utils
     const normalizedSong = lyrics.replaceAll('<br>', '\n').replace(/\r\n/gm, '\n')
     const parser = new ChordSheetParser({ preserveWhitespace: false })

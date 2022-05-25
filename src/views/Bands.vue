@@ -1,15 +1,19 @@
 <template>
   <div id="bands">
-  
+
     <!-- Page main content -->
     <div class="container">
-      <div class="row pt-3 primary-section mb-3">
+      <div class="row pt-1">
         <div class="col-12">
-          <h3 class="klasik">{{ $t('bands.title') }}</h3>
-          <p class="mb-3">{{ $t('bands.subtitle') }}</p>
+          <div class="page-header">
+            <h3 class="title mb-0">{{ $t('bands.title') }}</h3>
+            <button type="button" @click="navigateTo('saveBand')">
+              <font-awesome-icon class="mr-1" icon="plus" /> {{ $t('bands.add') }}
+            </button>
+          </div>
+          <p>{{ $t('bands.subtitle') }}</p>
         </div>
-      </div>
-      <div class="row">
+
         <div class="col-12">
           <!-- Bands list -->
           <div v-if="!bandLoading">
@@ -17,7 +21,7 @@
               <li class="item" v-for="(b, i) in bands" :key="i">
                 <div class="icon mr-3" @click="navigateTo('band', b.id)">
                   <div class="band-img">
-                    <img :src="`/img/arts/${randomIcon()}`" />
+                    <img src="/img/arts/white/choir.svg" />
                   </div>
                 </div>
                 <div class="info" @click="navigateTo('band', b.id)">
@@ -55,7 +59,6 @@
                 </div>
               </li>
             </ul>
-            <!-- TODO: Add svg art here -->
             <div v-else class="no-bands">
               <div class="icon">
                 <img src="/img/arts/not_found.svg" alt="No content">
@@ -87,12 +90,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Floating button -->
-    <button @click="navigateTo('saveBand')" class="floating-btn">
-      <font-awesome-icon icon="plus" />
-    </button>
-
   </div>
 </template>
 

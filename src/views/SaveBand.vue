@@ -1,9 +1,9 @@
 <template>
   <div id="saveBand">
     <div class="container">
-      <div class="row pt-3 primary-section">
+      <div class="row">
         <div class="col-12">
-          <h3 class="title mt-3">
+          <h3 class="title">
             {{ saveMode ? $t('saveBand.createTitle') : $t('saveBand.updateTitle') }}
           </h3>
           <p class="mb-3">
@@ -12,17 +12,13 @@
         </div>
       </div>
       <form class="info" @submit.prevent="createBand">
-        <div class="row secondary-section pt-3 pb-3 mb-3">
+        <div class="row">
           <div class="col-12">
             <div class="row">
               <div class="col-12">
-                <p class="text-left">
-                  {{ $t('saveBand.nameLabel') }}
-                </p>
-              </div>
-              <div class="col-12">
                 <base-input
                   type="text"
+                  :label="$t('saveBand.nameLabel')"
                   :placeholder="$t('saveBand.nameField')"
                   addonLeftIcon="address-card"
                   v-model="v$.form.title.$model"
@@ -31,14 +27,10 @@
                   :disabled="bandLoading"
                 />
               </div>
-              <div class="col-12" :class="{ 'd-none': v$.form.title.$error || !form.title }">
-                <p class="text-left">
-                  {{ $t('saveBand.descriptionLabel') }}
-                </p>
-              </div>
-              <div class="col-12" :class="{ 'd-none': v$.form.title.$error || !form.title }">
+              <div class="col-12">
                 <base-input
                   type="text"
+                  :label="$t('saveBand.descriptionLabel')"
                   :placeholder="$t('saveBand.descriptionField')"
                   addonLeftIcon="align-justify"
                   v-model="v$.form.description.$model"
@@ -55,7 +47,6 @@
             <base-button
               nativeType="submit"
               type="primary"
-              class="mb-3"
               :disabled="v$.$error === true || bandLoading"
             >
               {{ $t('saveBand.submit') }}

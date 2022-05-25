@@ -44,7 +44,7 @@ export default {
           this.$toast.error(this.$t('saveShow.messages[1]'))
         } else {
           this.$toast.success(this.$t('saveShow.messages[0]'))
-          this.$router.push({ name: 'shows', params: { band } })
+          this.$router.push({ name: 'band', params: { id: band } })
         }
 
       } else {

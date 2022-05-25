@@ -13,42 +13,77 @@
     border-radius: 0.25rem;
     max-height: 36px;
     overflow: hidden;
+    border: 1px solid var(--color-input-bg);
+
+    &.light-bg {
+      border: 1px solid var(--color-input-bg-light);
+
+      input {
+        background-color: var(--color-input-bg-light);
+        color: var(--color-input-text-light);
+
+        &:focus {
+          background-color: var(--color-input-bg-light);
+        }
+      }
+
+      .input-group-prepend, .input-group-append {
+        .input-group-text {
+          background-color: var(--color-input-bg-light);
+          color: var(--color-input-text-light);
+          border: none;
+        }
+      }
+    }
 
     input {
       height: 36px;
-      background-color: #F2F3F7;
-      color: var(--color-gray);
+      background-color: var(--color-input-bg);
+      color: var(--color-input-text);
       border: none;
       outline: none;
       font-size: 1rem;
+
+      &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: var(--color-input-placeholder);
+        opacity: 1; /* Firefox */
+      }
   
       &:focus {
-        background-color: #F2F3F7;
+        background-color: var(--color-input-bg);
         box-shadow: none;
       }
   
-      transition: all 0.3s ease;
+      transition: all 0.7s ease;
     }
   
+    .input-group-prepend {
+      margin-right: 0;
+    }
+
+    .input-group-append {
+      margin-left: 0;
+    }
+
     .input-group-prepend, .input-group-append {
       .input-group-text {
-        background-color: #F2F3F7;
-        color: var(--color-gray);
+        background-color: var(--color-input-bg);
+        color: var(--color-input-text);
         border: none;
       }
     }
   
     &.focused {
-      border: 1px solid var(--color-primary);
+      border: 1px solid var(--color-secondary-light);
   
       .input-group-prepend, .input-group-append {
         .input-group-text {
-          color: var(--color-primary);
+          color: var(--color-secondary-light);
         }
       }
     }
 
-    transition: all 0.3s ease;
+    transition: all 0.7s ease;
   }
 
   label {
@@ -57,7 +92,7 @@
     color: var(--color-text);
 
     &.focused {
-      color: var(--color-primary);
+      color: var(--color-secondary-light);
     }
   }
 }

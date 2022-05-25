@@ -3,9 +3,15 @@ import useVuelidate from '@vuelidate/core'
 import { required, minLength } from '@vuelidate/validators'
 import { mapActions, mapGetters } from 'vuex'
 
+// Tab Components
+import Categories from '../../components/template/Categories.vue'
+import Repertory from '../../components/template/Repertory.vue'
+import Shows from '../../components/template/Shows.vue'
+
 // Component
 export default {
   name: 'Band',
+  components: { Categories, Repertory, Shows },
   setup () {
     return { v$: useVuelidate() }
   },
@@ -14,9 +20,26 @@ export default {
     songs: [],
     shows: [],
     isInviteModalOpen: false,
+    isMembersModalOpen: false,
     inviteForm: {
       username: ''
-    }
+    },
+    // Tabs state
+    selectedIndex: 1,
+    tabs: [
+      {
+        key: 1,
+        title: 'Repertório'
+      },
+      {
+        key: 2,
+        title: 'Categorias'
+      },
+      {
+        key: 3,
+        title: 'Show'
+      }
+    ]
   }),
   computed: {
     ...mapGetters({
@@ -52,6 +75,12 @@ export default {
           redirect: 'shows'
         }
       ]
+    },
+    translatedTabs () {
+      return this.tabs.map((tab, i) => ({
+        ...tab,
+        title: this.$t(`band.tabs[${i}]`)
+      }))
     }
   },
   methods: {
@@ -79,6 +108,15 @@ export default {
       this.inviteForm = { username: '' }
       this.v$.inviteForm.$reset()
       this.isInviteModalOpen = true
+    },
+    closeMembersModal () {
+      this.isMembersModalOpen = false
+    },
+    openMembersModal () {
+      this.isMembersModalOpen = true
+    },
+    setTab(tab) {
+      this.selectedIndex = tab
     },
     async loadPageData () {
       const { id } = this.$route.params
