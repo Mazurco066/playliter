@@ -32,7 +32,7 @@
           icon="earth-americas"
           nativeType="button"
           type="primary"
-          @click="saveSong()"
+          @click="publicSongs()"
         >
           {{ $t("directory.publicAction") }}
         </base-button>

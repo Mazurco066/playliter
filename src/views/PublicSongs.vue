@@ -57,7 +57,7 @@
                 <div class="content">
                   <div class="icon mr-3">
                     <div class="song-img">
-                      <img :src="`/img/arts/record.png`" />
+                      <img :src="`/img/arts/white/audio-wave.svg`" />
                     </div>
                   </div>
                   <div class="song-info">

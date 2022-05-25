@@ -3,13 +3,14 @@ import useVuelidate from '@vuelidate/core'
 import { mapActions, mapGetters } from 'vuex'
 import { required, minLength, maxLength } from '@vuelidate/validators'
 import { VAceEditor } from 'vue3-ace-editor'
+import { Chord } from 'chordsheetjs'
 import { chordTransposer } from '../../utils'
 
 // Ace plugins
 import ChordCompleter from '../../components/base/ace/chordCompleter'
 
 // Ace themes
-import 'ace-builds/src-noconflict/theme-clouds'
+import 'ace-builds/src-noconflict/theme-chaos'
 import 'ace-builds/src-noconflict/ext-language_tools'
 
 // Ace snippets
@@ -31,29 +32,10 @@ export default {
       tone: '',
       category: '',
       importUrl: '',
-      visibility: 'public'
+      isPublic: true
     },
     // Select data list
-    categories: [],
-    tones: [
-      { label: 'Ab', value: 'Ab' },
-      { label: 'A', value: 'A' },
-      { label: 'A#', value: 'A#' },
-      { label: 'Bb', value: 'Bb' },
-      { label: 'B', value: 'B' },
-      { label: 'C', value: 'C' },
-      { label: 'C#', value: 'C#' },
-      { label: 'Db', value: 'Db' },
-      { label: 'D', value: 'D' },
-      { label: 'D#', value: 'D#' },
-      { label: 'Eb', value: 'Eb' },
-      { label: 'E', value: 'E' },
-      { label: 'F', value: 'F' },
-      { label: 'F#', value: 'F#' },
-      { label: 'Gb', value: 'Gb' },
-      { label: 'G', value: 'G' },
-      { label: 'G#', value: 'G#' }
-    ]
+    categories: []
   }),
   computed: {
     ...mapGetters({
@@ -75,6 +57,18 @@ export default {
         label: title,
         value: id
       }))
+    },
+    transpositions () {
+      const baseTone = 'B'
+      const key = Chord.parse(baseTone)
+      const steps = []
+      for (let i = -11; i <= 11; i++) {
+        steps.push({
+          label: key.transpose(i),
+          name: key.transpose(i)
+        })
+      }
+      return steps
     }
   },
   methods: {
@@ -109,7 +103,7 @@ export default {
         this.form.importUrl = ''
         this.form.title = external.data.title
         this.form.writter = external.data.writter
-        const obtainedTone = this.tones.find(t => t.value === external.data.tone)
+        const obtainedTone = this.transpositions.find(t => t.value === external.data.tone)
           ? external.data.tone
           : external.data.tone.substring(0, 1)
         this.form.tone = obtainedTone
@@ -143,10 +137,8 @@ export default {
         const payload = {
           ...this.form,
           body: bodyText,
-          band: band,
-          isPublic: this.form.visibility === 'public'
+          band: band
         }
-        delete payload.visibility
 
         // Create / Update song
         const r = await this.saveSong({ id, payload })
@@ -190,7 +182,7 @@ export default {
       window.editor = editor
     },
     paste (e) {
-      e.text = e.text.replaceAll('<br>', '\n')
+      e.text = chordTransposer.plaintextToChordProFormat(e.text)
     }
   },
   async mounted () {
@@ -205,7 +197,7 @@ export default {
         tone: song.data.tone,
         category: song.data.category.id,
         importUrl: '',
-        visibility: song.data.isPublic ? 'public' : 'private'
+        isPublic: song.data.isPublic
       }
       
       // Replace \n with html elements
@@ -257,7 +249,7 @@ export default {
         category: {
           required
         },
-        visibility: {
+        isPublic: {
           required
         }
       }

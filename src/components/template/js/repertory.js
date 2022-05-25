@@ -56,6 +56,11 @@ export default {
         name: 'saveSong',
         params: { band: this.band }
       })
+    },
+    publicSongs () {
+      this.$router.push({
+        name: 'publicSongs'
+      })
     }
   },
   async mounted () {

@@ -170,6 +170,36 @@
     text-transform: uppercase;
   }
 
+  .custom-switch {
+    .custom-control-label {
+      font-weight: bold;
+      font-size: 0.875rem;
+      padding-top: 0.100rem;
+    }
+  }
+
+  .third-part {
+    background: linear-gradient(var(--color-primary), var(--color-secondary));
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+
+    p {
+      font-size: 0.875rem;
+    }
+
+    .base-input {
+      margin-bottom: 0;
+    }
+  }
+
+  .info {
+    background-color: var(--color-background);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
   .custom-label {
     font-size: 0.875rem;
     font-weight: 500;
@@ -184,7 +214,7 @@
   .import-btn {
     outline: none;
     border: none;
-    background-color: var(--color-primary);
+    background-color: var(--color-background);
     color: var(--color-text);
     height: 36px;
     display: flex;
@@ -192,14 +222,14 @@
     align-items: center;
     width: 100%;
     border-radius: 8px;
-    margin-top: 1.35rem;
+    transition: all 0.7s;
 
     &:hover {
+      background-color: var(--color-layout);
       cursor: pointer;
     }
 
     &:disabled {
-      opacity: 0.75;
       cursor: not-allowed;
     }
   }
