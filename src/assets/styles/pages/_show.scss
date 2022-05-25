@@ -4,44 +4,17 @@
     text-transform: uppercase;
   }
 
-  .show-actions {
-    padding: 1rem 1rem;
-    margin-top: 1rem;
+  .info {
+    background-color: var(--color-background);
+    padding: 1rem;
     border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    position: relative;
+    margin-bottom: 1rem;
 
-    .action {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      .icon-bg {
-        background-color: #f2f2f2;
-        padding: 1rem;
-        width: 48px;
-        height: 48px;
-        border-radius: 96px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #292d32;
-        margin-bottom: 4px;
-      }
-
-      p small {
-        font-weight: bold;
-      }
-
-      &:hover {
-        cursor: pointer;
-        
-        .icon-bg {
-          color: var(--color-primary-dark)!important;
-        }
-      }
+    .actions {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.5rem;
     }
   }
 
@@ -49,10 +22,12 @@
     list-style: none;
 
     .song {
+      background-color: var(--color-background);
       margin-bottom: 1rem;
       border-radius: 8px;
-      padding: 0.5rem;
+      padding: 0.5rem 0.5rem 0.5rem 1rem;
       position: relative;
+      transition: all 0.7s;
 
       .public-icon {
         position: absolute;
@@ -65,17 +40,22 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: all 0.7s;
 
         span {
           font-size: 0.75rem;
           font-weight: bold;
-          color: var(--color-text-dark);
+          color: var(--color-text);
         }
       }
 
       &:not(.reorder):hover {
-        background-color: #b7c1bc;
+        background-color: var(--color-primary);
         cursor: pointer;
+
+        .public-icon {
+          background-color: var(--color-secondary);
+        }
       }
 
       display: flex;
@@ -153,6 +133,7 @@
       max-width: 360px;
       width: 100%;
       margin: 1rem auto;
+      opacity: 0.75;
     }
   }
 }
@@ -163,19 +144,46 @@
     text-transform: uppercase;
   }
 
-  .info {
-    padding: 1rem 1.5rem;
-    background-color: rgba(0, 0 ,0, 0.2);
-    border: 1px solid var(--color-text);
-    border-radius: 8px;
-    margin-bottom: 1rem;
+  .show-header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+
+    .title {
+      margin-bottom: 0;
+    }
+
+    button {
+      background: linear-gradient(var(--color-primary), var(--color-secondary));
+      border: none;
+      outline: none;
+      border-radius: 8px;
+      color: var(--color-text);
+      padding: 0.25rem 1rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.7s;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
   }
 
   .list {
     list-style: none;
 
     .item {
-      margin-bottom: 1rem;
+      position: relative;
+      background-color: var(--color-background);
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.25rem;
       border-radius: 8px;
       display: flex;
       justify-content: space-between;
@@ -183,7 +191,16 @@
 
       &:hover {
         cursor: pointer;
-        opacity: 0.5;
+        background-color: var(--color-primary);
+
+        .show-info p strong {
+          color: var(--color-text)!important;
+        }
+
+        .show-date {
+          background-color: var(--color-text);
+          color: var(--color-secondary-light);
+        }
       }
 
       .icon {
@@ -193,12 +210,25 @@
         align-items: center;
 
         .show-img {
-          max-width: 50px;
+          max-width: 48px;
+          object-fit: cover;
         }
       }
 
       .show-info {
         flex-grow: 1;
+      }
+
+      .show-date {
+        background-color: var(--color-secondary);
+        border-radius: 8px;
+        padding: 0 0.5rem;
+        font-size: 0.875rem;
+        font-weight: bold;
+        position: absolute;
+        top: -0.75rem;
+        right: 1rem;
+        transition: all 0.7s;
       }
 
       &:last-child {
@@ -213,6 +243,7 @@
       max-width: 360px;
       width: 100%;
       margin: 1rem auto;
+      opacity: 0.75;
     }
   }
 }
@@ -221,5 +252,12 @@
   .title {
     font-size: 1.25rem;
     text-transform: uppercase;
+  }
+
+  .info {
+    background-color: var(--color-background);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
   }
 }

@@ -1,14 +1,20 @@
 // Dependencies
 import { mapActions, mapGetters } from 'vuex'
-import { songHelpers } from '../../helpers'
+import { songHelpers } from '../../../helpers'
 
 // Component
 export default {
-  name: 'Directory',
+  name: 'Repertory',
   data: () => ({
     repertory: {},
     search: ''
   }),
+  props: {
+    band: {
+      default: '',
+      type: String
+    }
+  },
   computed: {
     ...mapGetters({
       songLoading: 'song/getLoadingStatus'
@@ -21,10 +27,7 @@ export default {
             s.writter.toLowerCase().includes(this.search.toLowerCase())
           )
           return filteredItems.length
-            ? {
-              ...category,
-              items: filteredItems
-            }
+            ? { ...category, items: filteredItems }
             : false
         })
         return filteredRepertory.filter(o => Boolean(o))
@@ -43,23 +46,25 @@ export default {
       })
     },
     navigateToCategories () {
-      const { band } = this.$route.params
       this.$router.push({
         name: 'categories',
-        params: { band }
+        params: { band: this.band }
       })
     },
     saveSong () {
-      const { band } = this.$route.params
       this.$router.push({
         name: 'saveSong',
-        params: { band }
+        params: { band: this.band }
+      })
+    },
+    publicSongs () {
+      this.$router.push({
+        name: 'publicSongs'
       })
     }
   },
   async mounted () {
-    const { band } = this.$route.params
-    const r = await this.listBandSongs({ band })
+    const r = await this.listBandSongs({ band: this.band })
     this.repertory = songHelpers.compute(r.data)
     if (r.error) {
       this.$toast.error(this.$t('directory.messages[0]'))

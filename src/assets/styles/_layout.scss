@@ -1,36 +1,29 @@
-.primary-section {
-  background-color: var(--color-primary);
-  color: var(--color-text-dark);
-}
-
-.secondary-section {
-  background-color: var(--color-primary-light);
-  color: var(--color-text-dark);
-
-  .form-control-label {
-    color: var(--color-text-dark);
-  }
-}
-
 .auth-link a {
-  color: var(--color-text);
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.auth-action {
-  color: var(--color-text);
+  color: var(--color-secondary-light);
   font-weight: bold;
 
   &:hover {
     text-decoration: underline;
+    color: var(--color-secondary-light);
   }
 }
 
+.auth-action {
+  font-weight: bold;
+  transition: all 0.7s;
+
+  &:hover {
+    text-decoration: underline;
+    color: var(--color-secondary-light);
+  }
+}
+
+.btn-container_foreground {
+  z-index: initial!important;
+}
+
 hr {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid #333333;
 }
 
 .rakta-watermark {

@@ -66,6 +66,11 @@ export default {
       type: Boolean,
       description: 'Money type for input',
       default: false
+    },
+    light: {
+      type: Boolean,
+      description: 'Applies black background to input',
+      default: false
     }
   },
   data() {

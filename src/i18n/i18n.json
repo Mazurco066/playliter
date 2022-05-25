@@ -12,15 +12,12 @@
       "promoteAction": "Promote to Admin",
       "demoteAction": "Demote to member",
       "addAction": "Add Member",
-      "toolSection": "Tools",
-      "categoriesMenu": "Categories",
-      "songbookMenu": "Songbook",
-      "publicMenu": "Public Songbook",
-      "presentationMenu": "Shows",
       "memberSection": "Members",
+      "memberDescription": "People who compose this band.",
       "modalTitle": "Band",
       "modalDescription": "Add new member",
       "userField": "Username",
+      "tabs": ["Songbook", "Categories", "Concerts"],
       "messages": [
         "Band not found",
         "This user is already in band!",
@@ -45,6 +42,7 @@
     },
     "bands": {
       "title": "My Bands",
+      "add": "Add Band",
       "subtitle": "List of bands that you are assigned.",
       "founder": "Founder",
       "admin": "Admin",
@@ -87,11 +85,11 @@
       ]
     },
     "directory": {
-      "title": "Repertório completo",
+      "title": "Songbook",
       "subtitle01": "Containing",
       "subtitle02": "songs.",
       "searchField": "Search songs...",
-      "categoryAction": "Manage categories",
+      "publicAction": "Public songs",
       "songAction": "New song",
       "songLabel": "Song(s)",
       "noSongs": "There is no songs using the current filter!",
@@ -100,8 +98,9 @@
       ]
     },
     "home": {
+      "aboutUs": "About Us",
       "nextPresentations": "Incoming presentations",
-      "date": "Date",
+      "date": "At",
       "version": "Version",
       "noPresentations": "There is no incoming presentations from bands you joined!",
       "pendingInvites": "Band invitations",
@@ -112,7 +111,8 @@
     },
     "profile": {
       "title": "My Profile",
-      "subtitle": "Update your profile data if needed.",
+      "notice": "Privacy policy",
+      "subtitle": "This is your profile in Playliter App, the following info will be displayed to general public: <strong>Nome, Imagem e E-mail</strong>.",
       "nameField": "Name",
       "userField": "Username",
       "accessField": "Access Type",
@@ -146,9 +146,9 @@
       "createSubtitle": "Creates a new Band.",
       "updateSubtitle": "Update a Band's data.",
       "nameField": "Band name",
-      "nameLabel": "1. First things first, give a badass name for your band:",
+      "nameLabel": "Band name",
       "descriptionField": "Band description",
-      "descriptionLabel": "2. Now type a matching description about it:",
+      "descriptionLabel": "Band description",
       "submit": "Save Band",
       "messages": [
         "Band successfully saved!",
@@ -163,9 +163,9 @@
       "createSubtitle": "Creates a new Show.",
       "updateSubtitle": "Update a Show's data.",
       "nameField": "Show title",
-      "nameLabel": "1. First of all, name your show:",
+      "nameLabel": "Show title",
       "descriptionField": "Show description",
-      "descriptionLabel": "2. Now type a matching description about it:",
+      "descriptionLabel": "Description",
       "dateLabel": "Date",
       "submit": "Save Show",
       "messages": [
@@ -182,12 +182,14 @@
       "authorField": "Song Writter",
       "toneField": "Base tone",
       "categoryField": "Category",
-      "importField": "Import song",
+      "importLabel": "Is the song on third part websites?",
+      "importDescription": "No problems. Paste your song url below to import it.",
+      "importField": "Song URL",
       "bodyLabel": "Song body (Type the lyrics including the chords)",
       "submit": "Save song",
       "privateLabel": "Private",
       "publicLabel": "Public",
-      "visibilityLabel": "Song visibility",
+      "visibilityLabel": "Is Public?",
       "messages": [
         "Music successfully saved",
         "An error ocourred while saving the song! Please try again later.",
@@ -203,7 +205,7 @@
       ]
     },
     "show": {
-      "createdAt": "Created at",
+      "presentedAt": "Show date:",
       "editAction": "Update",
       "songsLabel": "Selected songs",
       "publicLabel": "Public",
@@ -286,6 +288,8 @@
       "modalSubtitle": "Add song to show",
       "noPresentations": "No shows has been found!",
       "chords": "Chords",
+      "hideChords": "Hide chords on screen",
+      "showChords": "Display chords on screen",
       "messages": [
         "Music not found!",
         "This actions is permanent!",
@@ -312,6 +316,11 @@
       "updateTone": "Atualizar Tom Base",
       "by": "By",
       "capo": "Capo"
+    },
+    "layout": {
+      "logout": "Logout",
+      "profile": "Profile",
+      "tuner": "Tuner"
     }
   },
   "pt": {
@@ -328,14 +337,12 @@
       "promoteAction": "Tornar Admin",
       "demoteAction": "Remover permissões",
       "toolSection": "Ferramentas",
-      "categoriesMenu": "Categorias",
-      "songbookMenu": "Repertório",
-      "publicMenu": "Repertório Público",
-      "presentationMenu": "Apresentações",
       "memberSection": "Integrantes",
-      "modalTitle": "Banda",
-      "modalDescription": "Adicionar novo membro",
+      "memberDescription": "Lista de integrantes que participam dessa banda. Integrantes podem ser de 3 tipos: <strong class='text-secondary-light'>Fundador</strong>, <strong class='text-secondary-light'>Admin</strong> ou <strong class='text-secondary-light'>Membro</strong>.",
+      "modalTitle": "Convidar Membro",
+      "modalDescription": "Convide um novo membro para a banda inserindo o username da pessoa desejada.",
       "userField": "Nome de usuário",
+      "tabs": ["Músicas", "Categorias", "Shows"],
       "messages": [
         "Banda não encontrada",
         "O usuário já se encontra nessa banda!",
@@ -360,7 +367,8 @@
     },
     "bands": {
       "title": "Minhas bandas",
-      "subtitle": "Lista das bandas nas quais você participa como um integrante.",
+      "add": "Criar Banda",
+      "subtitle": "Lista das bandas nas quais você participa como integrante.",
       "founder": "Fundador",
       "admin": "Administrador",
       "member": "Membro",
@@ -380,11 +388,11 @@
     "categories": {
       "title": "Categorias",
       "subtitle": "Categorias registradas para a banda selecionada.",
-      "addAction": "Adicionar Categoria",
+      "addAction": "Criar Nova",
       "submit": "Salvar Categoria",
       "remove": "Remover Categoria",
       "formTitle": "Categorias",
-      "formDescription": "Salvar categoria",
+      "formDescription": "Salvar nova categoria ou editar uma existente.",
       "titleField": "Título da categoria",
       "descriptionField": "Descrição da categoria",
       "noCategories": "Essa banda não possuí categorias cadastradas!",
@@ -406,7 +414,7 @@
       "subtitle01": "Contendo",
       "subtitle02": "músicas.",
       "searchField": "Pesquisar música...",
-      "categoryAction": "Gerenciar categorias",
+      "publicAction": "Músicas públicas",
       "songAction": "Nova música",
       "songLabel": "Música(s)",
       "noSongs": "Nenhuma música foi encontrada com o filtro utilizado!",
@@ -415,8 +423,9 @@
       ]
     },
     "home": {
+      "aboutUs": "Sobre o App",
       "nextPresentations": "Próximas apresentações",
-      "date": "Data",
+      "date": "Em",
       "version": "Versão",
       "noPresentations": "Não há apresentações futuras registradas nas bandas que você participa!",
       "pendingInvites": "Convites pendentes",
@@ -427,7 +436,8 @@
     },
     "profile": {
       "title": "Meu perfil",
-      "subtitle": "Visualize ou edite informações de seu perfil dentro do app",
+      "notice": "Política de privacidade",
+      "subtitle": "Esse é o seu perfil dentro do aplicativo. Serão visíveis para terceiros somente seu <strong>nome, imagem e E-mail</strong>.",
       "nameField": "Nome completo",
       "userField": "Usuário",
       "accessField": "Nível da conta",
@@ -458,12 +468,12 @@
     "saveBand": {
       "createTitle": "Criar nova banda",
       "updateTitle": "Editar banda",
-      "createSubtitle": "Criar nova banda.",
-      "updateSubtitle": "Alterar os dados de uma banda cadastrada.",
+      "createSubtitle": "Crie sua banda e convide seus integrantes.",
+      "updateSubtitle": "Alterar os dados de sua cadastrada.",
       "nameField": "Nome para a banda...",
-      "nameLabel": "1. Primeiramente informe um nome para sua banda:",
+      "nameLabel": "Nome da banda",
       "descriptionField": "Breve descrição...",
-      "descriptionLabel": "2. Agora forneça uma breve descrição sobre a mesma:",
+      "descriptionLabel": "Descrição",
       "dateLabel": "Data",
       "submit": "Salvar Banda",
       "messages": [
@@ -476,12 +486,12 @@
     "saveShow": {
       "createTitle": "Criar nova apresentacao",
       "updateTitle": "Editar apresentacao",
-      "createSubtitle": "Criar nova apresentação.",
-      "updateSubtitle": "Alterar os dados de uma apresentação cadastrada.",
+      "createSubtitle": "Crie uma apresentação para organizar as músicas selecionadas.",
+      "updateSubtitle": "Alterar os dados de seua apresentação.",
       "nameField": "Nome para a apresentação",
-      "nameLabel": "1. Primeiramente informe um título para sua apresentação:",
+      "nameLabel": "Nome da apresentação",
       "descriptionField": "Breve descrição...",
-      "descriptionLabel": "2. Agora forneça uma breve descrição sobre a mesma:",
+      "descriptionLabel": "Descrição",
       "dateLabel": "Data",
       "submit": "Salvar apresentação",
       "messages": [
@@ -498,12 +508,14 @@
       "authorField": "Autor da música",
       "toneField": "Tom inicial da música",
       "categoryField": "Categoria da música",
-      "importField": "Importar música",
+      "importLabel": "Música está em site de terceiros?",
+      "importDescription": "Sem problemas? Cole a URL da música no campo abaixo e a importaremos para o app.",
+      "importField": "URL da música",
       "bodyLabel": "Corpo da música (Digite a letra com as cifras)",
       "submit": "Salvar música",
       "privateLabel": "Privada",
       "publicLabel": "Pública",
-      "visibilityLabel": "Visibilidade da música",
+      "visibilityLabel": "Música é pública?",
       "messages": [
         "Música salva com sucesso!",
         "Ocorreu um erro ao salvar sua música! Tente novamente mais tarde.",
@@ -519,7 +531,7 @@
       ]
     },
     "show": {
-      "createdAt": "Criada em",
+      "presentedAt": "Data:",
       "editAction": "Editar",
       "songsLabel": "Músicas selecionadas",
       "publicLabel": "Pública",
@@ -552,7 +564,7 @@
       "subtitle": "Apresentações registradas para a banda performar.",
       "noShows": "Essa banda não possuí apresentações cadastradas!",
       "date": "Data",
-      "addShow": "Adicionar Apresentação",
+      "addShow": "Criar nova",
       "messages": [
         "Ocorreu um erro ao obter as apresentações da banda! Por favor contate um administrador do sistema."
       ]
@@ -602,6 +614,8 @@
       "modalSubtitle": "Adicionar música a uma apresentação",
       "noPresentations": "Nenhuma apresentação cadastrada!",
       "chords": "Formação dos acordes",
+      "hideChords": "Ocultar formação de acordes",
+      "showChords": "Mostrar formação de acordes",
       "messages": [
         "Música não encontrada!",
         "Essa ação é permanente!",
@@ -628,6 +642,11 @@
       "updateTone": "Atualizar Tom Base",
       "by": "Por",
       "capo": "Capo"
+    },
+    "layout": {
+      "logout": "Sair",
+      "profile": "Perfil",
+      "tuner": "Afinador"
     }
   }
 }

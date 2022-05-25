@@ -5,24 +5,49 @@
         <div class="col-12">
           <div class="app-bar">
             <div class="app">
-              <div class="back" @click="goBack()">
+              <div class="user">
+                <div class="user-img">
+                  <img src="/img/j_black.jpg" alt="User Image">
+                </div>
+                <div class="user-info">
+                  <p class="mb-0">{{ $t('welcomeMsg') }} <strong>{{ $t('appname') }}</strong>!</p>
+                  <span>
+                    <strong>
+                      {{ $text.truncate(me.name || '', 18) }}
+                    </strong>
+                  </span>
+                </div>
+              </div>
+              <div class="actionbar">
+                <base-dropdown class="dropdown" position="right">
+                  <template v-slot:title>
+                    <a
+                      class="btn btn-sm btn-icon-only btn-action"
+                      role="button"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <font-awesome-icon icon="gear" />
+                    </a>
+                  </template>
+                  <a href="#" class="dropdown-item" @click="navigateTo('profile')">
+                    <font-awesome-icon icon="user-astronaut" class="mr-1" /> {{ $t('layout.profile') }}
+                  </a>
+                  <a href="#" class="dropdown-item" @click="navigateTo('tuner')">
+                    <font-awesome-icon icon="music" class="mr-1" /> {{ $t('layout.tuner') }}
+                  </a>
+                  <hr class="mb-2" />
+                  <a href="#" class="dropdown-item" @click="logout()">
+                    <font-awesome-icon icon="right-from-bracket" class="mr-1" /> {{ $t('layout.logout') }}
+                  </a>
+                </base-dropdown>
+              </div>
+              <!-- <div class="back" @click="goBack()">
                 <font-awesome-icon icon="chevron-left" size="2x" />
-              </div>
-              <div class="info">
-                <p class="mb-0">{{ $t('welcomeMsg') }} <strong>{{ $t('appname') }}</strong>!</p>
-                <span>
-                  <strong>
-                    {{ $text.truncate(me.name || '', 18) }}
-                  </strong>
-                </span>
-              </div>
-              <div class="logo">
-                <img
-                  src="/img/logo.svg"
-                  alt="Playliter logo"
-                />
-              </div>
+              </div> -->
             </div>
+            <hr />
           </div>
         </div>
       </div>

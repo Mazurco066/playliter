@@ -1,9 +1,9 @@
 <template>
   <div id="saveSong">
     <div class="container">
-      <div class="row pt-3 primary-section">
+      <div class="row">
         <div class="col-12">
-          <h3 class="title mt-3">
+          <h3 class="title">
             {{ $t('saveSong.title') }}
           </h3>
           <p class="mb-3">
@@ -11,8 +11,58 @@
           </p>
         </div>
       </div>
+      <div class="third-part">
+        <div class="row">
+          <div class="col-12">
+            <p class="mb-1">
+              <strong>{{ $t('saveSong.importLabel') }}</strong>
+            </p>
+            <p class="mb-3">
+              {{ $t('saveSong.importDescription') }}
+            </p>
+          </div>
+          <div class="col-10">
+            <base-input
+              type="text"
+              :placeholder="$t('saveSong.importField')"
+              addonLeftIcon="file-import"
+              v-model="v$.form.importUrl.$model"
+              :valid="!v$.form.importUrl.$error"
+              :error="v$.form.importUrl.$errors.length ? $translations.translateMessage(v$.form.importUrl.$errors[0].$message) : ''"
+              :disabled="songLoading"
+              light
+            />
+          </div>
+          <div class="col-2 pt-0 pl-0">
+            <button
+              type="button"
+              class="import-btn"
+              @click="importExternalSong()"
+              :disabled="songLoading"
+            >
+              <font-awesome-icon icon="check" />
+            </button>
+          </div>
+        </div>
+      </div>
       <form class="info" @submit.prevent="createSong">
-        <div class="row secondary-section pt-3 mb-3">
+        <div class="row">
+          <div class="col-12 mb-2">
+            <div class="custom-control custom-switch">
+              <input
+                id="customSwitches"
+                type="checkbox"
+                class="custom-control-input"
+                v-model="form.isPublic"
+              >
+              <label
+                class="custom-control-label"
+                for="customSwitches"
+              >
+                {{ $t('saveSong.visibilityLabel') }}
+              </label>
+            </div>
+          </div>
           <div class="col-12">
             <base-input
               type="text"
@@ -42,7 +92,7 @@
               addon-left-icon="volume-up"
               :label="$t('saveSong.toneField')"
               :placeholder="$t('saveSong.toneField')"
-              :options="tones"
+              :options="transpositions"
               :disabled="songLoading"
               v-model="v$.form.tone.$model"
               :valid="!v$.form.tone.$error"
@@ -61,43 +111,6 @@
               :error="v$.form.category.$errors.length ? $translations.translateMessage(v$.form.category.$errors[0].$message) : ''"
             />
           </div>
-          <div class="col-12">
-            <base-select
-              addon-left-icon="eye"
-              :label="$t('saveSong.visibilityLabel')"
-              :options="[
-                { label: $t('saveSong.publicLabel'), value: 'public' },
-                { label: $t('saveSong.privateLabel'), value: 'private'}
-              ]"
-              :disabled="songLoading"
-              v-model="v$.form.visibility.$model"
-              :valid="!v$.form.visibility.$error"
-              :error="v$.form.visibility.$errors.length ? $translations.translateMessage(v$.form.visibility.$errors[0].$message) : ''"
-         
-            />
-          </div>
-          <div class="col-10">
-            <base-input
-              type="text"
-              :label="$t('saveSong.importField')"
-              :placeholder="$t('saveSong.importField')"
-              addonLeftIcon="file-import"
-              v-model="v$.form.importUrl.$model"
-              :valid="!v$.form.importUrl.$error"
-              :error="v$.form.importUrl.$errors.length ? $translations.translateMessage(v$.form.importUrl.$errors[0].$message) : ''"
-              :disabled="songLoading"
-            />
-          </div>
-          <div class="col-2 pt-2 pl-0">
-            <button
-              type="button"
-              class="import-btn"
-              @click="importExternalSong()"
-              :disabled="songLoading"
-            >
-              <font-awesome-icon icon="check" />
-            </button>
-          </div>
           <div class="col-12 mb-3">
             <p class="custom-label">
               {{ $t('saveSong.bodyLabel') }}
@@ -106,7 +119,7 @@
             <v-ace-editor
               lang="chordpro"
               v-model:value="song"
-              theme="clouds"
+              theme="chaos"
               style="height: 300px"
               :print-margin="false"
               :options="{fontSize: '0.9rem'}"
@@ -121,7 +134,6 @@
               nativeType="submit"
               type="primary"
               :disabled="v$.$error === true || songLoading"
-              class="mb-3"
             >
               {{ $t('saveSong.submit') }}
             </base-button>

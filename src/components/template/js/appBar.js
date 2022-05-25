@@ -1,5 +1,5 @@
 // Dependencies
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 // Component
 export default {
@@ -10,8 +10,21 @@ export default {
     })
   },  
   methods: {
+    ...mapActions({
+      resetStore: 'RESET'
+    }),
     goBack () {
       this.$router.go(-1)
+    },
+    navigateTo (route, params = {}) {
+      this.$router.push({
+        name: route,
+        params: { ...params }
+      })
+    },
+    logout () {
+      this.resetStore()
+      this.$router.push({ name: 'signin' })
     }
   }
 }

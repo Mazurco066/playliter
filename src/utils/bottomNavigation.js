@@ -1,18 +1,24 @@
 const links = [
   {
+    id: 1,
     label: 'Bandas',
-    route: 'bands',
-    icon: 'play'
+    path: { name: 'bands' },
+    icon: 'users',
+    title: 'Home', 
   }, 
   {
+    id: 2,
     label: 'Home',
-    route: 'home',
-    icon: 'compact-disc'
+    path: { name: 'home' },
+    icon: 'compact-disc',
+    title: 'Home', 
   },
   {
+    id: 3,
     label: 'Perfil',
-    route: 'profile',
-    icon: 'user'
+    path: { name: 'profile' },
+    icon: 'user-astronaut',
+    title: 'Home', 
   }
 ]
 

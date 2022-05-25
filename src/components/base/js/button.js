@@ -41,6 +41,11 @@ export default {
       default: false,
       description: 'Whether button style is outline',
     },
+    mini: {
+      type: Boolean,
+      default: false,
+      description: 'Whether button style is mini',
+    },
     rounded: {
       type: Boolean,
       default: false,
@@ -62,6 +67,7 @@ export default {
       let btnClasses = [
         { 'btn-block': this.block },
         { 'rounded-circle': this.rounded },
+        { 'mini-btn': this.mini },
         { 'btn-icon-only': this.iconOnly },
         { [`text-${this.textColor}`]: this.textColor },
         { 'btn-icon': this.icon || this.$slots.icon },

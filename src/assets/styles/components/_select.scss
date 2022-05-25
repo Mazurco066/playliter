@@ -1,14 +1,15 @@
 .base-input {
   select {
     height: 36px;
-    background-color: #F2F3F7;
-    color: var(--color-gray);
+    background-color: var(--color-input-bg);
+    color: var(--color-input-text);
     border: none;
     outline: none;
     font-size: 1rem;
   
     &:focus {
-      background-color: #F2F3F7;
+      background-color: var(--color-input-bg);
+      color: var(--color-input-text);
       box-shadow: none;
     }
   

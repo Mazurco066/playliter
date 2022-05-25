@@ -1,16 +1,20 @@
 #header {
   grid-area: appbar;
   min-height: 80px;
-  background-color: var(--color-primary-dark);
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
-  color: var(--color-text-dark);
+  color: var(--color-text);
 
   .app-bar {
     padding: 1rem 0;
+
+    hr {
+      background-color: var(--color-background);
+      margin-bottom: 0;
+    }
 
     .app {
       position: relative;
@@ -19,36 +23,46 @@
       align-items: center;
       width: 100%;
 
-      .back {
-        flex: 0 0 auto;
-        &:hover {
-          cursor: pointer;
-        }
-      }
-
-      .info {
+      .user {
         flex-grow: 1;
         display: flex;
-        flex-direction: column;
-        padding-left: 1.25rem;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
 
-        p {
-          font-size: 1.125rem;
+        .user-img {
+          max-width: 60px;
+          border-radius: 8px;
+          overflow: hidden;
+          margin-right: 8px;
         }
-        
-        span {
-          font-size: 1rem;
+
+        .user-info {
+          display: flex;
+          flex-flow: column nowrap;
+          justify-content: center;
+          align-items: flex-start;
         }
       }
 
-      .logo {
+      .actionbar {
         flex: 0 0 auto;
-        max-width: 60px;
-      }
-    }
 
-    .notifications {
-      flex: 0 0 auto;
+        .btn-action {
+          background: linear-gradient(var(--color-primary), var(--color-secondary));
+          border-radius: 50px;
+          font-size: 1rem;
+          height: 36px;
+          width: 36px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &:hover {
+            opacity: 0.75;
+          }
+        }
+      }
     }
   }
 }

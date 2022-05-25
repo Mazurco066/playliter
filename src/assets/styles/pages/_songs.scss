@@ -7,76 +7,33 @@
     font-weight: bold;
   }
 
-  .song-actions {
-    padding: 1rem 1rem;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .action {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      &.disabled {
-        .icon-bg {
-          background-color: #ababab;
-        }
+  .options {
+    position: absolute;
+    right: 0;
+    top: -0.35rem;
+    z-index: 2;
+  }
   
-        &:hover {
-          cursor: not-allowed;
-        }
-      }
-
-      .icon-bg {
-        background-color: #f2f2f2;
-        padding: 1rem;
-        width: 48px;
-        height: 48px;
-        border-radius: 96px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #292d32;
-        margin-bottom: 4px;
-      }
-
-      p small {
-        font-weight: bold;
-      }
-
-      &:hover {
-        cursor: pointer;
-        
-        .icon-bg {
-          color: var(--color-primary-dark)!important;
-        }
-      }
-    }
-  }
-
-  .info {
-    padding: 0;
-  }
-
   .shows {
     list-style: none;
     margin-bottom: 1rem;
 
     .show {
-      padding: 0.75rem 0;
-      border-bottom: 1px solid #ababab;
+      background-color: var(--color-background);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      transition: all 0.7s;
 
       &:last-child {
         border-bottom: none;
+        margin-bottom: 0;
       }
 
       &:hover {
         cursor: pointer;
         background-color: var(--color-primary);
-        color: #ffffff;
+        color: var(--color-text);
       }
     }
   }
@@ -115,25 +72,30 @@
 
       .content {
         position: relative;
-        padding: 1.25rem 0.5rem 1rem 0.5rem;
-        color: var(--color-text-dark);
-        background-color: var(--color-primary-light);
+        padding: 1rem 0.5rem 1rem 0.5rem;
+        color: var(--color-text);
         border-radius: 8px;
       }
 
+      .name {
+        font-size: 1.125rem;
+        padding-right: 96px;
+      }
+
       .description {
-        font-size: 0.875rem;
+        font-size: 1rem;
       }
 
       .counter {
         position: absolute;
         right: 8px;
-        top: 8px;
+        top: 0.75rem;
         border-radius: 8px;
-        color: var(--color-primary);
-        background-color: #ffffff;
+        color: var(--color-text);
+        background: var(--color-secondary);
         padding: 5px 8px;
         font-weight: bold;
+        font-size: 0.75rem;
       }
 
       &:last-child {
@@ -145,16 +107,27 @@
   .songs {
     list-style: none;
     padding: 0.5rem;
-    background-color: #f5f5f5;
+    background-color: var(--color-background);
+    border-radius: 8px;
 
    .song {
+      transition: all 0.7s;
 
       .content {
-        background-color: #f5f5f5;
         display: flex;
         justify-content: space-between;
         align-items: center;
         color: var(--color-text);
+        padding: 0.5rem;
+
+        .song-info span {
+          color: var(--color-secondary-light);
+          font-weight: 600;
+        }
+
+        .song-info span, .song-info p {
+          transition: all 0.7s;
+        }
 
         .icon {
           flex: 0 0 auto;
@@ -173,9 +146,13 @@
       }
 
       &:hover {
-        opacity: 0.5;
-        border-radius: 8px;
+        background-color: var(--color-primary);
         cursor: pointer;
+        border-radius: 8px;
+
+        .song-info span, .song-info p {
+          color: var(--color-text);
+        }
       }
     }
 
@@ -186,6 +163,7 @@
       max-width: 360px;
       width: 100%;
       margin: 1rem auto;
+      opacity: 0.75;
     }
   }
 }
@@ -196,10 +174,40 @@
     text-transform: uppercase;
   }
 
+  .custom-switch {
+    .custom-control-label {
+      font-weight: bold;
+      font-size: 0.875rem;
+      padding-top: 0.100rem;
+    }
+  }
+
+  .third-part {
+    background: linear-gradient(var(--color-primary), var(--color-secondary));
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+
+    p {
+      font-size: 0.875rem;
+    }
+
+    .base-input {
+      margin-bottom: 0;
+    }
+  }
+
+  .info {
+    background-color: var(--color-background);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
   .custom-label {
     font-size: 0.875rem;
     font-weight: 500;
-    color: var(--color-text-dark);
+    color: var(--color-text);
     margin-bottom: 0.5rem;
   }
 
@@ -210,22 +218,22 @@
   .import-btn {
     outline: none;
     border: none;
-    background-color: var(--color-primary);
-    color: var(--color-text-dark);
+    background-color: var(--color-background);
+    color: var(--color-text);
     height: 36px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     border-radius: 8px;
-    margin-top: 1.35rem;
+    transition: all 0.7s;
 
     &:hover {
+      background-color: var(--color-layout);
       cursor: pointer;
     }
 
     &:disabled {
-      opacity: 0.75;
       cursor: not-allowed;
     }
   }

@@ -2,24 +2,42 @@ $body-bg: #f5f5f5;
 $body-color: #000000;
 
 $theme-colors: (
-  "primary": #386CCB,
-  "secondary": #0D3680,
+  "primary": #8257e5,
+  "secondary": #4963f7,
 );
 
 :root {
-  --color-layout: #f5f5f5;
-  --color-primary: #386CCB;
-  --color-secondary: #0D3680;
-  --color-text: #212121;
-  --color-text-dark: #f5f5f5;
-  --color-primary-dark: #0F4DBE;
-  --color-primary-light: #648EDB;
+  --color-layout: #1C1C1C;
+  --color-background: #33333370;
+  
+  --color-input-bg: rgba(255, 255, 255, 0.05);
+  --color-input-bg-light: #f5f5f5;
+  --color-input-text: #F5f5f5;
+  --color-input-text-light: #212121;
+  --color-input-placeholder: #ababab;
+  
+  --color-primary: #8257e5;
+  --color-primary-dark: #633bbc;
+  --color-primary-light: #9672E9;
+  
+  --color-secondary: #4963f7;
+  --color-secondary-light: #497AF7;
+
+  --color-text: #F5f5f5;
+  --color-text-dark: #212121;
+  
   --color-gray: #9A9AAF;
   --color-error: #DB4437 ;
   --color-bg: #F2F3F7;
   --color-bg-dark: #252423;
-  --color-background: #FFFFFF;
-  --color-background-dark: #201f1e;
+}
+
+.text-secondary-light {
+  color: var(--color-secondary-light);
+}
+
+.btn-primary {
+  background: linear-gradient(var(--color-primary), var(--color-secondary));
 }
 
 .bg-none {
