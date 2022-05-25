@@ -30,6 +30,7 @@
               :valid="!v$.form.importUrl.$error"
               :error="v$.form.importUrl.$errors.length ? $translations.translateMessage(v$.form.importUrl.$errors[0].$message) : ''"
               :disabled="songLoading"
+              light
             />
           </div>
           <div class="col-2 pt-0 pl-0">
