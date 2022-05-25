@@ -94,20 +94,26 @@
     <!-- Invite modal -->
     <base-modal @close="closeInviteModal" :show="isInviteModalOpen">
       <slot name="header">
-        <button
-          @click="closeInviteModal"
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
         <div class="container">
           <div class="row">
+            <div class="col-10">
+              <h4 class="text-secondary-light">{{ $t('band.modalTitle') }}</h4>
+            </div>
+            <div class="col-2">
+              <button
+                @click="closeInviteModal()"
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">
+                  <font-awesome-icon icon="times" />
+                </span>
+              </button>
+            </div>
             <div class="col-12">
-              <h4>{{ $t('band.modalTitle') }}</h4>
-              <p>{{ $t('band.modalDescription') }}</p>
+              <p v-html="$t('band.modalDescription')"></p>
             </div>
           </div>
         </div>
@@ -144,31 +150,32 @@
     <!-- Members modal -->
     <base-modal  @close="closeMembersModal" :show="isMembersModalOpen">
       <slot name="header">
-        <button
-          @click="closeMembersModal()"
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
         <div class="container">
           <div class="row">
+            <div class="col-10">
+              <h4 class="text-secondary-light">{{ $t('band.memberSection') }}</h4>
+            </div>
+            <div class="col-2">
+              <button
+                @click="closeMembersModal()"
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">
+                  <font-awesome-icon icon="times" />
+                </span>
+              </button>
+            </div>
             <div class="col-12">
-              <h4>{{ $t('band.memberSection') }}</h4>
-              <p>{{ $t('band.memberDescription') }}</p>
+              <p v-html="$t('band.memberDescription')"></p>
             </div>
           </div>
         </div>
       </slot>
       <div class="container">
         <div class="row band-members">
-          <div class="col-12">
-            <h3 class="title mb-3">
-              {{ $t('band.memberSection') }}
-            </h3>
-          </div>
           <div class="col-12">
             <ul v-if="isDisplayReady" class="members">
               <li v-for="(m, i) in band.members" :key="i" class="item">

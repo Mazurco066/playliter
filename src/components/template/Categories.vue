@@ -69,20 +69,26 @@
     <!-- Category form modal -->
     <base-modal @close="closeCategoryModal" :show="isCategoryModalOpen">
       <slot name="header">
-        <button
-          @click="closeCategoryModal"
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
         <div class="container">
           <div class="row">
+            <div class="col-10">
+              <h4 class="text-secondary-light">{{ $t("categories.formTitle") }}</h4>
+            </div>
+            <div class="col-2">
+              <button
+                @click="closeCategoryModal()"
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">
+                  <font-awesome-icon icon="times" />
+                </span>
+              </button>
+            </div>
             <div class="col-12">
-              <h4>{{ $t("categories.formTitle") }}</h4>
-              <p>{{ $t("categories.formDescription") }}</p>
+              <p v-html="$t('categories.formDescription')"></p>
             </div>
           </div>
         </div>

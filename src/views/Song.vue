@@ -9,61 +9,67 @@
       >
         <div class="options">
           <base-dropdown class="dropdown" position="right">
-                <template v-slot:title>
-                  <a
-                    class="btn"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <font-awesome-icon icon="ellipsis-vertical" />
-                  </a>
-                </template>
-                <a
-                  href="#"
-                  class="dropdown-item"
-                  @click="openListModal()"
-                >
-                  <font-awesome-icon icon="list" class="mr-1" /> {{ $t('song.listAction') }}
-                </a>
-                <a
-                  href="#"
-                  class="dropdown-item"
-                  :class="{ 'disabled': !isEditable }"
-                  @click="isEditable ? editSong() : () => {}"
-                >
-                  <font-awesome-icon icon="edit" class="mr-1" /> {{ $t('song.editAction') }}
-                </a>
-                <a
-                  href="#"
-                  class="dropdown-item"
-                  :class="{ 'disabled': !isRemovable }"
-                  @click="isRemovable ? deleteSong() : () => {}"
-                >
-                  <font-awesome-icon icon="trash" class="mr-1" /> {{ $t('song.removeAction') }}
-                </a>
-              </base-dropdown>
+            <template v-slot:title>
+              <a
+                class="btn"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <font-awesome-icon icon="ellipsis-vertical" />
+              </a>
+            </template>
+            <a
+              href="#"
+              class="dropdown-item"
+              @click="openListModal()"
+            >
+              <font-awesome-icon icon="list" class="mr-1" /> {{ $t('song.listAction') }}
+            </a>
+            <a
+              href="#"
+              class="dropdown-item"
+              :class="{ 'disabled': !isEditable }"
+              @click="isEditable ? editSong() : () => {}"
+            >
+              <font-awesome-icon icon="edit" class="mr-1" /> {{ $t('song.editAction') }}
+            </a>
+            <a
+              href="#"
+              class="dropdown-item"
+              :class="{ 'disabled': !isRemovable }"
+              @click="isRemovable ? deleteSong() : () => {}"
+            >
+              <font-awesome-icon icon="trash" class="mr-1" /> {{ $t('song.removeAction') }}
+            </a>
+          </base-dropdown>
         </div>
       </base-songsheet>
     </div>
     <!-- Modals -->
     <base-modal @close="closeListModal" :show="isListModalOpen">
       <slot name="header">
-        <button
-          @click="closeListModal"
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
         <div class="container">
           <div class="row">
+            <div class="col-10">
+              <h4 class="text-secondary-light">{{ $t('song.modalTitle') }}</h4>
+            </div>
+            <div class="col-2">
+              <button
+                @click="closeListModal()"
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">
+                  <font-awesome-icon icon="times" />
+                </span>
+              </button>
+            </div>
             <div class="col-12">
-              <h4>{{ $t('song.modalTitle') }}</h4>
-              <p>{{ $t('song.modalSubtitle') }}</p>
+              <p v-html="$t('song.modalSubtitle')"></p>
             </div>
           </div>
         </div>
@@ -85,8 +91,10 @@
                   </p>
                 </li>
               </ul>
-              <p v-else class="mb-3">
-                {{ $t('song.noPresentations') }}
+              <p v-else class="mt-2">
+                <strong>
+                  {{ $t('song.noPresentations') }}
+                </strong>
               </p>
             </div>
             <div v-else>

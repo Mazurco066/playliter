@@ -14,9 +14,17 @@
     .modal-content {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      border: none;
       max-height: 90vh;
       overflow-y: auto;
       background-color: var(--color-layout);
+    }
+
+    .close {
+      color: var(--color-text);
+      z-index: 999;
     }
   }
   

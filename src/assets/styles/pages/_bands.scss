@@ -172,10 +172,8 @@
   }
 
   .band-members {
-    padding: 1rem;
-
     .title {
-      color: var(--color-primary-dark);
+      color: var(--color-secondary-light);
     }
 
     .members {
@@ -183,10 +181,14 @@
       margin-bottom: 1rem;
 
       .item {
+        background-color: var(--color-background);
+        padding: 1rem 0.5rem 1rem 1rem;
+        border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 1rem;
+        transition: all 0.7s;
 
         .icon {
           flex: 0 0 auto;
@@ -211,6 +213,19 @@
 
         .actions {
           flex: 0 0 auto;
+        }
+
+        span {
+          color: var(--color-secondary-light);
+        }
+
+        &:hover {
+          background-color: var(--color-primary);
+          cursor: pointer;
+
+          span {
+            color: var(--color-text);
+          }
         }
 
         &:last-child {
