@@ -6,6 +6,7 @@
         @toneUpdated="updateTone"
         :loading="songLoading"
         :song="song"
+        :canUpdateBaseTone="isRemovable"
       >
         <div class="options">
           <base-dropdown class="dropdown" position="right">

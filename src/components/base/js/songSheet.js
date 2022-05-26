@@ -52,6 +52,10 @@ export default {
     showChordList: {
       type: Boolean,
       default: true
+    },
+    canUpdateBaseTone: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {

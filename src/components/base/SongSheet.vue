@@ -98,7 +98,7 @@
               <font-awesome-icon icon="arrow-up" />
             </button>
           </div>
-          <div class="transpose-action" v-if="transpose !== 0">
+          <div v-if="transpose !== 0 && canUpdateBaseTone" class="transpose-action">
             <button
               type="button"
               :disabled="loading"
