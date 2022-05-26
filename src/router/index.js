@@ -16,6 +16,7 @@ import SignIn from '../views/SignIn.vue'
 import SignUp from '../views/SignUp.vue'
 import Song from '../views/Song.vue'
 import SongList from '../views/SongList.vue'
+import Tuner from '../views/Tuner.vue'
 
 // Forms
 import SaveBand from '../views/SaveBand.vue'
@@ -95,6 +96,10 @@ const routes = [{
     path: '/save/show/:band/:id',
     name: 'editShow',
     component: SaveShow
+  }, {
+    path: '/tuner',
+    name: 'tuner',
+    component: Tuner
   }]
 }]
 

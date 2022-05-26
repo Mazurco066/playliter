@@ -45,13 +45,6 @@ export default {
       const { id } = this.$route.params
       return !id 
     },
-    showTipTap () {
-      if (!this.saveMode) {
-        return this.song ? true : false
-      } else {
-        return true
-      }
-    },
     mappedCategories () {
       return this.categories.map(({ title, id }) => ({
         label: title,
