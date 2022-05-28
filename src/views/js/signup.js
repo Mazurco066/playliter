@@ -19,7 +19,8 @@ export default {
   computed: {
     ...mapGetters({
       authLoading: 'authentication/getLoadingStatus',
-      accountLoading: 'account/getLoadingStatus'
+      accountLoading: 'account/getLoadingStatus',
+      appVersion: 'ui/getAppVersion'
     })
   },
   methods: {
