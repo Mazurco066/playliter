@@ -1,0 +1,108 @@
+#web-tuner {
+  position: relative;
+  user-select: none;
+  padding: 1.5rem;
+  cursor: default;
+
+  // Tuner styles
+  canvas {
+    opacity: 0.20;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 50%;
+    width: 100%;
+    z-index: 0;
+  }
+
+  .notes-list {
+    scrollbar-width: none;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+    mask-image: linear-gradient(to left, rgba(255, 255, 255, 0), var(--color-text), rgba(255, 255, 255, 0));
+    -webkit-mask-image: -webkit-linear-gradient(to left, rgba(255, 255, 255, 0), var(--color-text), rgba(255, 255, 255, 0));
+
+    overflow-y: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .notes-list::-webkit-scrollbar {
+    visibility: hidden;
+  }
+
+  .actions {
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    margin-top: 1rem;
+
+    .base-button {
+      width: fit-content;
+    }
+  }
+
+  // Meter styles
+  .meter {
+    position: relative;
+    height: 25px;
+  }
+  
+  .meter-pointer {
+    z-index: 20;
+    width: 4px;
+    height: 20px;
+    transform: translate(-50%); /* Center items */
+    background-color: var(--color-primary);
+    transition: left 1s;
+    position: absolute;
+    left: 50%;
+  }
+  
+  .meter-scale {
+    opacity: 0.5;
+    width: 1px;
+    margin-left:-0.5px;
+    height: 100%;
+    box-sizing: border-box;
+    border-top: 10px solid;
+    position: absolute;
+    left: 50%;
+  }
+  
+  .meter-scale-strong {
+    width: 2px;
+    border-top-width: 20px;
+  }
+
+  // Notes style
+  .note {
+    display: inline-block;
+    position: relative;
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+    font-weight: bold;
+    font-size: 3.75rem;
+    line-height: 1;
+
+    .name {
+      position: absolute;
+      font-weight: normal;
+      top:  0;
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+    }
+
+    .octave {
+      position: absolute;
+      opacity: 0.70;
+      bottom: 0;
+      font-weight: normal;
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+  }
+}
