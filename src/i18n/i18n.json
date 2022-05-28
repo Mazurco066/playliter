@@ -317,6 +317,10 @@
       "by": "By",
       "capo": "Capo"
     },
+    "tuner": {
+      "title": "Online Tuner",
+      "subtitle": "Online instrument tuner tool."
+    },
     "layout": {
       "logout": "Logout",
       "profile": "Profile",
@@ -642,6 +646,10 @@
       "updateTone": "Atualizar Tom Base",
       "by": "Por",
       "capo": "Capo"
+    },
+    "tuner": {
+      "title": "Afinador online",
+      "subtitle": "Ferramenta para afinar instrumentos online."
     },
     "layout": {
       "logout": "Sair",

@@ -1,6 +1,7 @@
 // Object initial state
 const initialState = () => ({
-  theme: 'light'
+  theme: 'light',
+  version: process.env.VERSION
 })
 
 // State object
@@ -10,6 +11,9 @@ const state = initialState()
 const getters = {
   getTheme(state) {
     return state.theme
+  },
+  getAppVersion() {
+    return state.version
   }
 }
 

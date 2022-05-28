@@ -70,7 +70,7 @@
       <div class="row">
         <div class="col-12">
           <p class="text-center">
-            {{ $t('home.version') }} <strong class="text-secondary-light">3.0.1</strong>
+            {{ $t('home.version') }} <strong class="text-secondary-light">{{ appVersion }}</strong>
           </p>
         </div>
       </div>

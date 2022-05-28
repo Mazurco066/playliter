@@ -12,7 +12,8 @@ export default {
   computed: {
     ...mapGetters({
       showLoading: 'show/getLoadingStatus',
-      bandLoading: 'band/getLoadingStatus'
+      bandLoading: 'band/getLoadingStatus',
+      appVersion: 'ui/getAppVersion'
     }),
     hasPendingInvites () {
       return this.invites.length > 0

@@ -17,7 +17,8 @@ export default {
   }),
   computed: {
     ...mapGetters({
-      authLoading: 'authentication/getLoadingStatus'
+      authLoading: 'authentication/getLoadingStatus',
+      appVersion: 'ui/getAppVersion'
     })
   },
   methods: {
