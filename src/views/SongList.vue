@@ -47,7 +47,7 @@
           <h3 class="title">{{ show.title }}</h3>
           <p class="description">{{ show.description }}</p>
           <span class="text-secondary-light">
-            {{ $t('songList.credits') }} {{ $text.formatISODate(new Date().toISOString()) }}
+            <small>{{ $t('songList.credits') }} {{ $text.formatISODate(new Date().toISOString()) }}</small>
           </span>
         </div>
         <!-- <div class="pagebreak"></div> -->
