@@ -17,9 +17,21 @@
         <!-- TODO: Implement picture update -->
         <div class="avatar">
           <div class="image-container">
-            <img src="/img/j_black.jpg" alt="Avatar">
+            <img :src="form.avatar ? form.avatar : '/img/j_black.jpg'" alt="Avatar">
             <button type="button">
-              <font-awesome-icon icon="camera" />
+              <label for="newProfilePhoto" class="upload-file-block mb-0">
+                <font-awesome-icon icon="camera" />
+              </label>
+              <input
+                @change="uploadImage($event)"
+                :disabled="isImageUploading"
+                class="uploadProfileInput"
+                type="file"
+                name="profile_pic"
+                id="newProfilePhoto"
+                accept="image/*"
+                style="display: none;"
+              />
             </button>
           </div>
         </div>

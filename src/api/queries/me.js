@@ -6,6 +6,7 @@ export const ME = gql`
   query {
     me { 
       id
+      avatar
       name
       username
       role
