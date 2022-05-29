@@ -7,6 +7,7 @@ export const ACCOUNT_BY_USERNAME = gql`
     accountByEmail(LoadAccountByEmailInput: { username: $username }) {
       id
       avatar
+      email
       name
       username
       role

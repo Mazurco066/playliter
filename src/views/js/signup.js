@@ -1,6 +1,6 @@
 // Dependencies
 import useVuelidate from '@vuelidate/core'
-import { required, minLength, maxLength } from '@vuelidate/validators'
+import { required, minLength, maxLength, email } from '@vuelidate/validators'
 import { mapActions, mapGetters } from 'vuex'
 
 // Component
@@ -13,7 +13,8 @@ export default {
     form: {
       username: '',
       password: '',
-      name: ''
+      name: '',
+      email: ''
     }
   }),
   computed: {
@@ -75,6 +76,10 @@ export default {
           required,
           minLength: minLength(3),
           maxLength: maxLength(64)
+        },
+        email: {
+          required,
+          email
         },
         password: {
           required,

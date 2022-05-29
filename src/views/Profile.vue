@@ -17,7 +17,12 @@
         <!-- TODO: Implement picture update -->
         <div class="avatar">
           <div class="image-container">
-            <img :src="form.avatar ? form.avatar : '/img/j_black.jpg'" alt="Avatar">
+            <div class="avatar-img">
+              <img
+                :src="form.avatar ? form.avatar : '/img/j_black.jpg'"
+                alt="Avatar"
+              />
+            </div>
             <button type="button">
               <label for="newProfilePhoto" class="upload-file-block mb-0">
                 <font-awesome-icon icon="camera" />
@@ -55,6 +60,18 @@
               v-model="v$.form.name.$model"
               :valid="!v$.form.name.$error"
               :error="v$.form.name.$errors.length ? $translations.translateMessage(v$.form.name.$errors[0].$message) : ''"
+              :disabled="accountLoading"
+            />
+          </div>
+          <div class="col-12">
+            <base-input
+              type="text"
+              :label="$t('profile.emailField')"
+              :placeholder="$t('profile.emailField')"
+              addonLeftIcon="envelope"
+              v-model="v$.form.email.$model"
+              :valid="!v$.form.email.$error"
+              :error="v$.form.email.$errors.length ? $translations.translateMessage(v$.form.email.$errors[0].$message) : ''"
               :disabled="accountLoading"
             />
           </div>

@@ -38,6 +38,18 @@
             </div>
             <div class="col-12">
               <base-input
+                type="text"
+                :label="$t('signup.emailLabel')"
+                :placeholder="$t('signup.emailField')"
+                addonLeftIcon="envelope"
+                v-model="v$.form.email.$model"
+                :valid="!v$.form.email.$error"
+                :error="v$.form.email.$errors.length ? $translations.translateMessage(v$.form.email.$errors[0].$message) : ''"
+                :disabled="authLoading || accountLoading"
+              />
+            </div>
+            <div class="col-12">
+              <base-input
                 type="password"
                 :label="$t('signup.passwordLabel')"
                 :placeholder="$t('signup.passwordField')"

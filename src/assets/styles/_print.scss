@@ -55,7 +55,7 @@
     background-image: url('../public/img/pdf-prev.svg');
     background-size: 100%;
     width: 100%;
-    height: calc(100vh + 1.30rem);
+    height: calc(100vh);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -91,6 +91,7 @@
 
   html, body, #app {
     color: var(--color-text-dark)!important;
+    font-size: 22px;
   }
 }
 
