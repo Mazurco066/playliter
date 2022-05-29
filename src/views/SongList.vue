@@ -42,13 +42,22 @@
 
     <!--- Song print section -->
     <div v-if="!showLoading" class="songs d-none report-print"> <!-- d-none report-print -->
+      <!-- PDF Preview page background content -->
+      <div>
+        <p>Sample</p>
+        <div class="pagebreak"></div>
+      </div>
+      <!-- PDF Preview page main content -->
       <div id="pdf-preview">
-        <div class="info">
-          <h3 class="title">{{ show.title }}</h3>
-          <p class="description">{{ show.description }}</p>
-          <span class="text-secondary-light">
-            <small>{{ $t('songList.credits') }} {{ $text.formatISODate(new Date().toISOString()) }}</small>
-          </span>
+        <div class="svg-container">
+          <img src="/img/pdf-prev.svg" alt="PDF Preview">
+          <div class="info">
+            <h3 class="title">{{ show.title }}</h3>
+            <p class="description">{{ show.description }}</p>
+            <span class="text-secondary-light">
+              <small>{{ $t('songList.credits') }} {{ $text.formatISODate(new Date().toISOString()) }}</small>
+            </span>
+          </div>
         </div>
         <!-- <div class="pagebreak"></div> -->
       </div>

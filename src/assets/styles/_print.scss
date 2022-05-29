@@ -51,28 +51,63 @@
   }
 
   #pdf-preview {
-    background-color: #1c1c1c;
+    background-color: var(--color-layout);
     background-image: url('../public/img/pdf-prev.svg');
     background-size: 100%;
-    width: 100%;
-    height: calc(100vh);
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     page-break-after: always;
 
-    div.info {
-      padding: 1rem 1.5rem;
-      background-color: rgba(0, 0, 0, 0.2)!important;
-      border-radius: 8px;
-      width: 600px;
+    .svg-container {
+      position: relative;
+      height: 100%;
+      width: 100%;
 
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
+      img {
+        object-fit: contain;
+        height: 100%;
+        width: 100%;
+
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        z-index: 1;
+      }
+    }
+
+    // Fix css print height problem
+    width: 100%;
+    height:100%;
+    position:absolute;
+    top:0px;
+    bottom:0px;
+    margin: auto;
+    margin-top: 0px !important;
+    border: 1px solid;
+    z-index: 99;
+    // Remove if you wish to use default height
+
+    div.info {
+      position: absolute;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      margin: 0 auto;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      background-color: rgba(0, 0, 0, 0.2)!important;
+      border-radius: 8px;
+      width: 600px;
     }
 
     h3.title {
@@ -91,8 +126,20 @@
   }
 
   html, body, #app {
+    // Lyrics print definitions
     color: var(--color-text-dark)!important;
     font-size: 22px;
+    
+    // Reset page margins
+    position: relative;
+    margin:0;
+    padding:0;
+
+    // Print graphics
+    -webkit-print-color-adjust: exact;
+    -moz-print-color-adjust: exact;
+    -ms-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }
 
