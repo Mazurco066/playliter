@@ -125,7 +125,11 @@
         "An error ocourred while updating your profile! Please try again later.",
         "Profile successfully updated!",
         "Ther is no authenticated account. Please login!",
-        "There are errors in your form data. Plese review the filled fields!"
+        "There are errors in your form data. Plese review the filled fields!",
+        "No image was selected.",
+        "Upload in progress.",
+        "An error ocourred while uploading your image! Please try again later.",
+        "Upload successfully completed!"
       ]
     },
     "publicSongs": {
@@ -454,7 +458,11 @@
         "Ocorreu um erro ao atualizar seu perfil! Tente novamente mais tarde",
         "Perfil atualizado com sucesso!",
         "Não foi possível obter a conta autenticada. Por favor tente novamente mais tarde!",
-        "Seu formulário contem erros de validação! Por favor revise-os."
+        "Seu formulário contem erros de validação! Por favor revise-os.",
+        "Nenhuma imagem foi informada.",
+        "O upload de sua imagem está em progresso.",
+        "Erro ao enviar imagem. Tente novamente mais tarde!",
+        "Upload concluído com sucesso!"
       ]
     },
     "publicSongs": {

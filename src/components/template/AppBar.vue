@@ -7,7 +7,7 @@
             <div class="app">
               <div class="user">
                 <div class="user-img">
-                  <img src="/img/j_black.jpg" alt="User Image">
+                  <img :src="me.avatar ? me.avatar : '/img/j_black.jpg'" alt="User Image">
                 </div>
                 <div class="user-info">
                   <p class="mb-0">{{ $t('welcomeMsg') }} <strong>{{ $t('appname') }}</strong>!</p>

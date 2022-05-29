@@ -18,6 +18,7 @@ export const BAND = gql`
       }
       members {
         id
+        avatar
         name
         role
         username

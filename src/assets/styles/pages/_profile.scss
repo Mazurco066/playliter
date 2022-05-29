@@ -32,6 +32,21 @@
     .image-container {
       position: relative;
 
+      button {
+        label {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        &:hover {
+          label {
+            cursor: pointer;
+          }
+        }
+      }
+
       img {
         border-radius: 8px;
       }
