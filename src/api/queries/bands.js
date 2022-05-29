@@ -19,6 +19,7 @@ export const BANDS = gql`
       members {
         id
         avatar
+        email
         name
         role
         username

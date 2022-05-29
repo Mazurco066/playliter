@@ -7,6 +7,7 @@ export const ME = gql`
     me { 
       id
       avatar
+      email
       name
       username
       role

@@ -181,7 +181,7 @@
               <li v-for="(m, i) in band.members" :key="i" class="item">
                 <div class="icon">
                   <div class="picture">
-                    <img src="/img/j_black.jpg" alt="">
+                    <img :src="m.avatar ? m.avatar : '/img/j_black.jpg'" alt="">
                   </div>
                 </div>
                 <div class="info">

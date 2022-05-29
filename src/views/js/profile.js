@@ -3,7 +3,7 @@ import axios from 'axios'
 import crypto from 'crypto'
 import useVuelidate from '@vuelidate/core'
 import { mapActions, mapGetters } from 'vuex'
-import { required, minLength, maxLength } from '@vuelidate/validators'
+import { required, minLength, maxLength, email } from '@vuelidate/validators'
 import { asyncHandler } from '../../utils'
 
 // Component
@@ -15,7 +15,8 @@ export default {
   data: () => ({
     form: {
       avatar: '',
-      name: ''
+      name: '',
+      email: ''
     },
     isImageUploading: false
   }),
@@ -122,8 +123,11 @@ export default {
     }
   },
   mounted () {
-    this.form.avatar = this.me.avatar
-    this.form.name = this.me.name
+    this.form = {
+      avatar: this.me.avatar,
+      email: this.me.email,
+      name: this.me.name
+    }
   },
   validations () {
     return {
@@ -132,6 +136,10 @@ export default {
           required,
           minLength: minLength(3),
           maxLength: maxLength(128)
+        },
+        email: {
+          required,
+          email
         }
       }
     }
