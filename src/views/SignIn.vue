@@ -14,7 +14,7 @@
           <div class="row">
             <div class="col-12">
               <base-input
-                label="Username"
+                :label="$t('signin.userLabel')"
                 type="text"
                 :placeholder="$t('signin.userField')"
                 addonLeftIcon="user"
@@ -26,7 +26,7 @@
             </div>
             <div class="col-12">
               <base-input
-                label="Password"
+                :label="$t('signin.passwordLabel')"
                 type="password"
                 :placeholder="$t('signin.passwordField')"
                 addonLeftIcon="key"
@@ -36,7 +36,6 @@
                 :disabled="authLoading"
               />
             </div>
-            <!-- TODO: Implement forgot password -->
             <div class="col-12">
               <div class="auth-link d-flex justify-content-center align-items-center mb-3">
                 <router-link to="forgotPassword" class="forgot-password">
