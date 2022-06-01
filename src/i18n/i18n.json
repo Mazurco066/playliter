@@ -250,7 +250,9 @@
     },
     "signin": {
       "title": "Authentication",
+      "userLabel": "Username",
       "userField": "Type your username",
+      "passwordLabel": "Password",
       "passwordField": "Now your password",
       "forgotPasword": "Forgot my password",
       "submit": "Login",
@@ -283,6 +285,38 @@
         "The password and confirmation must match!",
         "An error ocourred while creating your account! Pleas try again later.",
         "There are errors in your form data. Plese review the filled fields!"
+      ]
+    },
+    "forgotPassword": {
+      "title": "Forgot password",
+      "subtitle": "Enter your account E-mail to receive a reset password message.",
+      "emailLabel": "E-mail",
+      "emailField": "Type your E-mail",
+      "hasAccount": "Sign me in",
+      "submit": "Request reset E-mail",
+      "messages": [
+        "There are errors in your form data. Plese review the filled fields!",
+        "An error ocourred while requesting a password reset. Please try again later!",
+        "A reset password mail was sent to your account!",
+        "Please wait",
+        "We are sending a message to the informed E-mail address."
+      ]
+    },
+    "resetPassword": {
+      "title": "Redefinir senha",
+      "subtitle": "Type a new password for your account and confirm it.",
+      "passwordField": "Password",
+      "passwordLabel": "Password",
+      "confirmField": "Confirm password",
+      "confirmLabel": "Confirm your password",
+      "hasAccount": "Sign me in",
+      "submit": "Update Account",
+      "messages": [
+        "There are errors in your form data. Plese review the filled fields!",
+        "An error ocourred while updating your account. Please try again later!",
+        "Sua senha foi redefinida com sucesso! Faça login novamente com sua nova senha.",
+        "Aguarde",
+        "Estamos atualizando a sua conta."
       ]
     },
     "song": {
@@ -587,7 +621,9 @@
     },
     "signin": {
       "title": "Autenticação",
+      "userLabel": "Usuário",
       "userField": "Entre com seu usuário",
+      "passwordLabel": "Senha",
       "passwordField": "Agora digite sua senha",
       "forgotPasword": "Esqueci minha senha",
       "submit": "Acessar",
@@ -620,6 +656,38 @@
         "As senhas devem ser iguais!",
         "Ocorreu um erro ao criar sua conta! Tente novamente mais tarde.",
         "Seu formulário contem erros de validação! Por favor revise-os."
+      ]
+    },
+    "forgotPassword": {
+      "title": "Esqueci minha senha",
+      "subtitle": "Digite o E-mail vinculado a sua conta para receber um E-mail de redefinição de senha.",
+      "emailLabel": "E-mail",
+      "emailField": "Digite seu E-mail",
+      "hasAccount": "Voltar para autenticação",
+      "submit": "Solicitar redefinição",
+      "messages": [
+        "Seu formulário contem erros de validação! Por favor revise-os.",
+        "Ocorreu um erro ao solicitar sua redefinição de senha. Por favor tente novamente mais tarde!",
+        "Um E-mail de redefinição de senha foi enviado para o endereço informado.",
+        "Aguarde",
+        "Estamos enviando um E-mail de recuperação de conta para o endereço de E-mail informado."
+      ]
+    },
+    "resetPassword": {
+      "title": "Redefinir senha",
+      "subtitle": "Entre com uma nova senha para sua conta e a confirme",
+      "passwordField": "Agora digite seu senha",
+      "passwordLabel": "Senha",
+      "confirmField": "Agora confirme sua senha",
+      "confirmLabel": "Confirmar senha",
+      "hasAccount": "Voltar para autenticação",
+      "submit": "Redefinir senha",
+      "messages": [
+        "Seu formulário contem erros de validação! Por favor revise-os.",
+        "Ocorreu um erro ao redefinir sua senha. Por favor tente novamente mais tarde!",
+        "Sua senha foi redefinida com sucesso! Faça login novamente com sua nova senha.",
+        "Aguarde",
+        "Estamos atualizando a sua conta."
       ]
     },
     "song": {

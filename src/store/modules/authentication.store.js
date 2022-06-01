@@ -1,6 +1,6 @@
 // Dependencies
 import { graphqlClient } from '../../api'
-import { AUTHENTICATE } from '../../api/mutations'
+import { AUTHENTICATE, FORGOT_PASSWORD, RESET_PASSWORD } from '../../api/mutations'
 import { asyncHandler } from '../../utils'
 
 // Object initial state
@@ -42,6 +42,38 @@ const actions = {
     return {
       error: error,
       data: error ? {} : resp.data.authenticate,
+      message: error ? resp.message : null
+    }
+  },
+  async requestPasswordReset({ commit }, email) {
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.mutate({
+        mutation: FORGOT_PASSWORD,
+        variables: { email }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : resp.data.forgotPassword,
+      message: error ? resp.message : null
+    }
+  },
+  async resetPassword({ commit }, { accountId, token, newPassword }) {
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.mutate({
+        mutation: RESET_PASSWORD,
+        variables: { accountId, token, newPassword }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : resp.data.resetPassword,
       message: error ? resp.message : null
     }
   }

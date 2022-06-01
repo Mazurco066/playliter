@@ -14,6 +14,8 @@ import PublicSongs from '../views/PublicSongs.vue'
 import Show from '../views/Show.vue'
 import SignIn from '../views/SignIn.vue'
 import SignUp from '../views/SignUp.vue'
+import ForgotPassword from '../views/ForgotPassword.vue'
+import ResetPassword from '../views/ResetPassword.vue'
 import Song from '../views/Song.vue'
 import SongList from '../views/SongList.vue'
 import Tuner from '../views/Tuner.vue'
@@ -36,6 +38,14 @@ const routes = [{
     path: '/signup',
     name: 'signup',
     component: SignUp
+  }, {
+    path: '/forgotPassword',
+    name: 'forgotPassword',
+    component: ForgotPassword
+  }, {
+    path: '/resetPassword/:id/:token',
+    name: 'resetPassword',
+    component: ResetPassword
   }]
 }, {
   path: '/',
