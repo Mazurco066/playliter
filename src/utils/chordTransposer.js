@@ -5,12 +5,15 @@ import { getUniquesTyped } from './getUniques'
 
 // Parser format for multi parser
 const songParsers = [{
+  name: 'ultimateguitar',
   pattern: /\[(Verse.*|Chorus)\]/i,
   parser: new ChordSheetJS.UltimateGuitarParser({ preserveWhitespace: false })
 }, {
+  name: 'chordpro',
   pattern: /{\w+:.*|\[[A-G].*\]/i,
   parser: new ChordSheetJS.ChordProParser()
 }, {
+  name: 'chordsheet',
   pattern: /.*/,
   parser: new ChordSheetJS.ChordSheetParser({ preserveWhitespace: false })
 }]
@@ -23,6 +26,18 @@ const songParsers = [{
 function detectFormat (source) {
   if (!source) return
   return songParsers.find(({ pattern }) => source.match(pattern)).parser
+}
+
+/**
+ * Detects song format and return it
+ * @param {string} lyrics - raw song
+ * @returns {string} Song type
+ */
+export const detecteSongFormat = (lyrics = '') => {
+  if (!lyrics) return 'none'
+  const formattedLyrics = lyrics.replaceAll('<br>', '\n').replace(/\r\n/gm, '\n')
+  const format = songParsers.find(({ pattern }) => formattedLyrics.match(pattern)).name
+  return format || 'none'
 }
 
 /**
