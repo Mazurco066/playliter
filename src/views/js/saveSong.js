@@ -113,7 +113,7 @@ export default {
         }
 
         // Clone body text as a variable to update it
-        let bodyText = this.song
+        let bodyText = chordTransposer.plaintextToChordProFormat(this.song)
 
         // Define body flags
         const hasTitle = bodyText.includes('{title:')

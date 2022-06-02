@@ -124,10 +124,25 @@
     }
   }
 
+  .shongsheet {
+    .song-title {
+      font-size: 26px!important;
+      color: var(--color-primary);
+    }
+  }
+
   html, body, #app {
     // Lyrics print definitions
     color: var(--color-text-dark)!important;
     font-size: 22px;
+
+    .chord, .lyrics {
+      max-height: 28px;
+    }
+
+    .lyrics {
+      overflow: initial;
+    }
     
     // Reset page margins
     position: relative;
