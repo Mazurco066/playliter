@@ -25,7 +25,7 @@ export default {
     return { v$: useVuelidate() }
   },
   data: () => ({
-    song: '{title: title}\n{artist: artist}\n{key: key}\n\n',
+    song: '',
     form: {
       title: '',
       writter: '',
@@ -100,7 +100,7 @@ export default {
           ? external.data.tone
           : external.data.tone.substring(0, 1)
         this.form.tone = obtainedTone
-        this.song = `{title: ${external.data.title}}\n{artist: ${external.data.writter}}\n{key: ${obtainedTone}}\n\n${formattedSong}`
+        this.song = formattedSong
       }
     },
     async createSong () {
@@ -113,7 +113,10 @@ export default {
         }
 
         // Clone body text as a variable to update it
-        let bodyText = chordTransposer.plaintextToChordProFormat(this.song)
+        const songFormat = chordTransposer.detecteSongFormat(this.song)
+        let bodyText = songFormat !== 'chordpro'
+          ? chordTransposer.plaintextToChordProFormat(this.song)
+          : this.song
 
         // Define body flags
         const hasTitle = bodyText.includes('{title:')
@@ -193,8 +196,13 @@ export default {
         isPublic: song.data.isPublic
       }
       
-      // Replace \n with html elements
-      this.song = song.data.body.replaceAll('<br>', '\n')  
+      // Replace \n with html elements and meta brackets
+      this.song = song.data.body
+        .replaceAll('<br>', '\n')
+        // Song metadata (dont worry il 'll be generated again)
+        .replace(/{title:(.*)}\n/, '')
+        .replace(/{artist:(.*)}\n/, '')
+        .replace(/{key:(.*)}\n/, '')
       if (!Object.keys(song.data).length > 0) {
         this.$toast.warning(this.$t('saveSong.messages[3]'))
         this.$router.push({ name: 'band', params: { id: band } })
@@ -217,8 +225,6 @@ export default {
         this.$router.push({ name: 'band', params: { id: band } })
       }
     }
-
-    
   },
   validations () {
     return {
