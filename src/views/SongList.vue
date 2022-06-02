@@ -69,7 +69,7 @@
         <div class="row">
           <!-- Song metadata -->
           <div class="col-12" v-if="song.title">
-            <h1 class="text-xl my-1">
+            <h1 class="song-title text-xl my-1">
               {{ song.title }}
             </h1>
           </div>

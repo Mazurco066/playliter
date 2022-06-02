@@ -1,7 +1,29 @@
 // Dependencies
-import { ChordSheetParser, ChordProParser, ChordProFormatter } from 'chordsheetjs'
+import ChordSheetJS, { ChordProFormatter } from 'chordsheetjs'
 import { Chord } from 'chordsheetjs'
 import { getUniquesTyped } from './getUniques'
+
+// Parser format for multi parser
+const songParsers = [{
+  pattern: /\[(Verse.*|Chorus)\]/i,
+  parser: new ChordSheetJS.UltimateGuitarParser({ preserveWhitespace: false })
+}, {
+  pattern: /{\w+:.*|\[[A-G].*\]/i,
+  parser: new ChordSheetJS.ChordProParser()
+}, {
+  pattern: /.*/,
+  parser: new ChordSheetJS.ChordSheetParser({ preserveWhitespace: false })
+}]
+
+/**
+ * Detects song format and returnts the correct parser
+ * @param {string} source - Raw song 
+ * @returns {Parser} - Returns mathing parser
+ */
+function detectFormat (source) {
+  if (!source) return
+  return songParsers.find(({ pattern }) => source.match(pattern)).parser
+}
 
 /**
  * Converts a plaintext song to html format
@@ -11,18 +33,12 @@ import { getUniquesTyped } from './getUniques'
  export const plaintextToChordProFormat = (lyrics = '') => {
   try {
 
-    // TODO: Implemant an autodetect system
-    // const format = detectFormat(e.text)
-    // if (!format || format instanceof ChordSheetJS.ChordProParser) return
-    // e.text = new ChordSheetJS.ChordProFormatter().format(format.parse(e.text))
-
     // Chordsheetjs utils
     const normalizedSong = lyrics.replaceAll('<br>', '\n').replace(/\r\n/gm, '\n')
-    const parser = new ChordSheetParser({ preserveWhitespace: false })
     const formatter = new ChordProFormatter()
-
+    
     // Format song into html format
-    const song = parser.parse(normalizedSong)
+    const song = detectFormat(normalizedSong).parse(normalizedSong)
     return formatter.format(song).toString()
 
   } catch (err) {
@@ -41,8 +57,7 @@ export const getUniqueChords = (lyrics = '', transpose = 0) => {
 
     // Chordsheetjs utils
     const song = lyrics.replace(/\r\n/gm, '\n')
-    const parser = new ChordProParser()
-    const chordsheetjsSong = parser.parse(song)
+    const chordsheetjsSong = detectFormat(song).parse(song)
 
     // Add transposed chord to song object
     const chords = {}
@@ -82,8 +97,8 @@ export const getTransposedSong = (lyrics = '', transpose = 0) => {
   try {
 
     // Chordsheetjs utils
-    const parser = new ChordProParser()
-    const song = parser.parse(lyrics.replace(/\r\n/gm, '\n'))
+    const normalizedSong = lyrics.replace(/\r\n/gm, '\n')
+    const song = detectFormat(normalizedSong).parse(normalizedSong)
         
     // Add transposed chord to song object
     const chords = {}
