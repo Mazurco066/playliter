@@ -5,6 +5,9 @@ import { mapActions, mapGetters } from 'vuex'
 // Component
 export default {
   name: 'VerifyAccount',
+  data: () => ({
+    pathValue: ''
+  }),
   components: { CodeInput },
   computed: {
     ...mapGetters({
@@ -21,6 +24,7 @@ export default {
       loadMe: 'account/loadMe'
     }),
     async onComplete (code) {
+      console.log('[complete]', code)
       // Display loading message
       const swal = this.$swal({
         icon: 'info',
@@ -45,9 +49,17 @@ export default {
       }
     }
   },
-  mounted () {
+  beforeMount() {
+    // If account is already confirmed just redirect to home
     if (this.isAccountConfirmed) {
       this.$router.push({ name: 'home' })
+    } else {
+      // Retrieve path params
+      const { code } = this.$route.params
+      if (code) {
+        console.log('[here]', code)
+        this.pathValue = code
+      }
     }
   }
 }

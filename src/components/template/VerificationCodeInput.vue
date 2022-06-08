@@ -41,6 +41,10 @@
 import { defineProps, defineEmits, ref, toRef, onBeforeUpdate } from "vue";
 const props = defineProps({
   className: String,
+  pathValue: {
+    type: String,
+    default: ''
+  },
   fields: {
     type: Number,
     default: 3,
@@ -79,6 +83,14 @@ const autoFocusIndex = ref(0);
 const autoFocus = true;
 const initVals = () => {
   let vals;
+  
+  // Add default value if possible
+  if (props.pathValue) {
+    values.value = props.pathValue.split('');
+    emit("complete", props.pathValue);
+  }
+
+  // Populate fields
   if (values.value && values.value.length) {
     vals = [];
     for (let i = 0; i < fields.value; i++) {

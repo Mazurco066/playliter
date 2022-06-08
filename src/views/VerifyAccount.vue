@@ -21,6 +21,7 @@
             :fieldHeight="56"
             :required="true"
             :disabled="accountLoading"
+            :pathValue="pathValue"
           />
           <p class="text-center mb-0">
             {{ $t('verifyAccount.resendLabel') }} <strong class="text-secondary-light">{{ $t('verifyAccount.resendLink') }}</strong>
