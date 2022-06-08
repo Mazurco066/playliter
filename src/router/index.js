@@ -26,6 +26,9 @@ import SaveBand from '../views/SaveBand.vue'
 import SaveSong from '../views/SaveSong.vue'
 import SaveShow from '../views/SaveShow.vue'
 
+// Store
+import store from '../store'
+
 // Configured Routes
 const routes = [{
   path: '/',
@@ -138,6 +141,28 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   linkActiveClass: 'active',
   routes
+})
+
+// Routes validation
+router.beforeEach((to, _, next) => {
+  // Retrieve store authentication data
+  const currentUser = store['getters']['account/getMe']
+  const authentication = store['getters']['authentication/getAuthorization']
+
+  // If user account is not validated force validation
+  if (currentUser && authentication) {
+    if (
+      !['verifyAccount', 'verifyAccountCode'].includes(to.name) &&
+      currentUser.isEmailconfirmed &&
+      !JSON.parse(currentUser.isEmailconfirmed)
+    ) {
+      next({ name: 'verifyAccount' })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }  
 })
 
 // Exporting configured router
