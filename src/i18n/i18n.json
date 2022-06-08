@@ -328,7 +328,9 @@
         "The inserted code is invalid!",
         "Please wait",
         "Your account is under validation.",
-        "Your account was successfully activated!"
+        "Your account was successfully activated!",
+        "An error ocourred while resending the verification E-mail! Please try again later.",
+        "The verification mail has been resent! Please check your E-mail for new messages."
       ]
     },
     "song": {
@@ -399,7 +401,7 @@
       "modalTitle": "Convidar Membro",
       "modalDescription": "Convide um novo membro para a banda inserindo o username da pessoa desejada.",
       "userField": "Nome de usuário",
-      "tabs": ["Músicas", "Categorias", "Shows"],
+      "tabs": ["Músicas", "Categorias", "Apresentações"],
       "messages": [
         "Banda não encontrada",
         "O usuário já se encontra nessa banda!",
@@ -711,7 +713,9 @@
         "O código inserido está inválido!",
         "Aguarde",
         "Estamos validando a sua conta.",
-        "Sua conta foi ativada com sucesso!"
+        "Sua conta foi ativada com sucesso!",
+        "Ocorreu um erro ao reenviar o E-mail de validação! Por favor tente novamente mais tarde",
+        "Um E-mail de verificação foi enviado novamente. Verifique seua caixa de entrada!"
       ]
     },
     "song": {

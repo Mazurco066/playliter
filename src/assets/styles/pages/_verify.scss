@@ -23,6 +23,13 @@
     }
   }
 
+  .resend-link {
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
   .code-input-container {
     position: relative;
     display: flex;

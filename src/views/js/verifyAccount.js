@@ -21,6 +21,7 @@ export default {
   methods: {
     ...mapActions({
       verifyAccount: 'account/verifyAccount',
+      resendVerification: 'account/resendVerification',
       loadMe: 'account/loadMe'
     }),
     async onComplete (code) {
@@ -45,6 +46,17 @@ export default {
         this.$toast.success(this.$t('verifyAccount.messages[3]'))
         await this.loadMe()
         this.$router.push({ name: 'home' })
+      }
+    },
+    async sendMeAnotherMail () {
+      const response = await this.resendVerification()
+      if (response.error) {
+        this.$toast.error(
+          response.message.replace('GraphQL error:', '') ||
+          this.$t('verifyAccount.messages[4]')
+        )
+      } else {
+        this.$toast.success(this.$t('verifyAccount.messages[5]'))
       }
     }
   },

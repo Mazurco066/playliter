@@ -24,7 +24,13 @@
             :pathValue="pathValue"
           />
           <p class="text-center mb-0">
-            {{ $t('verifyAccount.resendLabel') }} <strong class="text-secondary-light">{{ $t('verifyAccount.resendLink') }}</strong>
+            {{ $t('verifyAccount.resendLabel') }} 
+            <strong
+              @click="accountLoading ? () => {} : sendMeAnotherMail()"
+              class="resend-link text-secondary-light"
+            >
+              {{ $t('verifyAccount.resendLink') }}
+            </strong>
           </p>
         </div>
       </div>
