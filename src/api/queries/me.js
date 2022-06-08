@@ -11,6 +11,7 @@ export const ME = gql`
       name
       username
       role
+      isEmailconfirmed
       createdAt
       updatedAt
     }

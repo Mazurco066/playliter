@@ -1,6 +1,8 @@
 <template>
   <div id="dashboard-layout" class="wrapper">
-    <app-bar />
+    <app-bar
+      v-if="showHeader"
+    />
     <main id="main-body" class="main-content">
       <router-view v-slot="{ Component }">
         <transition name="zoom" mode="out-in">
@@ -8,7 +10,9 @@
         </transition>
       </router-view>
     </main>
-    <bottom-navigation />
+    <bottom-navigation
+      v-if="showBottom"
+    />
   </div>
 </template>
 
@@ -23,7 +27,13 @@ export default {
   computed: {
     ...mapGetters({
       me: 'account/getMe'
-    })
+    }),
+    showHeader () {
+      return !this.$route.meta.hideHeader
+    },
+    showBottom () {
+      return !this.$route.meta.hideBottom
+    }
   },
   methods: {
     ...mapActions({

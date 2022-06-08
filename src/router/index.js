@@ -19,6 +19,7 @@ import ResetPassword from '../views/ResetPassword.vue'
 import Song from '../views/Song.vue'
 import SongList from '../views/SongList.vue'
 import Tuner from '../views/Tuner.vue'
+import VerifyAccount from '../views/VerifyAccount.vue'
 
 // Forms
 import SaveBand from '../views/SaveBand.vue'
@@ -81,7 +82,10 @@ const routes = [{
   }, {
     path: '/show/:band/:id/playlist',
     name: 'playlist',
-    component: SongList
+    component: SongList,
+    meta: {
+      hideBottom: true
+    }
   }, {
     path: '/save/band',
     name: 'saveBand',
@@ -110,6 +114,22 @@ const routes = [{
     path: '/tuner',
     name: 'tuner',
     component: Tuner
+  }, {
+    path: '/verify',
+    name: 'verifyAccount',
+    component: VerifyAccount,
+    meta: {
+      hideHeader: false,
+      hideBottom: true
+    }
+  }, {
+    path: '/verify/:code',
+    name: 'verifyAccountCode',
+    component: VerifyAccount,
+    meta: {
+      hideHeader: false,
+      hideBottom: true
+    }
   }]
 }]
 

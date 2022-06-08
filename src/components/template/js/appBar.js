@@ -7,7 +7,10 @@ export default {
   computed: {
     ...mapGetters({
       me: 'account/getMe'
-    })
+    }),
+    isAccountConfirmed () {
+      return this.me.isEmailconfirmed && JSON.parse(this.me.isEmailconfirmed)
+    }
   },  
   methods: {
     ...mapActions({
