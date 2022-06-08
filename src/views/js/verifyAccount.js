@@ -24,7 +24,6 @@ export default {
       loadMe: 'account/loadMe'
     }),
     async onComplete (code) {
-      console.log('[complete]', code)
       // Display loading message
       const swal = this.$swal({
         icon: 'info',
