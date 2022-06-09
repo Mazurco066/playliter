@@ -1,15 +1,14 @@
 // Dependencies
 import { gql } from 'apollo-boost'
 
-// Query
-export const ME = gql`
-  query {
-    me { 
+// Mutation
+export const RESEND_VERIFICATION_CODE = gql`
+  mutation {
+    resendVerificationCode {
       id
-      avatar
-      email
       name
       username
+      email
       role
       isEmailconfirmed
       createdAt

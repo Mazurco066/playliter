@@ -31,13 +31,13 @@
                       <font-awesome-icon icon="gear" />
                     </a>
                   </template>
-                  <a href="#" class="dropdown-item" @click="navigateTo('profile')">
+                  <a v-if="isAccountConfirmed" href="#" class="dropdown-item" @click="navigateTo('profile')">
                     <font-awesome-icon icon="user-astronaut" class="mr-1" /> {{ $t('layout.profile') }}
                   </a>
-                  <a href="#" class="dropdown-item" @click="navigateTo('tuner')">
+                  <a v-if="isAccountConfirmed" href="#" class="dropdown-item" @click="navigateTo('tuner')">
                     <font-awesome-icon icon="music" class="mr-1" /> {{ $t('layout.tuner') }}
                   </a>
-                  <hr class="mb-2" />
+                  <hr v-if="isAccountConfirmed" class="mb-2" />
                   <a href="#" class="dropdown-item" @click="logout()">
                     <font-awesome-icon icon="right-from-bracket" class="mr-1" /> {{ $t('layout.logout') }}
                   </a>

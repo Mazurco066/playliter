@@ -33,8 +33,8 @@ export default {
 
         console.log('token', token)
 
-         // Display loading message
-         const swal = this.$swal({
+        // Display loading message
+        const swal = this.$swal({
           icon: 'info',
           title: this.$t('resetPassword.messages[3]'),
           text: this.$t('resetPassword.messages[4]'),

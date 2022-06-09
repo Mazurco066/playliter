@@ -1,7 +1,7 @@
 // Dependencies
 import { getAuthenticatedClient } from '../../api'
 import { ME, ACCOUNT_BY_USERNAME } from '../../api/queries'
-import { UPDATE_PROFILE, ADD_ACCOUNT } from '../../api/mutations'
+import { UPDATE_PROFILE, ADD_ACCOUNT, RESEND_VERIFICATION_CODE, VERIFY_ACCOUNT } from '../../api/mutations'
 import { asyncHandler } from '../../utils'
 
 // Object initial state
@@ -89,6 +89,40 @@ const actions = {
     return {
       error: error,
       data: error ? {} : resp.data.updateAccount,
+      message: error ? resp.message : null
+    }
+  },
+  async verifyAccount({ commit }, code) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.mutate({
+        mutation: VERIFY_ACCOUNT,
+        variables: { code }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : resp.data.verifyAccount,
+      message: error ? resp.message : null
+    }
+  },
+  async resendVerification({ commit }) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.mutate({
+        mutation: RESEND_VERIFICATION_CODE,
+        variables: {}
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : resp.data.resendVerificationCode,
       message: error ? resp.message : null
     }
   }

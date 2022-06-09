@@ -315,8 +315,22 @@
         "There are errors in your form data. Plese review the filled fields!",
         "An error ocourred while updating your account. Please try again later!",
         "Sua senha foi redefinida com sucesso! Faça login novamente com sua nova senha.",
-        "Aguarde",
-        "Estamos atualizando a sua conta."
+        "Please wait",
+        "Your account is under validation."
+      ]
+    },
+    "verifyAccount": {
+      "title": "Validate your E-mail",
+      "subtitle": "Please input the security code sent to",
+      "resendLabel": "Don't received a code?",
+      "resendLink": "Resend.",
+      "messages": [
+        "The inserted code is invalid!",
+        "Please wait",
+        "Your account is under validation.",
+        "Your account was successfully activated!",
+        "An error ocourred while resending the verification E-mail! Please try again later.",
+        "The verification mail has been resent! Please check your E-mail for new messages."
       ]
     },
     "song": {
@@ -387,7 +401,7 @@
       "modalTitle": "Convidar Membro",
       "modalDescription": "Convide um novo membro para a banda inserindo o username da pessoa desejada.",
       "userField": "Nome de usuário",
-      "tabs": ["Músicas", "Categorias", "Shows"],
+      "tabs": ["Músicas", "Categorias", "Apresentações"],
       "messages": [
         "Banda não encontrada",
         "O usuário já se encontra nessa banda!",
@@ -688,6 +702,20 @@
         "Sua senha foi redefinida com sucesso! Faça login novamente com sua nova senha.",
         "Aguarde",
         "Estamos atualizando a sua conta."
+      ]
+    },
+    "verifyAccount": {
+      "title": "Valide seu E-mail",
+      "subtitle": "Favor digitar o código de recuperação enviado para",
+      "resendLabel": "Eu não recebi o código!",
+      "resendLink": "Por favor re envie.",
+      "messages": [
+        "O código inserido está inválido!",
+        "Aguarde",
+        "Estamos validando a sua conta.",
+        "Sua conta foi ativada com sucesso!",
+        "Ocorreu um erro ao reenviar o E-mail de validação! Por favor tente novamente mais tarde",
+        "Um E-mail de verificação foi enviado novamente. Verifique seua caixa de entrada!"
       ]
     },
     "song": {
