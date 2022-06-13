@@ -156,7 +156,7 @@
             <ul class="bands-list" v-if="!bandLoading">
               <li
                 class="item"
-                v-for="(band, i) in computedBands"
+                v-for="(band, i) in bands"
                 :key="i"
                 @click="cloneSong(band)"
               >

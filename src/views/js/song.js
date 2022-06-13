@@ -47,9 +47,6 @@ export default {
       } else {
         return false
       } 
-    },
-    computedBands () {
-      return this.bands.filter(b => b.id !== this.song.band.id)
     }
   },
   methods: {
