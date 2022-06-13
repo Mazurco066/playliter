@@ -8,8 +8,10 @@ export default {
   data: () => ({
     song: {},
     band: {},
+    bands: [],
     shows: [],
-    isListModalOpen: false
+    isListModalOpen: false,
+    isCloneModalOpen: false
   }),
   computed: {
     ...mapGetters({
@@ -52,8 +54,10 @@ export default {
       loadSong: 'song/loadBandSong',
       removeBandSong: 'song/removeBandSong',
       listAccountShows: 'show/listAccountShows',
+      listBandCategories: 'song/listBandCategories',
       linkSong: 'show/linkSong',
       loadBand: 'band/loadBand',
+      loadBands: 'band/loadBands',
       saveSong: 'song/saveSong'
     }),
     async updateTone (transposedSong, transpositions, transpose) {
@@ -90,6 +94,65 @@ export default {
     },
     openListModal () {
       this.isListModalOpen = true
+    },
+    closeCloneModal () {
+      this.isCloneModalOpen = false
+      this.bands = []
+    },
+    async cloneSong (band) {
+      this.$swal({
+        title: this.$t('song.cloneSwal.title'),
+        html: this.$t('song.cloneSwal.description'),
+        icon: 'info',
+        showDenyButton: true,
+        confirmButtonColor: '#1C8781',
+        confirmButtonText: this.$t('song.cloneSwal.confirm'),
+        denyButtonText: this.$t('song.cloneSwal.deny'),
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const swal = this.$swal({
+            icon: 'info',
+            title: this.$t('song.cloneSwal.loadingTitle'),
+            text: this.$t('song.cloneSwal.loadingDescription'),
+            showConfirmButton: false,
+            allowOutsideClick: false
+          })
+          const { id: bandId } = band
+          const categories = await this.listBandCategories({ band: bandId })
+          if (categories.error) {
+            this.$toast.error(this.$t('song.cloneSwal.errorMessage'))
+          }
+          const categoriesList = categories.data
+          if (categoriesList.length <= 0) {
+            this.$toast.warning(this.$t('song.cloneSwal.categoryError'))
+          }
+          const firstCategoryId = categoriesList[0].id
+          const r = await this.saveSong({ payload: {
+            title: `${this.song.title} - Copy`,
+            writter: this.song.writter,
+            category: firstCategoryId,
+            isPublic: false,
+            tone: this.song.tone,
+            body: this.song.body,
+            band: bandId
+          }})
+          swal.close()
+          if (r.error) {
+            this.$toast.error(this.$t('song.cloneSwal.errorMessage'))
+          } else {
+            this.$toast.success(this.$t('song.cloneSwal.successMessage'))
+            this.$router.push({
+              name: 'band',
+              params: { id: bandId }
+            })
+          }
+        }
+      })
+    },
+    async openCloneModal () {  
+      this.isCloneModalOpen = true
+      const r = await this.loadBands({})
+      this.bands = r.data
     },
     async addSongToShow (show) {
       const songId = this.song.id

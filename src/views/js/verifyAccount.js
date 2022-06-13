@@ -68,7 +68,6 @@ export default {
       // Retrieve path params
       const { code } = this.$route.params
       if (code) {
-        console.log('[here]', code)
         this.pathValue = code
       }
     }

@@ -38,6 +38,30 @@
     }
   }
 
+  .bands-list {
+    list-style: none;
+    margin-bottom: 1rem;
+
+    .item {
+      background-color: var(--color-background);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      transition: all 0.7s;
+
+      &:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: var(--color-primary);
+        color: var(--color-text);
+      }
+    }
+  }
+
   pre#lyrics {
     color: var(--color-text)!important;
   }
