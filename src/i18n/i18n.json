@@ -336,6 +336,7 @@
     "song": {
       "listAction": "+ List",
       "editAction": "Update",
+      "cloneAction": "Clone",
       "addAction": "Add",
       "cancelAction": "Cancel",
       "removeAction": "Remove",
@@ -345,6 +346,19 @@
       "chords": "Chords",
       "hideChords": "Hide chords on screen",
       "showChords": "Display chords on screen",
+      "cloneTitle": "Clone song",
+      "cloneSubtitle": "Save a copy of this song to any of your bands.",
+      "cloneSwal": {
+        "title": "Do you wish to clone this song?",
+        "description": "Cloning a song allows updating its content",
+        "confirm": "Clone",
+        "deny": "Cancel",
+        "loadingTitle": "Please wait...",
+        "loadingDescription": "We're saving a copy of this song to your band.",
+        "errorMessage": "An error ocourred while saving a copy of this song! Please try again later.",
+        "successMessage": "The song was successfully saved as a copy!",
+        "categoryError": "Thre is no category registered on the selected band!"
+      },
       "messages": [
         "Music not found!",
         "This actions is permanent!",
@@ -721,6 +735,7 @@
     "song": {
       "listAction": "+ Lista",
       "editAction": "Editar",
+      "cloneAction": "Clonar",
       "addAction": "Adicionar",
       "cancelAction": "Cancelar",
       "removeAction": "Remover",
@@ -730,6 +745,19 @@
       "chords": "Formação dos acordes",
       "hideChords": "Ocultar formação de acordes",
       "showChords": "Mostrar formação de acordes",
+      "cloneTitle": "Clonar música",
+      "cloneSubtitle": "Salve uma cópia dessa música em uma de suas bandas para possibilitar a edição.",
+      "cloneSwal": {
+        "title": "Deseja clonar essa música?",
+        "description": "Ao clonar uma música para sua banda torna possivel a edição da mesma",
+        "confirm": "Clonar",
+        "deny": "Cancelar",
+        "loadingTitle": "Aguarde...",
+        "loadingDescription": "Estamos clonando a música para a banda selecionada.",
+        "errorMessage": "Ocorreu um erro ao clonar a música selecionada! Tente novamente mais tarde",
+        "successMessage": "A música selecionada foi clonada com sucesso!",
+        "categoryError": "Não há categorias cadastradas na banda selecionada!"
+      },
       "messages": [
         "Música não encontrada!",
         "Essa ação é permanente!",

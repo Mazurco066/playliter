@@ -44,12 +44,23 @@
             >
               <font-awesome-icon icon="trash" class="mr-1" /> {{ $t('song.removeAction') }}
             </a>
+            <a
+              href="#"
+              class="dropdown-item"
+              :class="{ 'disabled': bandLoading || songLoading }"
+              @click="bandLoading || songLoading ? () => {} : openCloneModal()"
+            >
+              <font-awesome-icon icon="clone" class="mr-1" /> {{ $t('song.cloneAction') }}
+            </a>
           </base-dropdown>
         </div>
       </base-songsheet>
     </div>
-    <!-- Modals -->
-    <base-modal @close="closeListModal" :show="isListModalOpen">
+    <!-- Add to list Modals -->
+    <base-modal
+      @close="closeListModal"
+      :show="isListModalOpen"
+    >
       <slot name="header">
         <div class="container">
           <div class="row">
@@ -105,6 +116,60 @@
                 </li>
               </ul>
             </div>
+          </div>
+        </div>
+      </div>
+    </base-modal>
+    <!-- Clone song to a band -->
+    <base-modal
+       @close="closeCloneModal"
+      :show="isCloneModalOpen"
+    >
+      <slot name="header">
+        <div class="container">
+          <div class="row">
+            <div class="col-10">
+              <h4 class="text-secondary-light">{{ $t('song.cloneTitle') }}</h4>
+            </div>
+            <div class="col-2">
+              <button
+                @click="closeCloneModal()"
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">
+                  <font-awesome-icon icon="times" />
+                </span>
+              </button>
+            </div>
+            <div class="col-12">
+              <p v-html="$t('song.cloneSubtitle')"></p>
+            </div>
+          </div>
+        </div>
+      </slot>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <ul class="bands-list" v-if="!bandLoading">
+              <li
+                class="item"
+                v-for="(band, i) in computedBands"
+                :key="i"
+                @click="cloneSong(band)"
+              >
+                <p class="mb-0">
+                  <strong>{{ band.title }}</strong>
+                </p>
+              </li>
+            </ul>
+            <ul class="bands-list" v-else>
+              <li class="item">
+                <div class="shine shimmer-lines"></div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

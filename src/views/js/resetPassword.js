@@ -31,8 +31,6 @@ export default {
         // Retrieve path parameters
         const { id, token } = this.$route.params
 
-        console.log('token', token)
-
         // Display loading message
         const swal = this.$swal({
           icon: 'info',
