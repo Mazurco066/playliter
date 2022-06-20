@@ -106,7 +106,7 @@
             </p>
           </div>
         </div>
-        <div v-else>
+        <div v-if="songLoading">
           <!-- Loading shimmer -->
           <ul class="categories">
             <li class="category">

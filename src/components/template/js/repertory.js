@@ -7,7 +7,11 @@ export default {
   name: 'Repertory',
   data: () => ({
     repertory: {},
-    search: ''
+    search: '',
+    limit: 15,
+    offset: 0,
+    blockInfiniteScroll: false,
+    scrollElement: null
   }),
   props: {
     band: {
@@ -61,13 +65,47 @@ export default {
       this.$router.push({
         name: 'publicSongs'
       })
+    },
+    loadMore () {
+      this.scrollElement = document.getElementById('main-body')
+      this.scrollElement.onscroll = async () => {
+        let response, bottomOfWindow = this.scrollElement.scrollHeight - this.scrollElement.clientHeight === this.scrollElement.scrollTop
+        if (bottomOfWindow && !this.songLoading && !this.blockInfiniteScroll) {
+          const scrollPosition = this.scrollElement.scrollTop
+          console.log('here on bottom', scrollPosition)
+          response = await this.listBandSongs({ band: this.band, limit: this.limit, offset: this.offset })
+          if (!response.error) {
+            // this.songs = [ ...this.songs, ...response.data ]
+            this.repertory = songHelpers.append(this.repertory, response.data)
+            this.offset += this.limit
+            // Keep scroll height
+            this.scrollElement.scrollTop = scrollPosition
+            if (response.data.length === 0) this.blockInfiniteScroll = true
+          } else {
+            this.$toast.error(this.$t('directory.messages[0]'))
+          }
+        }
+      }
+    }
+  },
+  async beforeMount () {
+    const r = await this.listBandSongs({
+      band: this.band,
+      limit: this.limit,
+      offset: this.offset
+    })
+    if (r.error) {
+      this.$toast.error(this.$t('directory.messages[0]'))
+    } else {
+      this.repertory = songHelpers.compute(r.data)
+      this.offset += this.limit
     }
   },
   async mounted () {
-    const r = await this.listBandSongs({ band: this.band })
-    this.repertory = songHelpers.compute(r.data)
-    if (r.error) {
-      this.$toast.error(this.$t('directory.messages[0]'))
-    }
+    await this.loadMore()
+  },
+  beforeUnmount () {
+    // Remove DOM binded events
+    this.scrollElement.onscroll = () => {}
   }
 }
