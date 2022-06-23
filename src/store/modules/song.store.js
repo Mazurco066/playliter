@@ -70,13 +70,13 @@ const actions = {
       message: error ? resp.message : null
     }
   },
-  async listBandSongs({ commit }, { limit = 0, offset = 0, band }) {
+  async listBandSongs({ commit }, { limit = 0, offset = 0, band, filter = '' }) {
     const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
     const resp = await asyncHandler(
       graphqlClient.query({
         query: SONGS,
-        variables: { limit, offset, id: band }
+        variables: { limit, offset, filter, id: band }
       })
     )
     const error = resp instanceof Error

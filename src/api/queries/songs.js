@@ -3,33 +3,37 @@ import { gql } from 'apollo-boost'
 
 // Query
 export const SONGS = gql`
-  query($id: String!, $limit: Float!, $offset: Float!) {
+  query($id: String!, $limit: Float!, $offset: Float!, $filter: String!) {
     songs(ListSongsInput:{
       bandId: $id,
       limit: $limit,
-      offset: $offset
+      offset: $offset,
+      filter: $filter
     }) {
-      id
-      title
-      writter
-      tone
-      body
-      isPublic
-      category {
+      total
+      data {
         id
         title
-        description
+        writter
+        tone
+        body
+        isPublic
+        category {
+          id
+          title
+          description
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
-      }
-      createdAt
-      updatedAt
-      band {
-        id
-        title
-        description
-        createdAt
-        updatedAt
+        band {
+          id
+          title
+          description
+          createdAt
+          updatedAt
+        }
       }
     }
   }
