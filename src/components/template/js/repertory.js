@@ -8,7 +8,7 @@ export default {
   data: () => ({
     repertory: {},
     search: '',
-    limit: 15,
+    limit: 40,
     offset: 0,
     total: 0,
     blockInfiniteScroll: false,

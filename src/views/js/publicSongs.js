@@ -6,7 +6,7 @@ export default {
   name: 'PublicSongs',
   data: () => ({
     songs: [],
-    limit: 15,
+    limit: 40,
     offset: 0,
     filter: '',
     blockInfiniteScroll: false,
