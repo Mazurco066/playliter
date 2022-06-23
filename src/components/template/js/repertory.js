@@ -7,7 +7,12 @@ export default {
   name: 'Repertory',
   data: () => ({
     repertory: {},
-    search: ''
+    search: '',
+    limit: 15,
+    offset: 0,
+    total: 0,
+    blockInfiniteScroll: false,
+    scrollElement: null
   }),
   props: {
     band: {
@@ -21,16 +26,7 @@ export default {
     }),
     filteredRepertorySongs () {
       if (this.repertory.songs) {
-        const filteredRepertory = this.repertory.songs.map(category => {
-          const filteredItems = category.items.filter(s => 
-            s.title.toLowerCase().includes(this.search.toLowerCase()) || 
-            s.writter.toLowerCase().includes(this.search.toLowerCase())
-          )
-          return filteredItems.length
-            ? { ...category, items: filteredItems }
-            : false
-        })
-        return filteredRepertory.filter(o => Boolean(o))
+        return this.repertory.songs
       }
       return []
     }
@@ -61,13 +57,71 @@ export default {
       this.$router.push({
         name: 'publicSongs'
       })
+    },
+    async filterSongs (clear = false) {
+      if (clear) this.search = ''
+      this.offset = 0
+      this.total = 0
+      const r = await this.listBandSongs({
+        band: this.band,
+        limit: this.limit,
+        offset: this.offset,
+        filter: this.search
+      })
+      if (r.error) {
+        this.$toast.error(this.$t('directory.messages[0]'))
+      } else {
+        this.repertory = songHelpers.compute(r.data.data)
+        this.total = r.data.total
+        this.offset += this.limit
+      }
+    },
+    loadMore () {
+      this.scrollElement = document.getElementById('main-body')
+      this.scrollElement.onscroll = async () => {
+        let response, bottomOfWindow = this.scrollElement.scrollHeight - this.scrollElement.clientHeight === this.scrollElement.scrollTop
+        if (bottomOfWindow && !this.songLoading && this.total !== this.repertory.numberOfItems && !this.blockInfiniteScroll) {
+          const scrollPosition = this.scrollElement.scrollTop
+          response = await this.listBandSongs({
+            band: this.band,
+            limit: this.limit,
+            offset: this.offset,
+            filter: this.search
+          })
+          if (!response.error) {
+            this.repertory = songHelpers.append(this.repertory, response.data.data)
+            this.total = response.data.total
+            this.offset += this.limit
+            // Keep scroll height
+            this.scrollElement.scrollTop = scrollPosition
+            if (response.data.data.length === 0) this.blockInfiniteScroll = true
+          } else {
+            this.$toast.error(this.$t('directory.messages[0]'))
+          }
+        }
+      }
+    }
+  },
+  async beforeMount () {
+    const r = await this.listBandSongs({
+      band: this.band,
+      limit: this.limit,
+      offset: this.offset,
+      filter: this.search
+    })
+    if (r.error) {
+      this.$toast.error(this.$t('directory.messages[0]'))
+    } else {
+      this.repertory = songHelpers.compute(r.data.data)
+      this.total = r.data.total
+      this.offset += this.limit
     }
   },
   async mounted () {
-    const r = await this.listBandSongs({ band: this.band })
-    this.repertory = songHelpers.compute(r.data)
-    if (r.error) {
-      this.$toast.error(this.$t('directory.messages[0]'))
-    }
+    await this.loadMore()
+  },
+  beforeUnmount () {
+    // Remove DOM binded events
+    this.scrollElement.onscroll = () => {}
   }
 }

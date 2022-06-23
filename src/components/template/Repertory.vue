@@ -8,25 +8,44 @@
           <p class="mb-2">
             {{ $t("directory.subtitle01") }}
             <strong class="text-secondary-light">
-              {{ repertory.numberOfItems !== undefined
-                ? repertory.numberOfItems.toString().padStart(2, '0')
-                : 0
-              }}</strong>
+              {{ total }}
+            </strong>
             {{ $t("directory.subtitle02") }}
           </p>
-          <base-input
-            name="search"
-            :placeholder="$t('directory.searchField')"
-            addonLeftIcon="search"
-            v-model="search"
-            noMargin
-          />
         </div>
         <div v-else class="shine"></div>
+      </div>
+      <div v-if="!songLoading" class="col-10">
+        <base-input
+          name="search"
+          :placeholder="$t('directory.searchField')"
+          addonLeftIcon="search"
+          v-model="search"
+          noMargin
+        />
+      </div>
+      <div v-if="!songLoading" class="col-2 pl-0">
+        <base-button
+          class="search-btn"
+          @click="filterSongs()"
+          :disabled="songLoading"
+          type="primary"
+        >
+          <font-awesome-icon icon="search" />
+        </base-button>
       </div>
     </div>
     <div class="row mb-3 pt-2">
       <div class="col-12">
+        <base-button
+          v-if="search && !songLoading"
+          :mini="true"
+          icon="times"
+          nativeType="button"
+          type="danger"
+          @click="filterSongs(true)"
+        >
+        </base-button>
         <base-button
           :mini="true"
           icon="earth-americas"
@@ -106,7 +125,7 @@
             </p>
           </div>
         </div>
-        <div v-else>
+        <div v-if="songLoading">
           <!-- Loading shimmer -->
           <ul class="categories">
             <li class="category">
