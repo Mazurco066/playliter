@@ -79,7 +79,7 @@ export default {
     loadMore () {
       this.scrollElement = document.getElementById('main-body')
       this.scrollElement.onscroll = async () => {
-        let response, bottomOfWindow = this.scrollElement.scrollHeight - this.scrollElement.clientHeight === this.scrollElement.scrollTop
+        let response, bottomOfWindow = this.scrollElement.scrollHeight - this.scrollElement.clientHeight === Math.round(this.scrollElement.scrollTop)
         if (bottomOfWindow && !this.songLoading && this.total !== this.repertory.numberOfItems && !this.blockInfiniteScroll) {
           const scrollPosition = this.scrollElement.scrollTop
           response = await this.listBandSongs({
