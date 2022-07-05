@@ -1,26 +1,64 @@
 // Dependencies
+import useVuelidate from '@vuelidate/core'
+import { required, minLength, maxLength } from '@vuelidate/validators'
 import { mapActions, mapGetters } from 'vuex'
 
 // Component
 export default {
   name: 'Show',
+  setup () {
+    return { v$: useVuelidate() }
+  },
   data: () => ({
     show: {},
+    form: {
+      title: '',
+      data: ''
+    },
     backupShow: {},
-    reorderMode: false
+    reorderMode: false,
+    isObservationModalOpen: false,
+    // Tabs state
+    selectedIndex: 1,
+    tabs: [
+      {
+        key: 1,
+        title: 'Músicas'
+      },
+      {
+        key: 2,
+        title: 'Observações'
+      }
+    ]
   }),
   computed: {
     ...mapGetters({
       showLoading: 'show/getLoadingStatus'
-    })
+    }),
+    translatedTabs () {
+      return this.tabs.map((tab, i) => ({
+        ...tab,
+        title: this.$t(`show.tabs[${i}]`)
+      }))
+    }
   },
   methods: {
     ...mapActions({
       listBandShow: 'show/listBandShow',
       unlinkSong: 'show/unlinkSong',
       deleteShow: 'show/removeShow',
-      reorderSongs: 'show/reorderSongs'
+      reorderSongs: 'show/reorderSongs',
+      deleteObservation: 'show/removeObservation',
+      persistObservation: 'show/saveObservation'
     }),
+    openObservationModal (observation = null) {
+      if (observation) this.form = { ...observation }
+      this.isObservationModalOpen = true
+    },
+    closeObservationModal () {
+      this.form = { title: '', data: '' }
+      this.isObservationModalOpen = false
+    },
     toggleReorder () {
       if (!this.reorderMode) {
         this.backupShow = JSON.parse(JSON.stringify(this.show))
@@ -29,6 +67,9 @@ export default {
         this.backupShow = {}
       } 
       this.reorderMode = !this.reorderMode
+    },
+    setTab (tab) {
+      this.selectedIndex = tab
     },
     switchSong (current, target) {
       const songs = this.show.songs
@@ -134,6 +175,24 @@ export default {
         }
       })
     },
+    async saveObservation () {
+
+    },
+    async removeObservation (observation) {
+      const showId = this.show.id
+      this.$swal({
+        title: this.$t('show.messages[9]'),
+        html: this.$t('show.messages[10]') + ` <strong>${this.show.title}</strong>?`,
+        showDenyButton: true,
+        confirmButtonColor: '#1C8781',
+        confirmButtonText: this.$t('show.removeAction'),
+        denyButtonText: this.$t('show.cancelAction')
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+
+        }
+      })
+    },
     async loadShow() {
       const { band, id } = this.$route.params
       const show = await this.listBandShow({ band, id })
@@ -147,5 +206,20 @@ export default {
   },
   async mounted () {
     await this.loadShow()
+  },
+  validations () {
+    return {
+      form: {
+        title: {
+          required,
+          minLength: minLength(3),
+          maxLength: maxLength(128)
+        },
+        data: {
+          required,
+          minLength: minLength(3)
+        }
+      }
+    }
   }
 }

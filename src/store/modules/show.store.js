@@ -1,8 +1,23 @@
 // Dependencies
 import { getAuthenticatedClient } from '../../api'
 import { asyncHandler } from '../../utils'
-import { LINK_SONG, UNLINK_SONG, ADD_SHOW, UPDATE_SHOW, REMOVE_SHOW, REORDER_SONGS } from '../../api/mutations'
-import { ACCOUNT_SHOWS, PENDING_SHOW, SHOW, SHOWS } from '../../api/queries'
+import {
+  ADD_OBSERVATION,
+  LINK_SONG,
+  UNLINK_SONG,
+  ADD_SHOW,
+  UPDATE_OBSERVATION,
+  UPDATE_SHOW,
+  REMOVE_OBSERVATION,
+  REMOVE_SHOW,
+  REORDER_SONGS
+} from '../../api/mutations'
+import {
+  ACCOUNT_SHOWS,
+  PENDING_SHOW,
+  SHOW,
+  SHOWS
+} from '../../api/queries'
 
 // Object initial state
 const initialState = () => ({ loading: false })
@@ -169,6 +184,43 @@ const actions = {
     return {
       error: error,
       data: error ? [] : resp.data.accountShows,
+      message: error ? resp.message : null
+    }
+  },
+  async saveObservation({ commit }, { payload, showId }) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.mutate({
+        mutation: payload.id ? UPDATE_OBSERVATION : ADD_OBSERVATION,
+        variables: { ...payload, show: showId }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : id ? resp.data.updateObservation : resp.data.addObservation,
+      message: error ? resp.message : null
+    }
+  },
+  async removeObservation({ commit }, { showId, observationId }) {
+    const graphqlClient = getAuthenticatedClient()
+    commit('setLoading', true)
+    const resp = await asyncHandler(
+      graphqlClient.mutate({
+        mutation: REMOVE_OBSERVATION,
+        variables: {
+          show: showId,
+          id: observationId
+        }
+      })
+    )
+    const error = resp instanceof Error
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : resp.data.removeObservation,
       message: error ? resp.message : null
     }
   }
