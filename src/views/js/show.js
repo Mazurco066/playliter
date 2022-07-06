@@ -1,26 +1,65 @@
 // Dependencies
+import useVuelidate from '@vuelidate/core'
+import { required, minLength, maxLength } from '@vuelidate/validators'
 import { mapActions, mapGetters } from 'vuex'
 
 // Component
 export default {
   name: 'Show',
+  setup () {
+    return { v$: useVuelidate() }
+  },
   data: () => ({
     show: {},
+    form: {
+      title: '',
+      data: ''
+    },
     backupShow: {},
-    reorderMode: false
+    reorderMode: false,
+    isObservationModalOpen: false,
+    // Tabs state
+    selectedIndex: 1,
+    tabs: [
+      {
+        key: 1,
+        title: 'Músicas'
+      },
+      {
+        key: 2,
+        title: 'Observações'
+      }
+    ]
   }),
   computed: {
     ...mapGetters({
       showLoading: 'show/getLoadingStatus'
-    })
+    }),
+    translatedTabs () {
+      return this.tabs.map((tab, i) => ({
+        ...tab,
+        title: this.$t(`show.tabs[${i}]`)
+      }))
+    }
   },
   methods: {
     ...mapActions({
       listBandShow: 'show/listBandShow',
       unlinkSong: 'show/unlinkSong',
       deleteShow: 'show/removeShow',
-      reorderSongs: 'show/reorderSongs'
+      reorderSongs: 'show/reorderSongs',
+      deleteObservation: 'show/removeObservation',
+      persistObservation: 'show/saveObservation'
     }),
+    openObservationModal (observation = null) {
+      this.resetForm()
+      if (observation) this.form = { ...observation }
+      this.isObservationModalOpen = true
+    },
+    closeObservationModal () {
+      this.form = { title: '', data: '' }
+      this.isObservationModalOpen = false
+    },
     toggleReorder () {
       if (!this.reorderMode) {
         this.backupShow = JSON.parse(JSON.stringify(this.show))
@@ -29,6 +68,9 @@ export default {
         this.backupShow = {}
       } 
       this.reorderMode = !this.reorderMode
+    },
+    setTab (tab) {
+      this.selectedIndex = tab
     },
     switchSong (current, target) {
       const songs = this.show.songs
@@ -57,6 +99,13 @@ export default {
         name: 'editShow',
         params: { band, id }
       })
+    },
+    resetForm () {
+      this.form = {
+        title: '',
+        data: ''
+      }
+      this.v$.form.$reset()
     },
     async reorder () {
       const { id, songs } = this.show
@@ -134,6 +183,60 @@ export default {
         }
       })
     },
+    async submitObservation () {
+      this.v$.form.$touch()
+      if (!this.v$.error && !this.v$.$invalid) {
+        
+        // Format form data
+        const showId = this.show.id
+        const payload = { ...this.form }
+        
+        // Persist data
+        const r = await this.persistObservation({ payload, showId })
+        if (r.error) {
+          this.$toast.error(
+            response.message.replace('GraphQL error:', '') ||
+            this.$t('show.messages[18]')
+          )
+        } else {
+          this.$toast.success(this.$t('show.messages[17]'))
+          await this.reloadData()
+          this.closeObservationModal()
+          this.resetForm()
+        }
+
+      } else {
+        this.$toast.warning(this.$t('categories.messages[16]'))
+      }
+    },
+    async removeObservation (observation) {
+      const showId = this.show.id
+      this.$swal({
+        title: this.$t('show.messages[9]'),
+        html: this.$t('show.messages[13]') + ` <strong>${observation.title}</strong>?`,
+        showDenyButton: true,
+        confirmButtonColor: '#1C8781',
+        confirmButtonText: this.$t('show.removeAction'),
+        denyButtonText: this.$t('show.cancelAction')
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const response = await this.deleteObservation({
+            observationId: observation.id,
+            showId: showId
+          })
+          if (response.error) {
+            this.$toast.error(
+              response.message.replace('GraphQL error:', '') ||
+              this.$t('show.messages[14]')
+            )
+          } else {
+            this.$toast.success(this.$t('show.messages[15]') + ` ${observation.title}`)
+            // Reload show
+            await this.reloadData()
+          }
+        } 
+      })
+    },
     async loadShow() {
       const { band, id } = this.$route.params
       const show = await this.listBandShow({ band, id })
@@ -147,5 +250,20 @@ export default {
   },
   async mounted () {
     await this.loadShow()
+  },
+  validations () {
+    return {
+      form: {
+        title: {
+          required,
+          minLength: minLength(3),
+          maxLength: maxLength(128)
+        },
+        data: {
+          required,
+          minLength: minLength(3)
+        }
+      }
+    }
   }
 }
