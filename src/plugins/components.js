@@ -1,4 +1,5 @@
 // Dependencies
+import BaseArea from '../components/base/Area.vue'
 import BaseButton from '../components/base/Button.vue'
 import BaseCheckBox from '../components/base/Checkbox.vue'
 import BaseChordDiagram from '../components/base/ChordDiagram.vue'
@@ -29,6 +30,7 @@ library.add(far)
 // Components
 export default {
   install (Vue) {
+    Vue.component(BaseArea.name, BaseArea)
     Vue.component(BaseInput.name, BaseInput)
     Vue.component(BaseCheckBox.name, BaseCheckBox)
     Vue.component(BaseChordDiagram.name, BaseChordDiagram)

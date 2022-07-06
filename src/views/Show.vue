@@ -304,10 +304,12 @@
                       </base-dropdown>
                     </div>
                   </div>
-                  <p>{{ obs.data }}</p>
+                  <p>
+                    {{ obs.data }}
+                  </p>
                 </li>
               </ul>
-              <div v-if="show.observations.length === 0" class="no-observation">
+              <div v-if="show.observations.length === 0 && !showLoading" class="no-observation">
                 <div class="icon">
                   <img src="/img/arts/not_found.svg" alt="No content">
                 </div>
@@ -315,6 +317,24 @@
                   <strong>{{ $t('show.noObservations') }}</strong>
                 </p>
               </div>
+              <ul v-if="showLoading" class="obs-list">
+                <li class="item">
+                  <div class="obs-title">
+                    <div class="shine shimmer-lines"></div>
+                  </div>
+                  <div class="shine shimmer-lines"></div>
+                  <div class="shine shimmer-lines"></div>
+                  <div class="shine shimmer-lines"></div>
+                </li>
+                <li class="item">
+                  <div class="obs-title">
+                    <div class="shine shimmer-lines"></div>
+                  </div>
+                  <div class="shine shimmer-lines"></div>
+                  <div class="shine shimmer-lines"></div>
+                  <div class="shine shimmer-lines"></div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -373,11 +393,9 @@
               />
             </div>
             <div class="col-12">
-              <base-input
-                type="text"
+              <base-area
                 :label="$t('show.dataField')"
                 :placeholder="$t('show.dataField')"
-                addonLeftIcon="tag"
                 v-model="v$.form.data.$model"
                 :valid="!v$.form.data.$error"
                 :error="
