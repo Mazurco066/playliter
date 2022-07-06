@@ -200,7 +200,7 @@ const actions = {
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : id ? resp.data.updateObservation : resp.data.addObservation,
+      data: error ? {} : payload.id ? resp.data.updateObservation : resp.data.addObservation,
       message: error ? resp.message : null
     }
   },

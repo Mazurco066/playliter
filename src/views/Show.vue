@@ -352,7 +352,7 @@
         </div>
       </slot>
       <div class="container">
-        <form action="">
+        <form @submit.prevent="submitObservation">
           <div class="row">
             <div class="col-12">
               <base-input

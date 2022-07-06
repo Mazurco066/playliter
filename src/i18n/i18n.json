@@ -224,15 +224,15 @@
       "cancelAction": "Cancel",
       "tabs": ["Songs", "Notes"],
       "obsTitle": "Observações",
-      "noObservations": "Não há observações registradas nessa apresentação!",
-      "addAction": "Criar nova",
-      "obsEditAction": "Editar",
-      "obsRemoveAction": "Remover",
-      "obsFormTitle": "Observação",
-      "obsFormDescription": "Salvar/atualizar observações da apresentação.",
-      "titleField": "Título",
-      "dataField": "Observação",
-      "submit": "Salvar",
+      "noObservations": "There is no observations in this show!",
+      "addAction": "Add new",
+      "obsEditAction": "Update",
+      "obsRemoveAction": "Remove",
+      "obsFormTitle": "Notes",
+      "obsFormDescription": "Save observations.",
+      "titleField": "Title",
+      "dataField": "Observation",
+      "submit": "Save",
       "messages": [
         "Are you sure?",
         "Reorder this show?",
@@ -246,7 +246,13 @@
         "Confirmation!",
         "Remove this song from presentation",
         "An error ocourred while removing the song from show! Please try again later.",
-        "The song was successfully removed from the show!"
+        "The song was successfully removed from the show!",
+        "Do you want to remove this observation from the show",
+        "An error ocourred while removing the observation from show! Please try again later.",
+        "Observação removida da apresentação",
+        "There are errors in your form data. Plese review the filled fields!",
+        "Observation successfully saved!",
+        "An error ocourred while saving the observation to show! Please try again later."
       ]
     },
     "shows": {
@@ -656,7 +662,13 @@
         "Confirmação!",
         "Deseja remover essa música da apresentação",
         "Ocorreu um erro ao remover a música da apresentação! Por favor contate um administrador do sistema.",
-        "Música removida da apresentação"
+        "Música removida da apresentação",
+        "Deseja remover essa observação da apresentação",
+        "Ocorreu um erro ao remover a observação da apresentação! Por favor contate um administrador do sistema.",
+        "Observação removida da apresentação",
+        "Seu formulário contem erros de validação! Por favor revise-os.",
+        "Sua observação foi salva com sucesso!",
+        "Ocorreu um erro ao salvar a observação da apresentação! Por favor contate um administrador do sistema."
       ]
     },
     "shows": {

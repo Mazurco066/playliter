@@ -52,6 +52,7 @@ export default {
       persistObservation: 'show/saveObservation'
     }),
     openObservationModal (observation = null) {
+      this.resetForm()
       if (observation) this.form = { ...observation }
       this.isObservationModalOpen = true
     },
@@ -98,6 +99,13 @@ export default {
         name: 'editShow',
         params: { band, id }
       })
+    },
+    resetForm () {
+      this.form = {
+        title: '',
+        data: ''
+      }
+      this.v$.form.$reset()
     },
     async reorder () {
       const { id, songs } = this.show
@@ -175,22 +183,58 @@ export default {
         }
       })
     },
-    async saveObservation () {
+    async submitObservation () {
+      this.v$.form.$touch()
+      if (!this.v$.error && !this.v$.$invalid) {
+        
+        // Format form data
+        const showId = this.show.id
+        const payload = { ...this.form }
+        
+        // Persist data
+        const r = await this.persistObservation({ payload, showId })
+        if (r.error) {
+          this.$toast.error(
+            response.message.replace('GraphQL error:', '') ||
+            this.$t('show.messages[18]')
+          )
+        } else {
+          this.$toast.success(this.$t('show.messages[17]'))
+          await this.reloadData()
+          this.closeObservationModal()
+          this.resetForm()
+        }
 
+      } else {
+        this.$toast.warning(this.$t('categories.messages[16]'))
+      }
     },
     async removeObservation (observation) {
       const showId = this.show.id
       this.$swal({
         title: this.$t('show.messages[9]'),
-        html: this.$t('show.messages[10]') + ` <strong>${this.show.title}</strong>?`,
+        html: this.$t('show.messages[13]') + ` <strong>${observation.title}</strong>?`,
         showDenyButton: true,
         confirmButtonColor: '#1C8781',
         confirmButtonText: this.$t('show.removeAction'),
         denyButtonText: this.$t('show.cancelAction')
       }).then(async (result) => {
         if (result.isConfirmed) {
-
-        }
+          const response = await this.deleteObservation({
+            observationId: observation.id,
+            showId: showId
+          })
+          if (response.error) {
+            this.$toast.error(
+              response.message.replace('GraphQL error:', '') ||
+              this.$t('show.messages[14]')
+            )
+          } else {
+            this.$toast.success(this.$t('show.messages[15]') + ` ${observation.title}`)
+            // Reload show
+            await this.reloadData()
+          }
+        } 
       })
     },
     async loadShow() {
