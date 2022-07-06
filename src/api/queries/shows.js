@@ -22,6 +22,11 @@ export const SHOWS = gql`
         createdAt
         updatedAt
       }
+      observations {
+        id
+        title
+        data
+      }
       band {
         id
         title

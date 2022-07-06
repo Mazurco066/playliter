@@ -4,9 +4,44 @@
     text-transform: uppercase;
   }
 
+  .header-wrapper {
+    padding: 1rem;
+  }
+
+  .observation-header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+
+    .title {
+      margin-bottom: 0;
+    }
+
+    button {
+      background: linear-gradient(var(--color-primary), var(--color-secondary));
+      border: none;
+      outline: none;
+      border-radius: 8px;
+      color: var(--color-text);
+      padding: 0.25rem 1rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.7s;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+
   .info {
     background-color: var(--color-background);
-    padding: 1rem;
     border-radius: 8px;
     position: relative;
     margin-bottom: 1rem;
@@ -15,6 +50,47 @@
       position: absolute;
       top: 0.75rem;
       right: 0.5rem;
+    }
+
+    .tabs {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      overflow: hidden;
+      border-radius: 8px;
+
+      .tab {
+        width: 100%;
+        padding: 0.75rem 0;
+        text-align: center;
+        position: relative;
+        transition: all 0.7s;
+
+        &:hover {
+          color: var(--color-primary);
+          cursor: pointer;
+        }
+
+        &.selected {
+          // color: var(--color-primary);
+          border-bottom: 3px solid var(--color-primary);
+        }
+
+        span {
+          font-weight: bold;
+          text-transform: uppercase;
+          font-size: 0.75rem;
+        }
+
+        &:first-child {
+          padding-left: 1rem;
+        }
+
+        &:last-child {
+          padding-right: 1rem;
+        }
+      }
     }
   }
 
@@ -97,6 +173,44 @@
 
   }
 
+  .obs-list {
+    list-style: none;
+
+    .item {
+      background-color: var(--color-background);
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      padding: 1rem;
+
+      .obs-title {
+        padding-right: 1rem;
+        position: relative;
+      }
+
+      .obs-actions {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+      }
+
+      h4 {
+        color: var(--color-secondary-light);
+        text-transform: uppercase;
+        font-size: 1.15rem;
+      }
+
+      p {
+        text-align: justify;
+        font-size: 1rem;
+        white-space: break-spaces;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
   .about {
     .actions {
       display: flex;
@@ -128,7 +242,7 @@
     }
   }
 
-  .no-songs {
+  .no-observation, .no-songs {
     .icon {
       max-width: 360px;
       width: 100%;
