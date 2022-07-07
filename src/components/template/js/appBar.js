@@ -10,6 +10,9 @@ export default {
     }),
     isAccountConfirmed () {
       return this.me.isEmailconfirmed && JSON.parse(this.me.isEmailconfirmed)
+    },
+    displayBackBtn () {
+      return !['home', 'profile', 'bands'].includes(this.$route.name)
     }
   },  
   methods: {

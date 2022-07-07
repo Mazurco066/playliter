@@ -6,6 +6,9 @@
           <div class="app-bar">
             <div class="app">
               <div class="user">
+                <div v-if="displayBackBtn" class="back mr-2" @click="goBack()">
+                  <font-awesome-icon icon="chevron-left" size="2x" />
+                </div>
                 <div class="user-img">
                   <img :src="me.avatar ? me.avatar : '/img/j_black.jpg'" alt="User Image">
                 </div>
@@ -43,9 +46,6 @@
                   </a>
                 </base-dropdown>
               </div>
-              <!-- <div class="back" @click="goBack()">
-                <font-awesome-icon icon="chevron-left" size="2x" />
-              </div> -->
             </div>
             <hr />
           </div>
