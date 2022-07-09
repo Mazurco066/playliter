@@ -6,7 +6,7 @@
           <div class="app-bar">
             <div class="app">
               <div class="user">
-                <div v-if="displayBackBtn" class="back mr-2" @click="goBack()">
+                <div v-if="displayBackBtn" class="back mr-2 cursor-pointer" @click="goBack()">
                   <font-awesome-icon icon="chevron-left" size="2x" />
                 </div>
                 <div class="user-img">

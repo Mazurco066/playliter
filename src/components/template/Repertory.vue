@@ -21,6 +21,7 @@
           :placeholder="$t('directory.searchField')"
           addonLeftIcon="search"
           v-model="search"
+          @keydown.enter="filterSongs()"
           noMargin
         />
       </div>

@@ -21,6 +21,7 @@
               name="filter"
               :placeholder="$t('publicSongs.searchField')"
               v-model="filter"
+              @keydown.enter="filterSongs()"
               :disabled="songLoading"
             />
           </div>
