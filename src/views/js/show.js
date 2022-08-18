@@ -172,7 +172,7 @@ export default {
           const response = await this.unlinkSong({ song: songId, show: showId })
           if (response.error) {
             this.$toast.error(
-              response.message.replace('GraphQL error:', '') ||
+              response.message ||
               this.$t('show.messages[11]')
             )
           } else {
@@ -195,7 +195,7 @@ export default {
         const r = await this.persistObservation({ payload, showId })
         if (r.error) {
           this.$toast.error(
-            response.message.replace('GraphQL error:', '') ||
+            response.message ||
             this.$t('show.messages[18]')
           )
         } else {
@@ -226,7 +226,7 @@ export default {
           })
           if (response.error) {
             this.$toast.error(
-              response.message.replace('GraphQL error:', '') ||
+              response.message ||
               this.$t('show.messages[14]')
             )
           } else {

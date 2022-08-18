@@ -1,17 +1,5 @@
 // Dependencies
-import { getAuthenticatedClient } from '../../api'
-import { asyncHandler } from '../../utils'
-import { BAND, BANDS, PENDING_INVITES } from '../../api/queries'
-import {
-  ADD_BAND,
-  ADD_BAND_MEMBER,
-  DEMOTE_BAND_MEMBER,
-  PROMOTE_BAND_MEMBER,
-  REMOVE_BAND_MEMBER,
-  REMOVE_BAND,
-  RESPOND_INVITE,
-  UPDATE_BAND
-} from '../../api/mutations'
+import api, { asyncRequestHandler } from '../../api'
 
 // Object initial state
 const initialState = () => ({ loading: false })
@@ -29,173 +17,135 @@ const getters = {
 // Actions
 const actions = {
   async saveBand({ commit }, { payload, id = null }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: id ? UPDATE_BAND : ADD_BAND,
-        variables: id ? { ...payload, id } : { ...payload }
-      })
+    const resp = await asyncRequestHandler(
+      id
+        ? api.bands.updateBand(id, { ...payload })
+        : api.bands.addBand({ ...payload })
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : id ? resp.data.updateBand : resp.data.addBand,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async addBandMember({ commit }, { band, member }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: ADD_BAND_MEMBER,
-        variables: { band, member }
-      })
+    const resp = await asyncRequestHandler(
+      api.bands.inviteMember(band, member)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.addBandMember,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async demoteBandMember({ commit }, { band, member }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: DEMOTE_BAND_MEMBER,
-        variables: { band, member }
-      })
+    const resp = await asyncRequestHandler(
+      api.bands.demoteMember(band, member)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.demoteBandMember,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async promoteBandMember({ commit }, { band, member }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: PROMOTE_BAND_MEMBER,
-        variables: { band, member }
-      })
+    const resp = await asyncRequestHandler(
+      api.bands.promoteMember(band, member)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.promoteBandMember,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async removeBandMember({ commit }, { band, member }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: REMOVE_BAND_MEMBER,
-        variables: { band, member }
-      })
+    const resp = await asyncRequestHandler(
+      api.bands.removeMember(band, member)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.removeBandMember,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async loadBand({ commit }, id) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.query({
-        query: BAND,
-        variables: { id }
-      })
+    const resp = await asyncRequestHandler(
+      api.bands.getBand(id)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.band,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
-  async loadBands({ commit }, { limit = '0', offset = '0' }) {
-    const graphqlClient = getAuthenticatedClient()
+  async loadBands({ commit }, { limit = 0, offset = 0 }) {
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.query({
-        query: BANDS,
-        variables: { limit, offset }
-      })
+    const resp = await asyncRequestHandler(
+      api.bands.listBands(limit, offset)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? [] : resp.data.bands,
-      message: error ? resp.message : null
+      data: error ? [] : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async removeBand({ commit }, id) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: REMOVE_BAND,
-        variables: { id }
-      })
+    const resp = await asyncRequestHandler(
+      api.bands.deleteBand(id)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.removeBand,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async listPendingInvites({ commit }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.query({
-        query: PENDING_INVITES,
-        variables: { }
-      })
+    const resp = await asyncRequestHandler(
+      api.bands.getPendingInvites()
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? [] : resp.data.pendingInvites,
-      message: error ? resp.message : null
+      data: error ? [] : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async respondInvite({ commit }, { inviteId, response }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: RESPOND_INVITE,
-        variables: { inviteId, response }
-      })
+    const resp = await asyncRequestHandler(
+      api.bands.respondInvite({ inviteId, response })
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.respondInvite,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
 }

@@ -39,7 +39,7 @@ export default {
       swal.close()
       if (response.error) {
         this.$toast.error(
-          response.message.replace('GraphQL error:', '') ||
+          response.message ||
           this.$t('verifyAccount.messages[0]')
         )
       } else {
@@ -52,7 +52,7 @@ export default {
       const response = await this.resendVerification()
       if (response.error) {
         this.$toast.error(
-          response.message.replace('GraphQL error:', '') ||
+          response.message ||
           this.$t('verifyAccount.messages[4]')
         )
       } else {

@@ -86,7 +86,7 @@ export default {
       swal.close()
       if (external.error) {
         this.$toast.error(
-          external.message.replace('GraphQL error:', '') ||
+          external.message ||
           this.$t('saveSong.messages[6]')
         )
       } else {

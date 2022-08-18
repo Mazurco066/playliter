@@ -1,8 +1,5 @@
 // Dependencies
-import { getAuthenticatedClient } from '../../api'
-import { asyncHandler } from '../../utils'
-import { REMOVE_SONG, ADD_SONG, UPDATE_SONG, ADD_CATEGORY, UPDATE_CATEGORY, REMOVE_CATEGORY, SCRAP_SONG } from '../../api/mutations'
-import { SONG, SONGS, CATEGORIES, PUBLIC_SONGS } from '../../api/queries'
+import api, { asyncRequestHandler } from '../../api'
 
 // Object initial state
 const initialState = () => ({ loading: false })
@@ -20,156 +17,144 @@ const getters = {
 // Actions
 const actions = {
   async saveCategory({ commit }, { id = null, payload }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: id ? UPDATE_CATEGORY : ADD_CATEGORY,
-        variables: id ? { ...payload, id } : { ...payload }
-      })
+    const resp = await asyncRequestHandler(
+      id
+        ? api.categories.updateCategory(id, {
+          title: payload.title,
+          description: payload.description
+        })
+        : api.categories.addCategory(payload.band, {
+          title: payload.title,
+          description: payload.description
+        })
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : id ? resp.data.updateCategory : resp.data.addCategory,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async saveSong({ commit }, { id = null, payload }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: id ? UPDATE_SONG : ADD_SONG,
-        variables: id ? { ...payload, id } : { ...payload }
-      })
+    const resp = await asyncRequestHandler(
+      id
+        ? api.songs.updateSong(id, {
+            title: payload.title,
+            writter: payload.writter,
+            tone: payload.tone,
+            category: payload.category,
+            isPublic: payload.isPublic,
+            body: payload.body
+          })
+        : api.songs.addSong(payload.band, {
+            title: payload.title,
+            writter: payload.writter,
+            tone: payload.tone,
+            category: payload.category,
+            isPublic: payload.isPublic,
+            body: payload.body
+          })
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : id ? resp.data.updateSong : resp.data.addSong,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async loadBandSong({ commit }, { band, id }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.query({
-        query: SONG,
-        variables: { band, id }
-      })
+    const resp = await asyncRequestHandler(
+      api.songs.getSong(band, id)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.song,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async listBandSongs({ commit }, { limit = 0, offset = 0, band, filter = '' }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.query({
-        query: SONGS,
-        variables: { limit, offset, filter, id: band }
-      })
+    const resp = await asyncRequestHandler(
+      api.songs.listBandSongs(band, filter, limit, offset)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? [] : resp.data.songs,
-      message: error ? resp.message : null
+      data: error ? [] : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async listPublicSongs({ commit }, { limit = 0, offset = 0, filter = '' }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.query({
-        query: PUBLIC_SONGS,
-        variables: { limit, offset, filter }
-      })
+    const resp = await asyncRequestHandler(
+      api.songs.listPublicSongs(filter, limit, offset)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? [] : resp.data.publicSongs,
-      message: error ? resp.message : null
+      data: error ? [] : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async removeBandSong({ commit }, id) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: REMOVE_SONG,
-        variables: { id }
-      })
+    const resp = await asyncRequestHandler(
+      api.songs.deleteSong(id)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.removeSong,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async removeCategory({ commit }, id) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: REMOVE_CATEGORY,
-        variables: { id }
-      })
+    const resp = await asyncRequestHandler(
+      api.categories.deleteCategory(id)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.removeCategory,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
-  async listBandCategories({ commit }, { band }) {
-    const graphqlClient = getAuthenticatedClient()
+  async listBandCategories({ commit }, { band, limit = 0, offset = 0 }) {
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.query({
-        query: CATEGORIES,
-        variables: { id: band }
-      })
+    const resp = await asyncRequestHandler(
+      api.categories.listCategories(band, limit, offset)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? [] : resp.data.categories,
-      message: error ? resp.message : null
+      data: error ? [] : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async scrapSong({ commit }, url) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: SCRAP_SONG,
-        variables: { url }
-      })
+    const resp = await asyncRequestHandler(
+      api.helpers.scrapSong(url)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.scrapSong,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   }
 }

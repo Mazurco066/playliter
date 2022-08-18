@@ -1,8 +1,5 @@
 // Dependencies
-import { getAuthenticatedClient } from '../../api'
-import { ME, ACCOUNT_BY_USERNAME } from '../../api/queries'
-import { UPDATE_PROFILE, ADD_ACCOUNT, RESEND_VERIFICATION_CODE, VERIFY_ACCOUNT } from '../../api/mutations'
-import { asyncHandler } from '../../utils'
+import api, { asyncRequestHandler } from '../../api'
 
 // Object initial state
 const initialState = () => ({ me: {}, loading: false })
@@ -23,107 +20,83 @@ const getters = {
 // Actions
 const actions = {
   async saveAccount({ commit }, { payload }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: ADD_ACCOUNT,
-        variables: { ...payload }
-      })
+    const resp = await asyncRequestHandler(
+      api.accounts.addAccount({ ...payload })
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.addAccount,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async loadAccountByUsername({ commit }, username) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.query({
-        query: ACCOUNT_BY_USERNAME,
-        variables: { username }
-      })
+    const resp = await asyncRequestHandler(
+      api.accounts.getAccountByUsername(username)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.accountByEmail,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async loadMe({ commit }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.query({
-        query: ME,
-        variables: {}
-      })
+    const resp = await asyncRequestHandler(
+      api.accounts.getCurrentAccount()
     )
-    const error = resp instanceof Error
-    if (!error) commit('setMe', resp.data.me)
+    const error = ![200, 201].includes(resp.status)
+    if (!error) commit('setMe', resp.data.data)
     else commit('setMe', {})
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.me,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async updateProfile({ commit }, { id, payload }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: UPDATE_PROFILE,
-        variables: { ...payload, id }
-      })
+    const resp = await asyncRequestHandler(
+      api.accounts.updateAccount(id, { ...payload })
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.updateAccount,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async verifyAccount({ commit }, code) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: VERIFY_ACCOUNT,
-        variables: { code }
-      })
+    const resp = await asyncRequestHandler(
+      api.accounts.verifyAccount(code)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.verifyAccount,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async resendVerification({ commit }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: RESEND_VERIFICATION_CODE,
-        variables: {}
-      })
+    const resp = await asyncRequestHandler(
+      api.accounts.resendVerificationEmail()
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.resendVerificationCode,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   }
 }

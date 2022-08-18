@@ -1,6 +1,6 @@
 {
   "name": "@rakta/playliter",
-  "version": "3.6.2",
+  "version": "3.7.0",
   "private": true,
   "author": {
     "name": "Gabriel Mazurco",
@@ -22,7 +22,6 @@
     "@vuelidate/core": "^2.0.0-alpha.26",
     "@vuelidate/validators": "^2.0.0-alpha.22",
     "ace-builds": "^1.4.14",
-    "apollo-boost": "^0.4.9",
     "aubiojs": "^0.0.1",
     "axios": "^0.27.2",
     "bootstrap": "4.6.0",
@@ -32,12 +31,10 @@
     "chordsheetjs-extras": "^0.1.2",
     "core-js": "^3.6.5",
     "crypto": "^1.0.1",
-    "graphql": "^16.2.0",
     "moment": "^2.29.1",
     "register-service-worker": "^1.7.1",
     "vexchords": "^1.2.0",
     "vue": "^3.0.0",
-    "vue-apollo": "^3.1.0",
     "vue-currency-input": "^2.1.2",
     "vue-router": "^4.0.0-0",
     "vue-sweetalert2": "^5.0.2",

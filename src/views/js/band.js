@@ -138,7 +138,7 @@ export default {
         const payload = { ...this.inviteForm }
         const userResponse = await this.loadAccountByUsername(payload.username)
         if (userResponse.error) {
-          this.$toast.error(userResponse.message.replace('GraphQL error: ', ''))
+          this.$toast.error(userResponse.message)
         } else {
           const { id } =  userResponse.data
           if (this.band.members.find(a => a.id === id)) {
