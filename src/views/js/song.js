@@ -169,7 +169,7 @@ export default {
           const response = await this.linkSong({ song: songId, show: showId })
           if (response.error) {
             this.$toast.error(
-              response.message.replace('GraphQL error:', '') ||
+              response.message ||
               this.$t('song.messages[7]')
             )
           } else {

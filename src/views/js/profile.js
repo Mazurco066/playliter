@@ -104,7 +104,7 @@ export default {
         const payload = { ...this.form }
         const r = await this.updateProfile({ id: this.me.id, payload })
         if (r.error) {
-          this.$toast.error(r.message.replace('GraphQL error:', '') || this.$t('profile.messages[0]'))
+          this.$toast.error(r.message || this.$t('profile.messages[0]'))
         } else {
           this.$toast.success(this.$t('profile.messages[1]'))
           const pr = await this.loadMe()

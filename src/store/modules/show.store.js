@@ -1,23 +1,5 @@
 // Dependencies
-import { getAuthenticatedClient } from '../../api'
-import { asyncHandler } from '../../utils'
-import {
-  ADD_OBSERVATION,
-  LINK_SONG,
-  UNLINK_SONG,
-  ADD_SHOW,
-  UPDATE_OBSERVATION,
-  UPDATE_SHOW,
-  REMOVE_OBSERVATION,
-  REMOVE_SHOW,
-  REORDER_SONGS
-} from '../../api/mutations'
-import {
-  ACCOUNT_SHOWS,
-  PENDING_SHOW,
-  SHOW,
-  SHOWS
-} from '../../api/queries'
+import api, { asyncRequestHandler } from '../../api'
 
 // Object initial state
 const initialState = () => ({ loading: false })
@@ -35,193 +17,156 @@ const getters = {
 // Actions
 const actions = {
   async saveShow({ commit }, { payload, id = null, band = null }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: id ? UPDATE_SHOW : ADD_SHOW,
-        variables: id ? { ...payload, id } : { ...payload, band }
-      })
+    const resp = await asyncRequestHandler(
+      id
+        ? api.shows.updateShow(id, { ...payload })
+        : api.shows.addShow({ ...payload, band })
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : id ? resp.data.updateShow : resp.data.addShow,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async reorderSongs({ commit }, {  id = null, songs = [] }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: REORDER_SONGS,
-        variables: { id, songs: songs.map(({ id }) => id) }
-      })
+    const resp = await asyncRequestHandler(
+      api.shows.reorderShow(id, { songs: songs.map(({ id }) => id) })
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.reorderShow,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async removeShow({ commit }, id) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: REMOVE_SHOW,
-        variables: { id }
-      })
+    const resp = await asyncRequestHandler(
+      api.shows.deleteShow(id)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.removeShow,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async linkSong({ commit }, { show, song }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: LINK_SONG,
-        variables: { show, song }
-      })
+    const resp = await asyncRequestHandler(
+      api.shows.linkSong(show, song)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.linkSong,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async unlinkSong({ commit }, { show, song }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: UNLINK_SONG,
-        variables: { show, song }
-      })
+    const resp = await asyncRequestHandler(
+      api.shows.unlinkSong(show, song)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.unlinkSong,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async listBandShow({ commit }, { band, id }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.query({
-        query: SHOW,
-        variables: { band, id }
-      })
+    const resp = await asyncRequestHandler(
+      api.shows.getShow(band, id)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.show,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async listBandShows({ commit }, { limit = 0, offset = 0, band }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.query({
-        query: SHOWS,
-        variables: { limit, offset, id: band }
-      })
+    const resp = await asyncRequestHandler(
+      api.shows.listShows(band, limit, offset)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? [] : resp.data.shows,
-      message: error ? resp.message : null
+      data: error ? [] : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async listPendingShows({ commit }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.query({
-        query: PENDING_SHOW,
-        variables: {}
-      })
+    const resp = await asyncRequestHandler(
+      api.shows.listFutureShows()
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? [] : resp.data.pendingShows,
-      message: error ? resp.message : null
+      data: error ? [] : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async listAccountShows({ commit }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.query({
-        query: ACCOUNT_SHOWS,
-        variables: {}
-      })
+    const resp = await asyncRequestHandler(
+      api.shows.listAccountShows()
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? [] : resp.data.accountShows,
-      message: error ? resp.message : null
+      data: error ? [] : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async saveObservation({ commit }, { payload, showId }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: payload.id ? UPDATE_OBSERVATION : ADD_OBSERVATION,
-        variables: { ...payload, show: showId }
-      })
+    const resp = await asyncRequestHandler(
+      payload.id
+        ? api.shows.updateShowObservation(showId, payload.id, {
+            title: payload.title,
+            data: payload.data
+          })
+        : api.shows.addShowObservation(showId, {
+            title: payload.title,
+            data: payload.data
+          })
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : payload.id ? resp.data.updateObservation : resp.data.addObservation,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async removeObservation({ commit }, { showId, observationId }) {
-    const graphqlClient = getAuthenticatedClient()
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: REMOVE_OBSERVATION,
-        variables: {
-          show: showId,
-          id: observationId
-        }
-      })
+    const resp = await asyncRequestHandler(
+      api.shows.removeShowObservation(showId, observationId)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.removeObservation,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   }
 }

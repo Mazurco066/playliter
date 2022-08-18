@@ -49,7 +49,7 @@ export default {
         swal.close()
         if (response.error) {
           this.$toast.error(
-            response.message.replace('GraphQL error:', '') ||
+            response.message ||
             this.$t('forgotPassword.messages[1]')
           )
         } else {
