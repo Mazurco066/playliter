@@ -29,7 +29,7 @@ export default {
     async getInitialSongs () {
       const r = await this.listPublicSongs({ limit: this.limit, offset: this.offset, filter: this.filter })
       if (!r.error) {
-        this.songs = r.data
+        this.songs = r.data.data
         this.offset += this.limit
       } else {
         this.$toast.warning(this.$t('publicSongs.messages[0]'))
@@ -42,7 +42,7 @@ export default {
         if (bottomOfWindow && !this.songLoading && !this.blockInfiniteScroll) {
           response = await this.listPublicSongs({ limit: this.limit, offset: this.offset, filter: this.filter })
           if (!response.error) {
-            this.songs = [ ...this.songs, ...response.data ]
+            this.songs = [ ...this.songs, ...response.data.data ]
             this.offset += this.limit
             if (response.data.length === 0) this.blockInfiniteScroll = true
           } else {

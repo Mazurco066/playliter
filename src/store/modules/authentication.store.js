@@ -1,7 +1,5 @@
 // Dependencies
-import { graphqlClient } from '../../api'
-import { AUTHENTICATE, FORGOT_PASSWORD, RESET_PASSWORD } from '../../api/mutations'
-import { asyncHandler } from '../../utils'
+import api, { asyncRequestHandler } from '../../api'
 
 // Object initial state
 const initialState = () => ({
@@ -26,55 +24,46 @@ const getters = {
 const actions = {
   async authenticateByUsername({ commit }, { username, password }) {
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: AUTHENTICATE,
-        variables: { username, password }
-      })
+    const resp = await asyncRequestHandler(
+      api.auth.signIn({ username, password })
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     if (!error) {
-      commit('setAuthorization', resp.data.authenticate.token)
+      commit('setAuthorization', resp.data.data.token)
     } else {
       commit('setAuthorization', null)
     }
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.authenticate,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async requestPasswordReset({ commit }, email) {
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: FORGOT_PASSWORD,
-        variables: { email }
-      })
+    const resp = await asyncRequestHandler(
+      api.auth.forgotPassword(email)
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.forgotPassword,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   },
   async resetPassword({ commit }, { accountId, token, newPassword }) {
     commit('setLoading', true)
-    const resp = await asyncHandler(
-      graphqlClient.mutate({
-        mutation: RESET_PASSWORD,
-        variables: { accountId, token, newPassword }
-      })
+    const resp = await asyncRequestHandler(
+      api.auth.resetPassword(accountId, { token, newPassword })
     )
-    const error = resp instanceof Error
+    const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,
-      data: error ? {} : resp.data.resetPassword,
-      message: error ? resp.message : null
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
     }
   }
 }
