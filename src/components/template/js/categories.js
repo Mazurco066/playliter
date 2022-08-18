@@ -96,7 +96,7 @@ export default {
         if (result.isConfirmed) {
           const response = await this.deleteCategory(id)
           if (response.error) {
-            this.$toast.error(response.message.replace('GraphQL error:', '') || this.$t('categories.messages[6]'))
+            this.$toast.error(response.message || this.$t('categories.messages[6]'))
           } else {
             this.$toast.success(this.$t('categories.messages[7]'))
             this.closeCategoryModal()

@@ -1,6 +1,7 @@
 // Dependencies
 import axios from 'axios'
 import store from '../store'
+import router from '../router'
 
 // Base http client
 const httpClient = axios.create({
@@ -18,14 +19,20 @@ httpClient.interceptors.request.use(async config => {
 })
 
 // Verify if API returned unauthorized response
-httpClient.interceptors.response.use(async response => {
-  const token = store ? store.getters['authentication/getAuthorization'] : null
-  if (token && [401].includes(response.status)) {
-    // Redirect to sign in
-    console.log('[Unauthorized]')
+httpClient.interceptors.response.use(
+  response => {
+    return response
+  }, 
+  error => {
+    const response = error.response
+    const token = store ? store.getters['authentication/getAuthorization'] : null
+    if (token && response && response.status === 401) {
+      store.dispatch('RESET')
+      router.push({ name: 'signin' })
+    }
+    throw error 
   }
-  return response
-})
+)
 
 // Exporting http client
 export default httpClient

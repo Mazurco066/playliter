@@ -61,7 +61,7 @@ export default {
             loadingSwal.close()
             if (r.error) {
               this.$toast.error(
-                r.message.replace('GraphQL error:', '') ||
+                r.message ||
                 `Ocorreu um erro ao responder o convite! Por favor contate um administrador do sistema.`
               )
             } {
