@@ -38,8 +38,11 @@ export default {
     loadMore () {
       this.scrollElement = document.getElementById('main-body')
       this.scrollElement.onscroll = async () => {
-        let response, bottomOfWindow = this.scrollElement.scrollHeight - this.scrollElement.clientHeight === Math.round(this.scrollElement.scrollTop)
-        if (bottomOfWindow && !this.songLoading && !this.blockInfiniteScroll) {
+        const endOfPage = this.scrollElement.scrollHeight - this.scrollElement.clientHeight
+        const currentPosition = Math.round(this.scrollElement.scrollTop)
+        const difference = endOfPage - currentPosition
+        let response
+        if (difference < 2 && !this.songLoading && !this.blockInfiniteScroll) {
           response = await this.listPublicSongs({ limit: this.limit, offset: this.offset, filter: this.filter })
           if (!response.error) {
             this.songs = [ ...this.songs, ...response.data.data ]
