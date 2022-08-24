@@ -1,4 +1,5 @@
 // Dependencies
+import Draggable from 'vuedraggable'
 import useVuelidate from '@vuelidate/core'
 import { required, minLength, maxLength } from '@vuelidate/validators'
 import { mapActions, mapGetters } from 'vuex'
@@ -9,6 +10,7 @@ export default {
   setup () {
     return { v$: useVuelidate() }
   },
+  components: { Draggable },
   data: () => ({
     show: {},
     form: {
@@ -29,7 +31,8 @@ export default {
         key: 2,
         title: 'Observações'
       }
-    ]
+    ],
+    drag: false
   }),
   computed: {
     ...mapGetters({
@@ -71,14 +74,6 @@ export default {
     },
     setTab (tab) {
       this.selectedIndex = tab
-    },
-    switchSong (current, target) {
-      const songs = this.show.songs
-      const currentSong = songs[current]
-      const targetSong = songs[target]
-      songs[target] = currentSong
-      songs[current] = targetSong
-      this.show = { ...this.show, songs }
     },
     viewAsPlaylist () {
       const { band, id } = this.$route.params
