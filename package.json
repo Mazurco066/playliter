@@ -1,6 +1,6 @@
 {
   "name": "@rakta/playliter",
-  "version": "3.7.0",
+  "version": "3.7.1",
   "private": true,
   "author": {
     "name": "Gabriel Mazurco",
@@ -41,6 +41,7 @@
     "vue-the-mask": "^0.11.1",
     "vue3-ace-editor": "^2.2.2",
     "vue3-i18n": "^1.1.5",
+    "vuedraggable": "^4.1.0",
     "vuex": "^4.0.0-0",
     "vuex-persistedstate": "^4.1.0"
   },
