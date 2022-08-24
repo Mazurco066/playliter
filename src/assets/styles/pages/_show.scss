@@ -103,7 +103,6 @@
       border-radius: 8px;
       padding: 0.5rem 0.5rem 0.5rem 1rem;
       position: relative;
-      transition: all 0.7s;
 
       .public-icon {
         position: absolute;
@@ -123,6 +122,10 @@
           font-weight: bold;
           color: var(--color-text);
         }
+      }
+
+      &:not(.reorder) {
+        transition: all 0.7s;
       }
 
       &:not(.reorder):hover {
@@ -249,6 +252,24 @@
       margin: 1rem auto;
       opacity: 0.75;
     }
+  }
+
+  // Reorder component
+  .flip-list-move {
+    transition: transform 0.5s;
+  }
+
+  .no-move {
+    transition: transform 0s;
+  }
+
+  .ghost {
+    opacity: 0.5;
+    background: var(--color-gray);
+  }
+
+  .list-group {
+    min-height: 20px;
   }
 }
 

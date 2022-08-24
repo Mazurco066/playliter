@@ -176,36 +176,39 @@
                 <!-- Reordering feature -->
                 <div v-else>
                   <div v-if="!showLoading && show.songs">
-                    <ul class="songs" v-if="show.songs.length > 0">
-                      <li v-for="(s, i) in show.songs" :key="i" class="song reorder">
-                        <div class="song-info">
-                          <p class="mb-0">
-                            <strong>{{ s.title }}</strong>
-                          </p>
-                          <span>{{ s.writter }}</span>
-                        </div>
-                        <div class="actions">
-                          <a
-                            v-if="i !== 0"
-                            class="btn btn-sm btn-icon-only order"
-                            role="button"
-                            aria-expanded="false"
-                            @click="switchSong(i, i - 1)"
-                          >
-                            <font-awesome-icon icon="arrow-up" />
-                          </a>
-                          <a
-                            v-if="i !== show.songs.length - 1"
-                            class="btn btn-sm btn-icon-only order"
-                            role="button"
-                            aria-expanded="false"
-                            @click="switchSong(i, i + 1)"
-                          >
-                            <font-awesome-icon icon="arrow-down" />
-                          </a>
-                        </div>
-                      </li>
-                    </ul>
+                    <div class="songs" v-if="show.songs.length > 0">
+                      <draggable 
+                        @start="drag=true" 
+                        @end="drag=false" 
+                        v-model="show.songs" 
+                        group="songs" 
+                        item-key="id"
+                        class="list-group"
+                        ghostClass="ghost"
+                        tag="transition-group"
+                        :disabled="showLoading"
+                        :animation="0"
+                        :component-data="{
+                          tag: 'ul',
+                          name: 'flip-list',
+                          type: 'transition'
+                        }"
+                      >
+                        <template #item="{element}">
+                          <li class="song reorder cursor-move">
+                            <div class="song-info">
+                              <p class="mb-0">
+                                <strong>{{ element.title }}</strong>
+                              </p>
+                              <span>{{ element.writter }}</span>
+                            </div>
+                            <div class="actions pr-2">
+                              <font-awesome-icon icon="hand" />
+                            </div>
+                          </li>
+                        </template>
+                      </draggable>
+                    </div>
                     <div v-else class="no-songs">
                       <div class="icon">
                         <img src="/img/arts/not_found.svg" alt="No content">
@@ -340,7 +343,6 @@
         </div>
       </div>
     </div>
-
     <!-- Add/Update observation form -->
     <base-modal
       @close="closeObservationModal()"

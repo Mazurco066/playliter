@@ -79,8 +79,11 @@ export default {
     loadMore () {
       this.scrollElement = document.getElementById('main-body')
       this.scrollElement.onscroll = async () => {
-        let response, bottomOfWindow = this.scrollElement.scrollHeight - this.scrollElement.clientHeight === Math.round(this.scrollElement.scrollTop)
-        if (bottomOfWindow && !this.songLoading && this.total !== this.repertory.numberOfItems && !this.blockInfiniteScroll) {
+        const endOfPage = this.scrollElement.scrollHeight - this.scrollElement.clientHeight
+        const currentPosition = Math.round(this.scrollElement.scrollTop)
+        const difference = endOfPage - currentPosition
+        let response
+        if (difference < 2 && !this.songLoading && this.total !== this.repertory.numberOfItems && !this.blockInfiniteScroll) {
           const scrollPosition = this.scrollElement.scrollTop
           response = await this.listBandSongs({
             band: this.band,

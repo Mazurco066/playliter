@@ -29,15 +29,18 @@ export default {
     tabs: [
       {
         key: 1,
-        title: 'Repertório'
+        title: 'Repertório',
+        hash: '#songs'
       },
       {
         key: 2,
-        title: 'Categorias'
+        title: 'Categorias',
+        hash: '#categories'
       },
       {
         key: 3,
-        title: 'Show'
+        title: 'Show',
+        hash: '#shows'
       }
     ]
   }),
@@ -241,6 +244,22 @@ export default {
     }
   },
   async mounted () {
+    const routeHash = this.$route.hash
+    if (routeHash) {
+      switch (routeHash) {
+        case '#songs':
+          this.selectedIndex = 1
+          break
+
+        case '#categories':
+          this.selectedIndex = 2
+          break
+
+        case '#shows':
+          this.selectedIndex = 3
+          break
+      }
+    }
     await this.loadPageData()
   },
   validations () {

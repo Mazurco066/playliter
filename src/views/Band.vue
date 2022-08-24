@@ -65,13 +65,15 @@
         </div>
         <div class="tabs" v-if="isDisplayReady">
           <div
-            v-for="({ key, title }) in translatedTabs"
+            v-for="({ key, title, hash }) in translatedTabs"
             :key="key"
             :class="{ 'selected': key === selectedIndex }"
             @click="setTab(key)"
             class="tab"
           >
-            <span>{{ title }}</span>
+            <a :href="hash" rel="noopener noreferrer">
+              {{ title }}
+            </a>
           </div>
         </div>
       </div>

@@ -43,13 +43,9 @@ export default {
           this.$toast.error(this.$t('saveBand.messages[1]'))
         } else {
           this.$toast.success(this.$t('saveBand.messages[0]'))
-          if (id) {
-            this.$router.push({ name: 'band', params: { id: r.data.id } })
-          } else  {
-            this.$router.push({ name: 'bands' })
-          }
+          this.$router.push({ name: 'band', params: { id: id || r.data.id } })
         }
-
+        
       } else {
         this.$toast.warning(this.$t('saveBand.messages[2]'))
       }
