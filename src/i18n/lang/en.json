@@ -1,0 +1,422 @@
+{
+  "appname": "Playliter",
+  "description": "This app was developed to help bands manage presentation playlists.",
+  "welcomeMsg": "Welcome to",
+  "bottomNav": ["Bands", "Home", "Profile"],
+  "band": {
+    "createdAt": "Created at",
+    "inviteAction": "Invite",
+    "updateAction": "Update",
+    "removeAction": "Remove",
+    "promoteAction": "Promote to Admin",
+    "demoteAction": "Demote to member",
+    "addAction": "Add Member",
+    "memberSection": "Members",
+    "memberDescription": "People who compose this band.",
+    "modalTitle": "Band",
+    "modalDescription": "Add new member",
+    "userField": "Username",
+    "tabs": ["Songbook", "Categories", "Concerts"],
+    "messages": [
+      "Band not found",
+      "This user is already in band!",
+      "An error ocourred while adding a new member. Please try again later!",
+      "A new member was invited to join the band!",
+      "There are errors in your form data. Plese review the filled fields!",
+      "This action is permanent!",
+      "Delete this member from band?",
+      "An error ocourred while removing the member from band! Please try again later!",
+      "Member successfully removed!",
+      "Are you sure?",
+      "Promote this member to 'Admin'?",
+      "An error ocourred while promoting the member! Please try again later!",
+      "Member successfully promoted!",
+      "Demote this member to 'Member'?",
+      "An error ocourred while demoting the member! Please try again later!",
+      "Member successfully demoted!",
+      "Delete this band for all its members?",
+      "An error ocourred while deleting the band! Please try again later!",
+      "Band successfully removed!"
+    ]
+  },
+  "bands": {
+    "title": "My Bands",
+    "add": "Add Band",
+    "subtitle": "List of bands that you are assigned.",
+    "founder": "Founder",
+    "admin": "Admin",
+    "member": "Member",
+    "noBands": "You aren't a member from any bands!",
+    "editAction": "Update",
+    "removeAction": "Remove",
+    "cancelAction": "Cancel",
+    "messages": [
+      "You need admin privilegies to edit this band!.",
+      "You must be the band's founder to delete this band!.",
+      "This action is permanent!",
+      "Delete this band for all members?",
+      "An error ocourred while removing the band! Please try again later.",
+      "Band successfully removed!"
+    ]
+  },
+  "categories": {
+    "title": "Categories",
+    "subtitle": "Saved categories for selected band.",
+    "addAction": "Add Category",
+    "submit": "Save Category",
+    "remove": "Remove Category",
+    "formTitle": "Categories",
+    "formDescription": "Save category",
+    "titleField": "Category title",
+    "descriptionField": "Category description",
+    "noCategories": "This band hasn't created categories!",
+    "removeAction": "Remove",
+    "cancelAction": "Cancel",
+    "messages": [
+      "An error ocourred while saving the category! Please try again later.",
+      "Category successfully saved!",
+      "There are errors in your form data. Plese review the filled fields!",
+      "An error ocourred while retrieving the categories!",
+      "This action is permanent!",
+      "Delete this category?",
+      "An error ocourred while deleting the category! Please try again later.",
+      "Category successfully deleted!"
+    ]
+  },
+  "directory": {
+    "title": "Songbook",
+    "subtitle01": "Containing",
+    "subtitle02": "songs.",
+    "searchField": "Search songs...",
+    "publicAction": "Public songs",
+    "songAction": "New song",
+    "songLabel": "Song(s)",
+    "noSongs": "There is no songs using the current filter!",
+    "messages": ["An error ocourred while loading the songs!"]
+  },
+  "home": {
+    "aboutUs": "About Us",
+    "nextPresentations": "Incoming presentations",
+    "date": "At",
+    "version": "Version",
+    "noPresentations": "There is no incoming presentations from bands you joined!",
+    "pendingInvites": "Band invitations",
+    "invitedAt": "Invited at",
+    "messages": [
+      "An error ocourred while loading the pending shows! Please try again later."
+    ]
+  },
+  "profile": {
+    "title": "My Profile",
+    "notice": "Privacy policy",
+    "subtitle": "This is your profile in Playliter App, the following info will be displayed to general public: <strong>Nome, Imagem e E-mail</strong>.",
+    "nameField": "Name",
+    "userField": "Username",
+    "emailField": "E-mail",
+    "accessField": "Access Type",
+    "createdAt": "Member since",
+    "submit": "Save profile",
+    "logoff": "Logoff",
+    "musician": "Musician",
+    "admin": "Admin",
+    "messages": [
+      "An error ocourred while updating your profile! Please try again later.",
+      "Profile successfully updated!",
+      "Ther is no authenticated account. Please login!",
+      "There are errors in your form data. Plese review the filled fields!",
+      "No image was selected.",
+      "Upload in progress.",
+      "An error ocourred while uploading your image! Please try again later.",
+      "Upload successfully completed!"
+    ]
+  },
+  "publicSongs": {
+    "title": "Public songbook",
+    "subtitle": "Here you can find public songs shared by bands.",
+    "searchField": "Search songs...",
+    "noSongs": "There is no songs using the current filter!",
+    "clearAction": "Clear Filter",
+    "searchLabel": "Filter by title or writter",
+    "noPublicSongs": "There was no public songs found using the current filter!",
+    "messages": [
+      "An error ocourred while loading the songs. Please try again later!"
+    ]
+  },
+  "saveBand": {
+    "createTitle": "Create new Band",
+    "updateTitle": "Save Band",
+    "createSubtitle": "Creates a new Band.",
+    "updateSubtitle": "Update a Band's data.",
+    "nameField": "Band name",
+    "nameLabel": "Band name",
+    "descriptionField": "Band description",
+    "descriptionLabel": "Band description",
+    "submit": "Save Band",
+    "messages": [
+      "Band successfully saved!",
+      "An error ocourred while saving the band! Please try again later.",
+      "There are errors in your form data. Plese review the filled fields!",
+      "Band not found!"
+    ]
+  },
+  "saveShow": {
+    "createTitle": "Create new Show",
+    "updateTitle": "Save Show",
+    "createSubtitle": "Creates a new Show.",
+    "updateSubtitle": "Update a Show's data.",
+    "nameField": "Show title",
+    "nameLabel": "Show title",
+    "descriptionField": "Show description",
+    "descriptionLabel": "Description",
+    "dateLabel": "Date",
+    "submit": "Save Show",
+    "messages": [
+      "Show successfully saved!",
+      "An error ocourred while saving the show! Please try again later.",
+      "There are errors in your form data. Plese review the filled fields!",
+      "Show not found!"
+    ]
+  },
+  "saveSong": {
+    "title": "Save Song",
+    "subtitle": "Salvar a song's data.",
+    "titleField": "Song title",
+    "authorField": "Song Writter",
+    "toneField": "Base tone",
+    "categoryField": "Category",
+    "importLabel": "Is the song on third part websites?",
+    "importDescription": "No problems. Paste your song url below to import it.",
+    "importField": "Song URL",
+    "bodyLabel": "Song body (Type the lyrics including the chords)",
+    "submit": "Save song",
+    "privateLabel": "Private",
+    "publicLabel": "Public",
+    "visibilityLabel": "Is Public?",
+    "messages": [
+      "Music successfully saved",
+      "An error ocourred while saving the song! Please try again later.",
+      "There are errors in your form data. Plese review the filled fields!",
+      "Song not found!",
+      "Save at least 1 category before saving songs!",
+      "We are importing the song for you",
+      "An error ocourred while importing the song. Please notify the system administrator!",
+      "Wait a bit",
+      "Ples fill the song body field!",
+      "No URL found!",
+      "Type a valid URL!"
+    ]
+  },
+  "show": {
+    "presentedAt": "Show date:",
+    "editAction": "Update",
+    "songsLabel": "Selected songs",
+    "publicLabel": "Public",
+    "removeFromShow": "Remove form show",
+    "noSongs": "There is no songs in this show!",
+    "pdfAction": "View Mode (PDF)",
+    "reorderSubmit": "Save Order",
+    "deleteAction": "Delete",
+    "removeAction": "Remove",
+    "reorderAction": "Reorder",
+    "cancelAction": "Cancel",
+    "tabs": ["Songs", "Notes"],
+    "obsTitle": "Observações",
+    "noObservations": "There is no observations in this show!",
+    "addAction": "Add new",
+    "obsEditAction": "Update",
+    "obsRemoveAction": "Remove",
+    "obsFormTitle": "Notes",
+    "obsFormDescription": "Save observations.",
+    "titleField": "Title",
+    "dataField": "Observation",
+    "submit": "Save",
+    "dailyLiturgy": "Import daily liturgy",
+    "dailyLiturgyQuestion": "Do you with to import daily liturgy as observation to this concert?",
+    "dailyLiturgyTitle": "Are you sure?",
+    "dailyLiturgyConfirm": "Yes",
+    "dailyLiturgyLoading": "Import daily liturgy in progress.",
+    "dailyLiturgyLoadingTitle": "Please wait",
+    "messages": [
+      "Are you sure?",
+      "Reorder this show?",
+      "An error ocourred while reorder the show! Please try again later.",
+      "Show successfully reordered!",
+      "This action is permanent!",
+      "Delete this show?",
+      "An error ocourred while removing the show! Please try again later.",
+      "Show successfully removed!",
+      "Show not found!",
+      "Confirmation!",
+      "Remove this song from presentation",
+      "An error ocourred while removing the song from show! Please try again later.",
+      "The song was successfully removed from the show!",
+      "Do you want to remove this observation from the show",
+      "An error ocourred while removing the observation from show! Please try again later.",
+      "Observação removida da apresentação",
+      "There are errors in your form data. Plese review the filled fields!",
+      "Observation successfully saved!",
+      "An error ocourred while saving the observation to show! Please try again later.",
+      "An error ocourred white importing daily liturgy! Please try again later.",
+      "Daily liturgy successfully imported!",
+      "Daily liturgy was partially imported!"
+    ]
+  },
+  "shows": {
+    "title": "Shows",
+    "subtitle": "Saved shows from this band.",
+    "noShows": "This band has no saved shows!",
+    "date": "Date",
+    "addShow": "Add show",
+    "messages": [
+      "An error ocourred while retrieving the show! Please try again later."
+    ]
+  },
+  "signin": {
+    "title": "Authentication",
+    "userLabel": "Username",
+    "userField": "Type your username",
+    "passwordLabel": "Password",
+    "passwordField": "Now your password",
+    "forgotPasword": "Forgot my password",
+    "submit": "Login",
+    "pageLabel": "Doesn't have an account?",
+    "pageLink": "Sign up!",
+    "messages": [
+      "Welcome!",
+      "Incorrect user or password",
+      "There are errors in your form data. Plese review the filled fields!"
+    ]
+  },
+  "signup": {
+    "title": "Sign up",
+    "nameField": "Your name",
+    "nameLabel": "Name",
+    "userField": "Username",
+    "userLabel": "Username",
+    "emailField": "E-mail",
+    "emailLabel": "E-mail",
+    "passwordField": "Password",
+    "passwordLabel": "Password",
+    "confirmField": "Confirm password",
+    "confirmLabel": "Confirm your password",
+    "submit": "Create an Account",
+    "pageLabel": "Have an account?",
+    "pageLink": "Sign in!",
+    "messages": [
+      "Account successfully created!",
+      "Account successfully created. Welcome!",
+      "The password and confirmation must match!",
+      "An error ocourred while creating your account! Pleas try again later.",
+      "There are errors in your form data. Plese review the filled fields!"
+    ]
+  },
+  "forgotPassword": {
+    "title": "Forgot password",
+    "subtitle": "Enter your account E-mail to receive a reset password message.",
+    "emailLabel": "E-mail",
+    "emailField": "Type your E-mail",
+    "hasAccount": "Sign me in",
+    "submit": "Request reset E-mail",
+    "messages": [
+      "There are errors in your form data. Plese review the filled fields!",
+      "An error ocourred while requesting a password reset. Please try again later!",
+      "A reset password mail was sent to your account!",
+      "Please wait",
+      "We are sending a message to the informed E-mail address."
+    ]
+  },
+  "resetPassword": {
+    "title": "Redefinir senha",
+    "subtitle": "Type a new password for your account and confirm it.",
+    "passwordField": "Password",
+    "passwordLabel": "Password",
+    "confirmField": "Confirm password",
+    "confirmLabel": "Confirm your password",
+    "hasAccount": "Sign me in",
+    "submit": "Update Account",
+    "messages": [
+      "There are errors in your form data. Plese review the filled fields!",
+      "An error ocourred while updating your account. Please try again later!",
+      "Sua senha foi redefinida com sucesso! Faça login novamente com sua nova senha.",
+      "Please wait",
+      "Your account is under validation."
+    ]
+  },
+  "verifyAccount": {
+    "title": "Validate your E-mail",
+    "subtitle": "Please input the security code sent to",
+    "resendLabel": "Don't received a code?",
+    "resendLink": "Resend.",
+    "messages": [
+      "The inserted code is invalid!",
+      "Please wait",
+      "Your account is under validation.",
+      "Your account was successfully activated!",
+      "An error ocourred while resending the verification E-mail! Please try again later.",
+      "The verification mail has been resent! Please check your E-mail for new messages."
+    ]
+  },
+  "song": {
+    "listAction": "+ List",
+    "editAction": "Update",
+    "cloneAction": "Clone",
+    "addAction": "Add",
+    "cancelAction": "Cancel",
+    "removeAction": "Remove",
+    "modalTitle": "Shows",
+    "modalSubtitle": "Add song to show",
+    "noPresentations": "No shows has been found!",
+    "chords": "Chords",
+    "hideChords": "Hide chords on screen",
+    "showChords": "Display chords on screen",
+    "cloneTitle": "Clone song",
+    "cloneSubtitle": "Save a copy of this song to any of your bands.",
+    "filterShowsPlaceholder": "Search...",
+    "cloneSwal": {
+      "title": "Do you wish to clone this song?",
+      "description": "Cloning a song allows updating its content",
+      "confirm": "Clone",
+      "deny": "Cancel",
+      "loadingTitle": "Please wait...",
+      "loadingDescription": "We're saving a copy of this song to your band.",
+      "errorMessage": "An error ocourred while saving a copy of this song! Please try again later.",
+      "successMessage": "The song was successfully saved as a copy!",
+      "categoryError": "Thre is no category registered on the selected band!"
+    },
+    "messages": [
+      "Music not found!",
+      "This actions is permanent!",
+      "Do you wish to remove this song?",
+      "An error ocourred while removing the song! Please notice this to an administrator.",
+      "Music was successfully removed!",
+      "Confirmation!",
+      "do you wish to proceed adding this song to the show",
+      "An error ocourred while adding the song to a show! Please notice this to an administrator.",
+      "Músic add to show"
+    ]
+  },
+  "songList": {
+    "previous": "Previous",
+    "next": "Next",
+    "print": "PDF Export",
+    "credits": "This document was generated by Playliter at",
+    "messages": [
+      "Show not found!",
+      "Ops... An error ocourred while parsing the song!"
+    ]
+  },
+  "songsheet": {
+    "updateTone": "Atualizar Tom Base",
+    "by": "By",
+    "capo": "Capo"
+  },
+  "tuner": {
+    "title": "Online Tuner",
+    "subtitle": "Online instrument tuner tool."
+  },
+  "layout": {
+    "logout": "Logout",
+    "profile": "Profile",
+    "tuner": "Tuner"
+  }
+}

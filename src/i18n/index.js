@@ -1,6 +1,15 @@
 // Dependencies
 import { createI18n } from 'vue3-i18n'
-import jsonMessages from './i18n.json'
+
+// Langs
+import brJsonMessages from './lang/br.json'
+import enJsonMessages from './lang/en.json'
+
+// Merge langs
+const jsonMessages = {
+  pt: brJsonMessages,
+  en: enJsonMessages
+}
 
 // Define messages and overwrite if needed
 const messages = {...jsonMessages }

@@ -1,0 +1,424 @@
+{
+  "appname": "Playliter",
+  "description": "App desenvolvido no intuíto de facilitar o gerenciamento do repertório de uma banda.",
+  "welcomeMsg": "Bem vindo ao",
+  "bottomNav": ["Bandas", "Home", "Perfil"],
+  "band": {
+    "createdAt": "Criada em",
+    "inviteAction": "Convidar",
+    "updateAction": "Editar",
+    "removeAction": "Remover",
+    "addAction": "Adicionar Membro",
+    "promoteAction": "Tornar Admin",
+    "demoteAction": "Remover permissões",
+    "toolSection": "Ferramentas",
+    "memberSection": "Integrantes",
+    "memberDescription": "Lista de integrantes que participam dessa banda. Integrantes podem ser de 3 tipos: <strong class='text-secondary-light'>Fundador</strong>, <strong class='text-secondary-light'>Admin</strong> ou <strong class='text-secondary-light'>Membro</strong>.",
+    "modalTitle": "Convidar Membro",
+    "modalDescription": "Convide um novo membro para a banda inserindo o username da pessoa desejada.",
+    "userField": "Nome de usuário",
+    "tabs": ["Músicas", "Categorias", "Apresentações"],
+    "messages": [
+      "Banda não encontrada",
+      "O usuário já se encontra nessa banda!",
+      "Ocorreu um erro ao adicionar um membro a banda. Por favor contate um administrador!",
+      "Um novo membro foi convidado a banda!",
+      "Seu formulário contem erros de validação! Por favor revise-os.",
+      "Essa ação é permanente!",
+      "Deseja remover esse membro da banda?",
+      "Ocorreu um erro ao remover o membro da banda! Por favor contate um administrador do sistema.",
+      "Membro removido com sucesso!",
+      "Tem certeza?",
+      "Deseja promover esse membro  para 'Admin'?",
+      "Ocorreu um erro ao promover o membro da banda! Por favor contate um administrador do sistema.",
+      "Membro promovido com sucesso!",
+      "Deseja rebaixar esse membro para 'Membro'?",
+      "Ocorreu um erro ao rebaixar o membro da banda! Por favor contate um administrador do sistema.",
+      "Membro rebaixado com sucesso!",
+      "Deseja excluir essa banda para todos seus integrantes?",
+      "Ocorreu um erro ao excluir a banda! Por favor contate um administrador do sistema.",
+      "Banda removida com sucesso!"
+    ]
+  },
+  "bands": {
+    "title": "Minhas bandas",
+    "add": "Criar Banda",
+    "subtitle": "Lista das bandas nas quais você participa como integrante.",
+    "founder": "Fundador",
+    "admin": "Administrador",
+    "member": "Membro",
+    "noBands": "Você não participa de nenhuma banda no momento!",
+    "editAction": "Editar",
+    "removeAction": "Excluir",
+    "cancelAction": "Cancelar",
+    "messages": [
+      "Você precisa de permissões de administrador para editar uma banda!.",
+      "Você precisa ser o fundador da banda para poder excluir a mesma!.",
+      "Essa ação é permanente!",
+      "Deseja excluir essa banda para todos seus integrantes?",
+      "Ocorreu um erro ao excluir a banda! Por favor contate um administrador do sistema.",
+      "Banda removida com sucesso!"
+    ]
+  },
+  "categories": {
+    "title": "Categorias",
+    "subtitle": "Categorias registradas para a banda selecionada.",
+    "addAction": "Criar Nova",
+    "submit": "Salvar Categoria",
+    "remove": "Remover Categoria",
+    "formTitle": "Categorias",
+    "formDescription": "Salvar nova categoria ou editar uma existente.",
+    "titleField": "Título da categoria",
+    "descriptionField": "Descrição da categoria",
+    "noCategories": "Essa banda não possuí categorias cadastradas!",
+    "removeAction": "Remover",
+    "cancelAction": "Cancelar",
+    "messages": [
+      "Ocorreu um erro ao salvar sua categoria! Tente novamente mais tarde.",
+      "Categoria salva com sucesso!",
+      "Seu formulário contem erros de validação! Por favor revise-os.",
+      "Ocorreu um erro ao obter as categorias musicais da banda!",
+      "Essa ação é permanente!",
+      "Deseja remover essa categoria?",
+      "Ocorreu um erro ao remover a categoria! Por favor contate um administrador do sistema.",
+      "Categoria removida com sucesso!"
+    ]
+  },
+  "directory": {
+    "title": "Repertório completo",
+    "subtitle01": "Contendo",
+    "subtitle02": "músicas.",
+    "searchField": "Pesquisar música...",
+    "publicAction": "Músicas públicas",
+    "songAction": "Nova música",
+    "songLabel": "Música(s)",
+    "noSongs": "Nenhuma música foi encontrada com o filtro utilizado!",
+    "messages": ["Ocorreu um erro ao obter o repertório da banda!"]
+  },
+  "home": {
+    "aboutUs": "Sobre o App",
+    "nextPresentations": "Próximas apresentações",
+    "date": "Em",
+    "version": "Versão",
+    "noPresentations": "Não há apresentações futuras registradas nas bandas que você participa!",
+    "pendingInvites": "Convites pendentes",
+    "invitedAt": "Convidado em",
+    "messages": [
+      "Ocorreu um erro ao obter as apresentações futuras! Por favor contate um administrador do sistema."
+    ]
+  },
+  "profile": {
+    "title": "Meu perfil",
+    "notice": "Política de privacidade",
+    "subtitle": "Esse é o seu perfil dentro do aplicativo. Serão visíveis para terceiros somente seu <strong>nome, imagem e E-mail</strong>.",
+    "nameField": "Nome completo",
+    "userField": "Usuário",
+    "emailField": "E-mail",
+    "accessField": "Nível da conta",
+    "createdAt": "Conta criada em",
+    "submit": "Atualizar perfil",
+    "logoff": "Sair",
+    "musician": "Músico",
+    "admin": "Admin",
+    "messages": [
+      "Ocorreu um erro ao atualizar seu perfil! Tente novamente mais tarde",
+      "Perfil atualizado com sucesso!",
+      "Não foi possível obter a conta autenticada. Por favor tente novamente mais tarde!",
+      "Seu formulário contem erros de validação! Por favor revise-os.",
+      "Nenhuma imagem foi informada.",
+      "O upload de sua imagem está em progresso.",
+      "Erro ao enviar imagem. Tente novamente mais tarde!",
+      "Upload concluído com sucesso!"
+    ]
+  },
+  "publicSongs": {
+    "title": "Repertório público",
+    "subtitle": "Aqui você encontra as músicas disponibilizadas publicamente pelas bandas.",
+    "searchField": "Pesquisar músicas...",
+    "noSongs": "Não há músicas cadastradas correspondentes ao filtro atual.",
+    "clearAction": "Limpar filtro",
+    "searchLabel": "Filtrar por nome ou autor",
+    "noPublicSongs": "Não foram encontradas músicas públicas utilizando o filtro atual.",
+    "messages": [
+      "Ocorreu um erro ao obter o repertório público. Por favor tente novamente mais tarde!"
+    ]
+  },
+  "saveBand": {
+    "createTitle": "Criar nova banda",
+    "updateTitle": "Editar banda",
+    "createSubtitle": "Crie sua banda e convide seus integrantes.",
+    "updateSubtitle": "Alterar os dados de sua cadastrada.",
+    "nameField": "Nome para a banda...",
+    "nameLabel": "Nome da banda",
+    "descriptionField": "Breve descrição...",
+    "descriptionLabel": "Descrição",
+    "dateLabel": "Data",
+    "submit": "Salvar Banda",
+    "messages": [
+      "Banda salva com sucesso!",
+      "Ocorreu um erro ao salvar sua banda! Tente novamente mais tarde.",
+      "Seu formulário contem erros de validação! Por favor revise-os.",
+      "Banda não encontrada!"
+    ]
+  },
+  "saveShow": {
+    "createTitle": "Criar nova apresentacao",
+    "updateTitle": "Editar apresentacao",
+    "createSubtitle": "Crie uma apresentação para organizar as músicas selecionadas.",
+    "updateSubtitle": "Alterar os dados de seua apresentação.",
+    "nameField": "Nome para a apresentação",
+    "nameLabel": "Nome da apresentação",
+    "descriptionField": "Breve descrição...",
+    "descriptionLabel": "Descrição",
+    "dateLabel": "Data",
+    "submit": "Salvar apresentação",
+    "messages": [
+      "Apresentação salva com sucesso!",
+      "Ocorreu um erro ao salvar sua apresentação! Tente novamente mais tarde.",
+      "Seu formulário contem erros de validação! Por favor revise-os.",
+      "Apresentação não encontrada!"
+    ]
+  },
+  "saveSong": {
+    "title": "Salvar música",
+    "subtitle": "Salvar os dados referentes a uma música.",
+    "titleField": "Título da música",
+    "authorField": "Autor da música",
+    "toneField": "Tom inicial da música",
+    "categoryField": "Categoria da música",
+    "importLabel": "Música está em site de terceiros?",
+    "importDescription": "Sem problemas? Cole a URL da música no campo abaixo e a importaremos para o app.",
+    "importField": "URL da música",
+    "bodyLabel": "Corpo da música (Digite a letra com as cifras)",
+    "submit": "Salvar música",
+    "privateLabel": "Privada",
+    "publicLabel": "Pública",
+    "visibilityLabel": "Música é pública?",
+    "messages": [
+      "Música salva com sucesso!",
+      "Ocorreu um erro ao salvar sua música! Tente novamente mais tarde.",
+      "Seu formulário contem erros de validação! Por favor revise-os.",
+      "Música não encontrada!",
+      "Cadastre no mínimo uma categoria antes de salvar uma música!",
+      "Estamos importando a cifra da música informada..",
+      "Ocorreu um erro ao importar a música! Por favor contate um administrador do sistema.",
+      "Aguarde",
+      "Por favor preencha o corpo da música para prosseguir! Por favor revise-os.",
+      "Nenhuma url de importação foi inserida.",
+      "Insira uma URL válida."
+    ]
+  },
+  "show": {
+    "presentedAt": "Data:",
+    "editAction": "Editar",
+    "songsLabel": "Músicas selecionadas",
+    "publicLabel": "Pública",
+    "removeFromShow": "Remover da Apresentação",
+    "noSongs": "Não há músicas registradas nessa apresentação!",
+    "pdfAction": "Modo de visualização (PDF)",
+    "reorderSubmit": "Salvar Ordem",
+    "deleteAction": "Excluir",
+    "removeAction": "Remover",
+    "reorderAction": "Reordenar",
+    "cancelAction": "Cancelar",
+    "tabs": ["Músicas", "Observações"],
+    "obsTitle": "Observações",
+    "noObservations": "Não há observações registradas nessa apresentação!",
+    "addAction": "Criar nova",
+    "obsEditAction": "Editar",
+    "obsRemoveAction": "Remover",
+    "obsFormTitle": "Observação",
+    "obsFormDescription": "Salvar/atualizar observações da apresentação.",
+    "titleField": "Título",
+    "dataField": "Observação",
+    "submit": "Salvar",
+    "dailyLiturgy": "Importar Liturgia Diária",
+    "dailyLiturgyQuestion": "Deseja importar a liturgia diária como observações para essa apresentação?",
+    "dailyLiturgyTitle": "Tem certeza?",
+    "dailyLiturgyConfirm": "Sim",
+    "dailyLiturgyLoading": "Estamos importando a liturgia diária correspondente a date dessa apresentação.",
+    "dailyLiturgyLoadingTitle": "Aguarde",
+    "messages": [
+      "Tem certeza!",
+      "Deseja reordenar essa apresentação?",
+      "Ocorreu um erro ao reordenar as músicas! Tente novamente mais tarde.",
+      "Apresentação reordenada com sucesso!",
+      "Essa ação é permanente!",
+      "Deseja excluir essa apresentação?",
+      "Ocorreu um erro ao excluir a apresentação! Por favor contate um administrador do sistema.",
+      "Apresentação removida com sucesso!",
+      "Apresentação não encontrada!",
+      "Confirmação!",
+      "Deseja remover essa música da apresentação",
+      "Ocorreu um erro ao remover a música da apresentação! Por favor contate um administrador do sistema.",
+      "Música removida da apresentação",
+      "Deseja remover essa observação da apresentação",
+      "Ocorreu um erro ao remover a observação da apresentação! Por favor contate um administrador do sistema.",
+      "Observação removida da apresentação",
+      "Seu formulário contem erros de validação! Por favor revise-os.",
+      "Sua observação foi salva com sucesso!",
+      "Ocorreu um erro ao salvar a observação da apresentação! Por favor contate um administrador do sistema.",
+      "Ocorreu um erro ao importar a liturgia diária! Por favor contate um administrador do sistema.",
+      "Liturgia diária importada com sucesso!",
+      "Liturgia diária foi parcialmente importada devido a um erro ocorrido no meio do processo de importação."
+    ]
+  },
+  "shows": {
+    "title": "Apresentações",
+    "subtitle": "Apresentações registradas para a banda performar.",
+    "noShows": "Essa banda não possuí apresentações cadastradas!",
+    "date": "Data",
+    "addShow": "Criar nova",
+    "messages": [
+      "Ocorreu um erro ao obter as apresentações da banda! Por favor contate um administrador do sistema."
+    ]
+  },
+  "signin": {
+    "title": "Autenticação",
+    "userLabel": "Usuário",
+    "userField": "Entre com seu usuário",
+    "passwordLabel": "Senha",
+    "passwordField": "Agora digite sua senha",
+    "forgotPasword": "Esqueci minha senha",
+    "submit": "Acessar",
+    "pageLabel": "Não possúi conta?",
+    "pageLink": "Criar uma agora!",
+    "messages": [
+      "Seja bem vindo!",
+      "Usuário ou senha incorreto(s)",
+      "Seu formulário contem erros de validação! Por favor revise-os."
+    ]
+  },
+  "signup": {
+    "title": "Criar nova conta",
+    "nameField": "Digite seu nome",
+    "nameLabel": "Nome Completo",
+    "userField": "Escolha um nome de usuário",
+    "userLabel": "Nome do usuário",
+    "emailField": "Entre com seu E-mail",
+    "emailLabel": "Email do usuário",
+    "passwordField": "Agora digite seu senha",
+    "passwordLabel": "Senha",
+    "confirmField": "Agora confirme sua senha",
+    "confirmLabel": "Confirmar senha",
+    "submit": "Criar conta",
+    "pageLabel": "Já possúi conta?",
+    "pageLink": "Autenticar!",
+    "messages": [
+      "Conta criada com sucesso!",
+      "Conta criada com sucesso. Seja bem vindo(a)!",
+      "As senhas devem ser iguais!",
+      "Ocorreu um erro ao criar sua conta! Tente novamente mais tarde.",
+      "Seu formulário contem erros de validação! Por favor revise-os."
+    ]
+  },
+  "forgotPassword": {
+    "title": "Esqueci minha senha",
+    "subtitle": "Digite o E-mail vinculado a sua conta para receber um E-mail de redefinição de senha.",
+    "emailLabel": "E-mail",
+    "emailField": "Digite seu E-mail",
+    "hasAccount": "Voltar para autenticação",
+    "submit": "Solicitar redefinição",
+    "messages": [
+      "Seu formulário contem erros de validação! Por favor revise-os.",
+      "Ocorreu um erro ao solicitar sua redefinição de senha. Por favor tente novamente mais tarde!",
+      "Um E-mail de redefinição de senha foi enviado para o endereço informado.",
+      "Aguarde",
+      "Estamos enviando um E-mail de recuperação de conta para o endereço de E-mail informado."
+    ]
+  },
+  "resetPassword": {
+    "title": "Redefinir senha",
+    "subtitle": "Entre com uma nova senha para sua conta e a confirme",
+    "passwordField": "Agora digite seu senha",
+    "passwordLabel": "Senha",
+    "confirmField": "Agora confirme sua senha",
+    "confirmLabel": "Confirmar senha",
+    "hasAccount": "Voltar para autenticação",
+    "submit": "Redefinir senha",
+    "messages": [
+      "Seu formulário contem erros de validação! Por favor revise-os.",
+      "Ocorreu um erro ao redefinir sua senha. Por favor tente novamente mais tarde!",
+      "Sua senha foi redefinida com sucesso! Faça login novamente com sua nova senha.",
+      "Aguarde",
+      "Estamos atualizando a sua conta."
+    ]
+  },
+  "verifyAccount": {
+    "title": "Valide seu E-mail",
+    "subtitle": "Favor digitar o código de recuperação enviado para",
+    "resendLabel": "Eu não recebi o código!",
+    "resendLink": "Por favor re envie.",
+    "messages": [
+      "O código inserido está inválido!",
+      "Aguarde",
+      "Estamos validando a sua conta.",
+      "Sua conta foi ativada com sucesso!",
+      "Ocorreu um erro ao reenviar o E-mail de validação! Por favor tente novamente mais tarde",
+      "Um E-mail de verificação foi enviado novamente. Verifique seua caixa de entrada!"
+    ]
+  },
+  "song": {
+    "listAction": "+ Lista",
+    "editAction": "Editar",
+    "cloneAction": "Clonar",
+    "addAction": "Adicionar",
+    "cancelAction": "Cancelar",
+    "removeAction": "Remover",
+    "modalTitle": "Apresentações",
+    "modalSubtitle": "Adicionar música a uma apresentação",
+    "noPresentations": "Nenhuma apresentação cadastrada!",
+    "chords": "Formação dos acordes",
+    "hideChords": "Ocultar formação de acordes",
+    "showChords": "Mostrar formação de acordes",
+    "cloneTitle": "Clonar música",
+    "cloneSubtitle": "Salve uma cópia dessa música em uma de suas bandas para possibilitar a edição.",
+    "filterShowsPlaceholder": "Procurar...",
+    "cloneSwal": {
+      "title": "Deseja clonar essa música?",
+      "description": "Ao clonar uma música para sua banda torna possivel a edição da mesma",
+      "confirm": "Clonar",
+      "deny": "Cancelar",
+      "loadingTitle": "Aguarde...",
+      "loadingDescription": "Estamos clonando a música para a banda selecionada.",
+      "errorMessage": "Ocorreu um erro ao clonar a música selecionada! Tente novamente mais tarde",
+      "successMessage": "A música selecionada foi clonada com sucesso!",
+      "categoryError": "Não há categorias cadastradas na banda selecionada!"
+    },
+    "messages": [
+      "Música não encontrada!",
+      "Essa ação é permanente!",
+      "Deseja remover essa música?",
+      "Ocorreu um erro ao remover a música! Por favor contate um administrador do sistema.",
+      "Música removida com sucesso!",
+      "Confirmação!",
+      "Deseja adicionar essa música a apresentação",
+      "Ocorreu um erro ao adicionar a música na apresentação! Por favor contate um administrador do sistema.",
+      "Música adicionada a apresentação"
+    ]
+  },
+  "songList": {
+    "previous": "Anterior",
+    "next": "Próxima",
+    "print": "Exportar PDF",
+    "credits": "Documento gerado pelo app Playliter no dia",
+    "messages": [
+      "Apresentação não encontrada!",
+      "Ocorreu um erro ao parsear a música!"
+    ]
+  },
+  "songsheet": {
+    "updateTone": "Atualizar Tom Base",
+    "by": "Por",
+    "capo": "Capo"
+  },
+  "tuner": {
+    "title": "Afinador online",
+    "subtitle": "Ferramenta para afinar instrumentos online."
+  },
+  "layout": {
+    "logout": "Sair",
+    "profile": "Perfil",
+    "tuner": "Afinador"
+  }
+}

@@ -89,12 +89,20 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
+            <base-input
+              :addonRightIcon="showFilter ? 'times' : 'search'"
+              :onAddonRightClick="() => { showFilter = '' }"
+              :placeholder="$t('song.filterShowsPlaceholder')"
+              v-model="showFilter"
+            />
+          </div>
+          <div class="col-12">
             <!-- Show list -->
             <div v-if="!showLoading">
-              <ul class="shows" v-if="shows.length">
+              <ul class="shows" v-if="filteredShowItems.length">
                 <li
                   @click="addSongToShow(s)"
-                  v-for="(s, i) in shows"
+                  v-for="(s, i) in filteredShowItems"
                   :key="i"
                   class="show"
                 >
