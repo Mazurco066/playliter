@@ -52,7 +52,8 @@ export default {
       deleteShow: 'show/removeShow',
       reorderSongs: 'show/reorderSongs',
       deleteObservation: 'show/removeObservation',
-      persistObservation: 'show/saveObservation'
+      persistObservation: 'show/saveObservation',
+      scrapDailyLiturgy: 'show/importDailyLiturgy'
     }),
     openObservationModal (observation = null) {
       this.resetForm()
@@ -120,6 +121,50 @@ export default {
             this.$toast.success(this.$t('show.messages[3]'))
             await this.loadShow()
           }
+        }
+      })
+    },
+    async importDailyLiturgy () {
+      this.$swal({
+        title: this.$t('show.dailyLiturgyTitle'),
+        text: this.$t('show.dailyLiturgyQuestion'),
+        showDenyButton: true,
+        confirmButtonColor: '#1C8781',
+        confirmButtonText: this.$t('show.dailyLiturgyConfirm'),
+        denyButtonText: this.$t('show.cancelAction')
+      }).then(async (result) => {
+        const swal = this.$swal({
+          icon: 'info',
+          title: this.$t('show.dailyLiturgyLoadingTitle'),
+          text: this.$t('show.dailyLiturgyLoading'),
+          showConfirmButton: false,
+          allowOutsideClick: false
+        })
+        const showId = this.show.id
+        const showDate = this.show.date.split('T')[0]
+        const response = await this.scrapDailyLiturgy(showDate)
+        if (response.error) {
+          swal.close()
+          this.$toast.error(this.$t('show.messages[19]'))
+        } else {
+          // Import liturgy as observations
+          const responses = await Promise.all(
+            response.data.map(async (liturgy) =>
+              this.persistObservation({ payload: {
+                title: liturgy.title,
+                data: liturgy.content
+              }, showId })
+            )
+          )
+          await this.reloadData()
+          swal.close()
+          // Verify if it has create errors
+          const hasCreateErrors = responses.find(resp => resp.error)
+          if (hasCreateErrors) {
+            this.$toast.warning(this.$t('show.messages[21]'))
+          } else {
+            this.$toast.success(this.$t('show.messages[20]'))
+          }        
         }
       })
     },

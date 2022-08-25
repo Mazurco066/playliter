@@ -168,7 +168,20 @@ const actions = {
       data: error ? {} : resp.data.data,
       message: error ? resp.data.status.message : null
     }
-  }
+  },
+  async importDailyLiturgy({ commit }, date) {
+    commit('setLoading', true)
+    const resp = await asyncRequestHandler(
+      api.helpers.dailyLiturgy(date)
+    )
+    const error = ![200, 201].includes(resp.status)
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? [] : resp.data.data,
+      message: error ? resp.data.status.message : null
+    }
+  },
 }
 
 // Mutations
