@@ -17,6 +17,8 @@
   .shows {
     list-style: none;
     margin-bottom: 1rem;
+    max-height: 200px;
+    overflow-y: auto;
 
     .show {
       background-color: var(--color-background);
