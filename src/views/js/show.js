@@ -148,14 +148,17 @@ export default {
           this.$toast.error(this.$t('show.messages[19]'))
         } else {
           // Import liturgy as observations
-          const responses = await Promise.all(
-            response.data.map(async (liturgy) =>
-              this.persistObservation({ payload: {
-                title: liturgy.title,
-                data: liturgy.content
-              }, showId })
-            )
-          )
+          const responses = []
+          // PS: Promise.all works but it ll misss some observations
+          // Api is not adding all if all requests are at same time on Promise.all
+          for (let i = 0; i < response.data.length; i++) {
+            const liturgy = response.data[i]
+            const obsResponse = await this.persistObservation({ payload: {
+              title: liturgy.title,
+              data: liturgy.content
+            }, showId })
+            responses.push(obsResponse)
+          }
           await this.reloadData()
           swal.close()
           // Verify if it has create errors
