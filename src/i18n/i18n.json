@@ -233,6 +233,12 @@
       "titleField": "Title",
       "dataField": "Observation",
       "submit": "Save",
+      "dailyLiturgy": "Import daily liturgy",
+      "dailyLiturgyQuestion": "Do you with to import daily liturgy as observation to this concert?",
+      "dailyLiturgyTitle": "Are you sure?",
+      "dailyLiturgyConfirm": "Yes",
+      "dailyLiturgyLoading": "Import daily liturgy in progress.",
+      "dailyLiturgyLoadingTitle": "Please wait",
       "messages": [
         "Are you sure?",
         "Reorder this show?",
@@ -252,7 +258,10 @@
         "Observação removida da apresentação",
         "There are errors in your form data. Plese review the filled fields!",
         "Observation successfully saved!",
-        "An error ocourred while saving the observation to show! Please try again later."
+        "An error ocourred while saving the observation to show! Please try again later.",
+        "An error ocourred white importing daily liturgy! Please try again later.",
+        "Daily liturgy successfully imported!",
+        "Daily liturgy was partially imported!"
       ]
     },
     "shows": {
@@ -649,6 +658,12 @@
       "titleField": "Título",
       "dataField": "Observação",
       "submit": "Salvar",
+      "dailyLiturgy": "Importar Liturgia Diária",
+      "dailyLiturgyQuestion": "Deseja importar a liturgia diária como observações para essa apresentação?",
+      "dailyLiturgyTitle": "Tem certeza?",
+      "dailyLiturgyConfirm": "Sim",
+      "dailyLiturgyLoading": "Estamos importando a liturgia diária correspondente a date dessa apresentação.",
+      "dailyLiturgyLoadingTitle": "Aguarde",
       "messages": [
         "Tem certeza!",
         "Deseja reordenar essa apresentação?",
@@ -668,7 +683,10 @@
         "Observação removida da apresentação",
         "Seu formulário contem erros de validação! Por favor revise-os.",
         "Sua observação foi salva com sucesso!",
-        "Ocorreu um erro ao salvar a observação da apresentação! Por favor contate um administrador do sistema."
+        "Ocorreu um erro ao salvar a observação da apresentação! Por favor contate um administrador do sistema.",
+        "Ocorreu um erro ao importar a liturgia diária! Por favor contate um administrador do sistema.",
+        "Liturgia diária importada com sucesso!",
+        "Liturgia diária foi parcialmente importada devido a um erro ocorrido no meio do processo de importação."
       ]
     },
     "shows": {
