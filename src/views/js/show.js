@@ -133,41 +133,43 @@ export default {
         confirmButtonText: this.$t('show.dailyLiturgyConfirm'),
         denyButtonText: this.$t('show.cancelAction')
       }).then(async (result) => {
-        const swal = this.$swal({
-          icon: 'info',
-          title: this.$t('show.dailyLiturgyLoadingTitle'),
-          text: this.$t('show.dailyLiturgyLoading'),
-          showConfirmButton: false,
-          allowOutsideClick: false
-        })
-        const showId = this.show.id
-        const showDate = this.show.date.split('T')[0]
-        const response = await this.scrapDailyLiturgy(showDate)
-        if (response.error) {
-          swal.close()
-          this.$toast.error(this.$t('show.messages[19]'))
-        } else {
-          // Import liturgy as observations
-          const responses = []
-          // PS: Promise.all works but it ll misss some observations
-          // Api is not adding all if all requests are at same time on Promise.all
-          for (let i = 0; i < response.data.length; i++) {
-            const liturgy = response.data[i]
-            const obsResponse = await this.persistObservation({ payload: {
-              title: liturgy.title,
-              data: liturgy.content
-            }, showId })
-            responses.push(obsResponse)
-          }
-          await this.reloadData()
-          swal.close()
-          // Verify if it has create errors
-          const hasCreateErrors = responses.find(resp => resp.error)
-          if (hasCreateErrors) {
-            this.$toast.warning(this.$t('show.messages[21]'))
+        if (result.isConfirmed) {
+          const swal = this.$swal({
+            icon: 'info',
+            title: this.$t('show.dailyLiturgyLoadingTitle'),
+            text: this.$t('show.dailyLiturgyLoading'),
+            showConfirmButton: false,
+            allowOutsideClick: false
+          })
+          const showId = this.show.id
+          const showDate = this.show.date.split('T')[0]
+          const response = await this.scrapDailyLiturgy(showDate)
+          if (response.error) {
+            swal.close()
+            this.$toast.error(this.$t('show.messages[19]'))
           } else {
-            this.$toast.success(this.$t('show.messages[20]'))
-          }        
+            // Import liturgy as observations
+            const responses = []
+            // PS: Promise.all works but it ll misss some observations
+            // Api is not adding all if all requests are at same time on Promise.all
+            for (let i = 0; i < response.data.length; i++) {
+              const liturgy = response.data[i]
+              const obsResponse = await this.persistObservation({ payload: {
+                title: liturgy.title,
+                data: liturgy.content
+              }, showId })
+              responses.push(obsResponse)
+            }
+            await this.reloadData()
+            swal.close()
+            // Verify if it has create errors
+            const hasCreateErrors = responses.find(resp => resp.error)
+            if (hasCreateErrors) {
+              this.$toast.warning(this.$t('show.messages[21]'))
+            } else {
+              this.$toast.success(this.$t('show.messages[20]'))
+            }        
+          }
         }
       })
     },
