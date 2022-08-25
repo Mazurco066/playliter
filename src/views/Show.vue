@@ -273,7 +273,7 @@
               </div>
             </div>
             <div class="col-12 pt-2">
-              <base-button type="primary" @click="importDailyLiturgy()">
+              <base-button type="primary" :disabled="showLoading" @click="importDailyLiturgy()">
                 {{ $t('show.dailyLiturgy') }}
               </base-button>
             </div>
