@@ -32,6 +32,19 @@ const actions = {
       message: error ? resp.data.status.message : null
     }
   },
+  async listAccounts({ commit }, { limit = 0, offset = 0 }) {
+    commit('setLoading', true)
+    const resp = await asyncRequestHandler(
+      api.accounts.listAccounts(limit, offset)
+    )
+    const error = ![200, 201].includes(resp.status)
+    commit('setLoading', false)
+    return {
+      error: error,
+      data: error ? {} : resp.data.data,
+      message: error ? resp.data.status.message : null
+    }
+  },
   async loadAccountByUsername({ commit }, username) {
     commit('setLoading', true)
     const resp = await asyncRequestHandler(

@@ -19,6 +19,7 @@ export default {
     band: {},
     songs: [],
     shows: [],
+    accounts: [],
     isInviteModalOpen: false,
     isMembersModalOpen: false,
     inviteForm: {
@@ -96,7 +97,8 @@ export default {
       removeBandMember: 'band/removeBandMember',
       demoteBandMember: 'band/demoteBandMember',
       promoteBandMember: 'band/promoteBandMember',
-      removeBand: 'band/removeBand'
+      removeBand: 'band/removeBand',
+      listAccounts: 'account/listAccounts'
     }),
     navigateTo (route, id = null) {
       this.$router.push({
@@ -107,10 +109,13 @@ export default {
     closeInviteModal () {
       this.isInviteModalOpen = false
     },
-    openInviteModal () {
+    async openInviteModal () {
       this.inviteForm = { username: '' }
       this.v$.inviteForm.$reset()
       this.isInviteModalOpen = true
+      // Retrieve signed users
+      const r = await this.listAccounts({})
+      if (!r.error) this.accounts = r.data
     },
     closeMembersModal () {
       this.isMembersModalOpen = false

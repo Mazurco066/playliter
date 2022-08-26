@@ -23,5 +23,8 @@ export const deleteAccount = (accountId) =>
 export const getAccount = (accountId) =>
   httpClient.get(`/accounts/get/${accountId}`)
 
+export const listAccounts = (limit = 0, offset = 0) =>
+  httpClient.get(`/accounts/get?limit=${limit}&offset=${offset}`)
+
 export const getCurrentAccount = () =>
   httpClient.get(`/accounts/me`)
