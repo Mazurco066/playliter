@@ -9,7 +9,7 @@
           <span class="mb-3">
             {{ $t('band.createdAt') }} 
             <strong class="text-secondary-light">
-              {{ $text.formatISODate(new Date(parseInt(band.createdAt)).toISOString()) }}
+              {{ $text.formatISODate(band.createdAt) }}
             </strong>
           </span>
           <div class="actions">
