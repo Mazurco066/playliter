@@ -44,6 +44,11 @@ export default {
       type: String,
       description: 'Addon right icon'
     },
+    onAddonRightClick: {
+      type: Function,
+      description: 'Addon right click callback',
+      default: () => {}
+    },
     addonLeftIcon: {
       type: String,
       description: 'Addont left icon'

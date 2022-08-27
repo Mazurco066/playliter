@@ -10,7 +10,7 @@
                 <span v-if="show.createdAt">
                   {{ $t('show.presentedAt') }} 
                   <strong class="text-secondary-light">
-                    {{ $text.formatISODate(new Date(show.date).toISOString()) }}
+                    {{ $text.formatISODate(show.date) }}
                   </strong>
                 </span>
                 <div class="actions">

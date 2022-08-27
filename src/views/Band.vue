@@ -9,7 +9,7 @@
           <span class="mb-3">
             {{ $t('band.createdAt') }} 
             <strong class="text-secondary-light">
-              {{ $text.formatISODate(new Date(parseInt(band.createdAt)).toISOString()) }}
+              {{ $text.formatISODate(band.createdAt) }}
             </strong>
           </span>
           <div class="actions">
@@ -121,32 +121,50 @@
         </div>
       </slot>
       <div class="container">
-        <form @submit.prevent="inviteMember">
-          <div class="row">
-            <div class="col-12">
-              <base-input
-                type="text"
-                :label="$t('band.userField')"
-                :placeholder="$t('band.userField')"
-                addonLeftIcon="user"
-                v-model="v$.inviteForm.username.$model"
-                :valid="!v$.inviteForm.username.$error"
-                :error="v$.inviteForm.username.$errors.length ? $translations.translateMessage(v$.inviteForm.username.$errors[0].$message) : ''"
-                :disabled="bandLoading || accountLoading"
-              />
-            </div>
-            <div class="col-12">
-              <base-button
-                class="mb-3"
-                nativeType="submit"
-                type="primary"
-                :disabled="v$.$error === true || bandLoading || accountLoading"
-              >
-                {{ $t('band.addAction') }}
-              </base-button>
-            </div>
+        <div class="row">
+          <div class="col-12">
+            <base-input
+              :addonRightIcon="accountFilter ? 'times' : 'search'"
+              :onAddonRightClick="() => { accountFilter = '' }"
+              :placeholder="$t('band.inviteLabel')"
+              v-model="accountFilter"
+            />
           </div>
-        </form>
+          <div class="col-12">
+            <ul class="account-checklist">
+              <li
+                v-for="({ id, avatar, name}, index) in filteredAccounts"
+                :key="index"
+                class="account-item"
+              >
+                <label :for="id" class="checkbox-wrapper">
+                  <input
+                    :id="id"
+                    :value="id"
+                    v-model="checkedAccounts"
+                    type="checkbox"
+                    class="checkbox-input" 
+                  />
+                  <span class="checkbox-tile">
+                    <span class="checkbox-icon">
+                      <img :src="avatar" alt="Account avatar"/>
+                    </span>
+                    <span class="checkbox-label">{{ name }}</span>
+                  </span>
+                </label>
+              </li>
+            </ul>
+          </div>
+          <div class="col-12">
+            <base-button
+              type="primary"
+              @click="inviteMembers()"
+              :disabled="bandLoading"
+            >
+              {{ $t('band.inviteSelected') }}
+            </base-button>
+          </div>
+        </div>
       </div>
     </base-modal>
     <!-- Members modal -->

@@ -80,9 +80,11 @@
       </slot>
 
       <div v-if="addonRightIcon || $slots.addonRight" class="input-group-append">
-        <span class="input-group-text">
+        <span class="input-group-text" @click="onAddonRightClick">
           <slot name="addonRight">
-            <font-awesome-icon :icon="addonRightIcon" />
+            <font-awesome-icon
+              :icon="addonRightIcon"
+            />
           </slot>
         </span>
       </div>

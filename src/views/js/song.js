@@ -11,7 +11,8 @@ export default {
     bands: [],
     shows: [],
     isListModalOpen: false,
-    isCloneModalOpen: false
+    isCloneModalOpen: false,
+    showFilter: ''
   }),
   computed: {
     ...mapGetters({
@@ -47,6 +48,11 @@ export default {
       } else {
         return false
       } 
+    },
+    filteredShowItems () {
+      return this.shows.filter(show =>
+        show.title.toLowerCase().includes(this.showFilter.toLowerCase())
+      )
     }
   },
   methods: {
@@ -90,9 +96,11 @@ export default {
       this.song = r2.data
     },
     closeListModal () {
+      this.showFilter = ''
       this.isListModalOpen = false
     },
     openListModal () {
+      this.showFilter = ''
       this.isListModalOpen = true
     },
     closeCloneModal () {

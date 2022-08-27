@@ -19,11 +19,11 @@ export default {
     band: {},
     songs: [],
     shows: [],
+    accounts: [],
+    checkedAccounts: [],
+    accountFilter: '',
     isInviteModalOpen: false,
     isMembersModalOpen: false,
-    inviteForm: {
-      username: ''
-    },
     // Tabs state
     selectedIndex: 1,
     tabs: [
@@ -84,19 +84,32 @@ export default {
         ...tab,
         title: this.$t(`band.tabs[${i}]`)
       }))
+    },
+    filteredAccounts () {
+      const memberIds = this.band && this.band.members ? this.band.members.map(m => m.id) : []
+      return this.accounts.filter(acc => 
+        // Removing owner
+        acc.id !== this.me.id
+      ).filter(acc =>
+        // Removing current band members
+        !memberIds.includes(acc.id)
+      ).filter(acc =>
+        // Filtering accounts
+        acc.name.toLowerCase().includes(this.accountFilter.toLowerCase())
+      )
     }
   },
   methods: {
     ...mapActions({
       addBandMember: 'band/addBandMember',
-      loadAccountByUsername: 'account/loadAccountByUsername',
       loadBand: 'band/loadBand',
       listBandSongs: 'song/listBandSongs',
       listBandShows: 'show/listBandShows',
       removeBandMember: 'band/removeBandMember',
       demoteBandMember: 'band/demoteBandMember',
       promoteBandMember: 'band/promoteBandMember',
-      removeBand: 'band/removeBand'
+      removeBand: 'band/removeBand',
+      listAccounts: 'account/listAccounts'
     }),
     navigateTo (route, id = null) {
       this.$router.push({
@@ -106,11 +119,19 @@ export default {
     },
     closeInviteModal () {
       this.isInviteModalOpen = false
+      // Clear selection
+      this.checkedAccounts = []
+      this.accountFilter = ''
     },
-    openInviteModal () {
-      this.inviteForm = { username: '' }
-      this.v$.inviteForm.$reset()
+    async openInviteModal () {
+      // Clear selection
+      this.checkedAccounts = []
+      this.accountFilter = ''
+      // Open modal
       this.isInviteModalOpen = true
+      // Retrieve signed users
+      const r = await this.listAccounts({})
+      if (!r.error) this.accounts = r.data
     },
     closeMembersModal () {
       this.isMembersModalOpen = false
@@ -135,31 +156,28 @@ export default {
         this.$toast.warning(this.$t('band.messages[0]'))
       }
     },
-    async inviteMember () {
-      this.v$.inviteForm.$touch()
-      if (!this.v$.error && !this.v$.$invalid) {
-        const payload = { ...this.inviteForm }
-        const userResponse = await this.loadAccountByUsername(payload.username)
-        if (userResponse.error) {
-          this.$toast.error(userResponse.message)
-        } else {
-          const { id } =  userResponse.data
-          if (this.band.members.find(a => a.id === id)) {
-            // Case member is already in band
-            this.$toast.info(this.$t('band.messages[1]'))
-          } else {
-            const addMemberResponse = await this.addBandMember({ member: id, band: this.band.id })
-            if (addMemberResponse.error) {
-              this.$toast.error(this.$t('band.messages[2]'))
-            } else {
-              this.$toast.success(this.$t('band.messages[3]'))
-              this.closeInviteModal()
-              await this.loadPageData()
-            }
-          }
-        }
-      } else {
+    async inviteMembers () {
+      if (this.checkedAccounts.length < 1) {
         this.$toast.warning(this.$t('band.messages[4]'))
+      } else {
+        // Invite members
+        const responses = await Promise.all(
+          this.checkedAccounts.map(async id => 
+            this.addBandMember({ member: id, band: this.band.id })
+          )
+        )
+        // Verify errors and notify user
+        const hasErrors = responses.filter(r => r.error !== false).length !== 0
+        console.log('[here]', responses, hasErrors)
+        if (hasErrors) {
+          this.$toast.error(this.$t('band.messages[2]'))
+          this.closeInviteModal()
+          await this.loadPageData()
+        } else {
+          this.$toast.success(this.$t('band.messages[3]'))
+          this.closeInviteModal()
+          await this.loadPageData()
+        }
       }
     },
     async removeMember (member) {
@@ -261,15 +279,5 @@ export default {
       }
     }
     await this.loadPageData()
-  },
-  validations () {
-    return {
-      inviteForm: {
-        username: {
-          required,
-          minLength: minLength(3)
-        }
-      }
-    }
   }
 }

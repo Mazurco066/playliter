@@ -70,52 +70,39 @@
     <div class="row">
       <!-- Lista do repertório -->
       <div class="col-12">
-        <div v-if="!songLoading">
-          <!-- Categories list -->
-          <ul v-if="filteredRepertorySongs.length > 0" class="categories">
+        <div>
+         <!-- Songs list -->
+          <ul
+            v-if="repertory.length > 0"
+            :class="{'loading' : songLoading}"
+            class="songs"
+          >
             <li
-              v-for="(s, i) in filteredRepertorySongs"
+              v-for="({ id, title, writter, band: { id: bandId }, category: { title: categoryTitle } }, i) in repertory"
               :key="i"
-              class="category"
+              @click="navigateTo('song', bandId, id)"
+              class="song"
             >
               <div class="content">
-                <p class="name text-uppercase mb-1">
-                  <strong>{{ s.category.title }}</strong>
-                </p>
-                <span class="description">
-                  {{ s.category.description }}
-                </span>
-                <div class="counter">
-                  {{ s.numberOfItems }} {{ $t("directory.songLabel") }}
-                </div>
-                <hr class="mt-2 mb-0"/>
-              </div>
-              <ul class="songs">
-                <li
-                  @click="navigateTo('song', s1.band.id, s1.id)"
-                  v-for="(s1, idx) in s.items"
-                  :key="idx"
-                  class="song"
-                >
-                  <div class="content">
-                    <div class="icon mr-3">
-                      <div class="song-img">
-                        <img :src="`/img/arts/white/audio-wave.svg`" />
-                      </div>
-                    </div>
-                    <div class="song-info">
-                      <p class="mb-0">
-                        <strong>{{ s1.title }}</strong>
-                      </p>
-                      <span>{{ s1.writter }}</span>
-                    </div>
+                <div class="icon mr-3">
+                  <div class="song-img">
+                    <img :src="`/img/arts/white/audio-wave.svg`" />
                   </div>
-                </li>
-              </ul>
+                </div>
+                <div class="song-info">
+                  <p class="mb-0">
+                    <strong>{{ title }}</strong>
+                  </p>
+                  <span>{{ writter }}</span>
+                </div>
+              </div>
+              <div class="category">
+                {{ categoryTitle }}
+              </div>
             </li>
           </ul>
           <!-- No data -->
-          <div v-else class="no-directory">
+          <div v-else class="no-directory" :class="{'d-none': songLoading}">
             <div class="icon">
               <img src="/img/arts/not_found.svg" alt="No content" />
             </div>
@@ -126,33 +113,21 @@
             </p>
           </div>
         </div>
-        <div v-if="songLoading">
+        <div v-if="songLoading && repertory.length === 0">
           <!-- Loading shimmer -->
-          <ul class="categories">
-            <li class="category">
+          <ul class="songs">
+            <li class="song">
               <div class="content">
-                <p class="text-uppercase mb-0">
-                  <span class="shine shimmer-lines"></span>
-                </p>
-                <span class="description">
+                <div class="icon mr-3">
+                  <div class="shine shimmer-photo"></div>
+                </div>
+                <div class="song-info">
+                  <p class="mb-0">
+                    <span class="shine shimmer-lines"></span>
+                  </p>
                   <div class="shine shimmer-lines"></div>
-                </span>
+                </div>
               </div>
-              <ul class="songs">
-                <li class="song">
-                  <div class="content">
-                    <div class="icon mr-3">
-                      <div class="shine shimmer-photo"></div>
-                    </div>
-                    <div class="song-info">
-                      <p class="mb-0">
-                        <span class="shine shimmer-lines"></span>
-                      </p>
-                      <div class="shine shimmer-lines"></div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
             </li>
           </ul>
         </div>

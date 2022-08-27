@@ -1,12 +1,11 @@
 // Dependencies
 import { mapActions, mapGetters } from 'vuex'
-import { songHelpers } from '../../../helpers'
 
 // Component
 export default {
   name: 'Repertory',
   data: () => ({
-    repertory: {},
+    repertory: [],
     search: '',
     limit: 40,
     offset: 0,
@@ -23,13 +22,7 @@ export default {
   computed: {
     ...mapGetters({
       songLoading: 'song/getLoadingStatus'
-    }),
-    filteredRepertorySongs () {
-      if (this.repertory.songs) {
-        return this.repertory.songs
-      }
-      return []
-    }
+    })
   },
   methods: {
     ...mapActions({
@@ -71,7 +64,7 @@ export default {
       if (r.error) {
         this.$toast.error(this.$t('directory.messages[0]'))
       } else {
-        this.repertory = songHelpers.compute(r.data.data)
+        this.repertory = r.data.data
         this.total = r.data.total
         this.offset += this.limit
       }
@@ -92,7 +85,7 @@ export default {
             filter: this.search
           })
           if (!response.error) {
-            this.repertory = songHelpers.append(this.repertory, response.data.data)
+            this.repertory = [ ...this.repertory, ...response.data.data ]
             this.total = response.data.total
             this.offset += this.limit
             // Keep scroll height
@@ -115,7 +108,7 @@ export default {
     if (r.error) {
       this.$toast.error(this.$t('directory.messages[0]'))
     } else {
-      this.repertory = songHelpers.compute(r.data.data)
+      this.repertory = r.data.data
       this.total = r.data.total
       this.offset += this.limit
     }

@@ -106,7 +106,7 @@
           </div>
           <div class="col-12 text-center">
             <span>
-              {{ $t('profile.createdAt') }} <strong>{{ $text.formatISODate(new Date(parseInt(me.createdAt)).toISOString()) }}</strong>
+              {{ $t('profile.createdAt') }} <strong>{{ $text.formatISODate(me.createdAt) }}</strong>
             </span>
           </div>
         </div>
