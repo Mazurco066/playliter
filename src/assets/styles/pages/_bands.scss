@@ -185,6 +185,50 @@
     }
   }
 
+  .account-checklist {
+    list-style: none;
+    max-height: 200px;
+    overflow-y: auto;
+
+    .account-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .check-account {
+        flex: 0 0 auto;
+        margin-right: 1rem;
+      }
+
+      .account-avatar {
+        flex: 0 0 auto;
+        margin-right: 0.5rem;
+
+        div {
+          max-width: 48px;
+          max-height: 48px;
+          border-radius: 24px;
+          overflow: hidden;
+        }
+      }
+
+      .account-content {
+        flex-grow: 1;
+
+        span {
+          font-size: 1rem;
+          font-weight: 500;
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+
   .band-members {
     .title {
       color: var(--color-secondary-light);

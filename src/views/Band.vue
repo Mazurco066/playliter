@@ -121,7 +121,53 @@
         </div>
       </slot>
       <div class="container">
-        <form @submit.prevent="inviteMember">
+        <div class="row">
+          <div class="col-12">
+            <base-input
+              :addonRightIcon="accountFilter ? 'times' : 'search'"
+              :onAddonRightClick="() => { accountFilter = '' }"
+              placeholder="Pesquisar..."
+              v-model="accountFilter"
+            />
+          </div>
+          <div class="col-12">
+            <ul class="account-checklist">
+              <li
+                v-for="({ id, avatar, name}, index) in filteredAccounts"
+                :key="index"
+                class="account-item"
+              >
+                <div class="check-account">
+                  <input
+                    :id="id"
+                    :value="id"
+                    name="account"
+                    type="checkbox"
+                    v-model="checkedAccounts"
+                  />
+                  <label :for="id"><span></span></label>
+                </div>
+                <div class="account-avatar">
+                  <div>
+                    <img :src="avatar" alt="Account avatar">
+                  </div>
+                </div>
+                <div class="account-content">
+                  <span>
+                    {{ name }}
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="col-12">
+            <base-button type="primary">
+              Convidar selecionado(s)
+            </base-button>
+          </div>
+        </div>
+
+        <!-- <form @submit.prevent="inviteMember">
           <div class="row">
             <div class="col-12">
               <base-input
@@ -146,7 +192,7 @@
               </base-button>
             </div>
           </div>
-        </form>
+        </form> -->
       </div>
     </base-modal>
     <!-- Members modal -->

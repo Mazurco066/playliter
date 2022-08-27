@@ -20,6 +20,8 @@ export default {
     songs: [],
     shows: [],
     accounts: [],
+    checkedAccounts: [],
+    accountFilter: '',
     isInviteModalOpen: false,
     isMembersModalOpen: false,
     inviteForm: {
@@ -85,6 +87,19 @@ export default {
         ...tab,
         title: this.$t(`band.tabs[${i}]`)
       }))
+    },
+    filteredAccounts () {
+      const memberIds = this.band && this.band.members ? this.band.members.map(m => m.id) : []
+      return this.accounts.filter(acc => 
+        // Removing owner
+        acc.id !== this.me.id
+      ).filter(acc =>
+        // Removing current band members
+        !memberIds.includes(acc.id)
+      ).filter(acc =>
+        // Filtering accounts
+        acc.name.toLowerCase().includes(this.accountFilter.toLowerCase())
+      )
     }
   },
   methods: {
