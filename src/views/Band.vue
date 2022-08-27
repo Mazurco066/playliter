@@ -126,7 +126,7 @@
             <base-input
               :addonRightIcon="accountFilter ? 'times' : 'search'"
               :onAddonRightClick="() => { accountFilter = '' }"
-              placeholder="Pesquisar..."
+              :placeholder="$t('band.inviteLabel')"
               v-model="accountFilter"
             />
           </div>
@@ -161,7 +161,7 @@
               @click="inviteMembers()"
               :disabled="bandLoading"
             >
-              Convidar selecionado(s)
+              {{ $t('band.inviteSelected') }}
             </base-button>
           </div>
         </div>
