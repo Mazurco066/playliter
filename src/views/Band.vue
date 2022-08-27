@@ -165,33 +165,6 @@
             </base-button>
           </div>
         </div>
-
-        <!-- <form @submit.prevent="inviteMember">
-          <div class="row">
-            <div class="col-12">
-              <base-input
-                type="text"
-                :label="$t('band.userField')"
-                :placeholder="$t('band.userField')"
-                addonLeftIcon="user"
-                v-model="v$.inviteForm.username.$model"
-                :valid="!v$.inviteForm.username.$error"
-                :error="v$.inviteForm.username.$errors.length ? $translations.translateMessage(v$.inviteForm.username.$errors[0].$message) : ''"
-                :disabled="bandLoading || accountLoading"
-              />
-            </div>
-            <div class="col-12">
-              <base-button
-                class="mb-3"
-                nativeType="submit"
-                type="primary"
-                :disabled="v$.$error === true || bandLoading || accountLoading"
-              >
-                {{ $t('band.addAction') }}
-              </base-button>
-            </div>
-          </div>
-        </form> -->
       </div>
     </base-modal>
     <!-- Members modal -->
