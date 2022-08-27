@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import App from './presentation/ui/views/App.vue'
 import './registerServiceWorker'
-import plugins from './plugins'
-import router from './router'
-import store from './store'
+import plugins from './main/plugins'
+import router from './main/router'
+import store from './main/store'
 
 createApp(App)
   .use(store)
