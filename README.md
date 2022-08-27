@@ -17,7 +17,7 @@ This app was developed using
 * **[Bootstrap 4](https://getbootstrap.com/)** - Visual Framework based on Material Design
 * **[SweetAlert2](https://sweetalert2.github.io/)** - Popup library
 * **[Font Awesome](https://fontawesome.com/)** - App Icons
-* **[Apollo](https://www.apollographql.com/)** - Http client for GraphQL APIs
+* **[Axios](https://axios-http.com/ptbr/docs/intro)** - Http client for REST APIs
 
 ## Setup
 
