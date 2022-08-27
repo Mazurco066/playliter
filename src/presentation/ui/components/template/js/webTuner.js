@@ -1,5 +1,5 @@
 // Dependencies
-import { tunerUtils } from '../../../../../domain/shared/utils'
+import { tunerUtils } from '../../../../utils'
 import TunerMeter from '../TunerMeter.vue'
 import TunerNote from '../TunerNote.vue'
 

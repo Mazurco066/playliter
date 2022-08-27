@@ -2,8 +2,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 // Layouts
-import AuthLayout from '../../presentation/ui/layout/AuthLayout.vue'
-import DashboardLayout from '../../presentation/ui/layout/DashboardLayout.vue'
+import AuthLayout from '../../presentation/ui/_layouts/AuthLayout.vue'
+import DashboardLayout from '../../presentation/ui/_layouts/DashboardLayout.vue'
 
 // Pages
 import Band from '../../presentation/ui/views/Band.vue'

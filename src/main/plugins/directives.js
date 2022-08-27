@@ -1,4 +1,4 @@
-import clickOutside from '../../infra/directives/clickOutside'
+import clickOutside from '../../presentation/directives/clickOutside'
 
 const GlobalDirectives = {
   install(Vue) {

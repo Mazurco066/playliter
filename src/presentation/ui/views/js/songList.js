@@ -3,7 +3,7 @@ import ChordLyricsPair from '../../components/base/ChordLyricsPair.vue'
 import ChordDiagram from '../../components/base/ChordDiagram.vue'
 import SongSheetComment from '../../components/base/SongSheetComment.vue'
 import { mapActions, mapGetters } from 'vuex'
-import { chordTransposer } from '../../../../domain/shared/utils'
+import { chordTransposer } from '../../../utils'
 
 // Component
 export default {

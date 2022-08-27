@@ -1,5 +1,5 @@
 // Dependencies
-import { randomString } from '../../../../../domain/shared/utils'
+import { randomString } from '../../../../utils'
 
 // Component
 export default {

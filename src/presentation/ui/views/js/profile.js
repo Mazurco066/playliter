@@ -4,7 +4,7 @@ import crypto from 'crypto'
 import useVuelidate from '@vuelidate/core'
 import { mapActions, mapGetters } from 'vuex'
 import { required, minLength, maxLength, email } from '@vuelidate/validators'
-import { asyncHandler } from '../../../../domain/shared/utils'
+import { asyncHandler } from '../../../utils'
 
 // Component
 export default {

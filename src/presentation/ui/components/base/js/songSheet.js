@@ -3,7 +3,7 @@ import ChordLyricsPair from '../ChordLyricsPair.vue'
 import ChordDiagram from '../ChordDiagram.vue'
 import SongSheetComment from '../SongSheetComment.vue'
 import { Chord } from 'chordsheetjs'
-import { chordTransposer } from '../../../../../domain/shared/utils'
+import { chordTransposer } from '../../../../utils'
 
 // Component
 export default {

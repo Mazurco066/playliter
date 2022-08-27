@@ -4,7 +4,7 @@ import { mapActions, mapGetters } from 'vuex'
 import { required, minLength, maxLength } from '@vuelidate/validators'
 import { VAceEditor } from 'vue3-ace-editor'
 import { Chord } from 'chordsheetjs'
-import { chordTransposer } from '../../../../domain/shared/utils'
+import { chordTransposer } from '../../../utils'
 
 // Ace plugins
 import ChordCompleter from '../../components/base/ace/chordCompleter'

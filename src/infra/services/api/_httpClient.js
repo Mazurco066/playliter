@@ -1,7 +1,7 @@
 // Dependencies
 import axios from 'axios'
-import store from '../../main/store'
-import router from '../../main/router'
+import store from '../../../main/store'
+import router from '../../../main/router'
 
 // Base http client
 const httpClient = axios.create({

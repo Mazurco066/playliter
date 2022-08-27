@@ -1,7 +1,7 @@
 // Dependencies
 import { Chord } from 'chordsheetjs'
 import { ChordBox } from 'vexchords'
-import { chordsData } from '../../../../../domain/shared/utils'
+import { chordsData } from '../../../../utils'
 
 const ChordData = chordsData.ChordData
 

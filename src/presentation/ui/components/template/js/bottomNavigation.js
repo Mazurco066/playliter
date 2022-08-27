@@ -1,6 +1,6 @@
 // Dependencies
 import { CurvedBottomNavigation } from 'bottom-navigation-vue'
-import { bottomLinks } from '../../../../../domain/shared/utils'
+import { bottomLinks } from '../../../../utils'
 
 // Component
 export default {

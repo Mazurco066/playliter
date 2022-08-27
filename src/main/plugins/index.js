@@ -10,7 +10,7 @@ import VueSweetAlert from 'vue-sweetalert2'
 import VueI18n from '../../infra/i18n'
 
 // Utils
-import { elementUtils, validations, tableUtils, textUtils } from '../../domain/shared/utils'
+import { elementUtils, validations, tableUtils, textUtils } from '../../presentation/utils'
 
 // Libraries styles
 import 'sweetalert2/dist/sweetalert2.min.css'

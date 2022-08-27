@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import App from './main/App.vue'
+import App from './presentation/ui/views/App.vue'
 import './registerServiceWorker'
 import plugins from './main/plugins'
 import router from './main/router'

@@ -1,5 +1,5 @@
 // Dependencies
-import api, { asyncRequestHandler } from '../../../data/api'
+import api, { asyncRequestHandler } from '../../../infra/services/api'
 
 // Object initial state
 const initialState = () => ({

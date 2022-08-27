@@ -1,6 +1,6 @@
 // Dependencies
 import { mapActions, mapGetters } from 'vuex'
-import { chordTransposer } from '../../../../domain/shared/utils'
+import { chordTransposer } from '../../../utils'
 
 // Component
 export default {
