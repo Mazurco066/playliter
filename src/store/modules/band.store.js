@@ -36,7 +36,7 @@ const actions = {
     const resp = await asyncRequestHandler(
       api.bands.inviteMember(band, member)
     )
-    const error = ![200, 201].includes(resp.status)
+    const error = ![200, 201, 204].includes(resp.status)
     commit('setLoading', false)
     return {
       error: error,

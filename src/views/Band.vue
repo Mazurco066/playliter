@@ -137,31 +137,30 @@
                 :key="index"
                 class="account-item"
               >
-                <div class="check-account">
+                <label :for="id" class="checkbox-wrapper">
                   <input
                     :id="id"
                     :value="id"
-                    name="account"
-                    type="checkbox"
                     v-model="checkedAccounts"
+                    type="checkbox"
+                    class="checkbox-input" 
                   />
-                  <label :for="id"><span></span></label>
-                </div>
-                <div class="account-avatar">
-                  <div>
-                    <img :src="avatar" alt="Account avatar">
-                  </div>
-                </div>
-                <div class="account-content">
-                  <span>
-                    {{ name }}
+                  <span class="checkbox-tile">
+                    <span class="checkbox-icon">
+                      <img :src="avatar" alt="Account avatar"/>
+                    </span>
+                    <span class="checkbox-label">{{ name }}</span>
                   </span>
-                </div>
+                </label>
               </li>
             </ul>
           </div>
           <div class="col-12">
-            <base-button type="primary">
+            <base-button
+              type="primary"
+              @click="inviteMembers()"
+              :disabled="bandLoading"
+            >
               Convidar selecionado(s)
             </base-button>
           </div>
