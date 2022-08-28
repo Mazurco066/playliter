@@ -25,6 +25,9 @@
                       aria-expanded="false"
                     >
                       <font-awesome-icon icon="print" />
+                      <p class="mb-0">
+                        <small>{{ $t('songList.print') }}</small>
+                      </p>
                     </a>
                   </template>
                   <a href="#" class="dropdown-item" @click.prevent="downloadReport()">
@@ -35,9 +38,6 @@
                   </a>
                 </base-dropdown>
               </div>
-              <p class="mb-0">
-                <small>{{ $t('songList.print') }}</small>
-              </p>
             </div>
             <div class="action" @click="switchSong(1)">
               <div class="icon-bg">
