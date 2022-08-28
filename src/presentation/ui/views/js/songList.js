@@ -12,7 +12,8 @@ export default {
   data: () => ({
     show: {},
     currentSong: 0,
-    parsedSongs: []
+    parsedSongs: [],
+    doubleCol: false
   }),
   computed: {
     ...mapGetters({
@@ -96,8 +97,9 @@ export default {
         this.currentSong = this.currentSong === (songs.length - 1) ? 0 : this.currentSong + 1
       }      
     },
-    downloadReport () {
-      window.print()
+    downloadReport (double = false) {
+      this.doubleCol = double
+      setTimeout(() => window.print(), 200)
     }
   },
   async mounted () {

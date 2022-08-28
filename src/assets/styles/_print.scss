@@ -12,12 +12,13 @@
     background-color: #ffffff!important;
   }
 
-  @page:first {
-    margin: 0!important;
+  @page {
+    margin: 1rem!important;
   }
-
+  
   .song-section {
     padding: 3rem;
+    overflow: visible;
   }
 
   .pagebreak { 
@@ -26,21 +27,21 @@
 
   #dashboard-layout {
     display: block!important;
-    overflow-y: scroll!important;
+    overflow-y: visible!important;
     height: 100%!important;
     overflow: visible!important;
   }
 
   #dashboard-layout main {
     overflow: initial!important;
-    overflow-y: scroll!important;
+    overflow-y: visible!important;
     height: 100%!important;
     overflow: visible!important;
   }
 
   #app {
-    overflow-x: hidden!important;
-    overflow-y: scroll!important;
+    overflow-x: visible!important;
+    overflow-y: visible!important;
     height: 100%!important;
     overflow: visible!important;
   }
@@ -98,7 +99,6 @@
       right: 0;
       z-index: 2;
       margin: 0 auto;
-
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -166,5 +166,34 @@
 .report-print {
   @media print {
     display: block!important;
+  }
+}
+
+// Print song in two columns styles
+.double-col {
+  column-count: 2;
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+
+  column-fill: auto!important;
+  -webkit-olumn-fill: auto!important;
+  -moz-column-fill: auto!important;
+
+  column-span: all;
+  -webkit-column-span: all;
+  -moz-column-span: all;
+
+  .song-title {
+    font-size: 22px!important;
+  }
+
+  .song-artist {
+    font-size: 18px!important;
+  }
+
+  .song-section {
+    display: block;
+    font-size: 14px;
+    text-transform: uppercase;
   }
 }
