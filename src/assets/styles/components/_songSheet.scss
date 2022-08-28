@@ -115,7 +115,6 @@
 
     .lyrics, .chord {
       max-height: 26px;
-      overflow: hidden;
     }
 
     .horizontal-columns {
@@ -140,9 +139,10 @@
       counter-reset: verse;
     }
     
-    .paragraph {
-      break-inside: avoid;
-    }
+    // .paragraph {
+      //break-inside: avoid;
+      //page-break-inside: avoid;
+    // }
     
     .paragraph + .paragraph {
       margin-top: 1rem;
@@ -150,9 +150,10 @@
     
     .row {
       display: flex;
-      flex-wrap: nowrap;
+      //flex-wrap: nowrap;
       position: relative;
       break-inside: avoid;
+      page-break-inside: avoid;
     }
     
     .column {
@@ -168,6 +169,7 @@
       font-weight: bold;
       font-style: italic;
       break-after: avoid;
+      page-break-inside: avoid;
     }
     
     .chord, .lyrics {
@@ -185,12 +187,12 @@
     }
     
     .chorus::before {
-      content: "Chorus:";
+      content: "Refrão:";
     }
     
     .verse::before {
       counter-increment: verse;
-      content: "Verse " counter(verse) ":";
+      content: "Verso " counter(verse) ":";
     }
     
     .chord:after, .lyrics:after {

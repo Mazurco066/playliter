@@ -1,6 +1,5 @@
 <template>
-  <div id="playlist">
-
+  <div id="playlist" :class="{'disable-print-padding': doubleCol}">
     <!-- Song switcher -->
     <div class="container no-print">
       <div class="row">
@@ -14,9 +13,27 @@
                 <small>{{ $t('songList.previous') }}</small>
               </p>
             </div>
-            <div class="action" @click="downloadReport()">
+            <div class="action">
               <div class="icon-bg">
-                <font-awesome-icon icon="print" />
+                <base-dropdown class="dropdown" position="right">
+                  <template v-slot:title>
+                    <a
+                      class="btn btn-sm btn-icon-only"
+                      role="button"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <font-awesome-icon icon="print" />
+                    </a>
+                  </template>
+                  <a href="#" class="dropdown-item" @click.prevent="downloadReport()">
+                    <font-awesome-icon icon="file-pdf" class="mr-1" /> {{ $t('songList.print-normal') }}
+                  </a>
+                  <a href="#" class="dropdown-item" @click.prevent="downloadReport(true)">
+                    <font-awesome-icon icon="file-pdf" class="mr-1" /> {{ $t('songList.print-col') }}
+                  </a>
+                </base-dropdown>
               </div>
               <p class="mb-0">
                 <small>{{ $t('songList.print') }}</small>
@@ -39,9 +56,8 @@
         :song="displaySong"
       />
     </div>
-
-    <!--- Song print section -->
-    <div v-if="!showLoading" class="songs d-none report-print"> <!-- d-none report-print -->
+    <!--- Song print section (Default) -->
+    <div v-if="!showLoading && !doubleCol" class="songs d-none report-print"> <!-- d-none report-print -->
       <!-- PDF Preview page background content -->
       <div>
         <p>Sample</p>
@@ -62,7 +78,7 @@
         <!-- <div class="pagebreak"></div> -->
       </div>
       <div
-        class="song bg-white pdf-song shongsheet"
+        class="song bg-white pdf-song shongsheet m-3"
         v-for="(song, i) in parsedSongs"
         :key="i"
       >
@@ -112,7 +128,60 @@
         <div class="pagebreak"></div>
       </div>
     </div>
-
+    <!--  Song print section (2 Columns layout) -->
+    <div v-if="!showLoading && doubleCol" class="songs d-none report-print double-col">
+      <!-- TODO: Find a way to render pdf preview here -->
+      <!-- Song list -->
+      <div
+        class="song bg-white pdf-song shongsheet"
+        v-for="(song, i) in parsedSongs"
+        :key="i"
+      >
+        <div class="row">
+          <!-- Song metadata -->
+          <div class="col-12" v-if="song.title">
+            <h1 class="song-title text-xl my-1">
+              {{ song.title }}
+            </h1>
+          </div>
+          <div class="col-12" v-if="song.artist">
+            <div class="my-1 song-artist">
+              <span class="opacity-40">{{ $t('songsheet.by') }}</span> {{ song.artist }}
+            </div>
+          </div>
+          <div class="col-12" v-if="song.capo">
+            <div  class="capo my-4">
+              {{ $t('songsheet.capo') }} {{ song.capo }}
+            </div>
+          </div>
+          <!-- Song body -->
+          <div class="col-12">
+            <div class="song-section">
+              <div ref="output" class="chord-sheet">
+                <div
+                  v-for="({ type, lines }, i) in song.paragraphs"
+                  :key="type + i"
+                  :class="type + ' paragraph'"
+                >
+                  <template v-for="(line, idx) in lines">
+                    <div :key="idx" v-if="line.hasRenderableItems()" class="row">
+                      <template v-for="(item, idx2) in line.items">
+                        <component
+                          v-if="item.isRenderable()"
+                          :is="componentFor(item)"
+                          :item="item"
+                          :key="'inner' + idx2"
+                        />
+                      </template>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

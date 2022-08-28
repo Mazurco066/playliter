@@ -403,6 +403,8 @@
     "previous": "Anterior",
     "next": "Próxima",
     "print": "Exportar PDF",
+    "print-normal": "Tradicional",
+    "print-col": "2 Colunas",
     "credits": "Documento gerado pelo app Playliter no dia",
     "messages": [
       "Apresentação não encontrada!",
