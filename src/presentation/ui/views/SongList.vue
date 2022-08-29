@@ -130,7 +130,27 @@
     </div>
     <!--  Song print section (2 Columns layout) -->
     <div v-if="!showLoading && doubleCol" class="songs d-none report-print double-col">
-      <!-- TODO: Find a way to render pdf preview here -->
+      <!-- PDF Preview page background content -->
+      <div id="pdf-preview" style="col-span: 2">
+        <div class="svg-container">
+          <img src="/img/pdf-prev.svg" alt="PDF Preview">
+          <div class="info">
+            <h3 class="title">{{ show.title }}</h3>
+            <p class="description">{{ show.description }}</p>
+            <span class="text-secondary-light">
+              <small>{{ $t('songList.credits') }} {{ $text.formatISODate(new Date().toISOString()) }}</small>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span>fill</span>
+        <div class="pagebreak"></div>
+      </div>
+      <div>
+        <span>fill</span>
+        <div class="pagebreak"></div>
+      </div>
       <!-- Song list -->
       <div
         class="song bg-white pdf-song shongsheet"
