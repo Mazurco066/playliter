@@ -66,10 +66,10 @@ const actions = {
       message: error ? resp.data.status.message : null
     }
   },
-  async loadBandSong({ commit }, { band, id }) {
+  async loadBandSong({ commit }, { id }) {
     commit('setLoading', true)
     const resp = await asyncRequestHandler(
-      api.songs.getSong(band, id)
+      api.songs.getSong(id)
     )
     const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
