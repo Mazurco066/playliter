@@ -14,17 +14,17 @@ export const reorderShow = (showId = '', data = {}) =>
 export const deleteShow = (showId = '') =>
   httpClient.delete(`/shows/${showId}`)
 
-export const getShow = (bandId = '', showId = '') =>
-  httpClient.get(`/shows/get/${bandId}/${showId}`)
+export const getShow = (showId = '') =>
+  httpClient.get(`/shows/${showId}`)
 
 export const listShows = (bandId = '', limit = 0, offset = 0) =>
-  httpClient.get(`/shows/get/${bandId}?limit=${limit}&offset=${offset}`)
+  httpClient.get(`/shows/list/${bandId}?limit=${limit}&offset=${offset}`)
 
 export const listAccountShows = () =>
-  httpClient.get(`/shows/account_shows`)
+  httpClient.get(`/shows/get/account_shows`)
 
 export const listFutureShows = () =>
-  httpClient.get(`/shows/pending_shows`)
+  httpClient.get(`/shows/get/pending_shows`)
 
 // Observation requests...
 export const addShowObservation = (showId ='', data = {}) =>

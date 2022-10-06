@@ -83,10 +83,10 @@ const actions = {
       message: error ? resp.data.status.message : null
     }
   },
-  async listBandShow({ commit }, { band, id }) {
+  async listBandShow({ commit }, { id }) {
     commit('setLoading', true)
     const resp = await asyncRequestHandler(
-      api.shows.getShow(band, id)
+      api.shows.getShow(id)
     )
     const error = ![200, 201].includes(resp.status)
     commit('setLoading', false)
